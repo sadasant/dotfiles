@@ -43,7 +43,7 @@
     set ruler
   " show hidden characters, but only tabs for me, sir
     set list
-    set listchars=tab:-·,tab:>-,trail:-
+    set listchars=tab:>-,trail:-
   " show the fancy status line
     set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
   " show the status line always
