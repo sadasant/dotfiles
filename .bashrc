@@ -6,9 +6,9 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User Prompt
-PS1="\n\[\e[37;1m\]\`if [ \$? = 0 ]; then echo \
-[\[\e[0m\]\[\$(/usr/bin/who | /usr/bin/wc -l | /bin/sed 's: ::g')\e[1m\]]\
-; else echo \[\e[30m\][!];fi\`[\u][\h]\[\e[30;1m\][\[\$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed 's: ::g'), \$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed 's/total //')b][\w]\n\[\e[0m\]\[\e[0m\]"
+PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
+\u@\h\[\e[0m\]/\w\[\e[30;1m\]\[\$(/usr/bin/who | /usr/bin/wc -l | /bin/sed 's: ::g')\e[0m\]
+"
 
 # ALIASES & FUNCTIONS
 
