@@ -43,7 +43,7 @@
     set ruler
   " show hidden characters, but only tabs for me, sir
     set list
-    set listchars=tab:>-,trail:-
+    set listchars=tab:→\ ,trail:-
   " show the fancy status line
     set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
   " show the status line always
@@ -71,8 +71,9 @@
   set autoindent
   set smartindent
   set expandtab
-  set tabstop=2
+  set tabstop=4
   set smarttab
+  filetype plugin indent on
 
 " CLOSING CHARACTERS
   inoremap {     {}<Left>
@@ -99,7 +100,7 @@
 
 " BEHAVIOR
   " clear right whitespaces
-  autocmd BufWritePre * :%s/\s\+$//e
+  " autocmd BufWritePre * :%s/\s\+$//e
 
 "░░░░░░░░░░░"
 "░░░░█░█░░░░"
