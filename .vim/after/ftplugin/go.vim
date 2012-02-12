@@ -2,3 +2,4 @@
 
 setlocal nosmarttab
 setlocal noexpandtab
+setlocal nosmartindent
