@@ -246,6 +246,9 @@
     <keybind key="A-F4">
       <action name="Close"/>
     </keybind>
+    <keybind key="C-q">
+      <action name="Focus"/>
+    </keybind>
     <keybind key="A-Escape">
       <action name="Lower"/>
       <action name="FocusToBottom"/>
