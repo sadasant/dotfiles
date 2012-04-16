@@ -9,10 +9,10 @@
 					</execute>
 				</action>
 			</item>
-			<item label="Terminator">
+			<item label="Terminal">
 				<action name="Execute">
 					<execute>
-						terminator
+						terminal
 					</execute>
 				</action>
 			</item>
