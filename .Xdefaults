@@ -1,0 +1,7 @@
+xterm*Background:   black
+xterm*Foreground:   grey
+xterm*cursorColor:  green
+
+xterm*faceName:     xft:Fixed:pixelsize=14
+xterm*scrollBar:    true
+xterm*utf8:         2
