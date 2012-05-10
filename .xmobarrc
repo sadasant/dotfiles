@@ -1,0 +1,10 @@
+Config
+{ font         = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+, bgColor      = "#000000"
+, fgColor      = "#555555"
+, position     = Top
+, lowerOnStart = False
+, sepChar      = "%"
+, alignSep     = "}{"
+, template     = ""
+}
