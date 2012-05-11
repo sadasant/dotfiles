@@ -3,7 +3,7 @@
 " 11 Octo 2011
 
 " MOVILITY
-  " <F?> on fire
+  " on fire
     imap <F1> <Left>
     map  <F1> h
     imap <F2> <Down>
@@ -25,6 +25,8 @@
     map <F5> :w<CR>
   " quit
     map <F6> :q
+  " new tab
+    map <F7> :tabnew<CR>
 
 " INTERFACE
   " ignore the old vi
