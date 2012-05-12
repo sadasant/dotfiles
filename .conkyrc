@@ -23,7 +23,6 @@
 
 # position
   minimum_size  1024 1
-  maximum_size  1024 5
   alignment  top_left
   gap_x 5
   gap_y 1
@@ -42,10 +41,10 @@
   default_outline_color  000000
 
 # setup
-  cpu_avg_samples2
-  net_avg_samples2
-  override_utf8_localeyes
-  use_spacernone
+  cpu_avg_samples 2
+  net_avg_samples 2
+  override_utf8_locale yes
+  use_spacer none
 
 TEXT
 ${font :bold:size=8}${color #dddddd}sadasant${color}${font} ${color #333333} {${user_number}}  HOME:${fs_bar 9,30 /home}   BAT:${battery_bar 9,30 BAT1}   SWP:${swapbar 9,30}   DISK: ${diskiograph 9,30}   RAM:${memgraph 9,30}   CPU:${cpugraph 9,30}   SIG:${wireless_link_bar 9,30 wlan0}   ${if_up wlan0}wUP:${upspeedgraph wlan0 9,30}   wDW:${downspeedgraph wlan0 9,30}${endif}${if_up eth0}   lUP:${upspeedgraph eth0 9,30}   lDW:${downspeedgraph eth0 9,30}${color #333333} ${color}${alignr}${color #dddddd}${font :bold:size=8}${time %d/%m/%g %H:%M}   ${font}${color}

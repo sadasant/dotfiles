@@ -7,7 +7,7 @@ main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 
 -- Launch bar
 -- myBar = "xmobar"
-myBar = "xmobar & sleep 5; conky" -- lol this works :D
+myBar = "killall -9 conky & xmobar & sleep 5; conky" -- lol this works :D
                                   -- remember to empty the template in .xmobarrc
 
 -- Custom PP
