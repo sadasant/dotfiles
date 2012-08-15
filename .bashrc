@@ -13,7 +13,8 @@ PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
 # ALIASES & FUNCTIONS
 
 # Heroku bind
-alias heroku='~/heroku/heroku-client/heroku'
+# alias heroku='~/heroku/heroku-client/heroku'
+export PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
 
 # Screenshot
 screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}"; }
