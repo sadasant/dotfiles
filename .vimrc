@@ -22,13 +22,15 @@
   set scrolloff=2
 
 
-" SHORCUTS
+" SHORTCUTS
 " save
   map <F5> :w<CR>
 " quit
   map <F6> :q
-" new tab
+" new tab on the current folder
   map <F7> :tabf %:p:h<CR>
+" open current folder
+  map <F8> :e %:p:h<CR>
 
 
 " INTERFACE
