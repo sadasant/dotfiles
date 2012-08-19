@@ -2,7 +2,6 @@
 " By Daniel R. (sadasant.com)
 " 14 Apr 2012
 
-
 " MOVILITY
 " I'm left handed and I usually play guitar.
 " So I prefered to use this notes, it feels like frets on fire :)
@@ -29,7 +28,7 @@
 " quit
   map <F6> :q
 " new tab
-  map <F7> :tabnew<CR>
+  map <F7> :tabf %:p:h<CR>
 
 
 " INTERFACE
@@ -107,6 +106,7 @@
 
 " BEHAVIOR
 " clear right whitespaces
+" WARNING: Problematic with Jade and other space-dependant languages.
 " autocmd BufWritePre * :%s/\s\+$//e
 
 " VUNDLE
