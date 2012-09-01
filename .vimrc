@@ -31,6 +31,8 @@
   map <F7> :tabf %:p:h<CR>
 " open current folder
   map <F8> :e %:p:h<CR>
+" Mapping the align stuff
+  map <C-S-t> :Tab /
 
 
 " INTERFACE
