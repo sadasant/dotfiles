@@ -1,6 +1,6 @@
 " ASCIID
 " By Daniel R. (sadasant.com)
-" 14 Apr 2012
+" 16 Sep 2012
 
 " MOVILITY
 " I'm left handed and I usually play guitar.
@@ -31,8 +31,6 @@
   map <F7> :tabf %:p:h<CR>
 " open current folder
   map <F8> :e %:p:h<CR>
-" Mapping the align stuff
-  map <C-S-t> :Tab /
 
 
 " INTERFACE
@@ -52,7 +50,7 @@
   set ruler
 " show hidden characters, but only tabs for me, sir
   set list
-  set listchars=tab:→\ ,trail:-
+  set listchars=tab:�\ ,trail:-
 " show the fancy status line
   set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
 " show the status line always
@@ -113,23 +111,5 @@
 " WARNING: Problematic with Jade and other space-dependant languages.
 " autocmd BufWritePre * :%s/\s\+$//e
 
-" VUNDLE
-" https://github.com/gmarik/vundle
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
-  Bundle 'gmarik/vundle'
-  " Bundles
-  Bundle 'scrooloose/syntastic'
-  Bundle 'godlygeek/tabular'
-
-
-"░░░░░░░░░░░"
-"░░░░█░█░░░░"
-"░░░█████░░░"
-"░░███████░░"
-"░░█░░█░░█░░"
-"░░███████░░"
-"░░░░█░█░░░░"
-"░░░░░░░░░░░"
-"░░░░█░█░░░░"
-"░░░░░░░░░░░"
+" Pathogen
+  call pathogen#infect()
