@@ -1,10 +1,9 @@
-" Go custom settings
-setlocal nosmarttab
+" Go tabs
 setlocal noexpandtab
-setlocal nosmartindent
+setlocal shiftwidth=4
 
 " No hidden characters
-set nolist
+setlocal nolist
 
 " Auto-fix go format
 map <C-g> :!gofmt -w %<CR>

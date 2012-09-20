@@ -19,19 +19,3 @@ export PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
 # Screenshot
 screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}"; }
 
-# Compiling and running .go files for amd64
-go6 () {
-  6g $1;
-  file=${1%.go}
-  6l -o $file $file'.6';
-  ./$file $2;
-}
-
-# Compiling and running .go files for 386
-go8 () {
-  8g $1;
-  file=${1%.go}
-  8l -o $file $file'.8';
-  ./$file $2;
-}
-
