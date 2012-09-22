@@ -4,5 +4,10 @@ setxkbmap -layout es
 
 setxkbmap -option terminate:ctrl_alt_bksp
 
-exec xmonad
-#exec dwm
+# status bar
+while true; do
+    xsetroot -name "$( date +"%F %R" )"
+    sleep 1pm
+done &
+
+exec dwm
