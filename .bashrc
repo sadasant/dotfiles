@@ -7,7 +7,7 @@ fi
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
-\u@\h\[\e[0m\] \w\[\e[30;1m\] \[\$(/usr/bin/who | /usr/bin/wc -l | /bin/sed 's: ::g')\e[0m\]
+\u@\h\[\e[0m\] \w\[\e[30;1m\]\[\e[0m\]
 "
 
 # ALIASES & FUNCTIONS
