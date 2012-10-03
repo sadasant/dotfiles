@@ -11,7 +11,17 @@ static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
-static const Bool topbar            = True;     /* False means bottom bar */
+static const Bool topbar            = False;    /* False means bottom bar */
+
+/*
+ * To add a bottom bar spacing, go to: `~/dwm/src/dwm-6.0/dwm.c`
+ * and edit the following lines:
+ *
+ *   1887    m->mx = m->wx = unique[i].x_org;
+ *   1888    m->my = m->wy = unique[i].y_org + 14;
+ *   1889    m->mw = m->ww = unique[i].width;
+ *   1890    m->mh = m->wh = unique[i].height - 14;
+ */
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };

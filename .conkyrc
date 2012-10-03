@@ -1,5 +1,6 @@
-# sadasant
-#~ .conkyrc
+#.conkyrc
+# by Daniel Rodríguez <http://sadasant.com/>
+# 2012-10-03
 
 # run
   total_run_times  0
@@ -18,7 +19,8 @@
   background  yes
   own_window  yes
   own_window_transparent no
-  own_window_type  desktop
+  own_window_type override
+  # own_window_type  desktop
   # own_window_hints  undecorated,below,sticky,skip_taskbar,skip_pager
 
 # position
