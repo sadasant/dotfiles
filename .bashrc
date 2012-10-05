@@ -19,3 +19,5 @@ export PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
 # Screenshot
 screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}"; }
 
+# GOPATH
+GOPATH=/usr/lib/go/site:/home/sadasant/scripts/go:/home/sadasant/code/github/OpenVE/Go
