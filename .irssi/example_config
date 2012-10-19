@@ -1,0 +1,34 @@
+servers = (
+  {
+    address = "irc.freenode.net";
+    chatnet = "freenode";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    autoconnect = "yes";
+  }
+);
+
+chatnets = {
+  freenode = {
+    type = "IRC";
+    autosendcmd = "wait 1000;/msg nickserv identify sadasant password";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+};
+
+channels = (
+  { name = "#OpenVE"; chatnet = "freenode"; autojoin = "Yes"; },
+);
+
+settings = {
+  "fe-text" = { actlist_sort = "refnum"; };
+  core = {
+    real_name = "Daniel Rodríguez";
+    user_name = "sadasant";
+    nick = "sadasant";
+  };
+  "fe-common/core" = { theme = "oscar"; };
+};
