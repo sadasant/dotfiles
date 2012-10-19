@@ -12,7 +12,7 @@ servers = (
 chatnets = {
   freenode = {
     type = "IRC";
-    autosendcmd = "wait 1000;/msg nickserv identify sadasant password";
+    autosendcmd = "/msg nickserv identify sadasant password";
     max_kicks = "1";
     max_msgs = "3";
     max_whois = "30";
@@ -20,7 +20,8 @@ chatnets = {
 };
 
 channels = (
-  { name = "#OpenVE"; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#OpenVE";    chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#CITunitec"; chatnet = "freenode"; autojoin = "Yes"; }
 );
 
 settings = {
