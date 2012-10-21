@@ -31,5 +31,5 @@ settings = {
     user_name = "sadasant";
     nick = "sadasant";
   };
-  "fe-common/core" = { theme = "oscar"; };
+  "fe-common/core" = { theme = "hv"; };
 };
