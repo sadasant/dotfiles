@@ -59,54 +59,51 @@ colorscheme sadasant           " color
 
 
 " SEARCH
-" ignore case when all is lowercase
-  set smartcase
-" window to the current match
-  set incsearch
-" search with \n like characters
-  set magic
+set smartcase " ignore case when all is lowercase
+set incsearch " window to the current match
+set magic     " search with \n like characters
 
 " NO BACKUPS
-  set noswapfile
-  set nobackup
-  set nowb
+set noswapfile
+set nobackup
+set nowb
 
 " TABS AND IDENTATION
-  set shiftwidth=2
-  set autoindent
-  set smartindent
-  set expandtab
-  set tabstop=4
-  set smarttab
-  filetype plugin indent on
+set shiftwidth=2
+set autoindent
+set smartindent
+set expandtab
+set tabstop=4
+set smarttab
+filetype plugin indent on
 
 " CLOSING CHARACTERS
-  inoremap {     {}<Left>
-  inoremap {<CR> {<CR>}<Esc>0
-  inoremap {{    {
-  inoremap {}    {}
-  inoremap [     []<Left>
-  inoremap [<CR> [<CR>]<Esc>0
-  inoremap [[    [
-  inoremap []    []
-  inoremap (     ()<Left>
-  inoremap (<CR> (<CR>)<Esc>0
-  inoremap ((    (
-  inoremap ()    ()
-  inoremap "     ""<Left>
-  inoremap "<CR> "<CR>"<Esc>0
-  inoremap ""    "
-  inoremap ""    ""
-  inoremap '     ''<Left>
-  inoremap '<CR> '<CR>'<Esc>0
-  inoremap ''    '
-  inoremap ''    ''
-  set showmatch
+inoremap {     {}<Left>
+inoremap {<CR> {<CR>}<Esc>0
+inoremap {{    {
+inoremap {}    {}
+inoremap [     []<Left>
+inoremap [<CR> [<CR>]<Esc>0
+inoremap [[    [
+inoremap []    []
+inoremap (     ()<Left>
+inoremap (<CR> (<CR>)<Esc>0
+inoremap ((    (
+inoremap ()    ()
+inoremap "     ""<Left>
+inoremap "<CR> "<CR>"<Esc>0
+inoremap ""    "
+inoremap ""    ""
+inoremap '     ''<Left>
+inoremap '<CR> '<CR>'<Esc>0
+inoremap ''    '
+inoremap ''    ''
+set showmatch
 
 " BEHAVIOR
 " clear right whitespaces
-" WARNING: Problematic with Jade and other space-dependant languages.
+" WARNING: Problematic with Jade
 " autocmd BufWritePre * :%s/\s\+$//e
 
 " Pathogen
-  call pathogen#infect()
+call pathogen#infect()
