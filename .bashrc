@@ -20,4 +20,16 @@ export PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
 screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}"; }
 
 # GOPATH
-GOPATH=/usr/lib/go/site:/home/sadasant/scripts/go:/home/sadasant/code/github/OpenVE/Go
+GOPATH=/usr/lib/go/site:/home/sadasant/code/go:/home/sadasant/scripts/go:/home/sadasant/code/github/OpenVE/Go
+
+# linux-tick-processor
+alias tick="/home/sadasant/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
+
+# {{{
+# Node Completion - Auto-generated, do not touch.
+shopt -s progcomp
+for f in $(command ls ~/.node-completion); do
+  f="$HOME/.node-completion/$f"
+  test -f "$f" && . "$f"
+done
+# }}}

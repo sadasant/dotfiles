@@ -31,6 +31,9 @@
   map <F7> :tabf %:p:h<CR>
 " open current folder
   map <F8> :e %:p:h<CR>
+" GREP in the current directory and all subdirectories
+" http://vim.wikia.com/wiki/Find_in_files_within_Vim
+  map <C-F> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
 
 " INTERFACE
@@ -58,7 +61,7 @@
 " syntax
   syntax on
 " color
-  colorscheme asciid
+  colorscheme sadasant
 
 
 " SEARCH

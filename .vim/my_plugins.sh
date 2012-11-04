@@ -2,10 +2,12 @@
 # inside the bundle directory
 
 repos=(
-  "scrooloose/syntastic"
-  "godlygeek/tabular"
-  "tpope/vim-surround"
+  "chrisbra/NrrwRgn"
   "ciaranm/detectindent"
+  "godlygeek/tabular"
+  "scrooloose/nerdcommenter"
+  "scrooloose/syntastic"
+  "tpope/vim-surround"
   )
 
 if [ ! -d ./bundle ]
@@ -17,10 +19,10 @@ cd bundle
 for repo in "${repos[@]}"
 do
   repo_name=`echo ${repo} | cut -d '/' -f 2`
-  if [ ! -d ./bundle/$repo_name ]
+  if [ -d $repo_name ]
   then
-    git clone git@github.com:"${repo}"
-  else
     echo Exists: "${repo}"
+  else
+    git clone git://github.com/"${repo}".git
   fi
 done
