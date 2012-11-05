@@ -19,7 +19,7 @@ hi Constant         ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi CursorColumn     ctermfg=NONE        ctermbg=NONE        cterm=BOLD
 hi Cursor           ctermfg=black       ctermbg=NONE        cterm=NONE
 hi CursorLine       ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi CursorLineNr     ctermfg=white       ctermbg=NONE        cterm=NONE
+hi CursorLineNr     ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi Directory        ctermfg=gray        ctermbg=NONE        cterm=NONE
 hi Delimiter        ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi Error            ctermfg=black       ctermbg=red         cterm=NONE
@@ -44,11 +44,11 @@ hi Search           ctermfg=NONE        ctermbg=NONE        cterm=UNDERLINE
 hi Special          ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi SpecialKey       ctermfg=red         ctermbg=NONE        cterm=NONE
 hi Statement        ctermfg=white       ctermbg=NONE        cterm=BOLD
-hi StatusLine       ctermfg=white       ctermbg=darkgray    cterm=BOLD
+hi StatusLine       ctermfg=black       ctermbg=white       cterm=NONE
 hi StatusLineNC     ctermfg=white       ctermbg=darkgray    cterm=NONE
 hi String           ctermfg=gray        ctermbg=NONE        cterm=NONE
-hi TabLine          ctermfg=white       ctermbg=NONE        cterm=NONE
-hi TabLineSel       ctermfg=white       ctermbg=NONE        cterm=BOLD
+hi TabLine          ctermfg=black       ctermbg=white       cterm=NONE
+hi TabLineSel       ctermfg=white       ctermbg=NONE        cterm=NONE
 hi Title            ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Todo             ctermfg=red         ctermbg=NONE        cterm=NONE
 hi Type             ctermfg=white       ctermbg=NONE        cterm=NONE
