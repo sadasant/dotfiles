@@ -44,8 +44,8 @@ hi Search           ctermfg=NONE        ctermbg=NONE        cterm=UNDERLINE
 hi Special          ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi SpecialKey       ctermfg=red         ctermbg=NONE        cterm=NONE
 hi Statement        ctermfg=white       ctermbg=NONE        cterm=BOLD
-hi StatusLine       ctermfg=black       ctermbg=white       cterm=NONE
-hi StatusLineNC     ctermfg=white       ctermbg=darkgray    cterm=NONE
+hi StatusLine       ctermfg=black       ctermbg=gray       cterm=NONE
+hi StatusLineNC     ctermfg=black       ctermbg=darkgray    cterm=NONE
 hi String           ctermfg=gray        ctermbg=NONE        cterm=NONE
 hi TabLine          ctermfg=black       ctermbg=white       cterm=NONE
 hi TabLineSel       ctermfg=white       ctermbg=NONE        cterm=NONE
