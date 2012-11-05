@@ -13,13 +13,13 @@ endif
 let g:colors_name = "sadasant"
 
 " General colors
-hi Comment          ctermfg=darkgray    ctermbg=NONE        cterm=NONE
+hi Comment          ctermfg=237         ctermbg=NONE        cterm=NONE
 hi Conditional      ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi Constant         ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi CursorColumn     ctermfg=NONE        ctermbg=NONE        cterm=BOLD
 hi Cursor           ctermfg=black       ctermbg=NONE        cterm=NONE
 hi CursorLine       ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi CursorLineNr     ctermfg=white       ctermbg=NONE        cterm=BOLD
+hi CursorLineNr     ctermfg=white       ctermbg=233         cterm=BOLD
 hi Directory        ctermfg=gray        ctermbg=NONE        cterm=NONE
 hi Delimiter        ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi Error            ctermfg=black       ctermbg=red         cterm=NONE
@@ -29,9 +29,9 @@ hi Function         ctermfg=white       ctermbg=NONE        cterm=NONE
 hi Identifier       ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi Ignore           ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Keyword          ctermfg=white       ctermbg=NONE        cterm=BOLD
-hi LineNr           ctermfg=gray        ctermbg=NONE        cterm=NONE
+hi LineNr           ctermfg=240         ctermbg=232         cterm=NONE
 hi MatchParen       ctermfg=black       ctermbg=white       cterm=BOLD
-hi ModeMsg          ctermfg=black       ctermbg=red         cterm=BOLD
+hi ModeMsg          ctermfg=16          ctermbg=white       cterm=BOLD
 hi NonText          ctermfg=gray        ctermbg=NONE        cterm=NONE
 hi Normal           ctermfg=white       ctermbg=NONE        cterm=NONE
 hi Number           ctermfg=gray        ctermbg=NONE        cterm=BOLD
@@ -42,20 +42,20 @@ hi PmenuSel         ctermfg=white       ctermbg=NONE        cterm=NONE
 hi PreProc          ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi Search           ctermfg=NONE        ctermbg=NONE        cterm=UNDERLINE
 hi Special          ctermfg=gray        ctermbg=NONE        cterm=BOLD
-hi SpecialKey       ctermfg=red         ctermbg=NONE        cterm=NONE
+hi SpecialKey       ctermfg=52          ctermbg=NONE        cterm=NONE
 hi Statement        ctermfg=white       ctermbg=NONE        cterm=BOLD
-hi StatusLine       ctermfg=black       ctermbg=gray       cterm=NONE
-hi StatusLineNC     ctermfg=black       ctermbg=darkgray    cterm=NONE
+hi StatusLine       ctermfg=white       ctermbg=233         cterm=BOLD
+hi StatusLineNC     ctermfg=240         ctermbg=233         cterm=NONE
 hi String           ctermfg=gray        ctermbg=NONE        cterm=NONE
 hi TabLine          ctermfg=black       ctermbg=white       cterm=NONE
-hi TabLineSel       ctermfg=white       ctermbg=NONE        cterm=NONE
+hi TabLineSel       ctermfg=white       ctermbg=232         cterm=NONE
 hi Title            ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Todo             ctermfg=red         ctermbg=NONE        cterm=NONE
 hi Type             ctermfg=white       ctermbg=NONE        cterm=NONE
-hi VertSplit        ctermfg=darkgray    ctermbg=darkgray    cterm=NONE
+hi VertSplit        ctermfg=233         ctermbg=233         cterm=NONE
 hi Visual           ctermfg=NONE        ctermbg=darkgray    cterm=NONE
 hi WarningMsg       ctermfg=black       ctermbg=red         cterm=NONE
-hi WildMenu         ctermfg=black       ctermbg=white       cterm=NONE
+hi WildMenu         ctermfg=white       ctermbg=237         cterm=NONE
 
 hi link Character       Constant
 hi link Boolean         Constant
