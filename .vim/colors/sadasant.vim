@@ -24,7 +24,7 @@ hi Directory        ctermfg=gray        ctermbg=NONE        cterm=NONE
 hi Delimiter        ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi Error            ctermfg=black       ctermbg=red         cterm=NONE
 hi ErrorMsg         ctermfg=black       ctermbg=red         cterm=NONE
-hi Folded           ctermfg=gray        ctermbg=NONE        cterm=NONE
+hi Folded           ctermfg=gray        ctermbg=233         cterm=NONE
 hi Function         ctermfg=white       ctermbg=NONE        cterm=NONE
 hi Identifier       ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi Ignore           ctermfg=NONE        ctermbg=NONE        cterm=NONE
