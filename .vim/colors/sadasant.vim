@@ -20,8 +20,12 @@ hi CursorColumn     ctermfg=NONE        ctermbg=NONE        cterm=BOLD
 hi Cursor           ctermfg=black       ctermbg=NONE        cterm=NONE
 hi CursorLine       ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi CursorLineNr     ctermfg=white       ctermbg=233         cterm=BOLD
-hi Directory        ctermfg=gray        ctermbg=NONE        cterm=NONE
 hi Delimiter        ctermfg=white       ctermbg=NONE        cterm=BOLD
+hi DiffAdd          ctermfg=green       ctermbg=232         cterm=NONE
+hi DiffChange       ctermfg=darkgray    ctermbg=233         cterm=NONE
+hi DiffDelete       ctermfg=darkred     ctermbg=232         cterm=NONE
+hi DiffText         ctermfg=blue        ctermbg=232         cterm=NONE
+hi Directory        ctermfg=gray        ctermbg=NONE        cterm=NONE
 hi Error            ctermfg=black       ctermbg=red         cterm=NONE
 hi ErrorMsg         ctermfg=black       ctermbg=red         cterm=NONE
 hi Folded           ctermfg=gray        ctermbg=233         cterm=NONE

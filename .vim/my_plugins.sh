@@ -7,6 +7,7 @@ repos=(
   "godlygeek/tabular"
   "scrooloose/nerdcommenter"
   "scrooloose/syntastic"
+  "tpope/vim-fugitive"
   "tpope/vim-surround"
   )
 

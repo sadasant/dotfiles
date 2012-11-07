@@ -51,7 +51,7 @@ set listchars=tab:»\ ,trail:-  " Show different characters
 
 set wildmenu                   " Help with the command line
 set laststatus=2               " show the status line always
-set statusline=%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%y%t%=%c,%l/%L\ %P
+set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%y%t%=%c,%l/%L\ %P
 set cursorline
 
 syntax on                      " syntax
