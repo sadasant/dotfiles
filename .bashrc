@@ -6,7 +6,9 @@ if [ -f /etc/bashrc ]; then
 fi
 
 git_current_branch() {
-  git branch | grep '*' | cut -d' ' -f 2
+  if [ -d .git ]; then
+    git branch | grep '*' | cut -d' ' -f 2
+  fi
 }
 
 # User Prompt
