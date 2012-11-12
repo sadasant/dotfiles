@@ -14,7 +14,8 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = False;    /* False means bottom bar */
 
 /*
- * To add a bottom bar spacing, go to: `~/dwm/src/dwm-6.0/dwm.c`
+ * To add a space on the top where conky could be displayed, go to:
+ * `~/dwm/src/dwm-6.0/dwm.c`
  * and edit the following lines:
  *
  *   1887    m->mx = m->wx = unique[i].x_org;
