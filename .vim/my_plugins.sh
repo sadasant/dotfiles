@@ -42,6 +42,7 @@ do
   done
   if [ $ok == 0 ]
   then
+    echo Removing: $f
     rm -fr $f
   fi
 done
