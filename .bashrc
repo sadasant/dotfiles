@@ -37,3 +37,12 @@ export PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
 
 # linux-tick-processor
 alias tick="/home/sadasant/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
+
+# {{{
+# Node Completion - Auto-generated, do not touch.
+shopt -s progcomp
+for f in $(command ls ~/.node-completion); do
+  f="$HOME/.node-completion/$f"
+  test -f "$f" && . "$f"
+done
+# }}}
