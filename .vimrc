@@ -105,5 +105,9 @@ set showmatch
 " WARNING: Problematic with Jade
 " autocmd BufWritePre * :%s/\s\+$//e
 
+" Save and Restore Folds
+au BufWinLeave ?* mkview
+au BufWinEnter ?* silent loadview
+
 " Pathogen
 call pathogen#infect()
