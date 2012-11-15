@@ -46,7 +46,7 @@ hi PmenuSel         ctermfg=white       ctermbg=NONE        cterm=NONE
 hi PreProc          ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi Search           ctermfg=NONE        ctermbg=NONE        cterm=UNDERLINE
 hi Special          ctermfg=gray        ctermbg=NONE        cterm=BOLD
-hi SpecialKey       ctermfg=52          ctermbg=NONE        cterm=NONE
+hi SpecialKey       ctermfg=88          ctermbg=NONE        cterm=NONE
 hi Statement        ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi StatusLine       ctermfg=white       ctermbg=233         cterm=BOLD
 hi StatusLineNC     ctermfg=240         ctermbg=233         cterm=NONE
