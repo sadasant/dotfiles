@@ -36,10 +36,10 @@ syn case ignore
 syn sync linebreaks=1
 
 "additions to HTML groups
-syntax region htmlBold   start=/\\\@<!\(^\|\A\)\@=\*\@<!\*\*\*\@!\S\@=/ end=/\S\\\@<!\*\@<!\*\*\*\@!\($\|\A\)\@=/ contains=htmlItalic,@Spell
-syntax region htmlItalic start=/\\\@<!\(^\|\A\)\@=\*\@<!\*\*\@!\S\@=/   end=/\S\\\@<!\*\@<!\*\*\@!\($\|\A\)\@=/   contains=htmlBold,@Spell
-syntax region htmlBold   start=/\\\@<!\(^\|\A\)\@=\<_\@<!___\@!\S\@=/   end=/\S\\\@<!_\@<!___\@!\($\|\A\)\@=/     contains=htmlItalic,@Spell
-syntax region htmlItalic start=/\\\@<!\(^\|\A\)\@=\<_\@<!__\@!\S\@=/    end=/\S\\\@<!_\@<!__\@!\($\|\A\)\@=/      contains=htmlBold,@Spell
+syn region htmlBold   start=/\\\@<!\(^\|\A\)\@=\*\@<!\*\*\*\@!\S\@=/ end=/\S\\\@<!\*\@<!\*\*\*\@!\($\|\A\)\@=/ contains=htmlItalic,@Spell
+syn region htmlItalic start=/\\\@<!\(^\|\A\)\@=\*\@<!\*\*\@!\S\@=/   end=/\S\\\@<!\*\@<!\*\*\@!\($\|\A\)\@=/   contains=htmlBold,@Spell
+syn region htmlBold   start=/\\\@<!\(^\|\A\)\@=\<_\@<!___\@!\S\@=/   end=/\S\\\@<!_\@<!___\@!\($\|\A\)\@=/     contains=htmlItalic,@Spell
+syn region htmlItalic start=/\\\@<!\(^\|\A\)\@=\<_\@<!__\@!\S\@=/    end=/\S\\\@<!_\@<!__\@!\($\|\A\)\@=/      contains=htmlBold,@Spell
 
 " [link](URL) | [link][id] | [link][]
 syn region mkdLink matchgroup=mkdDelimiter start="\!\?\["  end="\]\ze\s*[[(]" contains=@Spell nextgroup=mkdURL,mkdID skipwhite
