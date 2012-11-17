@@ -78,3 +78,7 @@ hi link Tag             Special
 hi link SpecialChar     Special
 hi link SpecialComment  Special
 hi link Debug           Special
+
+" HTML and Markdown highlights
+hi htmlBold        ctermfg=white       ctermbg=NONE        cterm=BOLD
+hi htmlItalic      ctermfg=white       ctermbg=237         cterm=NONE

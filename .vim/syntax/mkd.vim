@@ -3,6 +3,7 @@
 " Maintainer:   Daniel Rodríguez <djrs@sadasant.com>
 " URL:          http://plasticboy.com/markdown-vim-mode
 " URL:          https://github.com/hallison/vim-markdown
+" URL:          https://github.com/sadasant/vim-markdown
 " Version:      10
 " Last Change:  2012 Nov 16
 " Remark:       Uses HTML syntax file
@@ -35,10 +36,10 @@ syn case ignore
 syn sync linebreaks=1
 
 "additions to HTML groups
-syn region htmlBold    start=/\\\@<!\(^\|\A\)\@=\*\@<!\*\*\*\@!\S\@=/  end=/\S\\\@<!\*\@<!\*\*\*\@!\($\|\A\)\@=/  contains=htmlItalic,@Spell
-syn region htmlItalic  start=/\\\@<!\(^\|\A\)\@=\*\@<!\*\*\@!\S\@=/   end=/\S\\\@<!\*\@<!\*\*\@!\($\|\A\)\@=/    contains=htmlBold,@Spell
-syn region htmlItalic  start=/\\\@<!\(^\|\A\)\@=\<_\@<!___\@!\S\@=/   end=/\S\\\@<!_\@<!___\@!\($\|\A\)\@=/       contains=htmlBold,@Spell
-syn region htmlItalic  start=/\\\@<!\(^\|\A\)\@=\<_\@<!__\@!\S\@=/    end=/\S\\\@<!_\@<!__\@!\($\|\A\)\@=/       contains=htmlBold,@Spell
+syntax region htmlBold   start=/\\\@<!\(^\|\A\)\@=\*\@<!\*\*\*\@!\S\@=/ end=/\S\\\@<!\*\@<!\*\*\*\@!\($\|\A\)\@=/ contains=htmlItalic,@Spell
+syntax region htmlItalic start=/\\\@<!\(^\|\A\)\@=\*\@<!\*\*\@!\S\@=/   end=/\S\\\@<!\*\@<!\*\*\@!\($\|\A\)\@=/   contains=htmlBold,@Spell
+syntax region htmlBold   start=/\\\@<!\(^\|\A\)\@=\<_\@<!___\@!\S\@=/   end=/\S\\\@<!_\@<!___\@!\($\|\A\)\@=/     contains=htmlItalic,@Spell
+syntax region htmlItalic start=/\\\@<!\(^\|\A\)\@=\<_\@<!__\@!\S\@=/    end=/\S\\\@<!_\@<!__\@!\($\|\A\)\@=/      contains=htmlBold,@Spell
 
 " [link](URL) | [link][id] | [link][]
 syn region mkdLink matchgroup=mkdDelimiter start="\!\?\["  end="\]\ze\s*[[(]" contains=@Spell nextgroup=mkdURL,mkdID skipwhite
@@ -55,6 +56,7 @@ syn region mkdLinkTitle matchgroup=mkdDelimiter start=+"+ end=+"+  contained
 syn region mkdLinkTitle matchgroup=mkdDelimiter start=+'+ end=+'+  contained
 syn region mkdLinkTitle matchgroup=mkdDelimiter start=+(+ end=+)+  contained
 
+
 "define Markdown groups
 syn match  mkdLineContinue ".$" contained
 syn match  mkdRule       /^\s*\*\s\{0,1}\*\s\{0,1}\*$/
@@ -64,10 +66,12 @@ syn match  mkdRule       /^\s*-\{3,}$/
 syn match  mkdRule       /^\s*\*\{3,5}$/
 syn match  mkdListItem   "^\s*[-*+]\s\+"
 syn match  mkdListItem   "^\s*\d\+\.\s\+"
-" 3 level depth comments
+
+" 3 level depth code
 syn match  mkdBlockCode  /^\(^\S.*\n\)\@<=\n\(^\(\s\{4}\|\t\).*\n\)\+/
 syn match  mkdBlockCode  /^\(^\s\{4}\S.*\n\)\@<=\n\(^\(\s\{8}\|\t\{2}\).*\n\)\+/
 syn match  mkdBlockCode  /^\(^\s\{8}\S.*\n\)\@<=\n\(^\(\s\{12}\|\t\{3}\).*\n\)\+/
+
 syn match  mkdLineBreak  /  \+$/
 syn region mkdCode       start=/\\\@<!`/        end=/\\\@<!`/
 syn region mkdCode       start=/\s*``[^`]*/     end=/[^`]*``\s*/
@@ -103,7 +107,6 @@ HtmlHiLink mkdID            Identifier
 HtmlHiLink mkdLinkDef       mkdID
 HtmlHiLink mkdLinkDefTarget mkdURL
 HtmlHiLink mkdLinkTitle     htmlString
-
 HtmlHiLink mkdDelimiter     Delimiter
 
 let b:current_syntax = "mkd"
