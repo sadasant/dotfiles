@@ -10,10 +10,6 @@ PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
 \u@\h\[\e[0m\] \w\[\e[30;1m\] \$(git_current_branch) \[\e[0m\]
 "
 
-# Terminal Clock
-# From: http://www.commandlinefu.com/commands/view/11504/
-# while true; do echo -ne "\e[s\e[0;$((COLUMNS-27))H$(date)\e[u"; sleep 1; done &
-
 # FUNCTIONS
 
 # To show the current branch
@@ -26,8 +22,6 @@ git_current_branch() {
 
 # Screenshot
 screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}"; }
-
-# cp Progress bar
 
 # ALIASES
 
