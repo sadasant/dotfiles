@@ -12,7 +12,7 @@ PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
 
 # Terminal Clock
 # From: http://www.commandlinefu.com/commands/view/11504/
-while true; do echo -ne "\e[s\e[0;$((COLUMNS-27))H$(date)\e[u"; sleep 1; done &
+# while true; do echo -ne "\e[s\e[0;$((COLUMNS-27))H$(date)\e[u"; sleep 1; done &
 
 # FUNCTIONS
 
