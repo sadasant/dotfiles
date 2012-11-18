@@ -29,11 +29,15 @@ screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}";
 
 # GOPATH
 GOPATH=/usr/lib/go/site:/home/sadasant/code/go:/home/sadasant/scripts/go:/home/sadasant/code/github/OpenVE/Go
-PATH="$PATH:/home/sadasant/code/go/bin"
+PATH="$PATH:$HOME/code/go/bin"
+
+# Android Path
+PATH="$PATH:$HOME/soft/dev/android-sdk-linux/tools"
+PATH="$PATH:$HOME/soft/dev/android-sdk-linux/platform-tools"
 
 # Heroku bind
 # alias heroku='~/heroku/heroku-client/heroku'
-export PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
+PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
 
 # linux-tick-processor
 alias tick="/home/sadasant/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
