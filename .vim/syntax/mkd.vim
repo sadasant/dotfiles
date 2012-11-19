@@ -110,6 +110,7 @@ HtmlHiLink mkdLinkTitle     htmlString
 HtmlHiLink mkdDelimiter     Delimiter
 
 let b:current_syntax = "mkd"
+set foldmethod=manual
 
 delcommand HtmlHiLink
 " vim: ts=4
