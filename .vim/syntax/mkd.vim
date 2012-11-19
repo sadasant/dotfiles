@@ -42,7 +42,7 @@ syn region htmlBold   start=/\\\@<!\(^\|\A\)\@=\<_\@<!___\@!\S\@=/   end=/\S\\\@
 syn region htmlItalic start=/\\\@<!\(^\|\A\)\@=\<_\@<!__\@!\S\@=/    end=/\S\\\@<!_\@<!__\@!\($\|\A\)\@=/      contains=htmlBold,@Spell
 
 " [link](URL) | [link][id] | [link][]
-syn region mkdLink matchgroup=mkdDelimiter start="\!\?\["  end="\]\ze\s*[[(]" contains=@Spell nextgroup=mkdURL,mkdID skipwhite
+syn region mkdLink matchgroup=mkdDelimiter start="\!\?\["  end="\]\ze\s*[[(]" contains=@Spell nextgroup=mkdURL,mkdID skipwhite oneline
 syn region mkdID   matchgroup=mkdDelimiter start="\["      end="\]" contained
 syn region mkdURL  matchgroup=mkdDelimiter start="("       end=")"  contained
 
