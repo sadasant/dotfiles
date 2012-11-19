@@ -25,6 +25,8 @@ screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}";
 
 # ALIASES
 
+PATH="$PATH:$HOME/bin"
+
 # GOPATH
 GOPATH=/usr/lib/go/site:/home/sadasant/code/go:/home/sadasant/scripts/go:/home/sadasant/code/github/OpenVE/Go
 PATH="$PATH:$HOME/code/go/bin"
