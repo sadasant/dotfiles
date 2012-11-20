@@ -23,6 +23,33 @@ git_current_branch() {
 # Screenshot
 screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}"; }
 
+# Play
+Play() {
+  d=~/audio/music/
+  g='sort'
+  if [ "$1" = "-h" ]; then
+    echo Play -d ~/audio/music/
+    echo Play -g ArtistName
+  fi
+  case "$1" in
+    -d) d=$2 ;;
+    -g) g='grep -i '.$2 ;;
+  esac
+  case "$3" in
+    -d) d=$4 ;;
+    -g) g='grep -i '.$4 ;;
+  esac
+  find $d \
+     -name '*.mp3' \
+  -o -name '*.wma' \
+  -o -name '*.flac'\
+  -o -name '*.wav' \
+  -o -name '*.ogg' \
+     | $g \
+     | sort > /tmp/play;
+  mplayer -novideo -playlist /tmp/play
+}
+
 # ALIASES
 
 PATH="$PATH:$HOME/bin"
