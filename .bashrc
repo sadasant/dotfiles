@@ -27,9 +27,10 @@ screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}";
 Play() {
   d=~/audio/music/
   g='sort'
-  if [ "$1" = "-h" ]; then
-    echo Play -d ~/audio/music/
+  if [ "$1" = "-h" -o -z "$1" ]; then
+    echo Play -d $d
     echo Play -g ArtistName
+    return
   fi
   case "$1" in
     -d) d=$2 ;;
