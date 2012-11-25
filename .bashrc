@@ -63,6 +63,21 @@ Play() {
   fi
 }
 
+# Ping until host is reachable
+NetCheck() {
+  PING="/bin/ping -q -c1"
+  HOST=www.google.com
+  WAITTIME=3
+  while [ true ]
+  do
+    ${PING} ${HOST}
+    if [ $? -ne 0 ]; then
+      echo "Link is down"
+    fi
+    sleep $WAITTIME
+  done
+}
+
 # ALIASES
 
 PATH="$PATH:$HOME/bin"
