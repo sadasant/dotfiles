@@ -2,6 +2,6 @@ xterm*Background:   black
 xterm*Foreground:   grey
 xterm*cursorColor:  white
 
-xterm*faceName:     xft:monospace:pixelsize=12
+xterm*font:         -Misc-Fixed-Medium-R-Normal--14-130-75-75-C-70-ISO10646-1
 xterm*scrollBar:    true
 xterm*utf8:         2
