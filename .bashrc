@@ -65,16 +65,16 @@ Play() {
 
 # Ping until host is reachable
 NetCheck() {
-  PING="/bin/ping -q -c1"
-  HOST=www.google.com
-  WAITTIME=3
+  ping="/bin/ping -q -c1"
+  host=www.google.com
+  waittime=3
   while [ true ]
   do
-    ${PING} ${HOST}
+    ${ping} ${host}
     if [ $? -ne 0 ]; then
       echo "Link is down"
     fi
-    sleep $WAITTIME
+    sleep $waittime
   done
 }
 
