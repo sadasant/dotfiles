@@ -67,7 +67,7 @@ Play() {
     return
   fi
   if [ "$g" != false ]; then
-    cat ~/.playlist | grep $g > /tmp/play
+    cat ~/.playlist | grep -i $g > /tmp/play
   else
     cat ~/.playlist > /tmp/play
   fi
