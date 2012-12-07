@@ -25,38 +25,53 @@ screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}";
 
 # Play
 Play() {
-  d=~/audio/music/ # Directory
-  g='sort'         # What to grep, but right now is sort as I needed to skip a pipe.
-  s=false          # Shuffle
+  dd=~/audio/music/ # Default Directory
+  d=false           # Rebuild Directory
+  g=false           # What to grep, but right now is sort as I needed to skip a pipe.
+  s=false           # Shuffle
+  h=false           # Show the help
   case "$1" in
-    -d) d=$2 ;;            # Change the default directory
-    -g) g='grep -i '.$2 ;; # What to grep
-    -s) s=true             # Shuffle
+    -d) [ $2 ] && dd=$2; d=true ;; # Build the .playlist from this directory
+    -h) h=true ;; # Show the Help
+    -g) g=$2   ;; # What to grep
+    -s) s=true    # Shuffle
+  esac
+  case "$2" in
+    -g) g=$3   # What to grep
   esac
   case "$3" in
-    -d) d=$4 ;;            # Change the default directory
-    -g) g='grep -i '.$4 ;; # What to grep
-    -s) s=true             # Shuffle
+    -s) s=true # Shuffle
   esac
-  case "$3" in
-    -s) s=true             # Shuffle
-  esac
-  echo -e '\n---* Play *---\n'
-  echo Play the contents of a directory:
-  echo -e '\n    Play -d $d\n'
-  echo Find a play everything that matches:
-  echo -e '\n    Play -g ArtistName\n'
-  echo Mix both:
-  echo -e '\n    Play -d $d -g ArtistName\n'
-  find $d \
-     -name '*.mp3' \
-  -o -name '*.wma' \
-  -o -name '*.flac'\
-  -o -name '*.wav' \
-  -o -name '*.ogg' \
-     | $g \
-     | sort > /tmp/play;
-  if [ "$s" == true ]; then
+  if [ $h == true ]; then
+    echo -e '\n---* Play *---\n'
+    echo Build a new .playlist from a directory:
+    echo -e '\n    Play -d $d\n'
+    echo Find and play everything that matches:
+    echo -e '\n    Play -g match\n'
+    echo Play with shuffle:
+    echo -e '\n    Play -s\n'
+    echo Mix both:
+    echo -e '\n    Play -g match -s'
+    echo -e '\n    Play -s -g match\n'
+    return
+  fi
+  if [ $d == true ]; then
+    find $dd \
+       -name '*.mp3' \
+    -o -name '*.wma' \
+    -o -name '*.flac'\
+    -o -name '*.wav' \
+    -o -name '*.ogg' \
+       | sort > ~/.playlist;
+    echo "Now you have a ~/.playlist :)"
+    return
+  fi
+  if [ "$g" != false ]; then
+    cat ~/.playlist | grep $g > /tmp/play
+  else
+    cat ~/.playlist > /tmp/play
+  fi
+  if [ $s == true ]; then
     mplayer -novideo -shuffle -playlist /tmp/play
   else
     mplayer -novideo -playlist /tmp/play
