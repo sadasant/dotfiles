@@ -9,13 +9,14 @@
 " <F6>  Quit
 " <F7>  New tab on the current folder
 " <F8>  Open current folder
-" <C-F> GREP in the current directory and all subdirectories
-"       http://vim.wikia.com/wiki/Find_in_files_within_Vim
+" <C-x><c> Copy to xclip
+" <C-x><v> Paste from xclip
 map <F5> :w<CR>
 map <F6> :q
 map <F7> :tabf %:p:h<CR>
 map <F8> :e %:p:h<CR>
-map <C-F> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+nmap xc :call system('xclip', @0)<CR>
+nmap xv :r!xclip -o<CR>
 
 " I'm left handed and I usually play guitar.
 " So I prefered to use this notes, it feels like frets on fire :)
