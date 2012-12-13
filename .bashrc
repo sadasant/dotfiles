@@ -66,16 +66,11 @@ Play() {
     echo "Now you have a ~/.playlist :)"
     return
   fi
-  if [ "$g" != false ]; then
-    cat ~/.playlist | grep -i $g > /tmp/play
-  else
-    cat ~/.playlist > /tmp/play
-  fi
-  if [ $s == true ]; then
-    mplayer -novideo -shuffle -playlist /tmp/play
-  else
-    mplayer -novideo -playlist /tmp/play
-  fi
+  cmd="cat ~/.playlist"
+  [ "$g" != false ] && cmd="$cmd | grep -i $g"
+  [ "$s" == true  ] && cmd="$cmd | sort --random-sort"
+  eval "$cmd > /tmp/play"
+  mplayer -novideo -playlist /tmp/play
 }
 
 # Ping until host is reachable
