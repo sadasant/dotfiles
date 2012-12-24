@@ -45,7 +45,7 @@ Play() {
   if [ $hlp == true ]; then
     echo -e '\n---* Play *---\n'
     echo Build a new .playlist from a directory:
-    echo -e '\n    Play -build $d\n'
+    echo -e '\n    Play -build '$dir'\n'
     echo Find and play everything that matches:
     echo -e '\n    Play -find match\n'
     echo Play a randomized playlist:
@@ -107,11 +107,3 @@ PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
 # linux-tick-processor
 alias tick="/home/sadasant/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
 
-# {{{
-# Node Completion - Auto-generated, do not touch.
-shopt -s progcomp
-for f in $(command ls ~/.node-completion); do
-  f="$HOME/.node-completion/$f"
-  test -f "$f" && . "$f"
-done
-# }}}
