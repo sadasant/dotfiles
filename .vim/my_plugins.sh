@@ -26,6 +26,10 @@ do
   if [ -d $repo_name ]
   then
     echo Exists: "${repo}"
+    echo Updating...
+    cd $repo_name
+    git pull origin master
+    cd ..
   else
     git clone git://github.com/"${repo}".git
   fi
