@@ -112,3 +112,11 @@ au BufWinEnter ?* silent loadview
 
 " Pathogen
 call pathogen#infect()
+
+" Cool down syntastic
+
+let g:syntastic_mode_map={
+  \ 'mode': 'active',
+  \ 'active_filetypes': [],
+  \ 'passive_filetypes': ['html']
+  \ }
