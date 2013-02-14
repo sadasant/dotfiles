@@ -111,3 +111,5 @@ PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
 # linux-tick-processor
 alias tick="/home/sadasant/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
 
+# 256 colors in Tmux
+alias tmux='TERM=screen-256color tmux'
