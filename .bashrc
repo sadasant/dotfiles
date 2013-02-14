@@ -113,3 +113,4 @@ alias tick="/home/sadasant/code/github/joyent/node/deps/v8/tools/linux-tick-proc
 
 # 256 colors in Tmux
 alias tmux='TERM=screen-256color tmux'
+# The line above breaks colors in the tty tmux
