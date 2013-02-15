@@ -5,18 +5,18 @@
 
 " SHORTCUTS
 
-" <F5>  Save
-" <F6>  Quit
-" <F7>  New tab on the current folder
-" <F8>  Open current folder
-" <C-x><c> Copy to xclip
-" <C-x><v> Paste from xclip
+" <F5> Save
+" <F6> Quit
+" <F7> New tab on the current folder
+" <F8> Open current folder
+"  x<  Yank to xclip
+"  x>  xclip to yank
 map <F5> :w<CR>
 map <F6> :q
 map <F7> :tabf %:p:h<CR>
 map <F8> :e %:p:h<CR>
-nmap xc :call system('xclip', @0)<CR>
-nmap xv :r!xclip -o<CR>
+nmap x< :call system('xclip', @0)<CR>
+nmap x> :let @0 = system('xclip -o')[0:]<CR>
 
 " I'm left handed and I usually play guitar.
 " So I prefered to use this notes, it feels like frets on fire :)
