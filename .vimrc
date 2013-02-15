@@ -16,7 +16,7 @@ map <F6> :q
 map <F7> :tabf %:p:h<CR>
 map <F8> :e %:p:h<CR>
 nmap x< :call system('xclip', @0)<CR>
-nmap x> :let @0 = system('xclip -o')[0:]<CR>
+nmap x> :let @" = system('xclip -o')[0:]<CR>
 
 " I'm left handed and I usually play guitar.
 " So I prefered to use this notes, it feels like frets on fire :)
