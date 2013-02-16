@@ -101,6 +101,12 @@ inoremap ''    '
 inoremap ''    ''
 set showmatch
 
+" PERFORMANCE
+" :help slow-terminal
+set ttyfast
+set noshowcmd
+set scrolljump=5
+
 " BEHAVIOR
 " clear right whitespaces
 " WARNING: Problematic with Jade
