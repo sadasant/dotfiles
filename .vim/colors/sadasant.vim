@@ -36,7 +36,7 @@ hi Keyword          ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi LineNr           ctermfg=240         ctermbg=232         cterm=NONE
 hi MatchParen       ctermfg=black       ctermbg=white       cterm=BOLD
 hi ModeMsg          ctermfg=16          ctermbg=white       cterm=BOLD
-hi NonText          ctermfg=gray        ctermbg=NONE        cterm=NONE
+hi NonText          ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Normal           ctermfg=white       ctermbg=NONE        cterm=NONE
 hi Number           ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi Operator         ctermfg=gray        ctermbg=NONE        cterm=BOLD
