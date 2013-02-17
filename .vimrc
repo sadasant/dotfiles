@@ -106,7 +106,6 @@ set showmatch
 set ttyfast
 set noshowcmd
 set scrolljump=5
-set foldmethod=manual " I hate when it acts otherwise
 
 " BEHAVIOR
 " clear right whitespaces
