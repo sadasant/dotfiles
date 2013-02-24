@@ -62,29 +62,29 @@ static const char *termcmd[]  = { "uxterm", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },   // dmenu
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },    // open termnial
+	{ MODKEY,                       XK_b,      togglebar,      {0} },                // toggle bar
+	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },         // focus next
+	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },         // focus previous
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },         // level of horizontal / vertical split
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },         // level of horizontal / vertical split
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },       // depending on the incmaster, expands or contacts windows
+	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },       // depending on the incmaster, expands or contacts windows
+	{ MODKEY,                       XK_Return, zoom,           {0} },                // Switch ho's in the main window
+	{ MODKEY,                       XK_Tab,    view,           {0} },                // Switch between the current and the last visited window
+	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },                // Kills the window
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, // Tiling mode
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, // Fixed mode?
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, // Maximised mode
+	{ MODKEY,                       XK_space,  setlayout,      {0} },                // Switch modes
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },                // Switch floating mode
+	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },        // View n desktop
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },        // Move current window to n desktop (0 for all)
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },         // Don't know!! D:
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },         // Don't know!! D:
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },         // Don't know!! D:
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },         // Don't know!! D:
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

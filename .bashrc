@@ -92,6 +92,23 @@ NetCheck() {
   done
 }
 
+# cp with progress bar
+cp_p() {
+  if [ -d $1 ]; then
+    while read line; do
+      to=${line/$1/$2}
+      to=${to//\/\//\/} # Replace all // matches.
+      if [ -d "$line" ]; then
+        echo "Directory: $to"
+        mkdir -p "$to"
+      else
+        echo "File: $to"
+        pv "$line" > "$to"
+      fi
+    done < <(find "$1"/*)
+  fi
+}
+
 # ALIASES
 
 PATH="$PATH:$HOME/bin"
