@@ -5,8 +5,8 @@ xterm*font:         -Misc-Fixed-Medium-R-Normal--14-130-75-75-C-70-ISO10646-1
 xterm*utf8:         2
 xterm*visualBell:   True
 
-rxvt*background:   black
-rxvt*foreground:   grey
-rxvt*cursorColor:  white
-rxvt*font:         -Misc-Fixed-Medium-R-Normal--14-130-75-75-C-70-ISO10646-1
-rxvt.imLocale:     en_US.UTF-8
+urxvt*background:   black
+urxvt*foreground:   grey
+urxvt*cursorColor:  white
+urxvt*font:         -Misc-Fixed-Medium-R-Normal--14-130-75-75-C-70-ISO10646-1
+urxvt.imLocale:     en_US.UTF-8
