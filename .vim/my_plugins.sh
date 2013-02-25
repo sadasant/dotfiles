@@ -25,11 +25,11 @@ do
   repo_name=`echo ${repo} | cut -d '/' -f 2`
   if [ -d $repo_name ]
   then
-    echo Exists: "${repo}"
-    echo Updating...
-    cd $repo_name
-    git pull origin master
-    cd ..
+    echo "${repo}" Exists!
+    read -p "Do you wish to update ${repo}? " yn
+    case $yn in
+      [Yy]* ) echo Updating...; cd $repo_name; git pull origin master; cd ..;;
+    esac
   else
     git clone git://github.com/"${repo}".git
   fi
