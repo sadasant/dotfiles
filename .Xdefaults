@@ -1,10 +1,12 @@
 xterm*Background:   black
 xterm*Foreground:   grey
 xterm*cursorColor:  white
-
 xterm*font:         -Misc-Fixed-Medium-R-Normal--14-130-75-75-C-70-ISO10646-1
-xterm*scrollBar:    true
 xterm*utf8:         2
-
 xterm*visualBell:   True
 
+rxvt*background:   black
+rxvt*foreground:   grey
+rxvt*cursorColor:  white
+rxvt*font:         -Misc-Fixed-Medium-R-Normal--14-130-75-75-C-70-ISO10646-1
+rxvt.imLocale:     en_US.UTF-8
