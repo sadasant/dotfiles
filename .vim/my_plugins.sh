@@ -5,7 +5,6 @@ repos=(
   "chrisbra/NrrwRgn"
   "ciaranm/detectindent"
   "godlygeek/tabular"
-  "scrooloose/nerdcommenter"
   "scrooloose/syntastic"
   "tpope/vim-fugitive"
   "tpope/vim-surround"
