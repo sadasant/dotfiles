@@ -3,6 +3,7 @@
 
 # "ciaranm/detectindent"
 repos=(
+  "chrisbra/histwin.vim"
   "coderifous/textobj-word-column.vim"
   "godlygeek/tabular"
   "michaeljsmith/vim-indent-object"
