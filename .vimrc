@@ -5,16 +5,23 @@
 
 " SHORTCUTS
 
-" <F5> Save
-" <F6> Quit
-" <F7> New tab on the current folder
-" <F8> Open current folder
+" <C-g> Save
+" <C-d> Quit
+" <C-t> New tab on the current folder
+" <C-e> Open current folder
 "  x<  Yank to xclip
 "  x>  xclip to yank
-map <F5> :w<CR>
-map <F6> :q
-map <F7> :tabf %:p:h<CR>
-map <F8> :e %:p:h<CR>
+nmap <C-g> :w<CR>
+vmap <C-g> :w<CR>
+imap <C-g> :w<CR>a
+imap <C-g> <Esc><c-g>
+nmap <C-d> :q<CR>
+vmap <C-d> :q<CR>
+imap <C-d> :q<CR>
+nmap <C-t> :tabf %:p:h<CR>
+vmap <C-t> :tabf %:p:h<CR>
+imap <C-t> :tabf %:p:h<CR>
+nmap <C-e> :e %:p:h<CR>
 nmap x< :call system('xclip', @0)<CR>
 nmap x> :let @" = system('xclip -o')[0:]<CR>
 
