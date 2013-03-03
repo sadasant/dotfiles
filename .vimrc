@@ -15,9 +15,9 @@ nmap <C-g> :w<CR>
 vmap <C-g> :w<CR>
 imap <C-g> :w<CR>a
 imap <C-g> <Esc><c-g>
-nmap <C-d> :q<CR>
-vmap <C-d> :q<CR>
-imap <C-d> :q<CR>
+nmap <C-d> :q
+vmap <C-d> :q
+imap <C-d> :q
 nmap <C-t> :tabf %:p:h<CR>
 vmap <C-t> :tabf %:p:h<CR>
 imap <C-t> :tabf %:p:h<CR>
