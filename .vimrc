@@ -18,25 +18,6 @@ map <F8> :e %:p:h<CR>
 nmap x< :call system('xclip', @0)<CR>
 nmap x> :let @" = system('xclip -o')[0:]<CR>
 
-" I'm left handed and I usually play guitar.
-" So I prefered to use this notes, it feels like frets on fire :)
-imap <F1> <Left>
-map  <F1> h
-imap <F2> <Down>
-map  <F2> j
-imap <F3> <Up>
-map  <F3> k
-imap <F4> <Right>
-map  <F4> l
-
-" No arrows!
-map  <Up>    <nop>
-map  <Down>  <nop>
-map  <Left>  <nop>
-map  <Right> <nop>
-
-
-
 " INTERFACE
 
 set nocompatible               " Ignore the old vi
@@ -58,18 +39,20 @@ set cursorline
 syntax on                      " syntax
 colorscheme sadasant           " color
 
-
 " SEARCH
+
 set smartcase " ignore case when all is lowercase
 set incsearch " window to the current match
 set magic     " search with \n like characters
 
 " NO BACKUPS
+
 set noswapfile
 set nobackup
 set nowb
 
 " TABS AND IDENTATION
+
 set shiftwidth=2
 set autoindent
 set smartindent
@@ -79,6 +62,7 @@ set smarttab
 filetype plugin indent on
 
 " CLOSING CHARACTERS
+
 inoremap {     {}<Left>
 inoremap {<CR> {<CR>}<Esc>0
 inoremap {{    {
@@ -102,12 +86,14 @@ inoremap ''    ''
 set showmatch
 
 " PERFORMANCE
+
 " :help slow-terminal
 set ttyfast
 set noshowcmd
 set scrolljump=5
 
 " BEHAVIOR
+
 " clear right whitespaces
 " WARNING: Problematic with Jade
 " autocmd BufWritePre * :%s/\s\+$//e
@@ -118,6 +104,9 @@ au BufWinEnter ?* silent loadview
 
 " Pathogen
 call pathogen#infect()
+
+" Hardmode
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
 " Cool down syntastic
 

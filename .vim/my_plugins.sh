@@ -1,13 +1,15 @@
 # Clone all the vim plugins that I use
 # inside the bundle directory
 
+# "ciaranm/detectindent"
 repos=(
-  "chrisbra/NrrwRgn"
-  "ciaranm/detectindent"
+  "coderifous/textobj-word-column.vim"
   "godlygeek/tabular"
+  "michaeljsmith/vim-indent-object"
   "scrooloose/syntastic"
   "tpope/vim-fugitive"
   "tpope/vim-surround"
+  "wikitopian/hardmode"
   )
 
 cd ~/.vim/
