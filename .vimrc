@@ -13,14 +13,10 @@
 " x> xclip to yank
 nmap zw :w<CR>
 vmap zw :w<CR>
-imap zw :w<CR>a
-imap zw <Esc><c-g>
 nmap zq :q
 vmap zq :q
-imap zq :q
 nmap zt :tabf %:p:h<CR>
 vmap zt :tabf %:p:h<CR>
-imap zt :tabf %:p:h<CR>
 nmap ze :e %:p:h<CR>
 nmap x< :call system('xclip', @0)<CR>
 nmap x> :let @" = system('xclip -o')[0:]<CR>
