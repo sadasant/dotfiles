@@ -10,7 +10,6 @@ repos=(
   "scrooloose/syntastic"
   "tpope/vim-fugitive"
   "tpope/vim-surround"
-  "wikitopian/hardmode"
   )
 
 cd ~/.vim/
