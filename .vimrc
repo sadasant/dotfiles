@@ -21,6 +21,10 @@ nmap ze :e %:p:h<CR>
 nmap x< :call system('xclip', @0)<CR>
 nmap x> :let @" = system('xclip -o')[0:]<CR>
 
+" Special characters mappings
+imap \? ¿
+imap \! ¡
+
 " INTERFACE
 
 set nocompatible               " Ignore the old vi
