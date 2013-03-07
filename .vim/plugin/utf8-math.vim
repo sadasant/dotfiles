@@ -8,7 +8,150 @@ setlocal bomb
 "setlocal ai et ts=3 sw=3 sta
 "setlocal tw=60
 
-" Letters
+
+" Some nice text formatting first
+imap \' ’
+imap \` ‘
+imap \`` “
+imap \'' ”
+imap \-- –
+imap \--- — 
+imap \... …
+
+" Superscripts
+imap \^0 ⁰
+imap \^1 ¹
+imap \^2 ²
+imap \^3 ³
+imap \^4 ⁴
+imap \^5 ⁵
+imap \^6 ⁶
+imap \^7 ⁷
+imap \^8 ⁸
+imap \^9 ⁹
+imap \^+ ⁺
+imap \^- ⁻
+imap \^= ⁼
+imap \^( ⁽
+imap \^) ⁾
+imap \^n ⁿ
+
+" Subscripts
+imap \_0 ₀
+imap \_1 ₁
+imap \_2 ₂
+imap \_3 ₃
+imap \_4 ₄
+imap \_5 ₅
+imap \_6 ₆
+imap \_7 ₇
+imap \_8 ₈
+imap \_9 ₉
+imap \_+ ₊
+imap \_- ₋
+imap \_= ₌
+imap \_( ₍
+imap \_) ₎
+
+" relational algebra
+imap \join ⋈
+
+" arrows
+imap \rightarrow →
+imap \leftarrow ←
+imap \leftrightarrow ↔
+imap \Rightarrow ⇒
+imap \Leftarrow ⇐
+imap \Leftrightarrow ⇔
+
+" Mathematical symbols, LaTeX style
+imap \forall ∀
+imap \exists ∃
+imap \empty ∅
+imap \prod ∏
+imap \sum ∑
+imap \pm ±
+imap \setminus ∖
+imap \int ∫
+imap \therefore ∴
+imap \qed ∎
+imap \1 𝟙
+imap \N ℕ
+imap \Z ℤ
+imap \C ℂ
+imap \Q ℚ
+imap \R ℝ
+imap \E 𝔼
+imap \F 𝔽
+imap \to →
+imap \mapsto ↦
+imap \infty ∞
+imap \cong ≅
+imap \:= ≔
+imap \=: ≕
+imap \ne ≠
+imap \approx ≈
+imap \perp ⊥
+imap \not ̷
+imap \ldots …
+imap \cdots ⋯
+imap \cdot ⋅
+imap \circ ∘
+imap \times ×
+imap \oplus ⊕
+imap \langle ⟨
+imap \rangle ⟩
+
+" Math order
+imap \leq ≤
+imap \geq ≥
+imap \leqq ≦
+imap \geqq ≧
+imap \lneqq ≨
+imap \gneqq ≩
+imap \vartriangleleft ⊲
+imap \vartriangleright ⊳
+imap \trianglelefteq ⊴
+imap \trianglerighteq ⊵
+imap \lesssim ≲
+imap \gtrsim ≳
+imap \prec ≺
+imap \succ ≻
+imap \preceq ≼
+imap \succeq ≽
+imap \precsim ≾
+imap \succsim ≿
+imap \ntriangleleft ⋪
+imap \ntriangleright ⋫
+imap \lnsim ⋦
+imap \gnsim ⋧
+imap \precnsim ⋨
+imap \succnsim ⋩
+imap \curlyeqprec ⋞
+imap \curlyeqsucc ⋟
+
+" Set symbols
+imap \subset ⊂
+imap \subseteq ⊆
+imap \nsubseteq ⊈
+imap \supset ⊃
+imap \supseteq ⊇
+imap \nsupseteq ⊉
+imap \cap ∩
+imap \cup ∪
+imap \in ∈
+imap \ni ∋
+imap \notin ∉
+
+" Equality and Inference
+imap \vdash ⊦
+imap \vDash ⊨
+
+" Other symbols
+imap \top ⊤
+imap \bot ⊥
+
+" Greek letters...
 imap \alpha α
 imap \beta β
 imap \gamma γ
@@ -63,107 +206,5 @@ imap \Omega Ω
 
 
 
-" Some nice text formatting first
-imap \' ’
-imap \` ‘
-imap \`` “
-imap \'' ”
-imap \-- –
-imap \--- — 
-imap \... …
 
-" Superscripts
-imap \^0 ⁰
-imap \^1 ¹
-imap \^2 ²
-imap \^3 ³
-imap \^4 ⁴
-imap \^5 ⁵
-imap \^6 ⁶
-imap \^7 ⁷
-imap \^8 ⁸
-imap \^9 ⁹
-imap \^+ ⁺
-imap \^- ⁻
-imap \^= ⁼
-imap \^( ⁽
-imap \^) ⁾
-imap \^n ⁿ
-
-" Subscripts
-imap \_0 ₀
-imap \_1 ₁
-imap \_2 ₂
-imap \_3 ₃
-imap \_4 ₄
-imap \_5 ₅
-imap \_6 ₆
-imap \_7 ₇
-imap \_8 ₈
-imap \_9 ₉
-imap \_+ ₊
-imap \_- ₋
-imap \_= ₌
-imap \_( ₍
-imap \_) ₎
-
-" relational algebra
-imap \join ⋈
-
-" arrows
-imap \--> →
-imap \<-- ←
-imap \<--> ↔
-imap \==> ⇒
-imap \<== ⇐
-imap \<==> ⇔
-
-" Mathematical symbols, LaTeX style
-imap \forall ∀
-imap \exists ∃
-imap \in ∈
-imap \empty ∅
-imap \prod ∏
-imap \sum ∑
-imap \le ≤
-imap \ge ≥
-imap \pm ±
-imap \subset ⊂
-imap \subseteq ⊆
-imap \supset ⊃
-imap \supseteq ⊇
-imap \setminus ∖
-imap \cap ∩
-imap \cup ∪
-imap \int ∫
-imap \therefore ∴
-imap \qed ∎
-imap \1 𝟙
-imap \N ℕ
-imap \Z ℤ
-imap \C ℂ
-imap \Q ℚ
-imap \R ℝ
-imap \E 𝔼
-imap \F 𝔽
-imap \to →
-imap \mapsto ↦
-imap \infty ∞
-imap \cong ≅
-imap \:= ≔
-imap \=: ≕
-imap \ne ≠
-imap \approx ≈
-imap \perp ⊥
-imap \not ̷
-imap \ldots …
-imap \cdots ⋯
-imap \cdot ⋅
-imap \circ ∘
-imap \times ×
-imap \oplus ⊕
-imap \langle ⟨
-imap \rangle ⟩
-
-" Greek letters...
 
