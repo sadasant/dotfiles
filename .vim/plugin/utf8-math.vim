@@ -1,5 +1,6 @@
 ﻿" From http://www.vim.org/scripts/download_script.php?src_id=10264
 " But changed everything to be preceded by \, I CODE DUDES... xD
+" More symbols here: http://ia.wikipedia.org/wiki/Wikipedia:LaTeX_symbols
 
 setlocal fileencoding=utf-8
 setlocal bomb
@@ -7,157 +8,162 @@ setlocal bomb
 "setlocal ai et ts=3 sw=3 sta
 "setlocal tw=60
 
+" Letters
+imap \alpha α
+imap \beta β
+imap \gamma γ
+imap \delta δ
+imap \epsilon ε
+imap \zeta ζ
+imap \eta η
+imap \theta θ
+imap \iota ι
+imap \kappa κ
+imap \lambda λ
+imap \mu μ
+imap \nu ν
+imap \xi ξ
+imap \omicron ο
+imap \pi π
+imap \rho ρ
+imap \stigma ς
+imap \sigma σ
+imap \tau τ
+imap \upsilon υ
+imap \phi ϕ
+imap \varphi φ
+imap \chi χ
+imap \psi ψ
+imap \omega ω
+
+imap \Alpha Α
+imap \Beta Β
+imap \Gamma Γ
+imap \Delta Δ
+imap \Epsilon Ε
+imap \Zeta Ζ
+imap \Eta Η
+imap \Theta Θ
+imap \Iota Ι
+imap \Kappa Κ
+imap \Lambda Λ
+imap \Mu Μ
+imap \Nu Ν
+imap \Xi Ξ
+imap \Omicron Ο
+imap \Pi Π
+imap \Rho Ρ
+imap \Sigma Σ
+imap \Tau Τ
+imap \Upsilon Υ
+imap \Phi Φ
+imap \Chi Χ
+imap \Psi Ψ
+imap \Omega Ω
+
+
+
 " Some nice text formatting first
-imap <buffer> \' ’
-imap <buffer> \` ‘
-imap <buffer> \`` “
-imap <buffer> \'' ”
-imap <buffer> \-- –
-imap <buffer> \---  — 
-imap <buffer> \... …
+imap \' ’
+imap \` ‘
+imap \`` “
+imap \'' ”
+imap \-- –
+imap \--- — 
+imap \... …
 
 " Superscripts
-imap <buffer> \^0 ⁰
-imap <buffer> \^1 ¹
-imap <buffer> \^2 ²
-imap <buffer> \^3 ³
-imap <buffer> \^4 ⁴
-imap <buffer> \^5 ⁵
-imap <buffer> \^6 ⁶
-imap <buffer> \^7 ⁷
-imap <buffer> \^8 ⁸
-imap <buffer> \^9 ⁹
-imap <buffer> \^+ ⁺
-imap <buffer> \^- ⁻
-imap <buffer> \^= ⁼
-imap <buffer> \^( ⁽
-imap <buffer> \^) ⁾
-imap <buffer> \^n ⁿ
+imap \^0 ⁰
+imap \^1 ¹
+imap \^2 ²
+imap \^3 ³
+imap \^4 ⁴
+imap \^5 ⁵
+imap \^6 ⁶
+imap \^7 ⁷
+imap \^8 ⁸
+imap \^9 ⁹
+imap \^+ ⁺
+imap \^- ⁻
+imap \^= ⁼
+imap \^( ⁽
+imap \^) ⁾
+imap \^n ⁿ
 
 " Subscripts
-imap <buffer> \_0 ₀
-imap <buffer> \_1 ₁
-imap <buffer> \_2 ₂
-imap <buffer> \_3 ₃
-imap <buffer> \_4 ₄
-imap <buffer> \_5 ₅
-imap <buffer> \_6 ₆
-imap <buffer> \_7 ₇
-imap <buffer> \_8 ₈
-imap <buffer> \_9 ₉
-imap <buffer> \_+ ₊
-imap <buffer> \_- ₋
-imap <buffer> \_= ₌
-imap <buffer> \_( ₍
-imap <buffer> \_) ₎
+imap \_0 ₀
+imap \_1 ₁
+imap \_2 ₂
+imap \_3 ₃
+imap \_4 ₄
+imap \_5 ₅
+imap \_6 ₆
+imap \_7 ₇
+imap \_8 ₈
+imap \_9 ₉
+imap \_+ ₊
+imap \_- ₋
+imap \_= ₌
+imap \_( ₍
+imap \_) ₎
 
 " relational algebra
-imap <buffer> \join ⋈
+imap \join ⋈
 
 " arrows
-imap <buffer> \--> →
-imap <buffer> \<-- ←
-imap <buffer> \<--> ↔
-imap <buffer> \==> ⇒
-imap <buffer> \<== ⇐
-imap <buffer> \<==> ⇔
+imap \--> →
+imap \<-- ←
+imap \<--> ↔
+imap \==> ⇒
+imap \<== ⇐
+imap \<==> ⇔
 
 " Mathematical symbols, LaTeX style
-imap <buffer> \forall ∀
-imap <buffer> \exists ∃
-imap <buffer> \in ∈
-imap <buffer> \empty ∅
-imap <buffer> \prod ∏
-imap <buffer> \sum ∑
-imap <buffer> \le ≤
-imap <buffer> \ge ≥
-imap <buffer> \pm ±
-imap <buffer> \subset ⊂
-imap <buffer> \subseteq ⊆
-imap <buffer> \supset ⊃
-imap <buffer> \supseteq ⊇
-imap <buffer> \setminus ∖
-imap <buffer> \cap ∩
-imap <buffer> \cup ∪
-imap <buffer> \int ∫
-imap <buffer> \therefore ∴
-imap <buffer> \qed ∎
-imap <buffer> \1 𝟙
-imap <buffer> \N ℕ
-imap <buffer> \Z ℤ
-imap <buffer> \C ℂ
-imap <buffer> \Q ℚ
-imap <buffer> \R ℝ
-imap <buffer> \E 𝔼
-imap <buffer> \F 𝔽
-imap <buffer> \to →
-imap <buffer> \mapsto ↦
-imap <buffer> \infty ∞
-imap <buffer> \cong ≅
-imap <buffer> \:= ≔
-imap <buffer> \=: ≕
-imap <buffer> \ne ≠
-imap <buffer> \approx ≈
-imap <buffer> \perp ⊥
-imap <buffer> \not ̷
-imap <buffer> \ldots …
-imap <buffer> \cdots ⋯
-imap <buffer> \cdot ⋅
-imap <buffer> \circ ∘
-imap <buffer> \times ×
-imap <buffer> \oplus ⊕
-imap <buffer> \langle ⟨
-imap <buffer> \rangle ⟩
+imap \forall ∀
+imap \exists ∃
+imap \in ∈
+imap \empty ∅
+imap \prod ∏
+imap \sum ∑
+imap \le ≤
+imap \ge ≥
+imap \pm ±
+imap \subset ⊂
+imap \subseteq ⊆
+imap \supset ⊃
+imap \supseteq ⊇
+imap \setminus ∖
+imap \cap ∩
+imap \cup ∪
+imap \int ∫
+imap \therefore ∴
+imap \qed ∎
+imap \1 𝟙
+imap \N ℕ
+imap \Z ℤ
+imap \C ℂ
+imap \Q ℚ
+imap \R ℝ
+imap \E 𝔼
+imap \F 𝔽
+imap \to →
+imap \mapsto ↦
+imap \infty ∞
+imap \cong ≅
+imap \:= ≔
+imap \=: ≕
+imap \ne ≠
+imap \approx ≈
+imap \perp ⊥
+imap \not ̷
+imap \ldots …
+imap \cdots ⋯
+imap \cdot ⋅
+imap \circ ∘
+imap \times ×
+imap \oplus ⊕
+imap \langle ⟨
+imap \rangle ⟩
 
 " Greek letters...
-imap <buffer> \alpha α
-imap <buffer> \beta β
-imap <buffer> \gamma γ
-imap <buffer> \delta δ
-imap <buffer> \epsilon ε
-imap <buffer> \zeta ζ
-imap <buffer> \nu η
-imap <buffer> \theta θ
-imap <buffer> \iota ι
-imap <buffer> \kappa κ
-imap <buffer> \lambda λ
-imap <buffer> \mu μ
-imap <buffer> \nu ν
-imap <buffer> \xi ξ
-imap <buffer> \omicron ο
-imap <buffer> \pi π
-imap <buffer> \rho ρ
-imap <buffer> \stigma ς
-imap <buffer> \sigma σ
-imap <buffer> \tau τ
-imap <buffer> \upsilon υ
-imap <buffer> \phi ϕ
-imap <buffer> \varphi φ
-imap <buffer> \chi χ
-imap <buffer> \psi ψ
-imap <buffer> \omega ω
 
-imap <buffer> \Alpha Α
-imap <buffer> \Beta Β
-imap <buffer> \Gamma Γ
-imap <buffer> \Delta Δ
-imap <buffer> \Epsilon Ε
-imap <buffer> \Zeta Ζ
-imap <buffer> \Nu Η
-imap <buffer> \Theta Θ
-imap <buffer> \Iota Ι
-imap <buffer> \Kappa Κ
-imap <buffer> \Lambda Λ
-imap <buffer> \Mu Μ
-imap <buffer> \Nu Ν
-imap <buffer> \Xi Ξ
-imap <buffer> \Omicron Ο
-imap <buffer> \Pi Π
-imap <buffer> \Rho Ρ
-imap <buffer> \Sigma Σ
-imap <buffer> \Tau Τ
-imap <buffer> \Upsilon Υ
-imap <buffer> \Phi Φ
-imap <buffer> \Chi Χ
-imap <buffer> \Psi Ψ
-imap <buffer> \Omega Ω

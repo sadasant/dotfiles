@@ -53,5 +53,5 @@ fu! FoldAllLists()
   exe ":" . here
 endfu
 
-nmap zl :call FoldCurrentList()<CR>
-nmap zL :call FoldAllLists()<CR>
+nmap zfl :call FoldCurrentList()<CR>
+nmap zfL :call FoldAllLists()<CR>

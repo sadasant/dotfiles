@@ -9,8 +9,6 @@
 " zq Quit
 " zt New tab on the current folder
 " ze Open current folder
-" x< Yank to xclip
-" x> xclip to yank
 nmap zw :w<CR>
 vmap zw :w<CR>
 nmap zq :q
@@ -18,6 +16,15 @@ vmap zq :q
 nmap zt :tabf %:p:h<CR>
 vmap zt :tabf %:p:h<CR>
 nmap ze :e %:p:h<CR>
+
+" Use ctrl-[hjkl] to select the active split!
+nmap zk :wincmd k<CR>
+nmap zj :wincmd j<CR>
+nmap zh :wincmd h<CR>
+nmap zl :wincmd l<CR>
+
+" x< Yank to xclip
+" x> xclip to yank
 nmap x< :call system('xclip', @0)<CR>
 nmap x> :let @" = system('xclip -o')[0:]<CR>
 
@@ -70,26 +77,12 @@ filetype plugin indent on
 
 " CLOSING CHARACTERS
 
-inoremap {     {}<Left>
-inoremap {<CR> {<CR>}<Esc>0
-inoremap {{    {
-inoremap {}    {}
-inoremap [     []<Left>
-inoremap [<CR> [<CR>]<Esc>0
-inoremap [[    [
-inoremap []    []
-inoremap (     ()<Left>
-inoremap (<CR> (<CR>)<Esc>0
-inoremap ((    (
-inoremap ()    ()
-inoremap "     ""<Left>
-inoremap "<CR> "<CR>"<Esc>0
-inoremap ""    "
-inoremap ""    ""
-inoremap '     ''<Left>
-inoremap '<CR> '<CR>'<Esc>0
-inoremap ''    '
-inoremap ''    ''
+inoremap (<Tab> ()<Left>
+inoremap {<Tab> {}<Left>
+inoremap [<Tab> []<Left>
+inoremap [<Tab> []<Left>
+inoremap "<Tab> ""<Left>
+inoremap '<Tab> ''<Left>
 set showmatch
 
 " PERFORMANCE
