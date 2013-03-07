@@ -3,13 +3,11 @@
 " URL:          https://github.com/sadasant/dotfiles
 " Last Change:  2012 Nov 17
 
-set shiftwidth=4
 set autoindent
 set smartindent
 set expandtab
-set tabstop=4
 set smarttab
-setlocal ai et ts=3 sw=3 sta
+setlocal ai et ts=4 sw=4 sta
 setlocal tw=72
 filetype plugin indent on
 
