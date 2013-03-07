@@ -5,25 +5,25 @@
 
 " SHORTCUTS
 
-" <C-g> Save
-" <C-d> Quit
-" <C-t> New tab on the current folder
-" <C-e> Open current folder
-"  x<  Yank to xclip
-"  x>  xclip to yank
-nmap <C-g> :w<CR>
-vmap <C-g> :w<CR>
-imap <C-g> :w<CR>a
-imap <C-g> <Esc><c-g>
-nmap <C-d> :q
-vmap <C-d> :q
-imap <C-d> :q
-nmap <C-t> :tabf %:p:h<CR>
-vmap <C-t> :tabf %:p:h<CR>
-imap <C-t> :tabf %:p:h<CR>
-nmap <C-e> :e %:p:h<CR>
+" zw Save
+" zq Quit
+" zt New tab on the current folder
+" ze Open current folder
+" x< Yank to xclip
+" x> xclip to yank
+nmap zw :w<CR>
+vmap zw :w<CR>
+nmap zq :q
+vmap zq :q
+nmap zt :tabf %:p:h<CR>
+vmap zt :tabf %:p:h<CR>
+nmap ze :e %:p:h<CR>
 nmap x< :call system('xclip', @0)<CR>
 nmap x> :let @" = system('xclip -o')[0:]<CR>
+
+" Special characters mappings
+imap \? ¿
+imap \! ¡
 
 " INTERFACE
 
@@ -111,9 +111,6 @@ au BufWinEnter ?* silent loadview
 
 " Pathogen
 call pathogen#infect()
-
-" Hardmode
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
 " Cool down syntastic
 

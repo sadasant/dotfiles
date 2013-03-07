@@ -1,11 +1,12 @@
 [user]
-	name = Daniel Rodríguez
+	name = Daniel Rodriguez
 	email = sadasant@gmail.com
 [credential]
 	helper = cache --timeout=3600
-[code]
-	editor = vim
 [core]
 	editor = vim
+[merge]
+	tool = vimdiff
 [color]
-	diff = auto
+	status = auto
+	branch = auto

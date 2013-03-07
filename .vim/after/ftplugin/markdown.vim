@@ -9,6 +9,8 @@ set smartindent
 set expandtab
 set tabstop=4
 set smarttab
+setlocal ai et ts=3 sw=3 sta
+setlocal tw=72
 filetype plugin indent on
 
 " Fold all the lists
