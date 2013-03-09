@@ -1,7 +1,6 @@
 # Clone all the vim plugins that I use
 # inside the bundle directory
 
-# "ciaranm/detectindent"
 repos=(
   "chrisbra/histwin.vim"
   "coderifous/textobj-word-column.vim"
