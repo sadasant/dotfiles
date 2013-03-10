@@ -2,27 +2,34 @@
 " By Daniel R. (sadasant.com)
 " 08 Mar 2013
 
-" zw Save
-" zq Quit
-" zt New tab on the current folder
-" ze Open current folder
-nmap <Tab>w  :w<CR>
+" <Tab>w Save and make user's session
+" <Tab>o Lod user's session
+" <Tab>q Ask to quit
+" <Tab>t New tab on the current folder
+" <Tab>e Open current folder
+" <Tab>es Split horizontalky on current directory
+" <Tab>ev Split vertically on current directory
+nmap <Tab>w  :w<cr>:mksession! ~/.session.vim<cr>
+nmap <Tab>o  :source ~/.session.vim<cr>
 nmap <Tab>q  :q
-nmap <Tab>t  :tabf %:p:h<CR>
-nmap <Tab>e  :e %:p:h<CR>
-nmap <Tab>ex :Sex<CR>
-nmap <Tab>ev :Vex<CR>
+nmap <Tab>t  :tabf %:p:h<cr>
+nmap <Tab>e  :e %:p:h<cr>
+nmap <Tab>es :Sex<cr>
+nmap <Tab>ev :Vex<cr>
 
 " Use ctrl-[hjkl] to select the active split!
-nmap <Tab>k :wincmd k<CR>
-nmap <Tab>j :wincmd j<CR>
-nmap <Tab>h :wincmd h<CR>
-nmap <Tab>l :wincmd l<CR>
+nmap <Tab>k :wincmd k<cr>
+nmap <Tab>j :wincmd j<cr>
+nmap <Tab>h :wincmd h<cr>
+nmap <Tab>l :wincmd l<cr>
+
+" Auto-format paragraph
+nmap <Tab>jq v}hJgqq<c-o>
 
 " x< Yank to xclip
 " x> xclip to yank
-nmap <Tab>< :call system('xclip', @0)<CR>
-nmap <Tab>> :let @" = system('xclip -o')[0:]<CR>
+nmap <Tab>< :call system('xclip', @0)<cr>
+nmap <Tab>> :let @" = system('xclip -o')[0:]<cr>
 
 " Closing Characters
 inoremap (<Tab> ()<Left>
