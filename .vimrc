@@ -38,13 +38,16 @@ inoremap [<Tab> []<Left>
 inoremap [<Tab> []<Left>
 inoremap "<Tab> ""<Left>
 inoremap '<Tab> ''<Left>
-set showmatch
+inoremap **<Tab> ****<Left><Left>
+inoremap `<Tab> ``<Left>
+inoremap _<Tab> __<Left>
 
 " Special characters mappings
 imap \? ¿
 imap \! ¡
 
 " Settings
+set showmatch                  " Show brace match
 set nocompatible               " Ignore the old vi
 set backspace=eol,start,indent " Backspace everything on insert mode
 set whichwrap=[,],h,l          " Wrap when moving towards the limit of the line
