@@ -57,12 +57,12 @@ imap \_) ₎
 imap \join ⋈
 
 " arrows
-imap \rightarrow →
-imap \leftarrow ←
-imap \leftrightarrow ↔
-imap \Rightarrow ⇒
-imap \Leftarrow ⇐
-imap \Leftrightarrow ⇔
+imap \--> →
+imap \<-- ←
+imap \<--> ↔
+imap \==> ⇒
+imap \<== ⇐
+imap \<==> ⇔
 
 " Mathematical symbols, LaTeX style
 imap \forall ∀
