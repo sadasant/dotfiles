@@ -14,8 +14,8 @@ nmap <Tab>o  :source ~/.session.vim<cr>
 nmap <Tab>q  :q
 nmap <Tab>t  :tabf %:p:h<cr>
 nmap <Tab>e  :e %:p:h<cr>
-nmap <Tab>es :Sex<cr>
-nmap <Tab>ev :Vex<cr>
+nmap <Tab>es :Sex!<cr>
+nmap <Tab>ev :Vex!<cr>
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <Tab>k :wincmd k<cr>
