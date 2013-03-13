@@ -11,7 +11,13 @@ repos=(
   "tpope/vim-surround"
   )
 
-cd ~/.vim/
+cd ~/code/github/sadasant/dotfiles/.vim
+
+if [ ! -d ~/.vim ]
+then
+  ln -sf ~/code/github/sadasant/dotfiles/.vimrc ~/.vimrc
+  ln -sf ~/code/github/sadasant/dotfiles/.vim ~/.vim
+fi
 
 if [ ! -d ./bundle ]
 then
