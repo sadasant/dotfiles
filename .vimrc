@@ -2,29 +2,40 @@
 " By Daniel R. (sadasant.com)
 " 08 Mar 2013
 
-" <Tab>w Save and make user's session
-" <Tab>o Lod user's session
-" <Tab>q Ask to quit
-" <Tab>t New tab on the current folder
-" <Tab>e Open current folder
-" <Tab>es Split horizontalky on current directory
-" <Tab>ev Split vertically on current directory
-nmap <Tab>w  :w<cr>:mksession! ~/.session.vim<cr>
-nmap <Tab>o  :source ~/.session.vim<cr>
-nmap <Tab>q  :q
-nmap <Tab>t  :tabf %:p:h<cr>
-nmap <Tab>e  :e %:p:h<cr>
-nmap <Tab>es :Sex!<cr>
-nmap <Tab>ev :Vex!<cr>
+" <Tab>w   Save
+" <Tab>s   Make user's session
+" <Tab>l   Load user's session
+" <Tab>q   Ask to quit
+" <Tab>t   New tab on the current folder
+" <Tab>tf  Wildcard search, open in a new tab
+" <Tab>tr  Read command in new tab
+" <Tab>e   Open current folder
+" <Tab>ef  Wildcard search, open in current pane
+" <Tab>es  Split horizontalky on current directory
+" <Tab>ev  Split vertically on current directory
+" <Tab>esr Read command in new split
+" <Tab>evr Read command in new vertical split
+" <Tab>jq  Auto-format paragraph
+nmap <Tab>w   :w<cr>
+nmap <Tab>s   :mksession! ~/.session.vim<cr>
+nmap <Tab>l   :source ~/.session.vim<cr>
+nmap <Tab>q   :q
+nmap <Tab>t   :tabf %:p:h<cr>
+nmap <Tab>tf  :tabf ~/**/
+nmap <Tab>tr  :tabnew <bar> r!
+nmap <Tab>e   :e %:p:h<cr>
+nmap <Tab>ef  :e ~/**/
+nmap <Tab>es  :Sex!<cr>
+nmap <Tab>ev  :Vex!<cr>
+nmap <Tab>esr :new <bar> r!
+nmap <Tab>evr :vnew <bar> r!
+nmap <Tab>jq  v}hJgqq<c-o>
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <Tab>k :wincmd k<cr>
 nmap <Tab>j :wincmd j<cr>
 nmap <Tab>h :wincmd h<cr>
 nmap <Tab>l :wincmd l<cr>
-
-" Auto-format paragraph
-nmap <Tab>jq v}hJgqq<c-o>
 
 " x< Yank to xclip
 " x> xclip to yank
