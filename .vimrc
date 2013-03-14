@@ -4,7 +4,7 @@
 
 " <Tab>w   Save
 " <Tab>s   Make user's session
-" <Tab>l   Load user's session
+" <Tab>o   Load user's session
 " <Tab>q   Ask to quit
 " <Tab>t   New tab on the current folder
 " <Tab>tf  Wildcard search, open in a new tab
@@ -18,7 +18,7 @@
 " <Tab>jq  Auto-format paragraph
 nmap <Tab>w   :w<cr>
 nmap <Tab>s   :mksession! ~/.session.vim<cr>
-nmap <Tab>l   :source ~/.session.vim<cr>
+nmap <Tab>o   :source ~/.session.vim<cr>
 nmap <Tab>q   :q
 nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ~/**/
