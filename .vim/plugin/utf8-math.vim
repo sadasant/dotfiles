@@ -17,6 +17,8 @@ imap \'' ”
 imap \-- –
 imap \--- — 
 imap \... …
+imap \<< «
+imap \>> »
 
 " Superscripts
 imap \^0 ⁰
