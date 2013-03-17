@@ -5,6 +5,7 @@ repos=(
   "chrisbra/histwin.vim"
   "coderifous/textobj-word-column.vim"
   "godlygeek/tabular"
+  "mattn/gist-vim"
   "michaeljsmith/vim-indent-object"
   "scrooloose/syntastic"
   "tpope/vim-fugitive"
@@ -12,12 +13,6 @@ repos=(
   )
 
 cd ~/code/github/sadasant/dotfiles/.vim
-
-if [ ! -d ~/.vim ]
-then
-  ln -sf ~/code/github/sadasant/dotfiles/.vimrc ~/.vimrc
-  ln -sf ~/code/github/sadasant/dotfiles/.vim ~/.vim
-fi
 
 if [ ! -d ./bundle ]
 then
@@ -34,7 +29,11 @@ do
     echo "${repo}" Exists!
     read -p "Do you wish to update ${repo}? " yn
     case $yn in
-      [Yy]* ) echo Updating...; cd $repo_name; git pull origin master; cd ..;;
+      [Yy]* ) echo Updating...;
+              cd $repo_name;
+              git fetch origin;
+              git rebase -p origin/master;
+              cd ..;;
     esac
   else
     git clone git://github.com/"${repo}".git
