@@ -5,8 +5,6 @@ repos=(
   "chrisbra/histwin.vim"
   "coderifous/textobj-word-column.vim"
   "godlygeek/tabular"
-  "mattn/gist-vim"
-  "mattn/webapi-vim"
   "michaeljsmith/vim-indent-object"
   "scrooloose/syntastic"
   "tpope/vim-fugitive"
