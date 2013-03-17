@@ -23,12 +23,14 @@ nmap <Tab>q   :q
 nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ~/**/
 nmap <Tab>tr  :tabnew <bar> r!
+nmap <Tab>tp  :tabnew <bar> r!curl -\# pastebin.com/raw.php?i=
 nmap <Tab>e   :e %:p:h<cr>
 nmap <Tab>ef  :e ~/**/
 nmap <Tab>es  :Sex!<cr>
 nmap <Tab>ev  :Vex!<cr>
 nmap <Tab>esr :new <bar> r!
 nmap <Tab>evr :vnew <bar> r!
+nmap <Tab>ep  :vnew <bar> r!curl -\# pastebin.com/raw.php?i=
 nmap <Tab>jq  v}hJgqq<c-o>
 
 " Use ctrl-[hjkl] to select the active split!
