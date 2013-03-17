@@ -10,3 +10,7 @@
 [color]
 	status = auto
 	branch = auto
+[github]
+	user = sadasant
+[bitbucket]
+	user = sadasant
