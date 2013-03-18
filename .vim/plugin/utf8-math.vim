@@ -65,6 +65,8 @@ imap \<--> ↔
 imap \==> ⇒
 imap \<== ⇐
 imap \<==> ⇔
+imap \up ↑
+imap \down ↓
 
 " Mathematical symbols, LaTeX style
 imap \forall ∀
