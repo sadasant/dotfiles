@@ -9,12 +9,17 @@
 " <Tab>t   New tab on the current folder
 " <Tab>tf  Wildcard search, open in a new tab
 " <Tab>tr  Read command in new tab
+" <Tab>tp  Get someting from vpaste.net with curl, results in new tab
+" <Tab>tpf Post something to vpaste.net with curl, results in new tab
 " <Tab>e   Open current folder
 " <Tab>ef  Wildcard search, open in current pane
 " <Tab>es  Split horizontalky on current directory
 " <Tab>ev  Split vertically on current directory
-" <Tab>esr Read command in new split
-" <Tab>evr Read command in new vertical split
+" <Tab>er  Read command in the same window
+" <Tab>esr Read command in a new split
+" <Tab>evr Read command in a new vertical split
+" <Tab>ep  Get someting from vpaste.net with curl, results in vertical split
+" <Tab>epf Post something to vpaste.net with curl, results in vertical split
 " <Tab>jq  Auto-format paragraph
 nmap <Tab>w   :w<cr>
 nmap <Tab>s   :mksession! ~/.session.vim<cr>
@@ -29,7 +34,8 @@ nmap <Tab>e   :e %:p:h<cr>
 nmap <Tab>ef  :e ~/**/
 nmap <Tab>es  :Sex!<cr>
 nmap <Tab>ev  :Vex!<cr>
-nmap <Tab>esr :new <bar> r!
+nmap <Tab>er  :enew <bar> r!
+nmap <Tab>esr :new  <bar> r!
 nmap <Tab>evr :vnew <bar> r!
 nmap <Tab>ep  :vnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>epf :vnew <bar> r!curl vpaste.net -F 'text='<left>
