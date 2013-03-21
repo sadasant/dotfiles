@@ -41,6 +41,11 @@ nmap <Tab>ep  :vnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>epf :vnew <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>jq  v}hJgqq<c-o>
 
+" Go to the last active tab
+let g:lasttab = 1
+nmap <Tab><Tab> :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
 " Use ctrl-[hjkl] to select the active split!
 nmap <Tab>k :wincmd k<cr>
 nmap <Tab>j :wincmd j<cr>
