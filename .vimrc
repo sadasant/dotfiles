@@ -66,7 +66,6 @@ inoremap "<Tab> ""<Left>
 inoremap '<Tab> ''<Left>
 inoremap **<Tab> ****<Left><Left>
 inoremap `<Tab> ``<Left>
-inoremap _<Tab> __<Left>
 
 " Special characters mappings
 imap \? ¿
