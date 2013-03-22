@@ -46,14 +46,14 @@ let g:lasttab = 1
 nmap <Tab><Tab> :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
-" Use ctrl-[hjkl] to select the active split!
+" Use <Tab>-[hjkl] to select the active split!
 nmap <Tab>k :wincmd k<cr>
 nmap <Tab>j :wincmd j<cr>
 nmap <Tab>h :wincmd h<cr>
 nmap <Tab>l :wincmd l<cr>
 
-" x< Yank to xclip
-" x> xclip to yank
+" <Tab>< Yank to xclip
+" <Tab>> xclip to yank
 nmap <Tab>< :call system('xclip', @0)<cr>
 nmap <Tab>> :let @" = system('xclip -o')[0:]<cr>
 
