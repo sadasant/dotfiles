@@ -61,6 +61,7 @@ cp_p() {
 # ALIASES
 
 PATH="$PATH:$HOME/bin"
+PATH="$PATH:$HOME/code/github/sadasant/dotfiles/bin"
 
 # GOPATH
 GOPATH=/usr/lib/go/site:/home/sadasant/code/go:/home/sadasant/code/github/sadasant/scripts/go:/home/sadasant/code/github/OpenVE/Go
