@@ -20,6 +20,16 @@ imap \... …
 imap \<< «
 imap \>> »
 
+" arrows
+imap \--> →
+imap \<-- ←
+imap \<--> ↔
+imap \==> ⇒
+imap \<== ⇐
+imap \<==> ⇔
+imap \up ↑
+imap \down ↓
+
 " Superscripts
 imap \^0 ⁰
 imap \^1 ¹
@@ -57,16 +67,6 @@ imap \_) ₎
 
 " relational algebra
 imap \join ⋈
-
-" arrows
-imap \--> →
-imap \<-- ←
-imap \<--> ↔
-imap \==> ⇒
-imap \<== ⇐
-imap \<==> ⇔
-imap \up ↑
-imap \down ↓
 
 " Mathematical symbols, LaTeX style
 imap \forall ∀
