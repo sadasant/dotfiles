@@ -1,6 +1,5 @@
 " .vimrc
 " By Daniel R. (sadasant.com)
-" 08 Mar 2013
 
 " <Tab>w   Save
 " <Tab>s   Make user's session
@@ -22,6 +21,8 @@
 " <Tab>epf Post something to vpaste.net with curl, results in vertical split
 " <Tab>jq  Auto-format paragraph
 nmap <Tab>w   :w<cr>
+nmap <Tab>s   :mksession! ~/.vim_session
+nmap <Tab>o   :source ~/.vim_session
 nmap <Tab>q   :q
 nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ~/**/
