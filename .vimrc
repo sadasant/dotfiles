@@ -22,8 +22,6 @@
 " <Tab>epf Post something to vpaste.net with curl, results in vertical split
 " <Tab>jq  Auto-format paragraph
 nmap <Tab>w   :w<cr>
-nmap <Tab>s   :mksession! ~/.session.vim<cr>
-nmap <Tab>o   :source ~/.session.vim<cr>
 nmap <Tab>q   :q
 nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ~/**/

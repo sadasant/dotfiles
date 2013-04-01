@@ -10,6 +10,7 @@ repos=(
   "scrooloose/syntastic"
   "tpope/vim-fugitive"
   "tpope/vim-surround"
+  "vim-scripts/sessionman.vim"
   )
 
 cd ~/code/github/sadasant/dotfiles/.vim
