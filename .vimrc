@@ -12,10 +12,12 @@
 " <Tab>tpf Post something to vpaste.net with curl, results in new tab
 " <Tab>e   Open current folder
 " <Tab>ef  Wildcard search, open in current pane
-" <Tab>es  Split horizontalky on current directory
+" <Tab>eh  Split horizontalky on current directory
 " <Tab>ev  Split vertically on current directory
 " <Tab>er  Read command in the same window
-" <Tab>esr Read command in a new split
+" <Tab>ehf Wildcard search in a new split
+" <Tab>evf Wildcard search in a new vertical split
+" <Tab>ehr Read command in a new split
 " <Tab>evr Read command in a new vertical split
 " <Tab>ep  Get someting from vpaste.net with curl, results in vertical split
 " <Tab>epf Post something to vpaste.net with curl, results in vertical split
@@ -31,13 +33,15 @@ nmap <Tab>tp  :tabnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>tpf :tabnew <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>e   :e %:p:h<cr>
 nmap <Tab>ef  :e ~/**/
-nmap <Tab>es  :Sex!<cr>
-nmap <Tab>ev  :Vex!<cr>
-nmap <Tab>er  :enew <bar> r!
-nmap <Tab>esr :new  <bar> r!
-nmap <Tab>evr :vnew <bar> r!
-nmap <Tab>ep  :vnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
-nmap <Tab>epf :vnew <bar> r!curl vpaste.net -F 'text='<left>
+nmap <Tab>eh  :40Hex <cr>
+nmap <Tab>ev  :50Vex!<cr>
+nmap <Tab>er  :ene   <bar> r!
+nmap <Tab>ehf :bel 13new ~/**/
+nmap <Tab>evf :bel vnew  ~/**/
+nmap <Tab>ehr :bel 13new <bar> r!
+nmap <Tab>evr :bel vnew  <bar> r!
+nmap <Tab>ep  :bel vnew  <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
+nmap <Tab>epf :bel vnew  <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>jq  v}hJgqq<c-o>
 
 " Go to the last active tab
@@ -104,6 +108,7 @@ set expandtab
 set tabstop=4
 set smarttab
 filetype plugin indent on
+
 
 " :help slow-terminal
 set ttyfast
