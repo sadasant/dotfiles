@@ -132,3 +132,6 @@ let g:syntastic_mode_map={
   \ 'active_filetypes': [],
   \ 'passive_filetypes': ['html']
   \ }
+
+" nmap :BufferList
+nmap <Tab>b :Bufferlist<cr>
