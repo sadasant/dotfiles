@@ -332,4 +332,3 @@ function! s:BufList_IamSoLonely()
 	endif
 endfunction
 
-" vim:ts=4:sw=4
