@@ -90,6 +90,10 @@ set laststatus=2               " show the status line always
 set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%y%t%=%c,%l/%L\ %P
 set cursorline
 
+" Sessions
+set ssop-=options  " do not store global and local values in a session
+set ssop-=folds    " do not store folds
+
 " Search
 set smartcase " ignore case when all is lowercase
 set incsearch " window to the current match
