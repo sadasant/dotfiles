@@ -58,3 +58,12 @@ do
     rm -fr $f
   fi
 done
+
+# Updating Pathogen
+echo Deleting Old Pathogen
+cd ..
+cd ./autoload
+rm pathogen.vim
+echo Downloading Pathogen
+wget https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+cd ..
