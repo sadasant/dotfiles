@@ -4,7 +4,7 @@
 " Last Change:  2012 Nov 17
 
 setlocal ai et ts=4 sw=4 sta
-setlocal tw=72
+setlocal tw=70
 filetype plugin indent on
 
 " Fold all the lists
