@@ -1,6 +1,7 @@
 " .vimrc
 " By Daniel R. (sadasant.com)
 
+" <Tab>vr  Reload ~/.vimrc
 " <Tab>w   Save
 " <Tab>s   Make user's session
 " <Tab>o   Load user's session
@@ -10,10 +11,12 @@
 " <Tab>tr  Read command in new tab
 " <Tab>tp  Get someting from vpaste.net with curl, results in new tab
 " <Tab>tpf Post something to vpaste.net with curl, results in new tab
-" <Tab>e   Open current folder
 " <Tab>ef  Wildcard search, open in current pane
-" <Tab>eh  Split horizontalky on current directory
-" <Tab>ev  Split vertically on current directory
+" <Tab>eh  Split current file horizontally
+" <Tab>ev  Split current file vertically
+" <Tab>ex  Open current folder
+" <Tab>exh Split horizontalky on current directory
+" <Tab>exv Split vertically on current directory
 " <Tab>er  Read command in the same window
 " <Tab>ehf Wildcard search in a new split
 " <Tab>evf Wildcard search in a new vertical split
@@ -22,6 +25,7 @@
 " <Tab>ep  Get someting from vpaste.net with curl, results in vertical split
 " <Tab>epf Post something to vpaste.net with curl, results in vertical split
 " <Tab>jq  Auto-format paragraph
+nmap <Tab>vr  :source ~/.vimrc<cr>
 nmap <Tab>w   :w<cr>
 nmap <Tab>s   :mksession! ~/.vim_session
 nmap <Tab>o   :source ~/.vim_session
@@ -31,10 +35,12 @@ nmap <Tab>tf  :tabf ~/**/
 nmap <Tab>tr  :tabnew <bar> r!
 nmap <Tab>tp  :tabnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>tpf :tabnew <bar> r!curl vpaste.net -F 'text='<left>
-nmap <Tab>e   :e %:p:h<cr>
 nmap <Tab>ef  :e ~/**/
-nmap <Tab>eh  :40Hex <cr>
-nmap <Tab>ev  :50Vex!<cr>
+nmap <Tab>eh  :bel sp <cr>
+nmap <Tab>ev  :bel vs <cr>
+nmap <Tab>ex  :e %:p:h<cr>
+nmap <Tab>exh :40Hex  <cr>
+nmap <Tab>exv :50Vex! <cr>
 nmap <Tab>er  :ene   <bar> r!
 nmap <Tab>ehf :bel 13new ~/**/
 nmap <Tab>evf :bel vnew  ~/**/
@@ -137,5 +143,16 @@ let g:syntastic_mode_map={
   \ 'passive_filetypes': ['html']
   \ }
 
-" nmap :BufferList
+" Work with Bufferlist faster
 nmap <Tab>b :Bufferlist<cr>
+
+" Work with fugitive faster
+nmap <Tab>gc :Gcommit<cr>
+nmap <Tab>gs :Gstatus<cr>
+nmap <Tab>gw :Gwrite<cr>
+nmap <Tab>gp :Git push 
+nmap <Tab>ge :Gedit 
+nmap <Tab>gh :Gsplit 
+nmap <Tab>gv :Gvsplit 
+nmap <Tab>gt :Gtabedit 
+
