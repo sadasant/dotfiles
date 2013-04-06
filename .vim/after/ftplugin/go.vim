@@ -4,5 +4,5 @@ setlocal noexpandtab
 setlocal shiftwidth=4
 
 " Auto-fix go format
-set listchars=tab:\ \ ,trail:-
+setlocal listchars=tab:\ \ ,trail:-
 
