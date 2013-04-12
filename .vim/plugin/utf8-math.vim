@@ -151,6 +151,9 @@ imap \notin ∉
 imap \vdash ⊦
 imap \vDash ⊨
 
+" Calculus
+imap \partial ∂
+
 " Other symbols
 imap \top ⊤
 imap \bot ⊥
@@ -207,8 +210,5 @@ imap \Phi Φ
 imap \Chi Χ
 imap \Psi Ψ
 imap \Omega Ω
-
-
-
 
 
