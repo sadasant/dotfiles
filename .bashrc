@@ -63,6 +63,31 @@ cp_p() {
   fi
 }
 
+# Easy git clone
+clone() {
+  provider=""
+  myuser="sadasant"
+  case "$1" in
+    -gh) provider="github"    ;;
+    -bb) provider="bitbucket" ;;
+  esac
+  if [ provider == "" ]; then
+    echo Please specify the provider
+    return
+  fi
+  cd ~/code/$provider
+  if [ ! -d ./"$2" ]; then
+    mkdir "$2"
+  fi
+  case "${provider}" in
+    github)    provider+=".com" ;;
+    bitbucket) provider+=".org" ;;
+  esac
+  cd "$2"
+  git clone https://"${myuser}"@"${provider}"/"$2"/"$3".git
+
+}
+
 # ALIASES
 
 PATH="$PATH:$HOME/bin"
