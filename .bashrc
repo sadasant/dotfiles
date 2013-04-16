@@ -64,7 +64,7 @@ cp_p() {
 }
 
 # Easy git clone
-clone() {
+gclone() {
   provider=""
   myuser="sadasant"
   case "$1" in
