@@ -64,7 +64,7 @@ cp_p() {
 }
 
 # Easy git clone
-gclone() {
+gitclone() {
   provider=""
   myuser="sadasant"
   case "$1" in
@@ -86,6 +86,25 @@ gclone() {
   cd "$2"
   git clone https://"${myuser}"@"${provider}"/"$2"/"$3".git
 
+}
+
+# Quick Access to Repos
+goto() {
+  i=0
+  if [ $1 == "" ]; then
+    return
+  fi
+  for dir in $(find ~/code -type d -name "*$1*" ); do
+    echo -e "\e[37;1m$i\e[0m: $dir"
+    found[$i]="$dir"
+    ((i++))
+  done
+  read -p "Change dir to number: " n
+  if [ $n ] && [ $n -lt $i ]; then
+    cd ${found[$n]}
+    return
+  fi
+  echo -e "\e[31;1mWront Input\e[0m"
 }
 
 # ALIASES
