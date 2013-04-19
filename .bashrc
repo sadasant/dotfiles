@@ -64,6 +64,10 @@ cp_p() {
 }
 
 # Easy git clone
+# How to use:
+#
+#    gitclone -gh user repo
+#
 gitclone() {
   provider=""
   myuser="sadasant"
@@ -89,6 +93,10 @@ gitclone() {
 }
 
 # Quick Access to Repos
+# How to use:
+#
+#    goto myfilenam
+#
 goto() {
   i=0
   if [ $1 == "" ]; then
