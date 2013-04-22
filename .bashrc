@@ -99,7 +99,7 @@ gitclone() {
 #
 goto() {
   i=0
-  if [ $1 == "" ]; then
+  if [ -z $1 ]; then
     return
   fi
   for dir in $(find ~/code -type d -name "*$1*" ); do
