@@ -64,7 +64,8 @@ nmap <Tab>t9  :tabn 9<cr>
 " Mapping tab last
 nmap <Tab>tl  :tabl  <cr>
 
-" Mapping tab move 1..9
+" Mapping tab move 0..9
+nmap <Tab>tm0  :tabm 0<cr>
 nmap <Tab>tm1  :tabm 1<cr>
 nmap <Tab>tm2  :tabm 2<cr>
 nmap <Tab>tm3  :tabm 3<cr>
