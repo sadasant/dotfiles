@@ -118,19 +118,37 @@ goto() {
 
 # Browse a directory and pick something
 #
-#     list .
+#     list
 #     0 ..
 #     1 Documents
 #     2 Images
 #     3 Programming
-#     [command]? [0..N]: cd 1
+#     [command]? [0..N]: ? Doc
+#     $ list ? Doc
+#     0 Documents
+#     [command]? [0..N]: 0 ? .md
+#     $ list Documents ? .md
+#     0 README.md
+#     [command]? [0..N]: vim 0
+#     $ vim README.md
 #
 list() {
   if [ ! -z $1 ]; then
-    cd $1
+    if [ $1 == "?" ]; then
+      _ls=$(ls -a . | grep $2)
+    else
+      cd $1
+      if [ ! -z $2 ] && [ $2 == "?" ]; then
+        _ls=$(ls -a . | grep $3)
+      else
+        _ls=$(ls -a .)
+      fi
+    fi
+  else
+    _ls=$(ls -a .)
   fi
   i=0
-  for item in $(ls -a .); do
+  for item in $_ls; do
     if [ $item == "." ]; then
       continue
     fi
@@ -143,16 +161,24 @@ list() {
     ((i++))
   done
   read -p "[command]? [0..N]: " input
-  parts=($input)
-  pickd=${parts[1]}
-  if [ -z $pickd ]; then
-    if [[ "$input" =~ ^[0-9]+$ ]]; then
-      comm="list ${found[$input]}"
+  comm=""
+  countp=0
+  for p in $input; do
+    if [[ "$p" =~ ^[0-9]+$ ]]; then
+      if [ $countp == 0 ]; then
+        comm+="list "
+      fi
+      comm+="${found[$p]} "
     else
-      comm="$input ."
+      if [ $countp == 0 ] && [ $p == "?" ]; then
+        comm+="list "
+      fi
+      comm+="$p "
     fi
-  else
-    comm=${input/$pickd/${found[$pickd]}}
+    ((countp++))
+  done
+  if [ $countp == 1 ] && [ $comm == $input ]; then
+    comm+="."
   fi
   echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
   $comm
