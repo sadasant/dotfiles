@@ -177,7 +177,8 @@ list() {
     fi
     ((countp++))
   done
-  if [ $countp == 1 ] && [ $comm == $input ]; then
+  echo "???"
+  if [ $countp == 1 ] && [ "$comm" == "$input " ]; then
     comm+="."
   fi
   echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
