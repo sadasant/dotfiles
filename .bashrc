@@ -133,22 +133,22 @@ goto() {
 #     $ vim README.md
 #
 list() {
+  _IFS=$IFS
+  IFS=$'\n'
+  _ls="ls -a1 ."
   if [ ! -z $1 ]; then
     if [ $1 == "?" ]; then
-      _ls=$(ls -a . | grep $2)
+      _ls+=" | grep $2"
     else
       cd $1
       if [ ! -z $2 ] && [ $2 == "?" ]; then
-        _ls=$(ls -a . | grep $3)
-      else
-        _ls=$(ls -a .)
+        _ls+=" | grep $3"
       fi
     fi
-  else
-    _ls=$(ls -a .)
   fi
   i=0
-  for item in $_ls; do
+  declare -A found
+  for item in $(eval $_ls); do
     if [ $item == "." ]; then
       continue
     fi
@@ -157,9 +157,10 @@ list() {
       _item="\e[34;1m$item\e[0m"
     fi
     echo -e "\e[37;1m$i\e[0m $_item"
-    found[$i]="$item"
+    found[$i]=$item
     ((i++))
   done
+  IFS=$_IFS
   read -p "[command]? [0..N]: " input
   comm=""
   countp=0
@@ -168,7 +169,7 @@ list() {
       if [ $countp == 0 ]; then
         comm+="list "
       fi
-      comm+="${found[$p]} "
+      comm+="'${found[$p]}' "
     else
       if [ $countp == 0 ] && [ $p == "?" ]; then
         comm+="list "
@@ -181,7 +182,7 @@ list() {
     comm+="."
   fi
   echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
-  $comm
+  eval $comm
 }
 
 # ALIASES
