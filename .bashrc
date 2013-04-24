@@ -66,24 +66,46 @@ cp_p() {
 # Easy git update
 # Usage:
 #
-#     Gupdate
-#     Gupdate origin
-#     Gupdate origin my-branch
+#     Gpush
+#     Gpush origin
+#     Gpush origin my-branch
 #
-Gupdate() {
+Gpush() {
   remote="origin"
-  branch="master"
-  if [ ! -z $git_current_branch ]; then
-    branch=$git_current_branch
-  fi
+  branch=$(git_current_branch)
   if [ ! -z $1 ]; then
     remote=$1
   fi
   if [ ! -z $2 ]; then
     branch=$2
   fi
-  git fetch $remote
-  git rebase -p $remote/$branch
+  c1="git push $remote $branch"
+  printf "\e[32m%s\n\e[0m" "$c1"
+  eval $c1
+}
+
+
+# Easy git update
+# Usage:
+#
+#     Gupdate
+#     Gupdate origin
+#     Gupdate origin my-branch
+#
+Gupdate() {
+  remote="origin"
+  branch=$(git_current_branch)
+  if [ ! -z $1 ]; then
+    remote=$1
+  fi
+  if [ ! -z $2 ]; then
+    branch=$2
+  fi
+  c1="git fetch $remote"
+  c2="git rebase -p $remote/$branch"
+  printf "\e[32m%s\n%s\n\e[0m" "$c1" "$c2"
+  eval $c1
+  eval $c2
 }
 
 # Easy git clone
