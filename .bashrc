@@ -177,7 +177,6 @@ list() {
     fi
     ((countp++))
   done
-  echo "???"
   if [ $countp == 1 ] && [ "$comm" == "$input " ]; then
     comm+="."
   fi
