@@ -30,7 +30,7 @@ do
   if [ -d $repo_name ]
   then
     echo "${repo}" Exists!
-    read -p "Do you wish to update ${repo}? " yn
+    read -p "Do you want to update ${repo}? " yn
     case $yn in
       [Yy]* ) echo Updating...;
               cd $repo_name;

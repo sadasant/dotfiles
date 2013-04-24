@@ -131,10 +131,11 @@ list() {
   if [ ! -z $1 ]; then
     cd $1
   fi
-  found[0]=".."
-  echo -e "\e[37;1m0\e[0m \e[34;1m..\e[0m"
-  i=1
-  for item in $(ls .); do
+  i=0
+  for item in $(ls -a .); do
+    if [ $item == "." ]; then
+      continue
+    fi
     _item="\e[34m$item\e[0m"
     if [ -d $item ]; then
       _item="\e[34;1m$item\e[0m"
