@@ -63,17 +63,40 @@ cp_p() {
   fi
 }
 
+# Easy git update
+# Usage:
+#
+#     Gupdate
+#     Gupdate origin
+#     Gupdate origin my-branch
+#
+Gupdate() {
+  remote="origin"
+  branch="master"
+  if [ ! -z $git_current_branch ]; then
+    branch=$git_current_branch
+  fi
+  if [ ! -z $1 ]; then
+    remote=$1
+  fi
+  if [ ! -z $2 ]; then
+    branch=$2
+  fi
+  git fetch $remote
+  git rebase -p $remote/$branch
+}
+
 # Easy git clone
-# How to use:
+# Usage:
 #
-#    gitclone provider/user/repo
+#     Gclone provider/user/repo
 #
-gitclone() {
+Gclone() {
   provider=""
   myuser="sadasant"
   input=(${1//\// })
   if [ ${#input[@]} -lt 3 ]; then
-    echo -e "\e[31mgitclone host/user/repo\e[0m"
+    echo -e "\e[31mGclone host/user/repo\e[0m"
     return
   fi
   host=${input[0]}
@@ -94,9 +117,9 @@ gitclone() {
 }
 
 # Quick Access to Repos
-# How to use:
+# Usage:
 #
-#    goto myfilenam
+#     goto myfilenam
 #
 goto() {
   i=0
@@ -117,6 +140,7 @@ goto() {
 }
 
 # Browse a directory and pick something
+# Usage:
 #
 #     list
 #     0 ..
