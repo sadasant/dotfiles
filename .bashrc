@@ -148,10 +148,16 @@ list() {
   parts=($input)
   pickd=${parts[1]}
   if [ -z $pickd ]; then
-    list ${found[$input]}
-    return
+    if [[ "$input" =~ ^[0-9]+$ ]]; then
+      comm="list ${found[$input]}"
+    else
+      comm="$input ."
+    fi
+  else
+    comm=${input/$pickd/${found[$pickd]}}
   fi
-  ${input/$pickd/${found[$pickd]}}
+  echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
+  $comm
 }
 
 # ALIASES
