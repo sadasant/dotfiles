@@ -73,26 +73,24 @@ gitclone() {
   myuser="sadasant"
   input=(${1//\// })
   if [ ${#input[@]} -lt 3 ]; then
-    echo -e "\e[31mgitclone provider/user/repo\e[0m"
+    echo -e "\e[31mgitclone host/user/repo\e[0m"
     return
   fi
-  provider=${input[0]}
+  host=${input[0]}
+  host_name=(${host//.com/})
+  host_name=(${host_name//.org/})
   user=${input[1]}
   repo=${input[2]}
-  if [ -d ~/code/$provider/$user/$repo ]; then
+  if [ -d ~/code/$host_name/$user/$repo ]; then
     echo -e "\e[31mThis repo exists.\e[0m"
     return
   fi
-  cd ~/code/$provider
+  cd ~/code/$host_name
   if [ ! -d ./"$user" ]; then
     mkdir "$user"
   fi
   cd "$user"
-  case "${provider}" in
-    github)    provider+=".com" ;;
-    bitbucket) provider+=".org" ;;
-  esac
-  git clone https://"$myuser"@"$provider"/"$user"/"$repo".git
+  git clone https://"$myuser"@"$host"/"$user"/"$repo".git
 }
 
 # Quick Access to Repos
