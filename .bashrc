@@ -66,30 +66,33 @@ cp_p() {
 # Easy git clone
 # How to use:
 #
-#    gitclone -gh user repo
+#    gitclone provider/user/repo
 #
 gitclone() {
   provider=""
   myuser="sadasant"
-  case "$1" in
-    -gh) provider="github"    ;;
-    -bb) provider="bitbucket" ;;
-  esac
-  if [ provider == "" ]; then
-    echo Please specify the provider
+  input=(${1//\// })
+  if [ ${#input[@]} -lt 3 ]; then
+    echo -e "\e[31mgitclone provider/user/repo\e[0m"
+    return
+  fi
+  provider=${input[0]}
+  user=${input[1]}
+  repo=${input[2]}
+  if [ -d ~/code/$provider/$user/$repo ]; then
+    echo -e "\e[31mThis repo exists.\e[0m"
     return
   fi
   cd ~/code/$provider
-  if [ ! -d ./"$2" ]; then
-    mkdir "$2"
+  if [ ! -d ./"$user" ]; then
+    mkdir "$user"
   fi
+  cd "$user"
   case "${provider}" in
     github)    provider+=".com" ;;
     bitbucket) provider+=".org" ;;
   esac
-  cd "$2"
-  git clone https://"${myuser}"@"${provider}"/"$2"/"$3".git
-
+  git clone https://"$myuser"@"$provider"/"$user"/"$repo".git
 }
 
 # Quick Access to Repos
@@ -103,16 +106,51 @@ goto() {
     return
   fi
   for dir in $(find ~/code -type d -name "*$1*" ); do
-    echo -e "\e[37;1m$i\e[0m: $dir"
+    echo -e "\e[37;1m$i\e[0m \e[34;1m$dir\e[0m"
     found[$i]="$dir"
     ((i++))
   done
-  read -p "Change dir to number: " n
+  read -p "cd number: " n
   if [ $n ] && [ $n -lt $i ]; then
     cd ${found[$n]}
     return
   fi
   echo -e "\e[31;1mWront Input\e[0m"
+}
+
+# Browse a directory and pick something
+#
+#     list .
+#     0 ..
+#     1 Documents
+#     2 Images
+#     3 Programming
+#     [command]? [0..N]: cd 1
+#
+list() {
+  if [ ! -z $1 ]; then
+    cd $1
+  fi
+  found[0]=".."
+  echo -e "\e[37;1m0\e[0m \e[34;1m..\e[0m"
+  i=1
+  for item in $(ls .); do
+    _item="\e[34m$item\e[0m"
+    if [ -d $item ]; then
+      _item="\e[34;1m$item\e[0m"
+    fi
+    echo -e "\e[37;1m$i\e[0m $_item"
+    found[$i]="$item"
+    ((i++))
+  done
+  read -p "[command]? [0..N]: " input
+  parts=($input)
+  pickd=${parts[1]}
+  if [ -z $pickd ]; then
+    list ${found[$input]}
+    return
+  fi
+  ${input/$pickd/${found[$pickd]}}
 }
 
 # ALIASES
