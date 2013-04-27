@@ -50,20 +50,6 @@ nmap <Tab>ep  :bel vnew  <bar> r!curl -\# vpaste.net/?raw<left><left><left><left
 nmap <Tab>epf :bel vnew  <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>jq  v}hJgqq<c-o>
 
-" Mapping tab next 1..9
-nmap <Tab>t1  :tabn 1<cr>
-nmap <Tab>t2  :tabn 2<cr>
-nmap <Tab>t3  :tabn 3<cr>
-nmap <Tab>t4  :tabn 4<cr>
-nmap <Tab>t5  :tabn 5<cr>
-nmap <Tab>t6  :tabn 6<cr>
-nmap <Tab>t7  :tabn 7<cr>
-nmap <Tab>t8  :tabn 8<cr>
-nmap <Tab>t9  :tabn 9<cr>
-
-" Mapping tab last
-nmap <Tab>tl  :tabl  <cr>
-
 " Mapping tab move 0..9
 nmap <Tab>tm0  :tabm 0<cr>
 nmap <Tab>tm1  :tabm 1<cr>
