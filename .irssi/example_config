@@ -31,5 +31,4 @@ settings = {
     user_name = "sadasant";
     nick = "sadasant";
   };
-  "fe-common/core" = { theme = "hv"; };
 };
