@@ -141,9 +141,9 @@ Gclone() {
 # Quick Access to Repos
 # Usage:
 #
-#     goto myfilenam
+#     lc myfilenam
 #
-goto() {
+lc() {
   i=0
   if [ -z $1 ]; then
     return
@@ -153,9 +153,10 @@ goto() {
     found[$i]="$dir"
     ((i++))
   done
-  read -p "list number: " n
+  read -p "l number: " n
   if [ $n ] && [ $n -lt $i ]; then
-    list ${found[$n]}
+    echo -e "\e[32;1m$ \e[0m\e[32ml ${found[$n]}\e[0m"
+    l ${found[$n]}
     return
   fi
   echo -e "\e[31;1mWront Input\e[0m"
@@ -164,21 +165,21 @@ goto() {
 # Browse a directory and pick something
 # Usage:
 #
-#     list
+#     l
 #     0 ..
 #     1 Documents
 #     2 Images
 #     3 Programming
 #     [command]? [0..N]: ? Doc
-#     $ list ? Doc
+#     $ l ? Doc
 #     0 Documents
 #     [command]? [0..N]: 0 ? .md
-#     $ list Documents ? .md
+#     $ l Documents ? .md
 #     0 README.md
 #     [command]? [0..N]: vim 0
 #     $ vim README.md
 #
-list() {
+l() {
   _IFS=$IFS
   IFS=$'\n'
   _ls="ls -a1 ."
@@ -213,12 +214,12 @@ list() {
   for p in $input; do
     if [[ "$p" =~ ^[0-9]+$ ]]; then
       if [ $countp == 0 ]; then
-        comm+="list "
+        comm+="l "
       fi
       comm+="'${found[$p]}' "
     else
       if [ $countp == 0 ] && [ $p == "?" ]; then
-        comm+="list "
+        comm+="l "
       fi
       comm+="$p "
     fi
