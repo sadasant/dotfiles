@@ -153,9 +153,9 @@ goto() {
     found[$i]="$dir"
     ((i++))
   done
-  read -p "cd number: " n
+  read -p "list number: " n
   if [ $n ] && [ $n -lt $i ]; then
-    cd ${found[$n]}
+    list ${found[$n]}
     return
   fi
   echo -e "\e[31;1mWront Input\e[0m"
