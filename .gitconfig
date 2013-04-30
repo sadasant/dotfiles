@@ -10,7 +10,11 @@
 [color]
 	status = auto
 	branch = auto
+	diff = auto
+	interactive = auto
 [github]
 	user = sadasant
 [bitbucket]
 	user = sadasant
+[alias]
+	graph = log --graph --color --all --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
