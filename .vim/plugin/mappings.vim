@@ -2,6 +2,7 @@
 " By Daniel R. (sadasant.com)
 
 " <Tab>vr  Reload ~/.vimrc
+" <Tab>vc  Reload %
 " <Tab>w   Save
 " <Tab>s   Make user's session
 " <Tab>o   Load user's session
@@ -26,6 +27,7 @@
 " <Tab>epf Post something to vpaste.net with curl, results in vertical split
 " <Tab>jq  Auto-format paragraph
 nmap <Tab>vr  :source ~/.vimrc<cr>
+nmap <Tab>vc  :source %
 nmap <Tab>w   :w<cr>
 nmap <Tab>s   :mksession! ~/.vim_session
 nmap <Tab>o   :source ~/.vim_session
@@ -89,10 +91,13 @@ inoremap **<Tab> ****<Left><Left>
 inoremap `<Tab> ``<Left>
 inoremap <<Tab> <><Left>
 
-
 " Special characters mappings
 imap \? ¿
 imap \! ¡
+
+" Changing the dictionary language
+nmap <Tab>ds :set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/spanish<cr>
+nmap <Tab>dw :set dictionary-=/usr/share/dict/spanish dictionary+=/usr/share/dict/words<cr>
 
 " Work with Bufferlist faster
 nmap <Tab>b :Bufferlist<cr>

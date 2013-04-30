@@ -40,11 +40,16 @@ set tabstop=4
 set smarttab
 filetype plugin indent on
 
-
 " :help slow-terminal
 set ttyfast
 set noshowcmd
 set scrolljump=5
+
+" Dictionary
+set dictionary-=/usr/share/dict/words
+set dictionary-=/usr/share/dict/spanish
+set dictionary+=/usr/share/dict/words
+set complete-=k complete+=k
 
 " Syntax Color
 syntax on
