@@ -5,4 +5,4 @@ if [ `which acpi` ]; then
   batt+="%"
 fi
 
-echo $batt
+echo " $batt"
