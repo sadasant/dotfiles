@@ -3,6 +3,5 @@
 if [ `which acpi` ]; then
   batt=$(acpi -b | cut -d" " -f4 | cut -d"%" -f1)
   batt+="%"
+  echo " $batt"
 fi
-
-echo " $batt"
