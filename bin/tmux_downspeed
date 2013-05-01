@@ -1,6 +1,7 @@
 #!/bin/bash
 
-interface=$(echo $(ifconfig | grep "RUNNING" | cut -d':' -f1) | cut -d ' ' -f2)
+interface=$(ifconfig | grep "RUNNING" | cut -d':' -f1)
+interface=$(echo ${interface//lo/} | cut -d ' ' -f1)
 
 RXB=$(</sys/class/net/$interface/statistics/rx_bytes)
 sleep 2
