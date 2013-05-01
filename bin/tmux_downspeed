@@ -1,0 +1,10 @@
+#!/bin/bash
+
+interface=$(echo $(ifconfig | grep "RUNNING" | cut -d':' -f1) | cut -d ' ' -f2)
+
+RXB=$(</sys/class/net/$interface/statistics/rx_bytes)
+sleep 2
+RXBN=$(</sys/class/net/$interface/statistics/rx_bytes)
+RXDIF=$(echo $((RXBN - RXB)))
+
+echo -e "$((RXDIF / 1024 / 2))"

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+interface=$(echo $(ifconfig | grep "RUNNING" | cut -d':' -f1) | cut -d ' ' -f2)
+
+TXB=$(</sys/class/net/$interface/statistics/tx_bytes)
+sleep 2
+TXBN=$(</sys/class/net/$interface/statistics/tx_bytes)
+TXDIF=$(echo $((TXBN - TXB)))
+
+echo -e "$((TXDIF / 1024 / 2))"
