@@ -270,7 +270,7 @@ PATH="$PATH:$HOME/bin"
 PATH="$PATH:$HOME/code/github/sadasant/dotfiles/bin"
 
 # GOPATH
-GOPATH=/usr/lib/go/site:/home/sadasant/code/go
+GOPATH=/home/sadasant/code/go
 PATH="$PATH:$HOME/code/code.google.com/go/bin"
 PATH="$PATH:$HOME/code/go/bin"
 
