@@ -162,7 +162,7 @@ l() {
 #
 #     Glc
 #
-Glb() {
+Glc() {
   i=0
   _IFS=$IFS
   IFS=$'\n'
