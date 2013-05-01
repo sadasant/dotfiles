@@ -160,10 +160,11 @@ l() {
 # Quick Access to git branches
 # Usage:
 #
-#     Glc
+#     Gl
 #
-Glc() {
+Gl() {
   i=0
+  declare -A found
   _IFS=$IFS
   IFS=$'\n'
   for branch in $(git branch -a); do
@@ -172,22 +173,27 @@ Glc() {
     elif [[ "$branch" =~ "/" ]]; then
       echo -e "\e[37;1m$i\e[0m \e[34m$branch\e[0m"
       branch=$(echo $branch | cut -d "/" -f3)
+      branch=${branch//[ ]/}
       found[$i]="$branch"
     else
       echo -e "\e[37;1m$i\e[0m \e[34;1m$branch\e[0m"
+      branch=${branch//[ \*]/}
       found[$i]="$branch"
     fi
     ((i++))
   done
-  IFS=_$IFS
-  read -p "checkout n: " n
-  if [ $n ] && [ $n -lt $i ]; then
-    branch=${found[$n]//[ \*]/}
-    echo -e "\e[32;1m$ \e[0m\e[32mgit checkout $branch\e[0m"
-    git checkout $branch
-    return
-  fi
-  echo -e "\e[31;1mWront Input\e[0m"
+  IFS=$_IFS
+  read -p "command n: " input
+  comm="git "
+  for p in $input; do
+    if [[ "$p" =~ ^[0-9]+$ ]]; then
+      comm+="${found[$p]} "
+    else
+      comm+="$p "
+    fi
+  done
+  echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
+  eval $comm
 }
 
 # Easy git push
