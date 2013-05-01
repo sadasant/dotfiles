@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ `which acpi` ]; then
+  batt=$(acpi -b | cut -d" " -f4 | cut -d"%" -f1)
+  batt+="%"
+fi
+
+echo $batt
