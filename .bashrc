@@ -63,81 +63,6 @@ cp_p() {
   fi
 }
 
-# Easy git update
-# Usage:
-#
-#     Gpush
-#     Gpush origin
-#     Gpush origin my-branch
-#
-Gpush() {
-  remote="origin"
-  branch=$(git_current_branch)
-  if [ ! -z $1 ]; then
-    remote=$1
-  fi
-  if [ ! -z $2 ]; then
-    branch=$2
-  fi
-  c1="git push $remote $branch"
-  printf "\e[32m%s\n\e[0m" "$c1"
-  eval $c1
-}
-
-
-# Easy git update
-# Usage:
-#
-#     Gupdate
-#     Gupdate origin
-#     Gupdate origin my-branch
-#
-Gupdate() {
-  remote="origin"
-  branch=$(git_current_branch)
-  if [ ! -z $1 ]; then
-    remote=$1
-  fi
-  if [ ! -z $2 ]; then
-    branch=$2
-  fi
-  c1="git fetch $remote"
-  c2="git rebase -p $remote/$branch"
-  printf "\e[32m%s\n%s\n\e[0m" "$c1" "$c2"
-  eval $c1
-  eval $c2
-}
-
-# Easy git clone
-# Usage:
-#
-#     Gclone provider/user/repo
-#
-Gclone() {
-  provider=""
-  myuser="sadasant"
-  input=(${1//\// })
-  if [ ${#input[@]} -lt 3 ]; then
-    echo -e "\e[31mGclone host/user/repo\e[0m"
-    return
-  fi
-  host=${input[0]}
-  host_name=(${host//.com/})
-  host_name=(${host_name//.org/})
-  user=${input[1]}
-  repo=${input[2]}
-  if [ -d ~/code/$host_name/$user/$repo ]; then
-    echo -e "\e[31mThis repo exists.\e[0m"
-    return
-  fi
-  cd ~/code/$host_name
-  if [ ! -d ./"$user" ]; then
-    mkdir "$user"
-  fi
-  cd "$user"
-  git clone https://"$myuser"@"$host"/"$user"/"$repo".git
-}
-
 # Quick Access to Repos
 # Usage:
 #
@@ -230,6 +155,113 @@ l() {
   fi
   echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
   eval $comm
+}
+
+# Quick Access to git branches
+# Usage:
+#
+#     Glc
+#
+Glb() {
+  i=0
+  _IFS=$IFS
+  IFS=$'\n'
+  for branch in $(git branch -a); do
+    if [[ "$branch" =~ "->" ]]; then
+      continue
+    elif [[ "$branch" =~ "/" ]]; then
+      echo -e "\e[37;1m$i\e[0m \e[34m$branch\e[0m"
+      branch=$(echo $branch | cut -d "/" -f3)
+      found[$i]="$branch"
+    else
+      echo -e "\e[37;1m$i\e[0m \e[34;1m$branch\e[0m"
+      found[$i]="$branch"
+    fi
+    ((i++))
+  done
+  IFS=_$IFS
+  read -p "checkout n: " n
+  if [ $n ] && [ $n -lt $i ]; then
+    branch=${found[$n]//[ \*]/}
+    echo -e "\e[32;1m$ \e[0m\e[32mgit checkout $branch\e[0m"
+    git checkout $branch
+    return
+  fi
+  echo -e "\e[31;1mWront Input\e[0m"
+}
+
+# Easy git push
+# Usage:
+#
+#     Gpush
+#     Gpush origin
+#     Gpush origin my-branch
+#
+Gpush() {
+  remote="origin"
+  branch=$(git_current_branch)
+  if [ ! -z $1 ]; then
+    remote=$1
+  fi
+  if [ ! -z $2 ]; then
+    branch=$2
+  fi
+  c1="git push $remote $branch"
+  printf "\e[32m%s\n\e[0m" "$c1"
+  eval $c1
+}
+
+# Easy git update
+# Usage:
+#
+#     Gupdate
+#     Gupdate origin
+#     Gupdate origin my-branch
+#
+Gupdate() {
+  remote="origin"
+  branch=$(git_current_branch)
+  if [ ! -z $1 ]; then
+    remote=$1
+  fi
+  if [ ! -z $2 ]; then
+    branch=$2
+  fi
+  c1="git fetch $remote"
+  c2="git rebase -p $remote/$branch"
+  printf "\e[32m%s\n%s\n\e[0m" "$c1" "$c2"
+  eval $c1
+  eval $c2
+}
+
+# Easy git clone
+# Usage:
+#
+#     Gclone provider/user/repo
+#
+Gclone() {
+  provider=""
+  myuser="sadasant"
+  input=(${1//\// })
+  if [ ${#input[@]} -lt 3 ]; then
+    echo -e "\e[31mGclone host/user/repo\e[0m"
+    return
+  fi
+  host=${input[0]}
+  host_name=(${host//.com/})
+  host_name=(${host_name//.org/})
+  user=${input[1]}
+  repo=${input[2]}
+  if [ -d ~/code/$host_name/$user/$repo ]; then
+    echo -e "\e[31mThis repo exists.\e[0m"
+    return
+  fi
+  cd ~/code/$host_name
+  if [ ! -d ./"$user" ]; then
+    mkdir "$user"
+  fi
+  cd "$user"
+  git clone https://"$myuser"@"$host"/"$user"/"$repo".git
 }
 
 # ALIASES
