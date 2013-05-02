@@ -51,8 +51,9 @@ hi Statement        ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi StatusLine       ctermfg=white       ctermbg=233         cterm=BOLD
 hi StatusLineNC     ctermfg=240         ctermbg=233         cterm=NONE
 hi String           ctermfg=gray        ctermbg=NONE        cterm=NONE
-hi TabLine          ctermfg=black       ctermbg=white       cterm=NONE
-hi TabLineSel       ctermfg=white       ctermbg=232         cterm=NONE
+hi TabLine          ctermfg=240         ctermbg=232         cterm=NONE
+hi TabLineSel       ctermfg=white       ctermbg=234         cterm=BOLD
+hi TabLineFill      ctermfg=240         ctermbg=232         cterm=BOLD
 hi Title            ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Todo             ctermfg=red         ctermbg=NONE        cterm=NONE
 hi Type             ctermfg=white       ctermbg=NONE        cterm=NONE
