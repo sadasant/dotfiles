@@ -270,8 +270,16 @@ Gclone() {
   git clone https://"$myuser"@"$host"/"$user"/"$repo".git
 }
 
-# ALIASES
+# HISTORY
+# HISTIGNORE
+# Suppresses duplicate commands, the simple invocation of 'ls' without any
+# arguments, and the shell built-ins bg, fg, and exit.
+HISTIGNORE="&:ls:[bf]g:exit"
+# HISTSIZE
+HISTFILESIZE=1000
+HISTSIZE=$HISTFILESIZE
 
+# PATH
 PATH="$PATH:$HOME/bin"
 PATH="$PATH:$HOME/code/github/sadasant/dotfiles/bin"
 
