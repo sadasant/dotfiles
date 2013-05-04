@@ -80,11 +80,13 @@ lc() {
   done
   read -p "l number: " n
   if [ $n ] && [ $n -lt $i ]; then
-    echo -e "\e[32;1m$ \e[0m\e[32ml ${found[$n]}\e[0m"
-    l ${found[$n]}
+    comm="l ${found[$n]}"
+    echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
+    history -s $comm
+    eval $comm
     return
   fi
-  echo -e "\e[31;1mWront Input\e[0m"
+  echo -e "\e[31;1mWrong Input\e[0m"
 }
 
 # Browse a directory and pick something
@@ -154,6 +156,7 @@ l() {
     comm+="."
   fi
   echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
+  history -s $comm
   eval $comm
 }
 
@@ -193,6 +196,7 @@ Gl() {
     fi
   done
   echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
+  history -s $comm
   eval $comm
 }
 
@@ -214,6 +218,7 @@ Gpush() {
   fi
   c1="git push $remote $branch"
   printf "\e[32m%s\n\e[0m" "$c1"
+  history -s $c1
   eval $c1
 }
 
@@ -236,6 +241,8 @@ Gupdate() {
   c1="git fetch $remote"
   c2="git rebase -p $remote/$branch"
   printf "\e[32m%s\n%s\n\e[0m" "$c1" "$c2"
+  history -s $c1
+  history -s $c2
   eval $c1
   eval $c2
 }
@@ -267,7 +274,9 @@ Gclone() {
     mkdir "$user"
   fi
   cd "$user"
-  git clone https://"$myuser"@"$host"/"$user"/"$repo".git
+  comm="git clone https://$myuser@$host/$user/$repo.git"
+  history -s $comm
+  eval $comm
 }
 
 # HISTORY
