@@ -50,7 +50,7 @@ nmap <Tab>ehr :bel 13new <bar> r!
 nmap <Tab>evr :bel vnew  <bar> r!
 nmap <Tab>ep  :bel vnew  <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>epf :bel vnew  <bar> r!curl vpaste.net -F 'text='<left>
-nmap <Tab>jq  }ho<Esc><c-o>v}hJgqqjblD<c-o>
+nmap <Tab>jq  }ho<Esc><c-o>v}hJgqq:s/ \+$//g<cr>
 
 " Mapping tab move 0..9
 nmap <Tab>tm0  :tabm 0<cr>
