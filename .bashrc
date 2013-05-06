@@ -81,7 +81,7 @@ lc() {
   read -p "l number: " n
   if [ $n ] && [ $n -lt $i ]; then
     comm="l ${found[$n]}"
-    echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
+    echo -e "\e[0m\e[32m$comm\e[0m"
     history -s $comm
     eval $comm
     return
@@ -97,15 +97,12 @@ lc() {
 #     1 Documents
 #     2 Images
 #     3 Programming
-#     [command]? [0..N]: ? Doc
-#     $ l ? Doc
+#     l ? Doc
 #     0 Documents
-#     [command]? [0..N]: 0 ? .md
-#     $ l Documents ? .md
+#     l 0 ? .md
 #     0 README.md
-#     [command]? [0..N]: vim 0
-#     $ vim README.md
 #
+declare -A sadasant_l_found
 l() {
   _IFS=$IFS
   IFS=$'\n'
@@ -113,15 +110,18 @@ l() {
   if [ ! -z $1 ]; then
     if [ $1 == "?" ]; then
       _ls+=" | grep $2"
+    elif [[ "$1" =~ ^[0-9]+$ ]]; then
+      dir=${sadasant_l_found[$1]}
+      cd $dir
     else
       cd $1
-      if [ ! -z $2 ] && [ $2 == "?" ]; then
-        _ls+=" | grep $3"
-      fi
+    fi
+    if [ ! -z $2 ] && [ $2 == "?" ]; then
+      _ls+=" | grep $3"
     fi
   fi
   i=0
-  declare -A found
+  sadasant_l_found=()
   for item in $(eval $_ls); do
     if [ $item == "." ]; then
       continue
@@ -131,19 +131,35 @@ l() {
       _item="\e[34;1m$item\e[0m"
     fi
     echo -e "\e[37;1m$i\e[0m $_item"
-    found[$i]=$item
+    sadasant_l_found[$i]=$item
     ((i++))
   done
   IFS=$_IFS
-  read -p "[command]? [0..N]: " input
+}
+
+# Do whatever you want with the saved list
+# Usage:
+#
+#     l
+#     0 ..
+#     1 README.md
+#     ldo vim 0
+#     vim README.md
+#
+ldo() {
+  if [ ${#sadasant_l_found[*]} -eq 0 ]; then
+    echo "First:"
+    echo -e "\e[32ml\e[0m"
+    return
+  fi
   comm=""
   countp=0
-  for p in $input; do
+  for p in $*; do
     if [[ "$p" =~ ^[0-9]+$ ]]; then
       if [ $countp == 0 ]; then
         comm+="l "
       fi
-      comm+="'${found[$p]}' "
+      comm+="'${sadasant_l_found[$p]}' "
     else
       if [ $countp == 0 ] && [ $p == "?" ]; then
         comm+="l "
@@ -155,8 +171,8 @@ l() {
   if [ $countp == 1 ] && [ "$comm" == "$input " ]; then
     comm+="."
   fi
-  echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
-  history -s $comm
+  echo -e "\e[0m\e[32m$comm\e[0m"
+  # history -s $comm
   eval $comm
 }
 
@@ -170,6 +186,7 @@ Gl() {
   declare -A found
   _IFS=$IFS
   IFS=$'\n'
+  sadasant_l_found=()
   for branch in $(git branch -a); do
     if [[ "$branch" =~ "->" ]]; then
       continue
@@ -177,27 +194,16 @@ Gl() {
       echo -e "\e[37;1m$i\e[0m \e[34m$branch\e[0m"
       branch=$(echo $branch | cut -d "/" -f3)
       branch=${branch//[ ]/}
-      found[$i]="$branch"
+      sadasant_l_found[$i]="$branch"
     else
       echo -e "\e[37;1m$i\e[0m \e[34;1m$branch\e[0m"
       branch=${branch//[ \*]/}
-      found[$i]="$branch"
+      sadasant_l_found[$i]="$branch"
     fi
     ((i++))
   done
   IFS=$_IFS
-  read -p "command n: " input
-  comm="git "
-  for p in $input; do
-    if [[ "$p" =~ ^[0-9]+$ ]]; then
-      comm+="${found[$p]} "
-    else
-      comm+="$p "
-    fi
-  done
-  echo -e "\e[32;1m$ \e[0m\e[32m$comm\e[0m"
-  history -s $comm
-  eval $comm
+  echo "ldo git command [0..N]"
 }
 
 # Easy git push
