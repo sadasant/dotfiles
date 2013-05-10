@@ -7,6 +7,7 @@ repos=(
   "godlygeek/tabular"
   "gregsexton/MatchTag"
   "jnwhiteh/vim-golang"
+  "kana/vim-fakeclip"
   "mattn/zencoding-vim"
   "michaeljsmith/vim-indent-object"
   "sandeepcr529/Buffet.vim"

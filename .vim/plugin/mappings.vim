@@ -75,11 +75,6 @@ nmap <Tab>j :wincmd j<cr>
 nmap <Tab>h :wincmd h<cr>
 nmap <Tab>l :wincmd l<cr>
 
-" <Tab>< Yank to xclip
-" <Tab>> xclip to yank
-nmap <Tab>< :call system('xclip', @0)<cr>
-nmap <Tab>> :let @" = system('xclip -o')[0:]<cr>
-
 " Closing Characters
 inoremap (<Tab> ()<Left>
 inoremap {<Tab> {}<Left>
