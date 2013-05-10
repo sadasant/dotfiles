@@ -96,8 +96,9 @@ imap \? ¿
 imap \! ¡
 
 " Changing the dictionary language
-nmap <Tab>ds :set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/spanish<cr>
-nmap <Tab>dw :set dictionary-=/usr/share/dict/spanish dictionary+=/usr/share/dict/words<cr>
+nmap <Tab>ds :set dictionary=/usr/share/dict/spanish<cr>
+nmap <Tab>dw :set dictionary=/usr/share/dict/words<cr>
+nmap <Tab>de :set dictionary=/usr/share/dict/american-english<cr>
 
 " Work with Bufferlist faster
 nmap <Tab>b :Bufferlist<cr>
