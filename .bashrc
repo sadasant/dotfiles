@@ -206,28 +206,6 @@ Gl() {
   echo "ldo git command [0..N]"
 }
 
-# Easy git push
-# Usage:
-#
-#     Gpush
-#     Gpush origin
-#     Gpush origin my-branch
-#
-Gpush() {
-  remote="origin"
-  branch=$(git_current_branch)
-  if [ ! -z $1 ]; then
-    remote=$1
-  fi
-  if [ ! -z $2 ]; then
-    branch=$2
-  fi
-  c1="git push $remote $branch"
-  printf "\e[32m%s\n\e[0m" "$c1"
-  history -s $c1
-  eval $c1
-}
-
 # Easy git update
 # Usage:
 #
