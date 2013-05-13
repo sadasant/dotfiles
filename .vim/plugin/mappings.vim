@@ -29,8 +29,8 @@
 nmap <Tab>vr  :source ~/.vimrc<cr>
 nmap <Tab>vc  :source %
 nmap <Tab>w   :w<cr>
-nmap <Tab>s   :mksession! ~/.vim_session
-nmap <Tab>o   :source ~/.vim_session
+nmap <Tab>s   :mksession! ~/.vim_session/
+nmap <Tab>o   :source ~/.vim_session/
 nmap <Tab>q   :q
 nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ~/**/
