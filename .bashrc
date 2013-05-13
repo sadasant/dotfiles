@@ -66,9 +66,9 @@ cp_p() {
 # Quick Access to Repos
 # Usage:
 #
-#     lc myfilenam
+#     CODE myfilenam
 #
-lc() {
+CODE() {
   i=0
   if [ -z $1 ]; then
     return
@@ -78,9 +78,9 @@ lc() {
     found[$i]="$dir"
     ((i++))
   done
-  read -p "l number: " n
+  read -p "LIST number: " n
   if [ $n ] && [ $n -lt $i ]; then
-    comm="l ${found[$n]}"
+    comm="LIST ${found[$n]}"
     echo -e "\e[0m\e[32m$comm\e[0m"
     history -s $comm
     eval $comm
@@ -92,18 +92,18 @@ lc() {
 # Browse a directory and pick something
 # Usage:
 #
-#     l
+#     LIST
 #     0 ..
 #     1 Documents
 #     2 Images
 #     3 Programming
-#     l ? Doc
+#     LIST ? Doc
 #     0 Documents
-#     l 0 ? .md
+#     LIST 0 ? .md
 #     0 README.md
 #
 declare -A sadasant_l_found
-l() {
+LIST() {
   _IFS=$IFS
   IFS=$'\n'
   _ls="ls -a1 ."
@@ -140,13 +140,13 @@ l() {
 # Do whatever you want with the saved list
 # Usage:
 #
-#     l
+#     LIST
 #     0 ..
 #     1 README.md
-#     ldo vim 0
+#     DO vim 0
 #     vim README.md
 #
-ldo() {
+DO() {
   if [ ${#sadasant_l_found[*]} -eq 0 ]; then
     echo "First:"
     echo -e "\e[32ml\e[0m"
@@ -157,12 +157,12 @@ ldo() {
   for p in $*; do
     if [[ "$p" =~ ^[0-9]+$ ]]; then
       if [ $countp == 0 ]; then
-        comm+="l "
+        comm+="LIST "
       fi
       comm+="'${sadasant_l_found[$p]}' "
     else
       if [ $countp == 0 ] && [ $p == "?" ]; then
-        comm+="l "
+        comm+="LIST "
       fi
       comm+="$p "
     fi
@@ -179,9 +179,9 @@ ldo() {
 # Quick Access to git branches
 # Usage:
 #
-#     Gl
+#     GLIST
 #
-Gl() {
+GLIST() {
   i=0
   declare -A found
   _IFS=$IFS
@@ -203,17 +203,17 @@ Gl() {
     ((i++))
   done
   IFS=$_IFS
-  echo "ldo git command [0..N]"
+  echo "DO git command [0..N]"
 }
 
 # Easy git update
 # Usage:
 #
-#     Gupdate
-#     Gupdate origin
-#     Gupdate origin my-branch
+#     GUPDATE
+#     GUPDATE origin
+#     GUPDATE origin my-branch
 #
-Gupdate() {
+GUPDATE() {
   remote="origin"
   branch=$(git_current_branch)
   if [ ! -z $1 ]; then
@@ -234,9 +234,9 @@ Gupdate() {
 # Easy git clone
 # Usage:
 #
-#     Gclone provider/user/repo
+#     GCLONE provider/user/repo
 #
-Gclone() {
+GCLONE() {
   provider=""
   myuser="sadasant"
   input=(${1//\// })
