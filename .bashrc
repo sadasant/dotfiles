@@ -73,7 +73,7 @@ CODE() {
   if [ -z $1 ]; then
     return
   fi
-  for dir in $(find ~/code -type d -name "*$1*" ); do
+  for dir in $(find ~/code -type d -not -iwholename '*.git*' -name "*$1*"); do
     echo -e "\e[37;1m$i\e[0m \e[34;1m$dir\e[0m"
     found[$i]="$dir"
     ((i++))
@@ -102,26 +102,30 @@ CODE() {
 #     LIST 0 ? .md
 #     0 README.md
 #
-declare -A sadasant_l_found
+declare -A sadasant_list_found
+sadasant_list_dir=""
 LIST() {
   _IFS=$IFS
   IFS=$'\n'
-  _ls="ls -a1 ."
+  _ls="ls -a1 "
   if [ ! -z $1 ]; then
     if [ $1 == "?" ]; then
-      _ls+=" | grep $2"
+      _ls+="$sadasant_list_dir | grep $2"
     elif [[ "$1" =~ ^[0-9]+$ ]]; then
-      dir=${sadasant_l_found[$1]}
-      cd $dir
+      sadasant_list_dir+="${sadasant_list_found[$1]}/"
+      _ls+=$sadasant_list_dir
     else
-      cd $1
+      sadasant_list_dir="$1/"
+      _ls+=$sadasant_list_dir
     fi
     if [ ! -z $2 ] && [ $2 == "?" ]; then
       _ls+=" | grep $3"
     fi
+  else
+    sadasant_list_dir="$(pwd)/"
   fi
   i=0
-  sadasant_l_found=()
+  sadasant_list_found=()
   for item in $(eval $_ls); do
     if [ $item == "." ]; then
       continue
@@ -131,7 +135,7 @@ LIST() {
       _item="\e[34;1m$item\e[0m"
     fi
     echo -e "\e[37;1m$i\e[0m $_item"
-    sadasant_l_found[$i]=$item
+    sadasant_list_found[$i]=$item
     ((i++))
   done
   IFS=$_IFS
@@ -147,7 +151,7 @@ LIST() {
 #     vim README.md
 #
 DO() {
-  if [ ${#sadasant_l_found[*]} -eq 0 ]; then
+  if [ ${#sadasant_list_found[*]} -eq 0 ]; then
     echo "First:"
     echo -e "\e[32ml\e[0m"
     return
@@ -159,7 +163,7 @@ DO() {
       if [ $countp == 0 ]; then
         comm+="LIST "
       fi
-      comm+="'${sadasant_l_found[$p]}' "
+      comm+="'$sadasant_list_dir/${sadasant_list_found[$p]}' "
     else
       if [ $countp == 0 ] && [ $p == "?" ]; then
         comm+="LIST "
@@ -168,11 +172,11 @@ DO() {
     fi
     ((countp++))
   done
-  if [ $countp == 1 ] && [ "$comm" == "$input " ]; then
-    comm+="."
+  if [ $countp == 1 ]; then
+    comm+=$sadasant_list_dir
   fi
   echo -e "\e[0m\e[32m$comm\e[0m"
-  # history -s $comm
+  history -s $comm
   eval $comm
 }
 
@@ -186,7 +190,7 @@ GLIST() {
   declare -A found
   _IFS=$IFS
   IFS=$'\n'
-  sadasant_l_found=()
+  sadasant_list_found=()
   for branch in $(git branch -a); do
     if [[ "$branch" =~ "->" ]]; then
       continue
@@ -194,11 +198,11 @@ GLIST() {
       echo -e "\e[37;1m$i\e[0m \e[34m$branch\e[0m"
       branch=$(echo $branch | cut -d "/" -f3)
       branch=${branch//[ ]/}
-      sadasant_l_found[$i]="$branch"
+      sadasant_list_found[$i]="$branch"
     else
       echo -e "\e[37;1m$i\e[0m \e[34;1m$branch\e[0m"
       branch=${branch//[ \*]/}
-      sadasant_l_found[$i]="$branch"
+      sadasant_list_found[$i]="$branch"
     fi
     ((i++))
   done
