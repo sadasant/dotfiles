@@ -2,32 +2,25 @@
 
 /* appearance */
 static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
-static const char normbordercolor[] = "#111111";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#222222";
-static const char selbgcolor[]      = "#444444";
-static const char selfgcolor[]      = "#eeeeee";
+static const char normbordercolor[] = "#121212"; // 233
+static const char normbgcolor[]     = "#121212"; // 233
+static const char normfgcolor[]     = "#585858"; // 240
+static const char selbordercolor[]  = "#1C1C1C"; // 234
+static const char selbgcolor[]      = "#262626"; // 235
+static const char selfgcolor[]      = "#FFFFFF"; // 255
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
-static const Bool topbar            = False;    /* False means bottom bar */
-
-/*
- * To add a space on the top where conky could be displayed, go to:
- * `~/dwm/src/dwm-6.0/dwm.c`
- * and edit the following lines:
- *
- *   1887    m->mx = m->wx = unique[i].x_org;
- *   1888    m->my = m->wy = unique[i].y_org + 14;
- *   1889    m->mw = m->ww = unique[i].width;
- *   1890    m->mh = m->wh = unique[i].height - 14;
- */
+static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
+	/* xprop(1):
+	 *	WM_CLASS(STRING) = instance, class
+	 *	WM_NAME(STRING) = title
+	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
