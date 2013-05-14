@@ -83,6 +83,7 @@ inoremap [<Tab> []<Left>
 inoremap "<Tab> ""<Left>
 inoremap '<Tab> ''<Left>
 inoremap **<Tab> ****<Left><Left>
+inoremap /*<Tab> /*  */<Left><Left><Left>
 inoremap `<Tab> ``<Left>
 inoremap <<Tab> <><Left>
 
