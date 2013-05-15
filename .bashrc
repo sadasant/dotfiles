@@ -163,7 +163,7 @@ DO() {
       if [ $countp == 0 ]; then
         comm+="LIST "
       fi
-      comm+="'$sadasant_list_dir/${sadasant_list_found[$p]}' "
+      comm+="'$sadasant_list_dir${sadasant_list_found[$p]}' "
     else
       if [ $countp == 0 ] && [ $p == "?" ]; then
         comm+="LIST "
