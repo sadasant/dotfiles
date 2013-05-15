@@ -115,7 +115,7 @@ LIST() {
       sadasant_list_dir+="${sadasant_list_found[$1]}/"
       _ls+=$sadasant_list_dir
     else
-      sadasant_list_dir="$1/"
+      sadasant_list_dir="$1"
       _ls+=$sadasant_list_dir
     fi
     if [ ! -z $2 ] && [ $2 == "?" ]; then
