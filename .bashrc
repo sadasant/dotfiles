@@ -31,6 +31,9 @@ git_current_branch() {
 # Screenshot
 screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}"; }
 
+# Password Generator
+pwgen() { < /dev/urandom tr -dc A-Za-z0-9_+-?\?! | head -c$1; }
+
 # Ping until host is reachable
 NetCheck() {
   ping="/bin/ping -q -c1"
