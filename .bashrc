@@ -73,14 +73,15 @@ CODE() {
   if [ -z $1 ]; then
     return
   fi
+  sadasant_list_found=()
   for dir in $(find ~/code -type d -not -iwholename '*.git*' -name "*$1*" -prune); do
     echo -e "\e[37;1m$i\e[0m \e[34;1m$dir\e[0m"
-    found[$i]="$dir"
+    sadasant_list_found[$i]="$dir"
     ((i++))
   done
-  read -p "LIST number: " n
+  read -p "cd number: " n
   if [ $n ] && [ $n -lt $i ]; then
-    comm="LIST ${found[$n]}"
+    comm="cd ${sadasant_list_found[$n]}"
     echo -e "\e[0m\e[32m$comm\e[0m"
     history -s $comm
     eval $comm
@@ -188,16 +189,20 @@ DO() {
 GLIST() {
   i=0
   declare -A found
+  branches="git branch -a"
+  if [ ! -z $1 ]; then
+    branches+=" | grep $1"
+  fi
   _IFS=$IFS
   IFS=$'\n'
   sadasant_list_found=()
-  for branch in $(git branch -a); do
+  for branch in $(eval $branches); do
     if [[ "$branch" =~ "->" ]]; then
       continue
-    elif [[ "$branch" =~ "/" ]]; then
+    elif [[ "$branch" =~ "remotes/" ]]; then
       echo -e "\e[37;1m$i\e[0m \e[34m$branch\e[0m"
-      branch=$(echo $branch | cut -d "/" -f3)
       branch=${branch//[ ]/}
+      branch=$(echo $branch | cut -d "/" -f2-)
       sadasant_list_found[$i]="$branch"
     else
       echo -e "\e[37;1m$i\e[0m \e[34;1m$branch\e[0m"
