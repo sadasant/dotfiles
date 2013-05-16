@@ -66,14 +66,14 @@ cp_p() {
 # Quick Access to Repos
 # Usage:
 #
-#     CODE myfilenam
+#     CODE myfilename
 #
 CODE() {
   i=0
   if [ -z $1 ]; then
     return
   fi
-  for dir in $(find ~/code -type d -not -iwholename '*.git*' -name "*$1*"); do
+  for dir in $(find ~/code -type d -not -iwholename '*.git*' -name "*$1*" -prune); do
     echo -e "\e[37;1m$i\e[0m \e[34;1m$dir\e[0m"
     found[$i]="$dir"
     ((i++))
