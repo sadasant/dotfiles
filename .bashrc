@@ -36,12 +36,11 @@ pwgen() { < /dev/urandom tr -dc A-Za-z0-9_+-?\?! | head -c$1; }
 
 # Ping until host is reachable
 NetCheck() {
-  ping="/bin/ping -q -c1"
   host=www.google.com
   waittime=3
   while [ true ]
   do
-    ${ping} ${host}
+    ping ${host}
     if [ $? -ne 0 ]; then
       echo "Link is down"
     fi
