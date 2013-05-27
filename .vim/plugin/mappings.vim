@@ -52,17 +52,16 @@ nmap <Tab>ep  :bel vnew  <bar> r!curl -\# vpaste.net/?raw<left><left><left><left
 nmap <Tab>epf :bel vnew  <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>jq  }ho<Esc><c-o>v}hJgqq:s/ \+$//g<cr>
 
-" Mapping tab move 0..9
-nmap <Tab>tm0  :tabm 0<cr>
-nmap <Tab>tm1  :tabm 1<cr>
-nmap <Tab>tm2  :tabm 2<cr>
-nmap <Tab>tm3  :tabm 3<cr>
-nmap <Tab>tm4  :tabm 4<cr>
-nmap <Tab>tm5  :tabm 5<cr>
-nmap <Tab>tm6  :tabm 6<cr>
-nmap <Tab>tm7  :tabm 7<cr>
-nmap <Tab>tm8  :tabm 8<cr>
-nmap <Tab>tm9  :tabm 9<cr>
+" Mapping tab move 0..8
+nmap <Tab>tm1  :tabm 0<cr>
+nmap <Tab>tm2  :tabm 1<cr>
+nmap <Tab>tm3  :tabm 2<cr>
+nmap <Tab>tm4  :tabm 3<cr>
+nmap <Tab>tm5  :tabm 4<cr>
+nmap <Tab>tm6  :tabm 5<cr>
+nmap <Tab>tm7  :tabm 6<cr>
+nmap <Tab>tm8  :tabm 7<cr>
+nmap <Tab>tm9  :tabm 8<cr>
 
 " Go to the last active tab
 let g:lasttab = 1
