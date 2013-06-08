@@ -157,6 +157,7 @@ imap \partial ∂
 " Other symbols
 imap \top ⊤
 imap \bot ⊥
+imap \division ÷
 
 " Greek letters...
 imap \alpha α
@@ -211,4 +212,5 @@ imap \Chi Χ
 imap \Psi Ψ
 imap \Omega Ω
 
+imap \Aleph ℵ
 
