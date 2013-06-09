@@ -119,9 +119,9 @@ PATH="$PATH:$HOME/bin"
 PATH="$PATH:$HOME/code/github/sadasant/dotfiles/bin"
 
 # GOPATH
-GOPATH=/home/sadasant/code/go
+GOPATH="$HOME/code/go"
 PATH="$PATH:$HOME/code/code.google.com/go/bin"
-PATH="$PATH:$HOME/code/go/bin"
+PATH="$PATH:$GOPATH/bin"
 
 # Android Path
 PATH="$PATH:$HOME/soft/dev/android-sdk-linux/tools"
@@ -132,7 +132,7 @@ PATH="$PATH:$HOME/soft/dev/android-sdk-linux/platform-tools"
 PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
 
 # linux-tick-processor
-alias tick="/home/sadasant/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
+alias tick="$HOME/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
 
 # 256 colors in Tmux
 alias tmux='TERM=screen-256color tmux'
