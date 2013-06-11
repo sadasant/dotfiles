@@ -16,6 +16,7 @@ set wildmenu                   " Help with the command line
 set laststatus=2               " show the status line always
 set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%y%t%=%c,%l/%L\ %P
 set cursorline
+set modeline
 
 " Sessions
 set ssop-=options  " do not store global and local values in a session
