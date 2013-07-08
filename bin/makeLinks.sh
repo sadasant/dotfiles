@@ -1,33 +1,35 @@
 # Make the links
 
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.bashrc ~/.bashrc
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.gitconfig ~/.gitconfig
+ln -sf /home/$USER/code/github/sadasant/dotfiles/.bashrc /home/$USER/.bashrc
+ln -sf /home/$USER/code/github/sadasant/dotfiles/.tmux.conf /home/$USER/.tmux.conf
+ln -sf /home/$USER/code/github/sadasant/dotfiles/.gitconfig /home/$USER/.gitconfig
 
 # vim dirs
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.vimrc ~/.vimrc
-if [ ! -d ~/.vim ]; then
-  ln -sf /home/$USER/code/github/sadasant/dotfiles/.vim ~/.vim
+ln -sf /home/$USER/code/github/sadasant/dotfiles/.vimrc /home/$USER/.vimrc
+if [ ! -d /home/$USER/.vim ]; then
+  ln -sf /home/$USER/code/github/sadasant/dotfiles/.vim /home/$USER/.vim
 fi
 
 # uzbl dirs
-if [ ! -d ~/.config ]; then
-  mkdir ~/.config
+if [ ! -d /home/$USER/.config ]; then
+  mkdir /home/$USER/.config
 fi
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.config/uzbl ~/.config/uzbl
+if [ ! -d /home/$USER/.config/uzbl ]; then
+  ln -sf /home/$USER/code/github/sadasant/dotfiles/.config/uzbl /home/$USER/.config/uzbl
+fi
 
 # go dirs
-if [ ! -d ~/code/go ]; then
-  mkdir ~/code/go
+if [ ! -d /home/$USER/code/go ]; then
+  mkdir /home/$USER/code/go
 fi
-if [ ! -d ~/code/go/src ]; then
-  mkdir ~/code/go/bin
-  mkdir ~/code/go/pkg
-  mkdir ~/code/go/src
+if [ ! -d /home/$USER/code/go/src ]; then
+  mkdir /home/$USER/code/go/bin
+  mkdir /home/$USER/code/go/pkg
+  mkdir /home/$USER/code/go/src
 fi
-if [ ! -d ~/code/go/github.com ]; then
-  ln -sf /home/$USER/code/github/ ~/code/go/src/github.com
+if [ ! -d /home/$USER/code/go/src/github.com ]; then
+  ln -sf /home/$USER/code/github /home/$USER/code/go/src/github.com
 fi
-if [ ! -d ~/code/go/bitbucket.org ]; then
-  ln -sf /home/$USER/code/bitbucket/ ~/code/go/src/bitbucket.org
+if [ ! -d /home/$USER/code/go/src/bitbucket.org ]; then
+  ln -sf /home/$USER/code/bitbucket /home/$USER/code/go/src/bitbucket.org
 fi
