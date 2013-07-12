@@ -12,6 +12,7 @@
 " <Tab>tr  Read command in new tab
 " <Tab>tp  Get someting from vpaste.net with curl, results in new tab
 " <Tab>tpf Post something to vpaste.net with curl, results in new tab
+" <Tab>T   New tab on the current folder, on the left of the current tab
 " <Tab>ef  Wildcard search, open in current pane
 " <Tab>eh  Split current file horizontally
 " <Tab>ev  Split current file vertically
@@ -37,6 +38,7 @@ nmap <Tab>tf  :tabf ~/**/
 nmap <Tab>tr  :tabnew <bar> r!
 nmap <Tab>tp  :tabnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>tpf :tabnew <bar> r!curl vpaste.net -F 'text='<left>
+nmap <Tab>T   :exec (tabpagenr()-1).'tabf %:p:h'<cr>
 nmap <Tab>ef  :e ~/**/
 nmap <Tab>eh  :bel sp <cr>
 nmap <Tab>ev  :bel vs <cr>
