@@ -7,6 +7,7 @@
 " <Tab>s   Make user's session
 " <Tab>o   Load user's session
 " <Tab>q   Ask to quit
+" <Tab>Q   Ask to remove the current buffer
 " <Tab>t   New tab on the current folder
 " <Tab>tf  Wildcard search, open in a new tab
 " <Tab>tr  Read command in new tab
@@ -33,6 +34,7 @@ nmap <Tab>w   :w<cr>
 nmap <Tab>s   :mksession! ~/.vim_session/
 nmap <Tab>o   :source ~/.vim_session/
 nmap <Tab>q   :q
+nmap <Tab>Q   :bd
 nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ~/**/
 nmap <Tab>tr  :tabnew <bar> r!
