@@ -134,6 +134,10 @@ imap \succnsim ⋩
 imap \curlyeqprec ⋞
 imap \curlyeqsucc ⋟
 
+" And and or
+imap \and ∧
+imap \or  ∨
+
 " Set symbols
 imap \subset ⊂
 imap \subseteq ⊆
