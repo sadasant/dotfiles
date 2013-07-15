@@ -9,9 +9,15 @@ function! Sadasant(name, ...)
   endif
 endfunction
 
-function! SadasantGrep(type, match)
+function! SadasantGrep(type, ...)
+  let match = a:0
+  if !match
+    call inputsave()
+    let match = input('Enter search string: ')
+    call inputrestore()
+  endif
   if a:type ==? "v"
-    :exe "bel vnew | r!grep -rin ".a:match." ".expand("%:p:h")
+    :exe "bel vnew | r!grep -rin ".match." ".expand("%:p:h")
   endif
 endfunction
 
