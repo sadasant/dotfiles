@@ -8,12 +8,12 @@
 " <Tab>o   Load user's session
 " <Tab>q   Ask to quit
 " <Tab>Q   Ask to remove the current buffer
-" <Tab>t   New tab on the current folder
+" <Tab>tn  New tab on the current folder
 " <Tab>tf  Wildcard search, open in a new tab
 " <Tab>tr  Read command in new tab
 " <Tab>tp  Get someting from vpaste.net with curl, results in new tab
 " <Tab>tpf Post something to vpaste.net with curl, results in new tab
-" <Tab>T   New tab on the current folder, on the left of the current tab
+" <Tab>Tn  New tab on the current folder, on the left of the current tab
 " <Tab>ef  Wildcard search, open in current pane
 " <Tab>eh  Split current file horizontally
 " <Tab>ev  Split current file vertically
@@ -35,12 +35,12 @@ nmap <Tab>s   :mksession! ~/.vim_session/
 nmap <Tab>o   :source ~/.vim_session/
 nmap <Tab>q   :q
 nmap <Tab>Q   :bd
-nmap <Tab>t   :tabf %:p:h<cr>
+nmap <Tab>tn  :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ~/**/
 nmap <Tab>tr  :tabnew <bar> r!
 nmap <Tab>tp  :tabnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>tpf :tabnew <bar> r!curl vpaste.net -F 'text='<left>
-nmap <Tab>T   :exec (tabpagenr()-1).'tabf %:p:h'<cr>
+nmap <Tab>Tn  :exec (tabpagenr()-1).'tabf %:p:h'<cr>
 nmap <Tab>ef  :e ~/**/
 nmap <Tab>eh  :bel sp <cr>
 nmap <Tab>ev  :bel vs <cr>
@@ -55,6 +55,7 @@ nmap <Tab>evr :bel vnew  <bar> r!
 nmap <Tab>ep  :bel vnew  <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>epf :bel vnew  <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>jq  }ho<Esc><c-o>v}hJgqq:s/ \+$//g<cr>
+nmap <Tab>p   :set paste<cr>:put<cr>:set nopaste<cr>
 
 " Mapping tab move 0..8
 nmap <Tab>tm1  :tabm 0<cr>
@@ -69,7 +70,7 @@ nmap <Tab>tm9  :tabm 8<cr>
 
 " Go to the last active tab
 let g:lasttab = 1
-nmap <Tab><Tab> :exe "tabn ".g:lasttab<CR>
+nmap <Tab>t :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Use <Tab>-[hjkl] to select the active split!
@@ -111,4 +112,8 @@ nmap <Tab>ge :Gedit
 nmap <Tab>gh :Gsplit 
 nmap <Tab>gv :Gvsplit 
 nmap <Tab>gt :Gtabedit 
+
+" Our custom functions
+nmap <Tab><Tab> :Sadasant 
+nmap <Tab><Tab>g :Sadasant grep 
 
