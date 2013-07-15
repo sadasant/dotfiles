@@ -8,12 +8,12 @@
 " <Tab>o   Load user's session
 " <Tab>q   Ask to quit
 " <Tab>Q   Ask to remove the current buffer
-" <Tab>tn  New tab on the current folder
+" <Tab>t   New tab on the current folder
 " <Tab>tf  Wildcard search, open in a new tab
 " <Tab>tr  Read command in new tab
 " <Tab>tp  Get someting from vpaste.net with curl, results in new tab
 " <Tab>tpf Post something to vpaste.net with curl, results in new tab
-" <Tab>Tn  New tab on the current folder, on the left of the current tab
+" <Tab>T   New tab on the current folder, on the left of the current tab
 " <Tab>ef  Wildcard search, open in current pane
 " <Tab>eh  Split current file horizontally
 " <Tab>ev  Split current file vertically
@@ -35,12 +35,12 @@ nmap <Tab>s   :mksession! ~/.vim_session/
 nmap <Tab>o   :source ~/.vim_session/
 nmap <Tab>q   :q
 nmap <Tab>Q   :bd
-nmap <Tab>tn  :tabf %:p:h<cr>
+nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ~/**/
 nmap <Tab>tr  :tabnew <bar> r!
 nmap <Tab>tp  :tabnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>tpf :tabnew <bar> r!curl vpaste.net -F 'text='<left>
-nmap <Tab>Tn  :exec (tabpagenr()-1).'tabf %:p:h'<cr>
+nmap <Tab>T   :exec (tabpagenr()-1).'tabf %:p:h'<cr>
 nmap <Tab>ef  :e ~/**/
 nmap <Tab>eh  :bel sp <cr>
 nmap <Tab>ev  :bel vs <cr>
@@ -70,7 +70,7 @@ nmap <Tab>tm9  :tabm 8<cr>
 
 " Go to the last active tab
 let g:lasttab = 1
-nmap <Tab>t :exe "tabn ".g:lasttab<CR>
+nmap <Tab><Tab> :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Use <Tab>-[hjkl] to select the active split!
@@ -104,17 +104,17 @@ nmap <Tab>de :set dictionary=/usr/share/dict/american-english<cr>
 nmap <Tab>b :Bufferlist<cr>
 
 " Work with fugitive faster
-nmap <Tab>gc :Gcommit<cr>
-nmap <Tab>gs :Gstatus<cr>
-nmap <Tab>gw :Gwrite<cr>
-nmap <Tab>gp :Git push 
-nmap <Tab>ge :Gedit 
-nmap <Tab>gh :Gsplit 
-nmap <Tab>gv :Gvsplit 
-nmap <Tab>gt :Gtabedit 
+nmap <Tab>Gc :Gcommit<cr>
+nmap <Tab>Gs :Gstatus<cr>
+nmap <Tab>Gw :Gwrite<cr>
+nmap <Tab>Gp :Git push 
+nmap <Tab>Ge :Gedit 
+nmap <Tab>Gh :Gsplit 
+nmap <Tab>Gv :Gvsplit 
+nmap <Tab>Gt :Gtabedit 
 
 " Our custom functions
-nmap <Tab><Tab> :Sadasant 
-nmap <Tab><Tab>g :Sadasant grep 
-nmap <Tab><Tab>gv :Sadasant grep v<cr>
+nmap <Tab>S  :Sadasant 
+nmap <Tab>g  :Sadasant grep 
+nmap <Tab>gv :Sadasant grep v<cr>
 
