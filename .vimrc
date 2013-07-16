@@ -39,6 +39,7 @@ set smartindent
 set expandtab
 set tabstop=4
 set smarttab
+set pastetoggle=<Tab>p
 filetype plugin indent on
 
 " :help slow-terminal

@@ -4,7 +4,6 @@
 repos=(
   "chrisbra/histwin.vim"
   "coderifous/textobj-word-column.vim"
-  "godlygeek/tabular"
   "gregsexton/MatchTag"
   "jnwhiteh/vim-golang"
   "kana/vim-fakeclip"

@@ -18,6 +18,15 @@ function! SadasantGrep(type, ...)
   endif
   if a:type ==? "v"
     :exe "bel vnew | r!grep -rin ".match." ".expand("%:p:h")
+    " Enter to open the file under the cursor line at the position given by grep
+    :exe "nnoremap <buffer> <Enter> 0:wincmd F<cr>"
+    " h and l will look for the prev/next occurrence of a line start or matched content
+    :exe "nnoremap <buffer> h ?\\(\\(\\/.*:\\d*:\\)\\@<=\\)\\\\|^<cr>zs20zh"
+    :exe "nnoremap <buffer> l /\\(\\(\\/.*:\\d*:\\)\\@<=\\)\\\\|^<cr>zs20zh"
+    " j and k will look for the next/prev matched content
+    :exe "nnoremap <buffer> j /\\(\\/.*:\\d*:\\)\\@<=<cr>zs20zh"
+    :exe "nnoremap <buffer> k ?\\(\\/.*:\\d*:\\)\\@<=<cr>zs20zh"
+    :exe "nnoremap <buffer> q :q!<cr>"
   endif
 endfunction
 
