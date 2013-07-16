@@ -115,6 +115,7 @@ nmap <Tab>Gt :Gtabedit
 
 " Our custom functions
 nmap <Tab>S  :Sadasant 
-nmap <Tab>g  :Sadasant grep 
-nmap <Tab>gv :Sadasant grep v<cr>
+nmap <Tab>f  :Sadasant find 
+nmap <Tab>fv :Sadasant find v<cr>
+nmap <Tab>fh :Sadasant find h<cr>
 
