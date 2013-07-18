@@ -18,6 +18,16 @@ set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&f
 set cursorline
 set modeline
 set foldmethod=syntax
+set foldtext=MyFoldText()
+set fillchars=fold:_
+
+" setting fold text
+function! MyFoldText()
+  let nl = v:foldend - v:foldstart + 1
+  let comment = substitute(getline(v:foldstart),"^ *\" *","",1)
+  let txt = '+' . nl . ' ' . comment . '                                                                                                                                                                  '
+  return txt
+endfunction
 
 " Sessions
 set ssop-=options  " do not store global and local values in a session
