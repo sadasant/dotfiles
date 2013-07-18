@@ -111,14 +111,14 @@ nmap <Tab>de :set dictionary=/usr/share/dict/american-english<cr>
 nmap <Tab>b :Bufferlist<cr>
 
 " Work with fugitive faster
-nmap <Tab>Gc :Gcommit<cr>
-nmap <Tab>Gs :Gstatus<cr>
-nmap <Tab>Gw :Gwrite<cr>
-nmap <Tab>Gp :Git push 
-nmap <Tab>Ge :Gedit 
-nmap <Tab>Gh :Gsplit 
-nmap <Tab>Gv :Gvsplit 
-nmap <Tab>Gt :Gtabedit 
+nmap <Tab>gc :Gcommit<cr>
+nmap <Tab>gs :Gstatus<cr>
+nmap <Tab>gw :Gwrite<cr>
+nmap <Tab>gp :Git push 
+nmap <Tab>ge :Gedit 
+nmap <Tab>gh :Gsplit 
+nmap <Tab>gv :Gvsplit 
+nmap <Tab>gt :Gtabedit 
 
 " Custom functions
 " =================
