@@ -17,10 +17,11 @@ set laststatus=2               " show the status line always
 set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%y%t%=%c,%l/%L\ %P
 set cursorline
 set modeline
+set foldmethod=syntax
 
 " Sessions
 set ssop-=options  " do not store global and local values in a session
-set ssop-=folds    " do not store folds
+" set ssop-=folds    " do not store folds
 
 " Search
 set smartcase " ignore case when all is lowercase
@@ -69,4 +70,7 @@ let g:syntastic_mode_map={
   \ 'active_filetypes': [],
   \ 'passive_filetypes': ['html']
   \ }
+
+" JS folds
+au FileType javascript call JavaScriptFold()
 

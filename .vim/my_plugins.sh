@@ -5,6 +5,7 @@ repos=(
   "chrisbra/histwin.vim"
   "coderifous/textobj-word-column.vim"
   "gregsexton/MatchTag"
+  "jelera/vim-javascript-syntax"
   "jnwhiteh/vim-golang"
   "kana/vim-fakeclip"
   "mattn/zencoding-vim"

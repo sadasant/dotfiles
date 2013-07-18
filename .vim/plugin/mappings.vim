@@ -1,6 +1,13 @@
 " .vim/plugin/mappings.vim
 " By Daniel R. (sadasant.com)
 
+" General Mappings
+" =================
+nmap J j^
+nmap K k^
+
+" Tab Mappings
+" =================
 " <Tab>vr  Reload ~/.vimrc
 " <Tab>vc  Reload %
 " <Tab>w   Save
@@ -113,7 +120,9 @@ nmap <Tab>Gh :Gsplit
 nmap <Tab>Gv :Gvsplit 
 nmap <Tab>Gt :Gtabedit 
 
-" Our custom functions
+" Custom functions
+" =================
+
 nmap <Tab>S  :Sadasant 
 nmap <Tab>f  :Sadasant find 
 nmap <Tab>fv :Sadasant find v<cr>
