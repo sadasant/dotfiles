@@ -1,11 +1,6 @@
 " .vim/plugin/mappings.vim
 " By Daniel R. (sadasant.com)
 
-" General Mappings
-" =================
-nmap J j^
-nmap K k^
-
 " Tab Mappings
 " =================
 " <Tab>vr  Reload ~/.vimrc
