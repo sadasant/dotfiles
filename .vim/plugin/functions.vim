@@ -60,11 +60,11 @@ function! SadasantFind(type, ...)
   let l:count = 0
   for l:found in l:grep
     let s:grep[line('$')] = substitute(l:found, '\(:\d*\)\@<=:.*', '', '')
-    let l:short = substitute(l:found, '\w\@<=\w*\/', '/', 'g')
-    let l:split = split(l:short, ':')
+    let l:split = split(l:found, ':')
+    let l:split[0] = substitute(l:split[0], '\w\@<=\w*\/', '/', 'g')
     let l:nr = l:split[1]
     let l:path = ' '.l:count.'> '.l:split[0]
-    let l:match = ' '.l:nr.' '.matchstr(l:short, '\(:.*:\)\@<=.*')
+    let l:match = ' '.l:nr.' '.join(l:split[2:], ':')
     call append(line('$'), l:path)
     call append(line('$'), l:match)
     call append(line('$'), '~')
