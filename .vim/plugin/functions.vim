@@ -10,17 +10,25 @@ function! Sadasant(name, ...)
 endfunction
 
 function! SadasantFindOpen(type)
-  let l:file = split(s:grep[line('.')], ":")
-  echo l:file
+  if g:last_buffer
+    silent exec 'bwipeout' g:last_buffer
+  endif
+  let l:line = line('.')
+  while has_key(s:grep, l:line) == 0
+    let l:line -= 1
+  endwhile
+  let l:file = split(s:grep[l:line], ":")
   if a:type ==? "v"
     exe "new ".l:file[0]
   else
     exe "bel vnew ".l:file[0]
   endif
   exe ":".l:file[1]
+  let g:last_buffer = bufnr(bufname("%"))
 endfunction
 
 function! SadasantFind(type, ...)
+  let g:last_buffer = 0
   let match = a:0
   if !match
     call inputsave()
@@ -43,10 +51,10 @@ function! SadasantFind(type, ...)
   " Custom colors
   syntax region foundPath start=/\/\@<!\(\/\)\w/ end=/$/
   highlight link foundPath Comment
-  syntax region foundNr start=/^ / end=/\(\d\| \)\{-}\(\d \| \/\@=\)/
+  syntax region foundNr start=/^ / end=/\d\( \|> *\)/
   highlight link foundNr LineNr
   " Fill with grep
-  let l:grep = split(system("grep -rin ".match." ".expand("%:p:h")), '\v\n')
+  let l:grep = split(system("grep -rin ".match." ".expand("#:p:h")), '\v\n')
   let s:grep = {}
   let l:lines = []
   let l:count = 0
@@ -55,25 +63,26 @@ function! SadasantFind(type, ...)
     let l:short = substitute(l:found, '\w\@<=\w*\/', '/', 'g')
     let l:split = split(l:short, ':')
     let l:nr = l:split[1]
-    let l:path = ' '.repeat('-', strlen(l:nr)-1).'> '.l:split[0]
+    let l:path = ' '.l:count.'> '.l:split[0]
     let l:match = ' '.l:nr.' '.matchstr(l:short, '\(:.*:\)\@<=.*')
     call append(line('$'), l:path)
     call append(line('$'), l:match)
     call append(line('$'), '~')
+    let l:count += 1
   endfor
   " Go to the first column of the first line
   normal! ggdd0l
-  set nonu
+  setlocal nonu
   setlocal bt=nofile
   setlocal modifiable
   setlocal bt=nowrite
   setlocal bufhidden=hide
   setlocal noswapfile
   setlocal nowrap
-  nnoremap <buffer> h 3k0l
-  nnoremap <buffer> l 3j0l
-  nnoremap <buffer> j 3j0l
-  nnoremap <buffer> k 3k0l
+  nnoremap <buffer> h :silent;? \d\{1,}><cr>
+  nnoremap <buffer> l :silent;/ \d\{1,}><cr>
+  nnoremap <buffer> j :silent;/ \d\{1,}><cr>
+  nnoremap <buffer> k :silent;? \d\{1,}><cr>
   nnoremap <buffer> q :q!<cr>
   noremap <buffer> <Up> <NOP>
   noremap <buffer> <Down> <NOP>
