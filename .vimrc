@@ -4,6 +4,7 @@
 " Settings
 set showmatch                  " Show brace match
 set nocompatible               " Ignore the old vi
+set virtualedit=all            " Move beyond limits
 set backspace=eol,start,indent " Backspace everything on insert mode
 set whichwrap=[,],h,l          " Wrap when moving towards the limit of the line
 set nowrap                     " Too long? no wrap
@@ -44,7 +45,7 @@ set nobackup
 set nowb
 
 " Tabs And Identation
-set shiftwidth=2
+set shiftwidth=4
 set autoindent
 set smartindent
 set expandtab
