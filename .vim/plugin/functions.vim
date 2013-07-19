@@ -83,7 +83,7 @@ function! SadasantFind(type, ...)
   nnoremap <buffer> l :silent;/ \d\{1,}><cr>
   nnoremap <buffer> j :silent;/ \d\{1,}><cr>
   nnoremap <buffer> k :silent;? \d\{1,}><cr>
-  nnoremap <buffer> q :q!<cr>
+  nnoremap <buffer> q :bd<cr>
   noremap <buffer> <Up> <NOP>
   noremap <buffer> <Down> <NOP>
   noremap <buffer> <Left> <NOP>
