@@ -9,6 +9,17 @@ function! Sadasant(name, ...)
   endif
 endfunction
 
+function! SadasantFindOpen(type)
+  let l:file = split(s:grep[line('.')], ":")
+  echo l:file
+  if a:type ==? "v"
+    exe "new ".l:file[0]
+  else
+    exe "bel vnew ".l:file[0]
+  endif
+  exe ":".l:file[1]
+endfunction
+
 function! SadasantFind(type, ...)
   let match = a:0
   if !match
@@ -17,23 +28,57 @@ function! SadasantFind(type, ...)
     call inputrestore()
   endif
   if a:type ==? "v"
-    :exe "bel vnew | r!grep -rin ".match." ".expand("%:p:h")
+    bel vnew __SadasantFind__
+    " Empty the buffer
+    normal! ggdG
     " Enter to open the file under the cursor line at the position given by grep
-    :exe "nnoremap <buffer> <Enter> 0:wincmd F<cr>"
-  elseif a:type ==? "h"
-    :exe "bel 13new | r!grep -rin ".match." ".expand("%:p:h")
+    nnoremap <buffer> <Enter> :call SadasantFindOpen('v')<cr>
+  else
+    bel 13new __SadasantFind__
+    " Empty the buffer
+    normal! ggdG
     " Enter to open the file under the cursor line at the position given by grep
-    :exe "nnoremap <buffer> <Enter> 0:bel vert wincmd F<cr>"
+    nnoremap <buffer> <Enter> :call SadasantFindOpen('h')<cr>
   endif
-  " `t` to open the file under the cursor line at the position given by grep
-  :exe "nnoremap <buffer> t 0:wincmd gF<cr>"
-  " h and l will look for the prev/next occurrence of a line start or matched content
-  :exe "nnoremap <buffer> h ?\\(\\(\\/.*:\\d*:\\)\\@<=\\)\\\\|^<cr>zs20zh"
-  :exe "nnoremap <buffer> l /\\(\\(\\/.*:\\d*:\\)\\@<=\\)\\\\|^<cr>zs20zh"
-  " j and k will look for the next/prev matched content
-  :exe "nnoremap <buffer> j /\\(\\/.*:\\d*:\\)\\@<=<cr>zs20zh"
-  :exe "nnoremap <buffer> k ?\\(\\/.*:\\d*:\\)\\@<=<cr>zs20zh"
-  :exe "nnoremap <buffer> q :q!<cr>"
+  " Custom colors
+  syntax region foundPath start=/\/\@<!\(\/\)\w/ end=/$/
+  highlight link foundPath Comment
+  syntax region foundNr start=/^ / end=/\(\d\| \)\{-}\(\d \| \/\@=\)/
+  highlight link foundNr LineNr
+  " Fill with grep
+  let l:grep = split(system("grep -rin ".match." ".expand("%:p:h")), '\v\n')
+  let s:grep = {}
+  let l:lines = []
+  let l:count = 0
+  for l:found in l:grep
+    let s:grep[line('$')] = substitute(l:found, '\(:\d*\)\@<=:.*', '', '')
+    let l:short = substitute(l:found, '\w\@<=\w*\/', '/', 'g')
+    let l:split = split(l:short, ':')
+    let l:nr = l:split[1]
+    let l:path = ' '.repeat('-', strlen(l:nr)-1).'> '.l:split[0]
+    let l:match = ' '.l:nr.' '.matchstr(l:short, '\(:.*:\)\@<=.*')
+    call append(line('$'), l:path)
+    call append(line('$'), l:match)
+    call append(line('$'), '~')
+  endfor
+  " Go to the first column of the first line
+  normal! ggdd0l
+  set nonu
+  setlocal bt=nofile
+  setlocal modifiable
+  setlocal bt=nowrite
+  setlocal bufhidden=hide
+  setlocal noswapfile
+  setlocal nowrap
+  nnoremap <buffer> h 3k0l
+  nnoremap <buffer> l 3j0l
+  nnoremap <buffer> j 3j0l
+  nnoremap <buffer> k 3k0l
+  nnoremap <buffer> q :q!<cr>
+  noremap <buffer> <Up> <NOP>
+  noremap <buffer> <Down> <NOP>
+  noremap <buffer> <Left> <NOP>
+  noremap <buffer> <Right> <NOP>
 endfunction
 
 " Thanks to: http://stackoverflow.com/questions/1534835/how-do-i-close-all-buffers-that-arent-shown-in-a-window-in-vim
