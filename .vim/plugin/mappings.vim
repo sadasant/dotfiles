@@ -56,7 +56,7 @@ nmap <Tab>ehr :bel 13new <bar> r!
 nmap <Tab>evr :bel vnew  <bar> r!
 nmap <Tab>ep  :bel vnew  <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>epf :bel vnew  <bar> r!curl vpaste.net -F 'text='<left>
-nmap <Tab>jq  }ho<Esc><c-o>v}hJgqq:s/ \+$//g<cr>
+nmap <Tab>jq  }k$o<Esc><c-o>v}k$Jgqq:s/ \+$//g<cr>
 nmap <Tab>p   :set invpaste<cr>
 
 " Mapping tab move 0..8
