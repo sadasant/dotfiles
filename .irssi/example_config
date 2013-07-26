@@ -20,8 +20,8 @@ chatnets = {
 };
 
 channels = (
-  { name = "#OpenVE";    chatnet = "freenode"; autojoin = "Yes"; },
-  { name = "#CITunitec"; chatnet = "freenode"; autojoin = "Yes"; }
+  { name = "#OpenVE" ; chatnet = "freenode"; autojoin = "Yes"; },
+  { name = "#planobe"; chatnet = "freenode"; autojoin = "Yes"; }
 );
 
 settings = {
