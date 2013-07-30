@@ -1,0 +1,24 @@
+# Thanks to: http://v1.corenominal.org/howto-setup-moc-music-on-console/
+ReadTags           = yes
+MusicDir           = "~/audio/music"
+StartInMusicDir    = yes
+Repeat             = no
+Shuffle            = yes
+AutoNext           = yes
+FormatString       = "%(n:%n :)%(a:%a - :)%(t:%t:)%(A: \(%A\):)"
+OutputBuffer       = 2048
+InputBuffer        = 512
+Prebuffering       = 64
+HideFileExtension  = no
+ShowFormat         = yes
+ShowTime           = yes
+Theme              = monochrome_theme
+MOCDir             = ~/.moc
+SavePlaylist       = yes
+SyncPlaylist       = yes
+ASCIILines         = no
+Fastdir1           = ~/audio/music
+TagsCacheSize      = 256
+PlaylistNumbering  = yes
+FollowPlayedFile   = yes
+CanStartInPlaylist = yes
