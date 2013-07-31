@@ -18,17 +18,22 @@ set laststatus=2               " show the status line always
 set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%y%t%=%c,%l/%L\ %P
 set cursorline
 set modeline
-set foldmethod=syntax
-set foldtext=MyFoldText()
-set fillchars=fold:_
 
-" setting fold text
+" Folds
 function! MyFoldText()
-  let nl = v:foldend - v:foldstart + 1
-  let comment = substitute(getline(v:foldstart),"^ *\" *","",1)
-  let txt = '+' . nl . ' ' . comment . '                                                                                                                                                                  '
-  return txt
+  let nucolwidth = &fdc + &number*&numberwidth
+  let winwd = winwidth(0) - nucolwidth - 1
+  let foldlinecount = foldclosedend(v:foldstart) - foldclosed(v:foldstart) + 1
+  let prefix = " ["
+  let fdnfo = prefix . string(v:foldlevel) . "," . string(foldlinecount) . "]"
+  let line =  strpart(getline(v:foldstart), 0 , winwd - len(fdnfo))
+  let fillcharcount = winwd - len(line) - len(fdnfo)
+  return line . repeat(" ",fillcharcount) . fdnfo
 endfunction
+set foldtext=MyFoldText()
+set foldmethod=syntax
+set fillchars=fold:\ 
+let g:vimsyn_folding='af' " Folding vim scripts
 
 " Sessions
 set ssop-=options  " do not store global and local values in a session
@@ -81,7 +86,4 @@ let g:syntastic_mode_map={
   \ 'active_filetypes': [],
   \ 'passive_filetypes': ['html']
   \ }
-
-" JS folds
-au FileType javascript call JavaScriptFold()
 

@@ -4,7 +4,6 @@
 repos=(
   "chrisbra/histwin.vim"
   "gregsexton/MatchTag"
-  "jelera/vim-javascript-syntax"
   "jnwhiteh/vim-golang"
   "kana/vim-fakeclip"
   "mattn/zencoding-vim"
