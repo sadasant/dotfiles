@@ -20,6 +20,12 @@ then
   mkdir bundle
 fi
 
+# Ask before updating?
+quiet=false
+case "$1" in
+  -quiet) quiet=true
+esac
+
 # Cloning New Repos
 cd bundle
 for repo in "${repos[@]}"
@@ -28,14 +34,19 @@ do
   if [ -d $repo_name ]
   then
     echo "${repo}" Exists!
-    read -p "Do you want to update ${repo}? " yn
-    case $yn in
-      [Yy]* ) echo Updating...;
-              cd $repo_name;
-              git fetch origin;
-              git rebase -p origin/master;
-              cd ..;;
-    esac
+      if [ $quiet == false ]; then
+        read -p "Do you want to update ${repo}? " yn
+        case $yn in
+          [Yy]* ) echo Updating...;;
+          *     ) continue;;
+        esac
+      else
+        echo Updating...
+      fi
+      cd $repo_name;
+      git fetch origin;
+      git rebase -p origin/master;
+      cd ..
   else
     git clone git://github.com/"${repo}".git
   fi

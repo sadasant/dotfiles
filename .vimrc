@@ -37,7 +37,7 @@ let g:vimsyn_folding='af' " Folding vim scripts
 
 " Sessions
 set ssop-=options  " do not store global and local values in a session
-" set ssop-=folds    " do not store folds
+set ssop-=folds    " do not store folds
 
 " Search
 set smartcase " ignore case when all is lowercase
