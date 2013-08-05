@@ -40,9 +40,10 @@ set ssop-=options  " do not store global and local values in a session
 set ssop-=folds    " do not store folds
 
 " Search
-set smartcase " ignore case when all is lowercase
-set incsearch " window to the current match
-set magic     " search with \n like characters
+set ignorecase
+set smartcase  " ignore case only when all is lowercase
+set incsearch  " window to the current match
+set magic      " search with \n like characters
 
 " No Backups
 set noswapfile
