@@ -122,6 +122,8 @@ nmap <Tab>S  :Sadasant
 nmap <Tab>f  :Sadasant find 
 nmap <Tab>fv :Sadasant find v<cr>
 nmap <Tab>fh :Sadasant find h<cr>
+nmap <Tab>aw :<c-u>exe "Sadasant align ".v:count1." 0"<cr>
+nmap <Tab>Aw :<c-u>exe "Sadasant align ".v:count1." 1"<cr>
 
 " <Tab>qi  Remove inactive buffers
 nmap <Tab>qi :call DeleteInactiveBufs()<cr>

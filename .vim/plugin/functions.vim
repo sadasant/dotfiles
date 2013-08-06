@@ -1,13 +1,27 @@
 " .vim/plugin/functions.vim
 " By Daniel R. (sadasant.com)
 
+" General wrapper
+" ===============
+" Used this way:
+" nmap <Tab>S  :Sadasant 
+" nmap <Tab>f  :Sadasant find 
+" nmap <Tab>fv :Sadasant find v<cr>
+" nmap <Tab>fh :Sadasant find h<cr>
+
 com! -nargs=+ Sadasant call Sadasant(<f-args>)
 
 function! Sadasant(name, ...)
   if a:name == "find"
-    :call call (function('SadasantFind'), a:000)
+    call call (function('SadasantFind'), a:000)
+  endif
+  if a:name == "align"
+    call call (function('SadasantAlignRelative'), a:000)
   endif
 endfunction
+
+" Find and Open
+" ==============
 
 function! SadasantFindOpen(type)
   if g:last_buffer
@@ -90,6 +104,9 @@ function! SadasantFind(type, ...)
   noremap <buffer> <Right> <NOP>
 endfunction
 
+" Delete Inactive Buffers
+" =======================
+
 " Thanks to: http://stackoverflow.com/questions/1534835/how-do-i-close-all-buffers-that-arent-shown-in-a-window-in-vim
 function! DeleteInactiveBufs()
     "From tabpagebuflist() help, get a list of all buffers in all tabs
@@ -112,3 +129,81 @@ function! DeleteInactiveBufs()
 endfunction
 " command! Bdi :call DeleteInactiveBufs()
 
+" Sadasant Align Relative
+" =======================
+
+function! SadasantAlignRelative(repeat, reverse)
+  let l:pos0 = getpos('.')
+  let l:flags = ''
+  let l:repeat = a:repeat
+  if a:reverse == 1
+    " Return if we're at the beginning
+    if l:pos0[1] == 1
+      call setpos('.', l:pos0)
+      return
+    endif
+    " Setting the backwards flag
+    let l:flags = 'b'
+  else
+    " Return if we're at the end
+    if l:pos0[1] == line('$')
+      call setpos('.', l:pos0)
+      return
+    endif
+  endif
+  " Taking the current character
+  exe 'normal! "ayl'
+  " In near, we'll store the next match which is at the nearest column "
+  let l:near = []
+  while 1
+    call search(@a, l:flags)
+    let l:pos = getpos('.')
+    let l:dif = abs(l:pos[1] - l:pos0[1])
+    if l:dif > 1
+      break
+    endif
+    if l:pos[1] == l:pos0[1] && l:pos[2] == l:pos0[2]
+      break
+    endif
+    if l:pos[1] != l:pos0[1]
+      if empty(l:near)
+        let l:near = l:pos
+      else
+        let l:dif0 = abs(l:near[2] - l:pos0[2])
+        let l:dif1 = abs(l:pos[2] - l:pos0[2])
+        if l:dif0 > l:dif1
+          let l:near = l:pos
+        endif
+      endif
+    endif
+  endwhile
+  if empty(l:near)
+    call setpos('.', l:pos0)
+    return
+  endif
+  " Deleting unnecesary spaces in the nearest position
+  call setpos('.', l:near)
+  call search('\S\@<= ', 'b')
+  let l:spaces = getpos('.')
+  if !empty(l:spaces) && l:spaces[2] == l:near[2]
+    exe "normal! dw"
+    let l:near = getpos('.')
+  else
+    call setpos('.', l:near)
+  endif
+  " Now adding the spaces
+  if l:near[2] != l:pos0[2]
+    let l:dif = abs(l:near[2] - l:pos0[2])
+    if l:near[2] < l:pos0[2]
+      call setpos('.', l:near)
+      exe "normal! i".repeat(' ', l:dif)."\<Esc>l"
+    else
+      call setpos('.', l:pos0)
+      exe "normal! i".repeat(' ', l:dif)."\<Esc>"
+      call setpos('.', l:near)
+    endif
+  endif
+  if l:repeat > 1
+    call SadasantAlignRelative(l:repeat-1, a:reverse)
+  endif
+endfunction
