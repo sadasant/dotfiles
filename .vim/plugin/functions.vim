@@ -132,7 +132,8 @@ endfunction
 " Sadasant Align Relative
 " =======================
 
-function! SadasantAlignRelative(repeat, reverse)
+let s:sadasant_align_ask = ''
+function! SadasantAlignRelative(repeat, reverse, ask)
   let l:pos0 = getpos('.')
   let l:flags = ''
   let l:repeat = a:repeat
@@ -152,11 +153,23 @@ function! SadasantAlignRelative(repeat, reverse)
     endif
   endif
   " Taking the current character
-  exe 'normal! "ayl'
+  let l:ask = a:ask
+  if l:ask == 'ask'
+    call inputsave()
+    let l:a = input('Enter regex: ')
+    call inputrestore()
+    let s:sadasant_align_ask = l:a
+    let l:ask = 'stored'
+  elseif l:ask == 'stored'
+    let l:a = s:sadasant_align_ask
+  else
+    exe 'normal! "ayl'
+    let l:a = @a
+  endif
   " In near, we'll store the next match which is at the nearest column "
   let l:near = []
   while 1
-    call search(@a, l:flags)
+    call search(l:a, l:flags)
     let l:pos = getpos('.')
     let l:dif = abs(l:pos[1] - l:pos0[1])
     if l:dif > 1
@@ -204,6 +217,6 @@ function! SadasantAlignRelative(repeat, reverse)
     endif
   endif
   if l:repeat > 1
-    call SadasantAlignRelative(l:repeat-1, a:reverse)
+    call SadasantAlignRelative(l:repeat-1, a:reverse, l:ask)
   endif
 endfunction
