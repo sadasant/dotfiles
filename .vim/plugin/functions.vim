@@ -160,6 +160,11 @@ function! SadasantAlignRelative(repeat, reverse, ask)
     call inputrestore()
     let s:sadasant_align_ask = l:a
     let l:ask = 'stored'
+    " Update the current position to the nearest
+    " forward match of the requested query
+    exe "normal! h"
+    call search(l:a)
+    let l:pos0 = getpos('.')
   elseif l:ask == 'stored'
     let l:a = s:sadasant_align_ask
   else
