@@ -107,36 +107,36 @@ GCLONE() {
 
 # pushd quickly
 # http://unix.stackexchange.com/questions/31161/quick-directory-navigation-in-the-terminal
-function pd() {
-    if [[ $# -ge 1 ]]; then
-        choice="$1"
-    else
-        dirs -v
-        echo -n "? "
-        read choice
+function pls() {
+  if [[ $# -ge 1 ]]; then
+    choice="$1"
+  else
+    dirs -v
+    echo -n "? "
+    read choice
+  fi
+  if [[ -n $choice ]]; then
+    declare -i cnum="$choice"
+    if [[ $cnum != $choice ]]; then #choice is not numeric
+      choice=$(dirs -v | grep $choice | tail -1 | awk '{print $1}')
+      cnum="$choice"
+      if [[ -z $choice || $cnum != $choice ]];
+      then
+        echo "$choice not found"
+        return
+      fi
     fi
-    if [[ -n $choice ]]; then
-        declare -i cnum="$choice"
-        if [[ $cnum != $choice ]]; then #choice is not numeric
-            choice=$(dirs -v | grep $choice | tail -1 | awk '{print $1}')
-            cnum="$choice"
-            if [[ -z $choice || $cnum != $choice ]];
-            then
-                echo "$choice not found"
-                return
-            fi
-        fi
-        choice="+$choice"
-    fi
-    pushd $choice
+    choice="+$choice"
+  fi
+  pushd $choice
 }
 
 # HISTORY
-# HISTIGNORE
+
 # Suppresses duplicate commands, the simple invocation of 'ls' without any
 # arguments, and the shell built-ins bg, fg, and exit.
 HISTIGNORE="&:ls:[bf]g:exit"
-# HISTSIZE
+
 HISTFILESIZE=1000
 HISTSIZE=$HISTFILESIZE
 
