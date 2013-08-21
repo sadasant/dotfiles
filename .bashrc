@@ -107,7 +107,7 @@ GCLONE() {
 
 # pushd quickly
 # http://unix.stackexchange.com/questions/31161/quick-directory-navigation-in-the-terminal
-function pls() {
+function pd() {
   if [[ $# -ge 1 ]]; then
     choice="$1"
   else
