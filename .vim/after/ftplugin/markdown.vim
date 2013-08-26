@@ -187,6 +187,8 @@ imap \succnsim ⋩
 imap \curlyeqprec ⋞
 imap \curlyeqsucc ⋟
 
+imap \ident ≡
+
 " And and or
 imap \and ∧
 imap \or  ∨
