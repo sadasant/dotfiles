@@ -16,3 +16,4 @@ inoremap <buffer> \imp  import (<Enter>)<Esc>ko
 inoremap <buffer> \in   interface{}
 inoremap <buffer> \sw   switch  {<Enter><Enter>}<Up>case:<Esc>0<<Left>k$hi
 inoremap <buffer> \ty   type  {<Enter>}<Esc>k$hi
+inoremap <buffer> \sel  select {<Enter>}<Esc>O
