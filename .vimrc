@@ -12,7 +12,7 @@ set scrolloff=2                " lines around when scrolling
 set number                     " Line numbers, babe
 set ruler                      " Show the position of the cursor
 set list                       " Show hidden characters, but only tabs for me, sir
-set listchars=tab:»\ ,trail:-  " Show different characters
+set listchars=tab:\ \ ,trail:- " Show different characters
 set wildmenu                   " Help with the command line
 set laststatus=2               " show the status line always
 set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%y%t%=%c,%l/%L\ %P
