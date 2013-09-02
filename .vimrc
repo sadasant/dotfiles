@@ -2,19 +2,19 @@
 " By Daniel R. (sadasant.com)
 
 " Settings
-set showmatch                  " Show brace match
-set nocompatible               " Ignore the old vi
-set virtualedit=all            " Move beyond limits
-set backspace=eol,start,indent " Backspace everything on insert mode
-" set whichwrap=[,],h,l          " Wrap when moving towards the limit of the line
-set nowrap                     " Too long? no wrap
-set scrolloff=2                " lines around when scrolling
-set number                     " Line numbers, babe
-set ruler                      " Show the position of the cursor
-set list                       " Show hidden characters, but only tabs for me, sir
-set listchars=tab:\ \ ,trail:- " Show different characters
-set wildmenu                   " Help with the command line
-set laststatus=2               " show the status line always
+set showmatch                   " Show brace match
+set nocompatible                " Ignore the old vi
+set virtualedit=all             " Move beyond limits
+set backspace=eol,start,indent  " Backspace everything on insert mode
+" set whichwrap=[,],h,l         " Wrap when moving towards the limit of the line
+set nowrap                      " Too long? no wrap
+set scrolloff=2                 " lines around when scrolling
+set number                      " Line numbers, babe
+set ruler                       " Show the position of the cursor
+set list                        " Show hidden characters, but only tabs for me, sir
+set listchars=tab:\ \ ,trail:\  " Show different characters
+set wildmenu                    " Help with the command line
+set laststatus=2                " show the status line always
 set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%y%t%=%c,%l/%L\ %P
 set cursorline
 set modeline
