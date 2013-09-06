@@ -163,3 +163,6 @@ alias tick="$HOME/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
 # 256 colors in Tmux
 alias tmux='TERM=screen-256color tmux'
 # The line above breaks colors in the tty tmux
+
+# No more vi
+alias vi="vim"
