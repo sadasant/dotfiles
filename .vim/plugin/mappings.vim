@@ -30,6 +30,7 @@
 " <Tab>ep  Get someting from vpaste.net with curl, results in vertical split
 " <Tab>epf Post something to vpaste.net with curl, results in vertical split
 " <Tab>jq  Auto-format paragraph
+" <Tab>z   Open a shell in the current folder
 nmap <Tab>vr  :source ~/.vimrc<cr>
 nmap <Tab>vc  :source %
 nmap <Tab>w   :w<cr>
@@ -58,6 +59,7 @@ nmap <Tab>ep  :bel vnew  <bar> r!curl -\# vpaste.net/?raw<left><left><left><left
 nmap <Tab>epf :bel vnew  <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>jq  }k$o<Esc><c-o>v}k$Jgqq:s/ \+$//g<cr>
 nmap <Tab>p   :set invpaste<cr>
+nmap <Tab>z   :cd %:p:h \| sh<cr>
 
 " Mapping tab move 0..8
 nmap <Tab>tm1  :tabm 0<cr>
