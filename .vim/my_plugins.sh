@@ -5,7 +5,7 @@ repos=(
   "chrisbra/histwin.vim"
   "gregsexton/MatchTag"
   "jnwhiteh/vim-golang"
-  "mattn/zencoding-vim"
+  "mattn/emmet-vim"
   "sandeepcr529/Buffet.vim"
   "scrooloose/syntastic"
   "tpope/vim-fugitive"
