@@ -168,4 +168,6 @@ alias tmux='TERM=screen-256color tmux'
 alias vi="vim"
 
 # If fbterm, use it
-[ -n "$FBTERM" ] && export TERM=fbterm
+if [ -n "$FBTERM" ]; then
+  export TERM=fbterm
+fi
