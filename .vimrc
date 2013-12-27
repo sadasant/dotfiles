@@ -19,6 +19,9 @@ set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&f
 set cursorline
 set modeline
 
+" If you keep seeing <U+FEFF> at the begging of a file, remove them with setlocal nobomb
+" set nobomb
+
 " Folds
 function! MyFoldText()
   let nucolwidth = &fdc + &number*&numberwidth
