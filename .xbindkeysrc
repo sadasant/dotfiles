@@ -1,2 +1,22 @@
 "xrefresh"
   control+shift+r
+
+# Increase volume
+"amixer set Master playback 1+"
+   XF86AudioRaiseVolume
+
+# Decrease volume
+"amixer set Master playback 1-"
+   XF86AudioLowerVolume
+
+# Toggle sound
+"amixer set Master toggle"
+   XF86AudioMute
+
+# Inc backlight
+"xbacklight -inc 40"
+   XF86MonBrightnessUp
+
+# Dec backlight
+"xbacklight -dec 40"
+   XF86MonBrightnessDown
