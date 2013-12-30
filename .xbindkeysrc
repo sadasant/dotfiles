@@ -14,9 +14,9 @@
    XF86AudioMute
 
 # Inc backlight
-"xbacklight -inc 40"
+"xbacklight -inc 20"
    XF86MonBrightnessUp
 
 # Dec backlight
-"xbacklight -dec 40"
+"xbacklight -dec 20"
    XF86MonBrightnessDown
