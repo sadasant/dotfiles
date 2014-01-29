@@ -91,3 +91,5 @@ let g:syntastic_mode_map={
   \ 'passive_filetypes': ['html']
   \ }
 
+" Start interactive EasyAlign in visual mode
+vmap <Enter> <Plug>(EasyAlign)
