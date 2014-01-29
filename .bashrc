@@ -143,6 +143,7 @@ HISTSIZE=$HISTFILESIZE
 # PATH
 PATH="$PATH:$HOME/bin"
 PATH="$PATH:$HOME/code/github/sadasant/dotfiles/bin"
+PATH="$PATH:/root/.gem/ruby/2.0.0/bin"
 
 # GOPATH
 export GOPATH="$HOME/code/go"

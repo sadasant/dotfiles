@@ -1,5 +1,6 @@
 " JavaScript
 
+setlocal shiftwidth=2
 inoremap <buffer> \fn   function() {<Enter>}<Esc>k$hhi
 inoremap <buffer> \sT   setTimeout(, 000)<Esc>5hi
 inoremap <buffer> \sI   setInterval(, 000)<Esc>5hi

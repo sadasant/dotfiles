@@ -1,4 +1,3 @@
 " HTML
 
-setlocal noexpandtab
-setlocal shiftwidth=4
+setlocal shiftwidth=2
