@@ -7,6 +7,8 @@ repos=(
   "jnwhiteh/vim-golang"
   "junegunn/vim-easy-align"
   "mattn/emmet-vim"
+  "mattn/gist-vim"
+  "mattn/webapi-vim"
   "sandeepcr529/Buffet.vim"
   "scrooloose/syntastic"
   "tpope/vim-fugitive"
