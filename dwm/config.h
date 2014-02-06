@@ -51,9 +51,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-// static const char *termcmd[]  = { "st", NULL };
 static const char *termcmd[]  = { "uxterm", NULL };
 
 static Key keys[] = {
@@ -75,7 +73,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, // Maximised mode
 	{ MODKEY,                       XK_space,  setlayout,      {0} },                // Switch modes
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },                // Switch floating mode
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },        // View n desktop
+//	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },        // View n desktop
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },        // Move current window to n desktop (0 for all)
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },         // Don't know!! D:
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },         // Don't know!! D:
