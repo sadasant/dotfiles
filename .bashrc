@@ -48,6 +48,9 @@ NetCheck() {
   done
 }
 
+# From where am I connected?
+whereami() { echo `whois $(curl -s ifconfig.me/ip) | grep -iE ^country: | awk '{print $2}' | uniq`; }
+
 # Easy git update
 # Usage:
 #
