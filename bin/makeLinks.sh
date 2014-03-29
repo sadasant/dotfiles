@@ -4,6 +4,7 @@ ln -sf /home/$USER/code/github/sadasant/dotfiles/.bashrc /home/$USER/.bashrc
 ln -sf /home/$USER/code/github/sadasant/dotfiles/.inputrc /home/$USER/.inputrc
 ln -sf /home/$USER/code/github/sadasant/dotfiles/.tmux.conf /home/$USER/.tmux.conf
 ln -sf /home/$USER/code/github/sadasant/dotfiles/.gitconfig /home/$USER/.gitconfig
+ln -sf /home/$USER/code/github/sadasant/dotfiles/.asoundrc /home/$USER/.asoundrc
 
 # vim dirs
 ln -sf /home/$USER/code/github/sadasant/dotfiles/.vimrc /home/$USER/.vimrc
