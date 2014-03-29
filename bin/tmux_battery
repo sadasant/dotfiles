@@ -2,6 +2,12 @@
 
 if [ `which acpi` ]; then
   batt=$(acpi -b | cut -d" " -f4 | cut -d"%" -f1)
-  batt+="%"
-  echo " $batt"
+  echo " $batt%"
+  # If the battery is lower than 20% and we haven't executed xmessage yet, show an alert
+  if test $batt -le 20 && ! ps -e | grep xmessage --quiet; then
+    xmessage -center -geometry 110x80 \
+"WARNING
+LOW BATTERY
+ONLY $batt% LEFT"
+  fi
 fi
