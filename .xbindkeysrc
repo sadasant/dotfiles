@@ -1,16 +1,14 @@
-"xrefresh"
-  control+shift+r
-
 # Increase volume
-"amixer set Master playback 1+"
+"if hash pulseaudio-ctl; then pulseaudio-ctl up; else amixer set Master playback 1+; fi"
    XF86AudioRaiseVolume
 
 # Decrease volume
-"amixer set Master playback 1-"
+"if hash pulseaudio-ctl; then pulseaudio-ctl down; else amixer set Master playback 1-; fi"
    XF86AudioLowerVolume
 
 # Toggle sound
 "amixer set Master toggle"
+"if hash pulseaudio-ctl; then pulseaudio-ctl mute; else amixer set Master toggle; fi"
    XF86AudioMute
 
 # Inc backlight
