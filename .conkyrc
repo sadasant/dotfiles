@@ -8,7 +8,7 @@ double_buffer   yes
 
 use_xft              yes
 override_utf8_locale no
-xftfont              fixed:size=9
+xftfont              Fixed:size=11
 xftalpha             1
 uppercase            yes
 text_buffer_size     2048
@@ -18,9 +18,9 @@ own_window             yes
 own_window_transparent no
 own_window_type        override
 
-minimum_size 1024 1
+minimum_size 2048 400
 alignment    top_left
-gap_x        10
+gap_x        16
 gap_y        16
 
 draw_shades        no
@@ -33,6 +33,7 @@ border_width       0
 default_color         333333
 default_shade_color   333333
 default_outline_color 000000
+default_bar_size      30 11
 
 cpu_avg_samples      2
 net_avg_samples      2
@@ -51,29 +52,28 @@ ${color #ffffff}${font LiberationMono-11}
   █ █
 
   █ █
-${font :bold:size=8}
+${font}
 sadasant
- ${time %d/%m/%g}
-   ${time %H:%M}${font}
-${color #464646}
-USRS  ${user_number}
-OVPN  ${execi 3 if [ "$(pidof openvpn)" ]; then echo "Yup."; else echo "Nop."; fi}
+${time %d/%m/%g}
+${time %H:%M}${color #464646}
+${voffset -235}
+${offset 1257}USRS ${user_number}
+${offset 1257}OVPN ${execi 3 if [ "$(pidof openvpn)" ]; then echo "Yup."; else echo "Nop."; fi}
 
-BAT   ${battery_bar 9,30 BAT1}
+${offset 1257}BAT  ${battery_bar 11,30 BAT1}
+${offset 1257}RAM  ${memgraph 11,30}
+${offset 1257}CPU  ${cpugraph 11,30}${if_up wlo1}
 
-HOME  ${fs_bar 9,30 /home}
-SWP   ${swapbar 9,30}
-DISK  ${diskiograph 9,30}
+${offset 1257}HOME ${fs_bar 11,30 /home}
+${offset 1257}SWP  ${swapbar 11,30}
+${offset 1257}DISK ${diskiograph 11,30}
 
-RAM   ${memgraph 9,30}
-CPU   ${cpugraph 9,30}${if_up wlo1}
+${offset 1257}SIG  ${wireless_link_bar 11,30 wlo1}
+${offset 1257}wUP  ${upspeedgraph wlo1 11,30}
+${offset 1257}wDW  ${downspeedgraph wlo1 11,30}${endif}${if_up eth0}lUP   ${upspeedgraph eth0 11,30}
+${offset 1257}lDW  ${downspeedgraph eth0 11,30}${endif}
 
-SIG   ${wireless_link_bar 9,30 wlo1}
-wUP   ${upspeedgraph wlo1 9,30}
-wDW   ${downspeedgraph wlo1 9,30}${endif}${if_up eth0}lUP   ${upspeedgraph eth0 9,30}
-lDW   ${downspeedgraph eth0 9,30}${endif}
-
-${font :bold:size=8}${color #ffffff}MOCP${font}
-${color #464646}${execi 3 if [ "$(pidof mocp)" ]; then mocp -Q "%song\nby %artist\nfrom %album\n%ct of %tt" | fold -s -w 50; else echo "Not running."; fi}
-
-${color}
+${voffset 408}
+${color #ffffff}MOCP${font}
+${color #464646}${execi 3 if [ "$(pidof mocp)" ]; then mocp -Q "%song\nby %artist\nfrom %album\n%ct of %tt"; else echo "Not running."; fi}
+# ${execbar echo $((`mocp -Q %cs'*100/'%ts`))}
