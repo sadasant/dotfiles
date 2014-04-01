@@ -21,7 +21,7 @@ own_window_type        override
 minimum_size 1024 1
 alignment    top_left
 gap_x        10
-gap_y        10
+gap_y        16
 
 draw_shades        no
 draw_outline       no
@@ -57,18 +57,23 @@ sadasant
    ${time %H:%M}${font}
 ${color #464646}
 USRS  ${user_number}
-HOME  ${fs_bar 9,30 /home}
+OVPN  ${execi 3 if [ "$(pidof openvpn)" ]; then echo "Yup."; else echo "Nop."; fi}
+
 BAT   ${battery_bar 9,30 BAT1}
+
+HOME  ${fs_bar 9,30 /home}
 SWP   ${swapbar 9,30}
 DISK  ${diskiograph 9,30}
+
 RAM   ${memgraph 9,30}
 CPU   ${cpugraph 9,30}${if_up wlo1}
+
 SIG   ${wireless_link_bar 9,30 wlo1}
 wUP   ${upspeedgraph wlo1 9,30}
 wDW   ${downspeedgraph wlo1 9,30}${endif}${if_up eth0}lUP   ${upspeedgraph eth0 9,30}
 lDW   ${downspeedgraph eth0 9,30}${endif}
 
 ${font :bold:size=8}${color #ffffff}MOCP${font}
-${color #464646}${execi 1 if [ "$(pidof mocp)" ]; then mocp -Q "%song\nby %artist\nfrom %album\n%ct of %tt" | fold -s -w 50; else echo "Not running."; fi}
+${color #464646}${execi 3 if [ "$(pidof mocp)" ]; then mocp -Q "%song\nby %artist\nfrom %album\n%ct of %tt" | fold -s -w 50; else echo "Not running."; fi}
 
 ${color}
