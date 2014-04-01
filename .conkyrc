@@ -18,10 +18,11 @@ own_window             yes
 own_window_transparent no
 own_window_type        override
 
-minimum_size 2048 400
-alignment    top_left
-gap_x        16
-gap_y        16
+minimum_size  1333 400
+maximum_width 1333
+alignment     top_left
+gap_x         16
+gap_y         16
 
 draw_shades        no
 draw_outline       no
@@ -30,10 +31,10 @@ draw_graph_borders no
 stippled_borders   0
 border_width       0
 
-default_color         333333
-default_shade_color   333333
+default_color         464646
+default_shade_color   464646
 default_outline_color 000000
-default_bar_size      30 11
+default_bar_size      27 11
 
 cpu_avg_samples      2
 net_avg_samples      2
@@ -55,25 +56,25 @@ ${color #ffffff}${font LiberationMono-11}
 ${font}
 sadasant
 ${time %d/%m/%g}
-${time %H:%M}${color #464646}
+${time %H:%M}${color}
 ${voffset -235}
-${offset 1257}USRS ${user_number}
-${offset 1257}OVPN ${execi 3 if [ "$(pidof openvpn)" ]; then echo "Yup."; else echo "Nop."; fi}
+${alignr}USRS ${user_number}
+${alignr}OVPN ${execi 3 if [ "$(pidof openvpn)" ]; then echo "Yup"; else echo "Nop"; fi}
 
-${offset 1257}BAT  ${battery_bar 11,30 BAT1}
-${offset 1257}RAM  ${memgraph 11,30}
-${offset 1257}CPU  ${cpugraph 11,30}${if_up wlo1}
+${alignr}BAT  ${battery_bar 11,27 BAT1}
+${alignr}RAM  ${memgraph 11,27}
+${alignr}CPU  ${cpugraph 11,27}${if_up wlo1}
 
-${offset 1257}HOME ${fs_bar 11,30 /home}
-${offset 1257}SWP  ${swapbar 11,30}
-${offset 1257}DISK ${diskiograph 11,30}
+${alignr}HOME ${fs_bar 11,27 /home}
+${alignr}SWP  ${swapbar 11,27}
+${alignr}DISK ${diskiograph 11,27}
 
-${offset 1257}SIG  ${wireless_link_bar 11,30 wlo1}
-${offset 1257}wUP  ${upspeedgraph wlo1 11,30}
-${offset 1257}wDW  ${downspeedgraph wlo1 11,30}${endif}${if_up eth0}lUP   ${upspeedgraph eth0 11,30}
-${offset 1257}lDW  ${downspeedgraph eth0 11,30}${endif}
+${alignr}SIG  ${wireless_link_bar 11,27 wlo1}
+${alignr}wUP  ${upspeedgraph wlo1 11,27}
+${alignr}wDW  ${downspeedgraph wlo1 11,27}${endif}${if_up eth0}lUP   ${upspeedgraph eth0 11,27}
+${alignr}lDW  ${downspeedgraph eth0 11,27}${endif}
 
 ${voffset 408}
-${color #ffffff}MOCP${font}
-${color #464646}${execi 3 if [ "$(pidof mocp)" ]; then mocp -Q "%song\nby %artist\nfrom %album\n%ct of %tt"; else echo "Not running."; fi}
+${color #ffffff}MOCP${font}${color}
+${execi 3 if [ "$(pidof mocp)" ]; then mocp -Q "%song\nby %artist\nfrom %album\n%ct of %tt"; else echo "Not running."; fi}
 # ${execbar echo $((`mocp -Q %cs'*100/'%ts`))}
