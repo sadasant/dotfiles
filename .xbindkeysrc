@@ -7,9 +7,20 @@
    XF86AudioLowerVolume
 
 # Toggle sound
-"amixer set Master toggle"
 "if hash pulseaudio-ctl; then pulseaudio-ctl mute; else amixer set Master toggle; fi"
    XF86AudioMute
+
+# Play, stop
+"if [ "$(pidof mocp)" ]; then mocp --toggle-pause; fi;"
+   XF86AudioPlay
+
+# Next
+"if [ "$(pidof mocp)" ]; then mocp --next; fi;"
+   XF86AudioNext
+
+# Prev
+"if [ "$(pidof mocp)" ]; then mocp --prev; fi;"
+   XF86AudioPrev
 
 # Inc backlight
 "xbacklight -inc 5"
