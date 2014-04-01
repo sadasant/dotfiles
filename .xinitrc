@@ -6,7 +6,7 @@ setxkbmap -option terminate:ctrl_alt_bksp
 
 xbindkeys
 
-# conky | while read -r; do xsetroot -name "$REPLY"; done &""
+conky # conky | while read -r; do xsetroot -name "$REPLY"; done &""
 
 # dwm clock
 while true; do
