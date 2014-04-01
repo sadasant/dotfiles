@@ -1,52 +1,74 @@
-#.conkyrc
+# .conkyrc
 # by Daniel Rodríguez <http://sadasant.com/>
-# 2012-10-03
+# 2014-04-01
 
-# run
-  total_run_times  0
-  update_interval  0.5
-  double_buffer   yes
-  # no_buffers  yes
+total_run_times 0
+update_interval 1
+double_buffer   yes
 
-# font
-  use_xft  yes
-  xftfont  fixed:size=9
-  xftalpha  1
-  uppercase  yes
-  text_buffer_size  2048
+use_xft              yes
+override_utf8_locale no
+xftfont              fixed:size=9
+xftalpha             1
+uppercase            yes
+text_buffer_size     2048
 
-# window
-  background  yes
-  own_window  yes
-  own_window_transparent no
-  own_window_type override
-  # own_window_type  desktop
-  # own_window_hints  undecorated,below,sticky,skip_taskbar,skip_pager
+background             yes
+own_window             yes
+own_window_transparent no
+own_window_type        override
 
-# position
-  minimum_size  1024 1
-  alignment  top_left
-  gap_x 5
-  gap_y 1
+minimum_size 1024 1
+alignment    top_left
+gap_x        10
+gap_y        10
 
-# border
-  draw_shades   no
-  draw_outline  no
-  draw_borders  no
-  draw_graph_borders  no
-  stippled_borders  0
-  border_width  0
+draw_shades        no
+draw_outline       no
+draw_borders       no
+draw_graph_borders no
+stippled_borders   0
+border_width       0
 
-# colors
-  default_color 333333
-  default_shade_color 333333
-  default_outline_color  000000
+default_color         333333
+default_shade_color   333333
+default_outline_color 000000
 
-# setup
-  cpu_avg_samples 2
-  net_avg_samples 2
-  override_utf8_locale yes
-  use_spacer none
+cpu_avg_samples      2
+net_avg_samples      2
+override_utf8_locale yes
+use_spacer           none
 
 TEXT
-${font :bold:size=8}${color #ffffff}sadasant${color}${font} ${color #333333} {${user_number}}  HOME:${fs_bar 9,30 /home}   BAT:${battery_bar 9,30 BAT1}   SWP:${swapbar 9,30}   DISK: ${diskiograph 9,30}   RAM:${memgraph 9,30}   CPU:${cpugraph 9,30}   SIG:${wireless_link_bar 9,30 wlan0}   ${if_up wlan0}wUP:${upspeedgraph wlan0 9,30}   wDW:${downspeedgraph wlan0 9,30}${endif}${if_up eth0}   lUP:${upspeedgraph eth0 9,30}   lDW:${downspeedgraph eth0 9,30}${color #333333} ${color}${alignr}${color #ffffff}${font :bold:size=8}${time %d/%m/%g %H:%M}    ${font}${color}
+${color #ffffff}${font LiberationMono-11}
+  █ █
+ █████
+███████
+███████
+█  █  █
+███████
+  ███
+  █ █
+
+  █ █
+${font :bold:size=8}
+sadasant
+ ${time %d/%m/%g}
+   ${time %H:%M}${font}
+${color #464646}
+USRS  ${user_number}
+HOME  ${fs_bar 9,30 /home}
+BAT   ${battery_bar 9,30 BAT1}
+SWP   ${swapbar 9,30}
+DISK  ${diskiograph 9,30}
+RAM   ${memgraph 9,30}
+CPU   ${cpugraph 9,30}${if_up wlo1}
+SIG   ${wireless_link_bar 9,30 wlo1}
+wUP   ${upspeedgraph wlo1 9,30}
+wDW   ${downspeedgraph wlo1 9,30}${endif}${if_up eth0}lUP   ${upspeedgraph eth0 9,30}
+lDW   ${downspeedgraph eth0 9,30}${endif}
+
+${font :bold:size=8}${color #ffffff}MOCP${font}
+${color #464646}${execi 1 if [ "$(pidof mocp)" ]; then mocp -Q "%song\nby %artist\nfrom %album\n%ct of %tt" | fold -s -w 50; else echo "Not running."; fi}
+
+${color}
