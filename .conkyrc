@@ -72,8 +72,8 @@ ${alignr}wUP ${upspeedgraph wlo1 11,27}
 ${alignr}wDW ${downspeedgraph wlo1 11,27}${endif}${if_up eth0}lUP   ${upspeedgraph eth0 11,27}
 ${alignr}lDW ${downspeedgraph eth0 11,27}${endif}
 
-${voffset 408}
-${execi 3 if [ ! "$(pidof mocp)" ]; then echo -e "\n\n\n\n"; fi}
+${voffset 418}
+${execi 3 if [ ! "$(pidof mocp)" ]; then echo -e "\n\n\n"; fi}
 ${color #ffffff}MOCP${font}${color}
 ${execi 3 if [ "$(pidof mocp)" ]; then mocp -Q "%song\nby %artist\nfrom %album\n%ct of %tt"; else echo "Not running."; fi}
 # ${execbar echo $((`mocp -Q %cs'*100/'%ts`))}
