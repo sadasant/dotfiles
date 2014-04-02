@@ -62,9 +62,9 @@ ${alignr}BAT ${battery_bar 11,27 BAT1}
 ${alignr}RAM ${memgraph 11,27}
 ${alignr}CPU ${cpugraph 11,27}${if_up wlo1}
 
-${alignr}HOME ${fs_bar 11,27 /home}
-${alignr}SAWP ${swapbar 11,27}
-${alignr}DISK ${diskiograph 11,27}
+${alignr}HOM ${fs_bar 11,27 /home}
+${alignr}SWP ${swapbar 11,27}
+${alignr}DSK ${diskiograph 11,27}
 
 ${alignr}VPN ${execi 3 if [ "$(pidof openvpn)" ]; then echo "Yup"; else echo "Nop"; fi}
 ${alignr}SIG ${wireless_link_bar 11,27 wlo1}
