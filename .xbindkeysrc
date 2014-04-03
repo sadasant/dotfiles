@@ -1,26 +1,34 @@
 # Increase volume
-"if hash pulseaudio-ctl; then pulseaudio-ctl up; else amixer set Master playback 1+; fi"
+"if hash pulseaudio-ctl; then pulseaudio-ctl up; fi; amixer set Master playback 1+"
    XF86AudioRaiseVolume
 
 # Decrease volume
-"if hash pulseaudio-ctl; then pulseaudio-ctl down; else amixer set Master playback 1-; fi"
+"if hash pulseaudio-ctl; then pulseaudio-ctl down; fi; amixer set Master playback 1-"
    XF86AudioLowerVolume
 
 # Toggle sound
-"if hash pulseaudio-ctl; then pulseaudio-ctl mute; else amixer set Master toggle; fi"
+"if hash pulseaudio-ctl; then pulseaudio-ctl mute; fi; amixer set Master toggle"
    XF86AudioMute
 
-# Play, stop
+# Play, pause
 "if [ "$(pidof mocp)" ]; then mocp --toggle-pause; fi;"
    XF86AudioPlay
+
+# Prev
+"if [ "$(pidof mocp)" ]; then mocp --prev; fi;"
+   XF86AudioPrev
 
 # Next
 "if [ "$(pidof mocp)" ]; then mocp --next; fi;"
    XF86AudioNext
 
-# Prev
-"if [ "$(pidof mocp)" ]; then mocp --prev; fi;"
-   XF86AudioPrev
+# Go to the beginning of the song
+"if [ "$(pidof mocp)" ]; then mocp --jump 0s; fi;"
+   Alt + XF86AudioPrev
+
+# Toggle Shuffle
+"if [ "$(pidof mocp)" ]; then mocp --toggle shuffle; fi;"
+   Alt + XF86AudioNext
 
 # Inc backlight
 "xbacklight -inc 5"
