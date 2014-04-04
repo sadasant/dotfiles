@@ -1,3 +1,1 @@
-if [ "$(pidof vim)" ] && [ "$(pidof tmux)" ]; then
-  (cd ~/; xmacroplay "$DISPLAY" < $1 > /dev/null 2>&1 &)
-fi
+(cd ~/; xmacroplay "$DISPLAY" < $1 > /dev/null 2>&1 &)
