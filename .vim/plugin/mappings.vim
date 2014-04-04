@@ -34,6 +34,7 @@
 " <Tab>c   Send the last yank to the clipboard
 " <Tab>p   Paste from the keyboard in a secure way
 " <Tab>P   Change the insert mode (paste, nopaste)
+" <Tab>m   Run an xmacro (needs our run_xmacro script in bin/ (and bin/ in the $PATH))
 nmap <Tab>vr  :source ~/.vimrc<cr>
 nmap <Tab>vc  :source %
 nmap <Tab>w   :w<cr>
@@ -65,6 +66,7 @@ nmap <Tab>z   :cd %:p:h \| sh<cr>
 nmap <Tab>c   :call system('xclip', @0)<cr>
 nmap <Tab>p   :set paste <cr> :r!xclip -o<cr> :set nopaste<cr>
 nmap <Tab>P   :set invpaste<cr>
+nmap <Tab>m   :!run_xmacro ~/.xmacros/
 
 " Mapping tab move 0..8
 nmap <Tab>tm1  :tabm 0<cr>

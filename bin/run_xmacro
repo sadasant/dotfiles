@@ -1,0 +1,3 @@
+if [ "$(pidof vim)" ] && [ "$(pidof tmux)" ]; then
+  (cd ~/; xmacroplay "$DISPLAY" < $1 >> /dev/null &)
+fi
