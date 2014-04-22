@@ -1,13 +1,13 @@
 # Increase volume
-"if hash pulseaudio-ctl; then pulseaudio-ctl up; fi; amixer set Master playback 1+"
+"if pgrep pulseaudio-ctl; then pulseaudio-ctl up; else amixer set Master playback 1+; fi"
    XF86AudioRaiseVolume
 
 # Decrease volume
-"if hash pulseaudio-ctl; then pulseaudio-ctl down; fi; amixer set Master playback 1-"
+"if pgrep pulseaudio-ctl; then pulseaudio-ctl down; else amixer set Master playback 1-; fi"
    XF86AudioLowerVolume
 
 # Toggle sound
-"if hash pulseaudio-ctl; then pulseaudio-ctl mute; fi; amixer set Master toggle"
+"if pgrep pulseaudio-ctl; then pulseaudio-ctl mute; else amixer set Master toggle; fi"
    XF86AudioMute
 
 # Play, pause
