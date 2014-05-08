@@ -47,6 +47,7 @@ set ignorecase
 set smartcase  " ignore case only when all is lowercase
 set incsearch  " window to the current match
 set magic      " search with \n like characters
+set hlsearch   " highlight search
 
 " No Backups
 set noswapfile
