@@ -126,6 +126,20 @@ nmap <Tab>gh :Gsplit
 nmap <Tab>gv :Gvsplit 
 nmap <Tab>gt :Gtabedit 
 
+" Replace vim's default p behavior
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+
+function! s:Repl()
+    let s:restore_reg = @"
+    return "p@=RestoreRegister()\<cr>"
+endfunction
+
+" NB: this supports "rp that replaces the selection by the contents of @r
+vnoremap <silent> <expr> p <sid>Repl()
+
 " Custom functions
 " =================
 
