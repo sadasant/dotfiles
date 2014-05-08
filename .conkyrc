@@ -8,7 +8,7 @@ double_buffer   yes
 
 use_xft              yes
 override_utf8_locale no
-xftfont              Fixed:size=11
+xftfont              Terminus:size=12
 xftalpha             1
 uppercase            yes
 text_buffer_size     2048
@@ -57,7 +57,7 @@ ${font}
 sadasant
 ${time %d/%m/%g}
 ${time %H:%M}${color}
-${voffset -235}
+${voffset -240}
 ${alignr}BAT ${battery_bar 11,27 BAT1}
 ${alignr}RAM ${memgraph 11,27}
 ${alignr}CPU ${cpugraph 11,27}${if_up wlo1}
@@ -72,7 +72,7 @@ ${alignr}wUP ${upspeedgraph wlo1 11,27}
 ${alignr}wDW ${downspeedgraph wlo1 11,27}${endif}${if_up eth0}lUP   ${upspeedgraph eth0 11,27}
 ${alignr}lDW ${downspeedgraph eth0 11,27}${endif}
 
-${voffset 418}
+${voffset 405}
 ${execi 3 if [ ! "$(pidof mocp)" ]; then echo -e "\n\n\n"; fi}
 ${color #ffffff}MOCP${font}${color}
 ${execi 3 if [ "$(pidof mocp)" ]; then mocp -Q "%song\nby %artist\nfrom %album\n%ct of %tt"; else echo "Not running."; fi}
