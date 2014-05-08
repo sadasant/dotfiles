@@ -1,15 +1,26 @@
 xterm*Background:  black
 xterm*Foreground:  grey
 xterm*cursorColor: white
-xterm*faceName:    Terminus:size=10
+xterm*faceName:    xft:Terminus:pixelsize=14
 xterm*utf8:        2
 xterm*visualBell:  True
 xterm*termName:    xterm-256color
 
-urxvt*background:   black
-urxvt*foreground:   grey
-urxvt*cursorColor:  white
-urxvt.imLocale:     en_US.UTF-8
+urxvt*background:      black
+urxvt*foreground:      grey
+urxvt*cursorColor:     white
+urxvt*font:            xft:Terminus:pixelsize=14
+urxvt*visualBell:      true
+urxvt*urgentOnBell:    true
+urxvt*secondaryScroll: true
+urxvt.scrollBar:       false
+urxvt.imLocale:        en_US.UTF-8
+!urxvt.fading:          20
+
+urxvt*urlLauncher:     /usr/bin/chromium
+urxvt*matcher.button:  1
+!  - catch ugly URLs
+urxvt.cutchars:        `()'*<>[]{|}"
 
 xmessage*background:            grey8
 xmessage*foreground:            white
