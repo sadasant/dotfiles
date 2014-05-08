@@ -163,9 +163,12 @@ PATH="$PATH:$HOME/.gem/ruby/2.0.0/bin"
 # linux-tick-processor
 alias tick="$HOME/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
 
-# 256 colors in Tmux
-alias tmux='TERM=screen-256color tmux'
-# The line above breaks colors in the tty tmux
+if [ "$TERM" == "linux" ]; then
+    # 256 colors in Tmux
+    alias tmux='TERM=screen-256color tmux'
+else
+    alias tmux='tmux -f ~/.tmux.vb.conf'
+fi
 
 # No more vi
 alias vi="vim"
