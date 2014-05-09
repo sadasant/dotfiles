@@ -69,8 +69,9 @@ ${alignr}DSK ${diskiograph 11,27}
 ${alignr}VPN ${execi 3 if [ "$(pidof openvpn)" ]; then echo "Yup"; else echo "Nop"; fi}
 ${alignr}SIG ${wireless_link_bar 11,27 wlo1}
 ${alignr}wUP ${upspeedgraph wlo1 11,27}
-${alignr}wDW ${downspeedgraph wlo1 11,27}${endif}${if_up eth0}lUP   ${upspeedgraph eth0 11,27}
-${alignr}lDW ${downspeedgraph eth0 11,27}${endif}
+${alignr}wDW ${downspeedgraph wlo1 11,27}${endif}${if_up eno1}
+${alignr}lUP ${upspeedgraph eno1 11,27}
+${alignr}lDW ${downspeedgraph eno1 11,27}${endif}
 
 ${voffset 405}
 ${execi 3 if [ ! "$(pidof mocp)" ]; then echo -e "\n\n\n"; fi}
