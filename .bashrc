@@ -172,6 +172,9 @@ fi
 # No more vi
 alias vi="vim"
 
+# I git too much
+alias g="git"
+
 # If fbterm, use it
 if [ -n "$FBTERM" ]; then
   export TERM=fbterm
