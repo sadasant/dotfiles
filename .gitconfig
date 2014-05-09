@@ -1,5 +1,5 @@
 [user]
-	name = Daniel Rodrí­guez
+	name  = Daniel Rodrí­guez
 	email = sadasant@gmail.com
 [github]
 	user = sadasant
@@ -16,20 +16,20 @@
 [color]
 	status = auto
 	branch = auto
-	diff = auto
+	diff   = auto
 	interactive = auto
 [alias]
-	a = add
-	c = commit -am
+	a   = add
+	c   = commit -am
 	cam = commit --amend
-	co = checkout
+	co  = checkout
 	cob = checkout -b
-	d = diff
-	l = log
-	ls = log --stat
-	p = push
-	r = reset
+	d   = diff
+	l   = log
+	ls  = log --stat
+	p   = push
+	r   = reset
 	rsh = reset --soft HEAD^
-	s = status
-	graph = log --graph --color --all --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
+	s   = status
+	graph    = log --graph --color --all --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
     merge-to = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git checkout $1 -q && git merge $branch && git checkout $branch -q; };f"
