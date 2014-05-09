@@ -69,11 +69,11 @@ ${alignr}DSK ${diskiograph 11,27}
 ${alignr}VPN ${execi 3 if [ "$(pidof openvpn)" ]; then echo "Yup"; else echo "Nop"; fi}
 ${alignr}SIG ${wireless_link_bar 11,27 wlo1}
 ${alignr}wUP ${upspeedgraph wlo1 11,27}
-${alignr}wDW ${downspeedgraph wlo1 11,27}${endif}${if_up eno1}
+${alignr}wDW ${downspeedgraph wlo1 11,27}
 ${alignr}lUP ${upspeedgraph eno1 11,27}
-${alignr}lDW ${downspeedgraph eno1 11,27}${endif}
+${alignr}lDW ${downspeedgraph eno1 11,27}
 
-${voffset 405}
+${voffset 375}
 ${execi 3 if [ ! "$(pidof mocp)" ]; then echo -e "\n\n\n"; fi}
 ${color #ffffff}MOCP${font}${color}
 ${execi 3 if [ "$(pidof mocp)" ]; then mocp -Q "%song\nby %artist\nfrom %album\n%ct of %tt"; else echo "Not running."; fi}
