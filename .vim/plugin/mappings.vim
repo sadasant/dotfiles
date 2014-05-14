@@ -36,6 +36,9 @@
 " <Tab>P   Change the insert mode (paste, nopaste)
 " <Tab>m   Run an xmacro (needs our run_xmacro script in bin/ (and bin/ in the $PATH))
 " <Tab>/   Clear the last search
+" <Tab>bc  Call to tmux new window in the current session, with the directory of the current file.
+" <Tab>b"  Splits vertically tmux's current window in the current session, with the directory of the current file.
+" <Tab>b%  Splits horizontally tmux's current window in the current session, with the directory of the current file.
 nmap <Tab>vr  :source ~/.vimrc<cr>
 nmap <Tab>vc  :source %
 nmap <Tab>w   :w<cr>
@@ -69,6 +72,9 @@ nmap <Tab>p   :set paste<cr>:call setreg("\"", system("xclip -o"))<cr>p:set nopa
 nmap <Tab>P   :set invpaste<cr>
 nmap <Tab>m   :!run_xmacro ~/.xmacros/
 nmap <Tab>/   :let @/ = ""<cr>
+nmap <Tab>bc  :call system('tmux new-window -F "#S" -c "'.expand('%:p:h').'"')<cr>
+nmap <Tab>b"  :call system('tmux split-window -F "#S" -c "'.expand('%:p:h').'"')<cr>
+nmap <Tab>b%  :call system('tmux split-window -h -F "#S" -c "'.expand('%:p:h').'"')<cr>
 
 " Mapping tab move 0..8
 nmap <Tab>tm1  :tabm 0<cr>
