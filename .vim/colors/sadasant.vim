@@ -47,7 +47,7 @@ hi LongLineWarning  ctermfg=NONE        ctermbg=NONE        cterm=underline
 hi ModeMsg          ctermfg=16          ctermbg=8           cterm=BOLD
 
 hi MatchParen       ctermfg=white       ctermbg=darkgray    cterm=BOLD
-hi Search           ctermfg=black       ctermbg=yellow      cterm=NONE
+hi Search           ctermfg=white       ctermbg=237         cterm=NONE
 
 hi Comment          ctermfg=237         ctermbg=NONE        cterm=NONE
 hi Todo             ctermfg=red         ctermbg=NONE        cterm=NONE
