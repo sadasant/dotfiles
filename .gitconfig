@@ -20,6 +20,7 @@
 	interactive = auto
 [alias]
 	a   = add
+	b   = branch
 	c   = commit -am
 	cam = commit --amend
 	co  = checkout
