@@ -158,7 +158,7 @@ PATH="$PATH:$HOME/soft/dev/android-sdk-linux/platform-tools"
 
 # Heroku bind
 # alias heroku='~/heroku/heroku-client/heroku'
-PATH="$PATH:$HOME/.gem/ruby/2.0.0/bin"
+PATH="$PATH:$HOME/.gem/ruby/2.1.0/bin"
 
 # linux-tick-processor
 alias tick="$HOME/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
