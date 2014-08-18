@@ -35,3 +35,4 @@
 	graph    = log --graph --color --all --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
 	sup      = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git push --set-upstream origin $branch; };f"
 	merge-to = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git checkout $1 -q && git merge $branch && git checkout $branch -q; };f"
+
