@@ -68,7 +68,7 @@ function! SadasantFind(type, ...)
   syntax region foundNr start=/^ / end=/\d\( \|> *\)/
   highlight link foundNr LineNr
   " Fill with grep
-  let l:grep = split(system("grep -rin ".match." ".expand("#:p:h")), '\v\n')
+  let l:grep = split(system("grep -rinI \"".match."\" ".expand("#:p:h")), '\v\n')
   let s:grep = {}
   let l:lines = []
   let l:count = 0

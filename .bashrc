@@ -48,6 +48,11 @@ NetCheck() {
   done
 }
 
+# Quick search terms recursivelly
+search() {
+    grep -rinI $1 .
+}
+
 # From where am I connected?
 whereami() { echo `whois $(curl -s ifconfig.me/ip) | grep -iE ^country: | awk '{print $2}' | uniq`; }
 
@@ -148,6 +153,8 @@ PATH="$PATH:$HOME/bin"
 PATH="$PATH:$HOME/code/github/sadasant/dotfiles/bin"
 
 # GOPATH
+export GOROOT="/usr/lib/go"
+# GOROOT="$GOROOT:/usr/share/go"
 export GOPATH="$HOME/code/go"
 PATH="$PATH:$HOME/code/code.google.com/go/bin"
 PATH="$PATH:$GOPATH/bin"
@@ -157,7 +164,7 @@ PATH="$PATH:$HOME/soft/dev/android-sdk-linux/tools"
 PATH="$PATH:$HOME/soft/dev/android-sdk-linux/platform-tools"
 
 # Heroku bind
-# alias heroku='~/heroku/heroku-client/heroku'
+PATH="/usr/local/heroku/bin:$PATH"
 PATH="$PATH:$HOME/.gem/ruby/2.1.0/bin"
 
 # linux-tick-processor
