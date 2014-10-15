@@ -31,7 +31,10 @@ function! SadasantFindOpen(type)
   while has_key(s:grep, l:line) == 0
     let l:line -= 1
   endwhile
-  let l:file = split(s:grep[l:line], ":")
+  let l:file = split(s:grep[l:line], ':')
+  if l:file[1] =~ "[^0-9]"
+      let l:file = [l:file[0].':'.l:file[1]] + l:file[2:]
+  endif
   if a:type ==? "v"
     exe "new ".l:file[0]
   else
@@ -75,6 +78,9 @@ function! SadasantFind(type, ...)
   for l:found in l:grep
     let s:grep[line('$')] = substitute(l:found, '\(:\d*\)\@<=:.*', '', '')
     let l:split = split(l:found, ':')
+    if l:split[1] =~ "[^0-9]"
+        let l:split = [l:split[0].':'.l:split[1]] + l:split[2:]
+    endif
     let l:split[0] = substitute(l:split[0], '\w\@<=\w*\/', '/', 'g')
     let l:nr = l:split[1]
     let l:path = ' '.l:count.'> '.l:split[0]
