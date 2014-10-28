@@ -1,3 +1,4 @@
+#!/bin/bash
 ## Update all my repos according to my git hosting providers
 
 declare -A providers

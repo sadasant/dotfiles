@@ -1,3 +1,4 @@
+#!/bin/bash
 # Clone all the vim plugins that I use
 # inside the bundle directory
 
