@@ -1,3 +1,4 @@
+#!/bin/bash
 # Make the links
 
 ln -sf /home/$USER/code/github/sadasant/dotfiles/.bashrc /home/$USER/.bashrc
@@ -19,6 +20,9 @@ if [ ! -d /home/$USER/.config ]; then
 fi
 if [ ! -d /home/$USER/.config/uzbl ]; then
   ln -sf /home/$USER/code/github/sadasant/dotfiles/.config/uzbl /home/$USER/.config/uzbl
+fi
+if [ -d /home/$USER/.config/fish ]; then
+  ln -sf /home/$USER/code/github/sadasant/dotfiles/.config/fish/config.fish /home/$USER/.config/fish/config.fish
 fi
 
 # go dirs
