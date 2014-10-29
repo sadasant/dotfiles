@@ -153,7 +153,7 @@ PATH="$PATH:$HOME/bin"
 PATH="$PATH:$HOME/code/github/sadasant/dotfiles/bin"
 
 # GOPATH
-export GOROOT="/usr/lib/go"
+# export GOROOT="/usr/lib/go"
 # GOROOT="$GOROOT:/usr/share/go"
 export GOPATH="$HOME/code/go"
 PATH="$PATH:$HOME/code/code.google.com/go/bin"
