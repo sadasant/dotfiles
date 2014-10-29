@@ -1,42 +1,42 @@
 #!/bin/bash
 # Make the links
 
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.bashrc /home/$USER/.bashrc
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.inputrc /home/$USER/.inputrc
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.tmux.conf /home/$USER/.tmux.conf
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.tmux.vb.conf /home/$USER/.tmux.vb.conf
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.gitconfig /home/$USER/.gitconfig
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.asoundrc /home/$USER/.asoundrc
+ln -sf $HOME/code/github/sadasant/dotfiles/.bashrc $HOME/.bashrc
+ln -sf $HOME/code/github/sadasant/dotfiles/.inputrc $HOME/.inputrc
+ln -sf $HOME/code/github/sadasant/dotfiles/.tmux.conf $HOME/.tmux.conf
+ln -sf $HOME/code/github/sadasant/dotfiles/.tmux.vb.conf $HOME/.tmux.vb.conf
+ln -sf $HOME/code/github/sadasant/dotfiles/.gitconfig $HOME/.gitconfig
+ln -sf $HOME/code/github/sadasant/dotfiles/.asoundrc $HOME/.asoundrc
 
 # vim dirs
-ln -sf /home/$USER/code/github/sadasant/dotfiles/.vimrc /home/$USER/.vimrc
-if [ ! -d /home/$USER/.vim ]; then
-  ln -sf /home/$USER/code/github/sadasant/dotfiles/.vim /home/$USER/.vim
+ln -sf $HOME/code/github/sadasant/dotfiles/.vimrc $HOME/.vimrc
+if [ ! -d $HOME/.vim ]; then
+  ln -sf $HOME/code/github/sadasant/dotfiles/.vim $HOME/.vim
 fi
 
 # uzbl dirs
-if [ ! -d /home/$USER/.config ]; then
-  mkdir /home/$USER/.config
+if [ ! -d $HOME/.config ]; then
+  mkdir $HOME/.config
 fi
-if [ ! -d /home/$USER/.config/uzbl ]; then
-  ln -sf /home/$USER/code/github/sadasant/dotfiles/.config/uzbl /home/$USER/.config/uzbl
+if [ ! -d $HOME/.config/uzbl ]; then
+  ln -sf $HOME/code/github/sadasant/dotfiles/.config/uzbl $HOME/.config/uzbl
 fi
-if [ -d /home/$USER/.config/fish ]; then
-  ln -sf /home/$USER/code/github/sadasant/dotfiles/.config/fish/config.fish /home/$USER/.config/fish/config.fish
+if [ -d $HOME/.config/fish ]; then
+  ln -sf $HOME/code/github/sadasant/dotfiles/.config/fish/config.fish $HOME/.config/fish/config.fish
 fi
 
 # go dirs
-if [ ! -d /home/$USER/code/go ]; then
-  mkdir /home/$USER/code/go
+if [ ! -d $HOME/code/go ]; then
+  mkdir $HOME/code/go
 fi
-if [ ! -d /home/$USER/code/go/src ]; then
-  mkdir /home/$USER/code/go/bin
-  mkdir /home/$USER/code/go/pkg
-  mkdir /home/$USER/code/go/src
+if [ ! -d $HOME/code/go/src ]; then
+  mkdir $HOME/code/go/bin
+  mkdir $HOME/code/go/pkg
+  mkdir $HOME/code/go/src
 fi
-if [ ! -d /home/$USER/code/go/src/github.com ]; then
-  ln -sf /home/$USER/code/github /home/$USER/code/go/src/github.com
+if [ ! -d $HOME/code/go/src/github.com ]; then
+  ln -sf $HOME/code/github $HOME/code/go/src/github.com
 fi
-if [ ! -d /home/$USER/code/go/src/bitbucket.org ]; then
-  ln -sf /home/$USER/code/bitbucket /home/$USER/code/go/src/bitbucket.org
+if [ ! -d $HOME/code/go/src/bitbucket.org ]; then
+  ln -sf $HOME/code/bitbucket $HOME/code/go/src/bitbucket.org
 fi
