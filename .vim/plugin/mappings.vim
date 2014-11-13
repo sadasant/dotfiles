@@ -67,8 +67,8 @@ nmap <Tab>ep  :bel vnew  <bar> r!curl -\# vpaste.net/?raw<left><left><left><left
 nmap <Tab>epf :bel vnew  <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>jq  }k$o<Esc><c-o>v}k$Jgqq:s/ \+$//g<cr>
 nmap <Tab>z   :cd %:p:h \| sh<cr>
-nmap <Tab>c   :call system('xclip', @0)<cr>
-nmap <Tab>p   :set paste<cr>:call setreg("\"", system("xclip -o"))<cr>p:set nopaste<cr>
+nmap <Tab>c   :call system('xsel -ib', @0)<cr>
+nmap <Tab>p   :set paste<cr>:call setreg("\"", system("xsel -ob"))<cr>p:set nopaste<cr>
 nmap <Tab>P   :set invpaste<cr>
 nmap <Tab>m   :!run_xmacro ~/.xmacros/
 nmap <Tab>/   :let @/ = ""<cr>
