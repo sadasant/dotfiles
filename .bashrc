@@ -149,8 +149,9 @@ HISTFILESIZE=1000
 HISTSIZE=$HISTFILESIZE
 
 # PATH
-PATH="$PATH:$HOME/bin"
-PATH="$PATH:$HOME/code/github/sadasant/dotfiles/bin"
+PATH=$PATH:$HOME/bin
+PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:$HOME/code/github/sadasant/dotfiles/bin
 
 # GOPATH
 # export GOROOT="/usr/lib/go"
