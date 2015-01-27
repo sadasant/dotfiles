@@ -50,7 +50,7 @@ NetCheck() {
 
 # Quick search terms recursivelly
 search() {
-    grep -rinI $1 .
+    grep -rinI $1 . ${*:2}
 }
 
 # From where am I connected?
@@ -187,3 +187,5 @@ alias g="git"
 if [ -n "$FBTERM" ]; then
   export TERM=fbterm
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
