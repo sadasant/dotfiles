@@ -39,6 +39,7 @@
 " <Tab>bc  Call to tmux new window in the current session, with the directory of the current file.
 " <Tab>b"  Splits vertically tmux's current window in the current session, with the directory of the current file.
 " <Tab>b%  Splits horizontally tmux's current window in the current session, with the directory of the current file.
+" <Tab>r   Ask for which word to replace the current word matched everywhere in the doc
 nmap <Tab>vr  :source ~/.vimrc<cr>
 nmap <Tab>vc  :source %
 nmap <Tab>w   :w<cr>
@@ -75,6 +76,7 @@ nmap <Tab>/   :let @/ = ""<cr>
 nmap <Tab>bc  :call system('tmux new-window -F "#S" -c "'.expand('%:p:h').'"')<cr>
 nmap <Tab>b"  :call system('tmux split-window -F "#S" -c "'.expand('%:p:h').'"')<cr>
 nmap <Tab>b%  :call system('tmux split-window -h -F "#S" -c "'.expand('%:p:h').'"')<cr>
+nmap <Tab>r   yw<cr>:%s/<C-r>"//g<left><left>
 
 " Mapping tab move 0..8
 nmap <Tab>tm1  :tabm 0<cr>
@@ -89,7 +91,7 @@ nmap <Tab>tm9  :tabm 8<cr>
 
 " Go to the last active tab
 let g:lasttab = 1
-nmap <Tab><Tab> :exe "tabn ".g:lasttab<CR>
+nmap <Tab><Tab> :exe "tabn ".g:lasttab<cr>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Use <Tab>-[hjkl] to select the active split!
@@ -153,6 +155,9 @@ nmap <Tab>S  :Sadasant
 nmap <Tab>f  :Sadasant find 
 nmap <Tab>fv :Sadasant find v<cr>
 nmap <Tab>fh :Sadasant find h<cr>
+" Aligns the current character with one similar in the next or previous line
+" (a for next, A for previous line), press a number and then these commands to
+" do it multiple times.
 nmap <Tab>aw :<c-u>exe "Sadasant align ".v:count1." 0 ''"<cr>
 nmap <Tab>Aw :<c-u>exe "Sadasant align ".v:count1." 1 ''"<cr>
 nmap <Tab>af :<c-u>exe "Sadasant align ".v:count1." 0 ask"<cr>
