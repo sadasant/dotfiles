@@ -9,7 +9,6 @@
 " Remark:       Uses HTML syntax file
 " TODO:         Handle stuff contained within stuff (e.g. headings within blockquotes)
 
-
 " Read the HTML syntax to start with
 if version < 600
   so <sfile>:p:h/html.vim
