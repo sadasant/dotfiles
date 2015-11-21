@@ -145,13 +145,20 @@ function sortmux() {
     # re-number tmux sessions
     for session in $(tmux ls | awk -F: '{print $1}') ;do
         inum=0
-        for window in $(tmux lsw -t 0 | awk -F: '/^[0-9*]/ {print $1}') ;do
+        active_index=$(tmux lsw -t ${session} | grep -n "active" | head -c 1)
+        old_active=$(tmux lsw -t ${session} | awk "NR==${active_index}" | head -c 1)
+        for window in $(tmux lsw -t ${session} | awk -F: '/^[0-9*]/ {print $1}') ;do
             if [ ${window} -gt ${inum} ] ;then
                 echo "${session}:${window} -> ${session}:${inum}"
                 tmux movew -d -s ${session}:${window} -t ${session}:${inum}
             fi
             inum=$((${inum}+1))
         done
+        active=$(tmux lsw -t ${session} | awk "NR==${active_index}" | head -c 1)
+        if [ $old_active -ne $active ]; then
+            tmux select-window -t ${session}:${active}
+            echo "Active ${old_active} is now ${active}"
+        fi
     done
 }
 
