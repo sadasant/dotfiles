@@ -34,6 +34,9 @@ screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}";
 # Password Generator
 pwgen() { < /dev/urandom tr -dc A-Za-z0-9_+-?\?! | head -c$1; }
 
+# Passphrase Generator
+phrase() { shuf -n$1 /usr/share/dict/words | tr '\n' ' '; }
+
 # Ping until host is reachable
 NetCheck() {
   host=www.google.com
@@ -162,6 +165,11 @@ function sortmux() {
     done
 }
 
+# Quick CD
+function goto() {
+    cd $(find -L $GOPATH/src/ -maxdepth 3 -type d | grep ${1})
+}
+
 # HISTORY
 
 # Suppresses duplicate commands, the simple invocation of 'ls' without any
@@ -212,3 +220,9 @@ if [ -n "$FBTERM" ]; then
 fi
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
