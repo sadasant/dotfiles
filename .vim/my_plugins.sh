@@ -4,8 +4,9 @@
 
 repos=(
   "chrisbra/histwin.vim"
-  "gregsexton/MatchTag"
+  "facebook/vim-flow"
   "fatih/vim-go"
+  "gregsexton/MatchTag"
   "junegunn/vim-easy-align"
   "mattn/emmet-vim"
   "mattn/gist-vim"
