@@ -14,6 +14,7 @@ repos=(
   "mattn/webapi-vim"
   "sandeepcr529/Buffet.vim"
   "scrooloose/syntastic"
+  "tpope/vim-abolish"
   "tpope/vim-fugitive"
   "tpope/vim-surround"
   )
