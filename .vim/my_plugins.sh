@@ -19,7 +19,7 @@ repos=(
   "tpope/vim-surround"
   )
 
-cd ~/code/github/sadasant/dotfiles/.vim
+cd $GOPATH/src/github.com/sadasant/dotfiles/.vim
 
 if [ ! -d ./bundle ]
 then

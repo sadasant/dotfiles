@@ -94,3 +94,6 @@ let g:syntastic_mode_map={
 
 " Start interactive EasyAlign in visual mode
 vmap <Enter> <Plug>(EasyAlign)
+
+" Clipboard for MacOS
+set clipboard=unnamed

@@ -32,7 +32,7 @@ git_current_branch() {
 screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}"; }
 
 # Password Generator
-pwgen() { < /dev/urandom tr -dc A-Za-z0-9_+-?\?! | head -c$1; }
+pwgen() { env LC_CTYPE=C tr -dc "a-zA-Z0-9-_+-\$\?!.,-~{}[]()" < /dev/urandom | head -c $1; }
 
 # Passphrase Generator
 phrase() { shuf -n$1 /usr/share/dict/words | tr '\n' ' '; }
@@ -98,15 +98,16 @@ GCLONE() {
     return
   fi
   host=${input[0]}
-  host_name=(${host//.com/})
-  host_name=(${host_name//.org/})
+  host_name=$host
+  # host_name=(${host//.com/})
+  # host_name=(${host_name//.org/})
   user=${input[1]}
   repo=${input[2]}
-  if [ -d ~/code/$host_name/$user/$repo ]; then
+  if [ -d $GOPATH/src/$host_name/$user/$repo ]; then
     echo -e "\e[31mThis repo exists.\e[0m"
     return
   fi
-  cd ~/code/$host_name
+  cd $GOPATH/src/$host_name
   if [ ! -d ./"$user" ]; then
     mkdir "$user"
   fi
@@ -182,12 +183,12 @@ HISTSIZE=$HISTFILESIZE
 # PATH
 PATH=$PATH:$HOME/bin
 PATH=$PATH:/usr/local/go/bin
-PATH=$PATH:$HOME/code/github/sadasant/dotfiles/bin
+PATH=$PATH:$HOME/code/GOPATH/src/github.com/sadasant/dotfiles/bin
 
 # GOPATH
 # export GOROOT="/usr/lib/go"
 # GOROOT="$GOROOT:/usr/share/go"
-export GOPATH="$HOME/code/go"
+export GOPATH="$HOME/code/GOPATH"
 PATH="$PATH:$HOME/code/code.google.com/go/bin"
 PATH="$PATH:$GOPATH/bin"
 
