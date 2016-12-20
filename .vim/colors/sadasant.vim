@@ -49,7 +49,7 @@ hi ModeMsg          ctermfg=16          ctermbg=8           cterm=BOLD
 hi MatchParen       ctermfg=white       ctermbg=darkgray    cterm=BOLD
 hi Search           ctermfg=white       ctermbg=237         cterm=NONE
 
-hi Comment          ctermfg=237         ctermbg=NONE        cterm=NONE
+hi Comment          ctermfg=239         ctermbg=NONE        cterm=NONE
 hi Todo             ctermfg=red         ctermbg=NONE        cterm=NONE
 
 hi String           ctermfg=gray        ctermbg=NONE        cterm=NONE
