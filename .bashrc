@@ -165,7 +165,7 @@ function sortmux() {
 
 # Quick CD
 function goto() {
-    cd $(find -L code/ -maxdepth 3 -type d | grep ${1})
+    cd $(find -L /workspace/code/ -maxdepth 3 -type d | grep ${1})
 }
 
 # HISTORY
@@ -206,6 +206,10 @@ else
     alias tmux='TERM=screen-256color tmux'
 fi
 
+if [ -f /.dockerenv ]; then
+    export TERM='xterm-256color'
+fi
+
 # No more vi
 alias vi="vim"
 
@@ -224,3 +228,6 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export NVM_DIR="/root/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
