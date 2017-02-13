@@ -100,11 +100,11 @@ GCLONE() {
   host=${input[0]}
   user=${input[1]}
   repo=${input[2]}
-  if [ -d ~/code/$host/$user/$repo ]; then
+  if [ -d /home/sadasant/code/$host/$user/$repo ]; then
     echo -e "\e[31mThis repo exists.\e[0m"
     return
   fi
-  cd ~/code/$host
+  cd /home/sadasant/code/$host
   if [ ! -d ./"$user" ]; then
     mkdir "$user"
   fi
@@ -165,7 +165,7 @@ function sortmux() {
 
 # Quick CD
 function goto() {
-    cd $(find -L /workspace/code/ -maxdepth 3 -type d | grep ${1})
+    cd $(find -L /home/sadasant/code/ -maxdepth 3 -type d | grep ${1})
 }
 
 # HISTORY
