@@ -59,6 +59,17 @@ search() {
 # From where am I connected?
 whereami() { echo `whois $(curl -s ifconfig.me/ip) | grep -iE ^country: | awk '{print $2}' | uniq`; }
 
+# Benchmark
+benchmark() {
+  TIMEFORMAT="%R"
+  count=$1
+  shift
+  i=1
+  time=$({ time while [[ $i -le $count ]]; do "$@" > /dev/null; ((i = i + 1)); done } 2>&1)
+  total=$(awk -v time=$time -v count=$count 'BEGIN { print time/count }')
+  echo $time/$count = $total
+}
+
 # Easy git update
 # Usage:
 #
