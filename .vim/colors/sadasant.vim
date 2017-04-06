@@ -20,8 +20,8 @@ hi NonText          ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 hi Cursor           ctermfg=black       ctermbg=NONE        cterm=NONE
 hi CursorColumn     ctermfg=NONE        ctermbg=NONE        cterm=BOLD
-hi CursorLine       ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi CursorLineNr     ctermfg=white       ctermbg=233         cterm=BOLD
+hi CursorLine       ctermfg=NONE        ctermbg=232         cterm=NONE
+hi CursorLineNr     ctermfg=white       ctermbg=88          cterm=BOLD
 hi LineNr           ctermfg=240         ctermbg=232         cterm=NONE
 
 hi StatusLine       ctermfg=244         ctermbg=234         cterm=NONE
@@ -35,25 +35,25 @@ hi Title            ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi VertSplit        ctermfg=233         ctermbg=233         cterm=NONE
 hi WildMenu         ctermfg=white       ctermbg=237         cterm=NONE
 
-hi Folded           ctermfg=gray        ctermbg=233         cterm=NONE
-hi Visual           ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+hi Folded           ctermfg=9           ctermbg=52          cterm=NONE
+hi Visual           ctermfg=NONE        ctermbg=124         cterm=NONE
 hi SpecialKey       ctermfg=235         ctermbg=NONE        cterm=UNDERLINE
 
 hi Error            ctermfg=black       ctermbg=red         cterm=NONE
 hi ErrorMsg         ctermfg=black       ctermbg=red         cterm=NONE
 hi WarningMsg       ctermfg=black       ctermbg=red         cterm=NONE
-hi LongLineWarning  ctermfg=NONE        ctermbg=NONE        cterm=underline
+hi LongLineWarning  ctermfg=NONE        ctermbg=NONE        cterm=UNDERLINE
 
 hi ModeMsg          ctermfg=16          ctermbg=8           cterm=BOLD
 
-hi MatchParen       ctermfg=white       ctermbg=darkgray    cterm=BOLD
-hi Search           ctermfg=white       ctermbg=237         cterm=NONE
+hi MatchParen       ctermfg=white       ctermbg=124         cterm=BOLD
+hi Search           ctermfg=white       ctermbg=124         cterm=NONE
 
-hi Comment          ctermfg=239         ctermbg=NONE        cterm=NONE
-hi Todo             ctermfg=red         ctermbg=NONE        cterm=NONE
+hi Comment          ctermfg=196         ctermbg=NONE        cterm=NONE
+hi Todo             ctermfg=196         ctermbg=88          cterm=UNDERLINE
 
-hi String           ctermfg=gray        ctermbg=NONE        cterm=NONE
-hi Number           ctermfg=gray        ctermbg=NONE        cterm=BOLD
+hi String           ctermfg=167         ctermbg=NONE        cterm=NONE
+hi Number           ctermfg=203         ctermbg=NONE        cterm=NONE
 hi Constant         ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi Keyword          ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi PreProc          ctermfg=gray        ctermbg=NONE        cterm=BOLD
@@ -62,7 +62,7 @@ hi Identifier       ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi Function         ctermfg=white       ctermbg=NONE        cterm=NONE
 hi Type             ctermfg=white       ctermbg=NONE        cterm=NONE
 hi Statement        ctermfg=white       ctermbg=NONE        cterm=BOLD
-hi Special          ctermfg=gray        ctermbg=NONE        cterm=BOLD
+hi Special          ctermfg=210         ctermbg=NONE        cterm=BOLD
 hi Delimiter        ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi Operator         ctermfg=gray        ctermbg=NONE        cterm=BOLD
 
