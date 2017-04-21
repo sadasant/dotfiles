@@ -76,6 +76,7 @@ set complete-=k complete+=k
 
 " Syntax Color
 syntax on
+set background=dark
 colorscheme sadasant
 
 " Save and Restore Folds
