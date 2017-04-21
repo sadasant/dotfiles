@@ -42,10 +42,11 @@
 " <Tab>r   Ask for which word to replace the current word matched everywhere in the doc
 nmap <Tab>vr  :source ~/.vimrc<cr>
 nmap <Tab>vc  :source %
-nmap <Tab>w   :w<cr>
+nmap <Tab>w   :w<cr><Tab>qi
 nmap <Tab>s   :mksession! ~/.vim_session/
 nmap <Tab>o   :source ~/.vim_session/
-nmap <Tab>q   :q
+nmap <Tab>q   :q<cr><Tab>qi
+nmap <Tab>qa  :qa<cr>
 nmap <Tab>qd  :bd<cr>
 nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ~/**/

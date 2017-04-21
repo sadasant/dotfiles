@@ -55,13 +55,13 @@ hi Todo             ctermfg=196         ctermbg=88          cterm=UNDERLINE
 hi String           ctermfg=167         ctermbg=NONE        cterm=NONE
 hi Number           ctermfg=203         ctermbg=NONE        cterm=NONE
 hi Constant         ctermfg=gray        ctermbg=NONE        cterm=BOLD
-hi Keyword          ctermfg=white       ctermbg=NONE        cterm=BOLD
+hi Keyword          ctermfg=red         ctermbg=NONE        cterm=BOLD
 hi PreProc          ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi Conditional      ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi Identifier       ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi Function         ctermfg=white       ctermbg=NONE        cterm=NONE
 hi Type             ctermfg=white       ctermbg=NONE        cterm=NONE
-hi Statement        ctermfg=white       ctermbg=NONE        cterm=BOLD
+hi Statement        ctermfg=gray        ctermbg=NONE        cterm=BOLD
 hi Special          ctermfg=210         ctermbg=NONE        cterm=BOLD
 hi Delimiter        ctermfg=white       ctermbg=NONE        cterm=BOLD
 hi Operator         ctermfg=gray        ctermbg=NONE        cterm=BOLD
