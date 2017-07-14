@@ -28,6 +28,36 @@ git_current_branch() {
   fi
 }
 
+# gitReport week for one week ago
+# gitReport month for one month ago
+# gitReport for one day ago
+# or like gitReport three months ago
+gitReport() {
+  if [ "$1" = "week" ]; then
+    since="one week ago"
+  elif [ "$1" = "month" ]; then
+    since="one month ago"
+  elif [ "$1" = "" ]; then
+    since="one day ago"
+  else
+    since=$@
+  fi
+  pad=$(printf '%0.1s' " "{1..60})
+  padlength=20
+  IFS='
+'
+  echo -e "\n\e[37;1mChanges from $since:\e[0m"
+  for author in `git log --format='%aN' | sort -u`; do
+    commits=`git shortlog -s -n --since="$since" --author="$author" | awk '{print $1;}'`
+    if [ "$commits" != '' ]; then
+      printf '%s' "$author"
+      printf '%*.*s' 0 $((padlength - ${#author})) "$pad"
+      output=`git whatchanged --since="$since" --author="$author" --oneline --shortstat | grep -E "fil(e|es) changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print "files changed:", files, "\tlines inserted:", inserted, "\tlines deleted:", deleted }'`
+      echo -e "\tcommits: $commits\t$output"
+    fi
+  done
+}
+
 # Screenshot
 screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}"; }
 
