@@ -49,12 +49,12 @@ nmap <Tab>q   :q<cr><Tab>qi
 nmap <Tab>qa  :qa<cr>
 nmap <Tab>qd  :bd<cr>
 nmap <Tab>t   :tabf %:p:h<cr>
-nmap <Tab>tf  :tabf ~/**/
+nmap <Tab>tf  :tabf ./**/*
 nmap <Tab>tr  :tabnew <bar> r!
 nmap <Tab>tp  :tabnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>tpf :tabnew <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>T   :exec (tabpagenr()-1).'tabf %:p:h'<cr>
-nmap <Tab>ef  :e ~/**/
+nmap <Tab>ef  :e ./**/*
 nmap <Tab>eh  :bel sp <cr>
 nmap <Tab>ev  :bel vs <cr>
 nmap <Tab>ex  :e %:p:h<cr>
