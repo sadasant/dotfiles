@@ -209,6 +209,13 @@ function goto() {
     cd $(find -L /home/sadasant/code/ -maxdepth 3 -type d | grep ${1})
 }
 
+# System Usage Percentages
+function system_status() {
+  free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
+  df -h | awk '$NF=="/"{printf "Disk Usage: %d/%dGB (%s)\n", $3,$2,$5}'
+  top -bn1 | grep load | awk '{printf "CPU Load: %.2f\n", $(NF-2)}' 
+}
+
 # HISTORY
 
 # Suppresses duplicate commands, the simple invocation of 'ls' without any
@@ -265,7 +272,7 @@ fi
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export NVM_DIR="/root/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 alias babel="./node_modules/.bin/babel-node"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
