@@ -39,7 +39,7 @@
     s   = status
     graph    = log --graph --color --all --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
     sup      = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git push --set-upstream origin $branch; };f"
-    yolopush = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git push --set-upstream origin $branch --no-verify; };f"
+    yolopush = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git push --set-upstream origin $branch --no-verify --force; };f"
     merge-to = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git checkout $1 -q && git merge $branch && git checkout $branch -q; };f"
     vv       = status -v -v
     shrug    = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git branch | grep -v $branch | xargs git branch -D; }; f"

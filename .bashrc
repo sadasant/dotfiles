@@ -274,6 +274,8 @@ fi
 
 # No more vi
 alias vi="vim"
+# I viw too much
+alias v="vim"
 
 # I git too much
 alias g="git"
