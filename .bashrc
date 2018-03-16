@@ -230,6 +230,13 @@ function system_status() {
   top -bn1 | grep load | awk '{printf "CPU Load: %.2f\n", $(NF-2)}' 
 }
 
+# Cleaning NPM
+function npmclean() {
+  rm package-lock.json
+  rm -fr node_modules
+  npm prune && npm i
+}
+
 # HISTORY
 
 # Suppresses duplicate commands, the simple invocation of 'ls' without any
