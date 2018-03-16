@@ -70,8 +70,13 @@ function! SadasantFind(type, ...)
   highlight link foundPath Comment
   syntax region foundNr start=/^ / end=/\d\( \|> *\)/
   highlight link foundNr LineNr
+  " Getting the top level, or expanding the current file
+  let toplevel = system("git rev-parse --show-toplevel")
+  if toplevel ==? ""
+    toplevel = expand("#:p:h")
+  endif
   " Fill with grep
-  let l:grep = split(system("grep -rinI --exclude-dir=node_modules --exclude-dir=.git \"".match."\" ".expand("#:p:h")), '\v\n')
+  let l:grep = split(system("grep -rinI --exclude-dir=node_modules --exclude-dir=.git \"".match."\" ".toplevel), '\v\n')
   let s:grep = {}
   let l:lines = []
   let l:count = 0
