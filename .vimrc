@@ -55,11 +55,11 @@ set nobackup
 set nowb
 
 " Tabs And Identation
-set shiftwidth=4
+set shiftwidth=2
 set autoindent
 set smartindent
 set expandtab
-set tabstop=4
+set tabstop=2
 set smarttab
 filetype plugin indent on
 
