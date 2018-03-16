@@ -76,7 +76,7 @@ function! SadasantFind(type, ...)
     toplevel = expand("#:p:h")
   endif
   " Fill with grep
-  let l:grep = split(system("grep -rinI --exclude-dir=node_modules --exclude-dir=.git \"".match."\" ".toplevel), '\v\n')
+  let l:grep = split(system("grep -rinI --exclude=package-lock.json --exclude=*.{png,jpg,ico,svg} --exclude-dir=coverage --exclude=*.min.* --exclude-dir=node_modules --exclude-dir=.git \"".match."\" ".toplevel), '\v\n')
   let s:grep = {}
   let l:lines = []
   let l:count = 0

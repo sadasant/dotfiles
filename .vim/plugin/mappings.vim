@@ -12,7 +12,8 @@
 " <Tab>qd  Remove the current buffer
 " <Tab>t   New tab on the current folder
 " <Tab>tf  Wildcard search, open in a new tab
-" <Tab>tr  Read command in new tab
+" <Tab>tr  New tab at git root
+" <Tab>tc  Read command in new tab
 " <Tab>tp  Get someting from vpaste.net with curl, results in new tab
 " <Tab>tpf Post something to vpaste.net with curl, results in new tab
 " <Tab>T   New tab on the current folder, on the left of the current tab
@@ -50,7 +51,8 @@ nmap <Tab>qa  :qa<cr>
 nmap <Tab>qd  :bd<cr>
 nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ./**/*
-nmap <Tab>tr  :tabnew <bar> r!
+nmap <Tab>tr  :exec 'tabf '.system('git rev-parse --show-toplevel')<cr>
+nmap <Tab>tc  :tabnew <bar> r!
 nmap <Tab>tp  :tabnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>tpf :tabnew <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>T   :exec (tabpagenr()-1).'tabf %:p:h'<cr>
