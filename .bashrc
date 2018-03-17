@@ -237,6 +237,34 @@ function npmclean() {
   npm prune && npm i
 }
 
+# Files with the most common lines in current directory
+function mostCommon() {
+  files=$(ls -p | grep -v /) # ls for files only
+  file1r=""
+  file2r=""
+  result=""
+  longest=0
+  for file1 in $files; do
+    for file2 in $files; do
+      if [ "$file1" == "$file2" ];
+      then
+        continue
+      fi
+      comms=$(grep -F -x -f $file1 $file2)
+      len=${#comms}
+      if (( len > longest ))
+      then
+        file1r=$file1
+        file2r=$file2
+        longest=$len
+        result=$comms
+      fi
+    done
+  done
+  echo $file1r $file2r $longest
+  echo -e "\n$result"
+}
+
 # HISTORY
 
 # Suppresses duplicate commands, the simple invocation of 'ls' without any

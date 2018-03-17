@@ -12,8 +12,8 @@
 " <Tab>qd  Remove the current buffer
 " <Tab>t   New tab on the current folder
 " <Tab>tf  Wildcard search, open in a new tab
-" <Tab>tr  New tab at git root
-" <Tab>tc  Read command in new tab
+" <Tab>tt  New tab at git toplevel
+" <Tab>tr  Read command in new tab
 " <Tab>tp  Get someting from vpaste.net with curl, results in new tab
 " <Tab>tpf Post something to vpaste.net with curl, results in new tab
 " <Tab>T   New tab on the current folder, on the left of the current tab
@@ -24,6 +24,7 @@
 " <Tab>exh Split horizontalky on current directory
 " <Tab>exv Split vertically on current directory
 " <Tab>er  Read command in the same window
+" <Tab>ec  Read the output of mostCommon (see my .bashrc)
 " <Tab>ehf Wildcard search in a new split
 " <Tab>evf Wildcard search in a new vertical split
 " <Tab>ehr Read command in a new split
@@ -51,8 +52,8 @@ nmap <Tab>qa  :qa<cr>
 nmap <Tab>qd  :bd<cr>
 nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ./**/*
-nmap <Tab>tr  :exec 'tabf '.system('git rev-parse --show-toplevel')<cr>
-nmap <Tab>tc  :tabnew <bar> r!
+nmap <Tab>tt  :exec 'tabf '.system('git rev-parse --show-toplevel')<cr>
+nmap <Tab>tr  :tabnew <bar> r!
 nmap <Tab>tp  :tabnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
 nmap <Tab>tpf :tabnew <bar> r!curl vpaste.net -F 'text='<left>
 nmap <Tab>T   :exec (tabpagenr()-1).'tabf %:p:h'<cr>
@@ -63,6 +64,7 @@ nmap <Tab>ex  :e %:p:h<cr>
 nmap <Tab>exh :40Hex  <cr>
 nmap <Tab>exv :50Vex! <cr>
 nmap <Tab>er  :ene   <bar> r!
+nmap <Tab>ec  :r!source ~/.bashrc && mostCommon<cr>
 nmap <Tab>ehf :bel 13new ~/**/
 nmap <Tab>evf :bel vnew  ~/**/
 nmap <Tab>ehr :bel 13new <bar> r!
