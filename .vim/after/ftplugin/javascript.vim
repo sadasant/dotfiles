@@ -1,6 +1,8 @@
 " JavaScript
 
 inoremap <buffer> \fn      function() {<cr>}<Esc>k$hhi
+inoremap <buffer> \fa      () => {<cr>}<Esc>k$5hi
+inoremap <buffer> \af      async () => {<cr>}<Esc>k$5hi
 inoremap <buffer> \[       [<cr>]<Esc>O
 inoremap <buffer> \{       {<cr>}<Esc>O
 inoremap <buffer> \(       (<cr>)<Esc>O
@@ -18,6 +20,7 @@ inoremap <buffer> \for     for (;;) {<cr>}<Esc>k4la
 inoremap <buffer> \fori    for (var i = 0; i < .length; i++) {<cr>}<Esc>k19la
 inoremap <buffer> \sw      switch () {<cr><cr>}<Up>case:<cr>break<Esc>0k<c-v>j<2Yjp3k7la
 inoremap <buffer> \wh      while () {<cr>}<Esc>k6la
+inoremap <buffer> \ex      expect().toEqual()<Esc>10hi
 
 " HTML specific
 inoremap <buffer> \<d      <div></div><Esc>?><cr>:let @/ = ""<cr>a
