@@ -43,3 +43,6 @@
     merge-to = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git checkout $1 -q && git merge $branch && git checkout $branch -q; };f"
     vv       = status -v -v
     shrug    = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git branch | grep -v $branch | xargs git branch -D; }; f"
+    ignore   = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignored  = !git ls-files -v | grep "^[[:lower:]]"
