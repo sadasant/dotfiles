@@ -12,3 +12,8 @@ ln -sf $HOME/code/github.com/sadasant/dotfiles/.vimrc $HOME/.vimrc
 if [ ! -d $HOME/.vim ]; then
   ln -sf $HOME/code/github.com/sadasant/dotfiles/.vim $HOME/.vim
 fi
+if [ ! -d $HOME/.config ]; then
+  mkdir $HOME/.config
+  ln -s $HOME/.vim $HOME/.config/nvim
+  ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
+fi

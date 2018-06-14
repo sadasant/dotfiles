@@ -3,17 +3,18 @@
 # inside the bundle directory
 
 repos=(
+	"sbdchd/neoformat"
+  "Shougo/deoplete.nvim"
   "chrisbra/histwin.vim"
-  "editorconfig/editorconfig-vim"
-  "facebook/vim-flow"
   "gregsexton/MatchTag"
   "junegunn/vim-easy-align"
   "mattn/emmet-vim"
+  "roxma/vim-tmux-clipboard"
   "sandeepcr529/Buffet.vim"
-  "scrooloose/syntastic"
-  "terryma/vim-multiple-cursors"
+  "tmux-plugins/vim-tmux-focus-events"
   "tpope/vim-fugitive"
   "tpope/vim-surround"
+  "vim-syntastic/syntastic"
   )
 
 cd ~/code/github/sadasant/dotfiles/.vim

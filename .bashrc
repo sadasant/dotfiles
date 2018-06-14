@@ -128,29 +128,42 @@ GUPDATE() {
 # Easy git clone
 # Usage:
 #
-#     GCLONE provider/user/repo
+#     clone user/repo
 #
-GCLONE() {
+clone() {
   provider=""
   myuser="sadasant"
   input=(${1//\// })
-  if [ ${#input[@]} -lt 3 ]; then
-    echo -e "\e[31mGclone host/user/repo\e[0m"
+  if [ ${#input[@]} -lt 2 ]; then
+    echo -e "\e[31mclone user/repo\e[0m"
     return
   fi
-  host=${input[0]}
-  user=${input[1]}
-  repo=${input[2]}
-  if [ -d /home/sadasant/code/$host/$user/$repo ]; then
-    echo -e "\e[31mThis repo exists.\e[0m"
+  user=${input[0]}
+  repo=${input[1]}
+  hosts=("github.com" "bitbucket.org")
+  for host in "${hosts[@]}"; do
+    if [ -d /home/sadasant/code/$host/$user/$repo ]; then
+      echo -e "\e[31mThis repo exists.\e[0m"
+      return
+    fi
+    fullPath="$host/$user/$repo"
+    repoExists=`git ls-remote https://"$fullPath" 2>/dev/null`
+    if [ $? -eq 0 ]; then
+      echo -e "\e[32;1mFound:\e[0m \e[32m$fullPath\e[0m"
+      provider=$host
+      break
+    fi
+  done
+  if [[ -z $provider ]]; then
+    echo -e "\e[31mRepository not found.\e[0m"
     return
   fi
-  cd /home/sadasant/code/$host
+  cd /home/sadasant/code/$provider
   if [ ! -d ./"$user" ]; then
     mkdir "$user"
   fi
   cd "$user"
-  comm="git clone https://$myuser@$host/$user/$repo.git"
+  comm="git clone https://$myuser@$provider/$user/$repo.git"
   history -s $comm
   eval $comm
 }
@@ -307,6 +320,11 @@ if [ -f /.dockerenv ]; then
     export TERM='xterm-256color'
 fi
 
+# Neovim if available
+if [ -x "$(command -v git)" ]; then
+  alias vim="nvim"
+fi
+
 # No more vi
 alias vi="vim"
 # I viw too much
@@ -327,3 +345,4 @@ alias babel="./node_modules/.bin/babel-node"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
