@@ -88,6 +88,11 @@ call pathogen#infect()
 
 " ale
 let b:ale_linters = ['eslint']
+let g:ale_pattern_options = {
+\   '.*\.json$': {'ale_enabled': 0},
+\   '.*\.min.js$': {'ale_enabled': 0},
+\   'node_modules': {'ale_enabled': 0},
+\}
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
