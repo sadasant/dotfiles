@@ -4,6 +4,7 @@
 
 repos=(
 	"sbdchd/neoformat"
+	"w0rp/ale"
   "Shougo/deoplete.nvim"
   "chrisbra/histwin.vim"
   "gregsexton/MatchTag"
@@ -14,7 +15,6 @@ repos=(
   "tmux-plugins/vim-tmux-focus-events"
   "tpope/vim-fugitive"
   "tpope/vim-surround"
-  "vim-syntastic/syntastic"
   )
 
 cd ~/code/github/sadasant/dotfiles/.vim
