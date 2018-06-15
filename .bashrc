@@ -321,7 +321,7 @@ if [ -f /.dockerenv ]; then
 fi
 
 # Neovim if available
-if [ -x "$(command -v git)" ]; then
+if [ -x "$(command -v nvim)" ]; then
   alias vim="nvim"
 fi
 
