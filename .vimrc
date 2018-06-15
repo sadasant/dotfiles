@@ -87,7 +87,7 @@ au BufWinEnter ?* silent loadview
 call pathogen#infect()
 
 " ale
-let b:ale_linters = ['eslint']
+let b:ale_linters = ['prettier', 'eslint']
 let g:ale_pattern_options = {
 \   '.*\.json$': {'ale_enabled': 0},
 \   '.*\.min.js$': {'ale_enabled': 0},
