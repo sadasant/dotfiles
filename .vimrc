@@ -88,6 +88,9 @@ call pathogen#infect()
 
 " ale
 let b:ale_linters = ['eslint', 'prettier']
+let g:ale_javascript_prettier_eslint_options = {
+\   '--rule': {'no-extra-semi': 0},
+\}
 let g:ale_pattern_options = {
 \   '.*\.json$': {'ale_enabled': 0},
 \   '.*\.min.js$': {'ale_enabled': 0},
