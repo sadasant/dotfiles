@@ -166,6 +166,9 @@ clone() {
   comm="git clone https://$myuser@$provider/$user/$repo.git"
   history -s $comm
   eval $comm
+  if [ $? -eq 0 ]; then
+    cd $repo
+  fi
 }
 
 # pushd quickly
