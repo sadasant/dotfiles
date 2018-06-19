@@ -28,6 +28,11 @@ git_current_branch() {
   fi
 }
 
+# To edit all the modified files with vim
+vimodified() {
+  vim $(git status --porcelain | awk '{print $2}')
+}
+
 # gitReport week for one week ago
 # gitReport month for one month ago
 # gitReport for one day ago
@@ -313,11 +318,7 @@ PATH="$PATH:$HOME/.gem/ruby/2.1.0/bin"
 # linux-tick-processor
 alias tick="$HOME/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
 
-if [ "$TERM" == "linux" ]; then
-    alias tmux='tmux -f ~/.tmux.vb.conf'
-else
-    alias tmux='TERM=screen-256color tmux'
-fi
+alias tmux='tmux -2'
 
 if [ -f /.dockerenv ]; then
     export TERM='xterm-256color'
