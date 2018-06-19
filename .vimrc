@@ -87,15 +87,25 @@ au BufWinEnter ?* silent loadview
 call pathogen#infect()
 
 " ale
+" Global modules you'll need:
+"   eslint babel-eslint eslint-plugin-smartprocure eslint-plugin-react
+"   eslint-plugin-lodash eslint-plugin-lodash-fp eslint-plugin-import
+"   eslint-plugin-mocha eslint-plugin-jest
 let b:ale_linters = ['eslint', 'prettier']
-let g:ale_javascript_prettier_eslint_options = {
-\   '--rule': {'no-extra-semi': 0},
-\}
+let g:ale_javascript_eslint_use_global = 1
 let g:ale_pattern_options = {
 \   '.*\.json$': {'ale_enabled': 0},
 \   '.*\.min.js$': {'ale_enabled': 0},
 \   'node_modules': {'ale_enabled': 0},
 \}
+let g:ale_sign_error = '!!'
+let g:ale_sign_info = '??'
+let g:ale_sign_style_error = '!!'
+let g:ale_sign_style_warning = '??'
+let g:ale_sign_warning = '??'
+hi ALEErrorSign ctermfg=white ctermbg=88 cterm=BOLD
+hi ALEWarningSign ctermfg=white ctermbg=88 cterm=BOLD
+hi SignColumn ctermbg=52
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
