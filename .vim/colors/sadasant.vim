@@ -24,7 +24,7 @@ hi CursorLine       ctermfg=NONE        ctermbg=232         cterm=NONE
 hi CursorLineNr     ctermfg=white       ctermbg=88          cterm=BOLD
 hi LineNr           ctermfg=240         ctermbg=232         cterm=NONE
 
-hi StatusLine       ctermfg=244         ctermbg=234         cterm=NONE
+hi StatusLine       ctermfg=244         ctermbg=233         cterm=NONE
 hi StatusLineNC     ctermfg=240         ctermbg=233         cterm=NONE
 
 hi Pmenu            ctermfg=gray        ctermbg=NONE        cterm=NONE
@@ -39,9 +39,9 @@ hi Folded           ctermfg=9           ctermbg=52          cterm=NONE
 hi Visual           ctermfg=NONE        ctermbg=124         cterm=NONE
 hi SpecialKey       ctermfg=235         ctermbg=NONE        cterm=UNDERLINE
 
-hi Error            ctermfg=black       ctermbg=red         cterm=NONE
-hi ErrorMsg         ctermfg=black       ctermbg=red         cterm=NONE
-hi WarningMsg       ctermfg=black       ctermbg=red         cterm=NONE
+hi Error            ctermfg=red         ctermbg=NONE        cterm=NONE
+hi ErrorMsg         ctermfg=red         ctermbg=NONE        cterm=NONE
+hi WarningMsg       ctermfg=red         ctermbg=NONE        cterm=NONE
 hi LongLineWarning  ctermfg=NONE        ctermbg=NONE        cterm=UNDERLINE
 
 hi ModeMsg          ctermfg=16          ctermbg=8           cterm=BOLD
@@ -74,11 +74,11 @@ hi DiffText         ctermfg=blue        ctermbg=232         cterm=NONE
 hi Directory        ctermfg=gray        ctermbg=NONE        cterm=NONE
 hi Ignore           ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
-hi TabNum           ctermfg=240         ctermbg=233         cterm=NONE
-hi TabNumSel        ctermfg=white       ctermbg=235         cterm=NONE
-hi TabLine          ctermfg=240         ctermbg=233         cterm=NONE
-hi TabLineSel       ctermfg=white       ctermbg=235         cterm=NONE
-hi TabLineFill      ctermfg=240         ctermbg=NONE        cterm=NONE
+hi TabNum           ctermfg=240         ctermbg=232         cterm=NONE
+hi TabNumSel        ctermfg=white       ctermbg=88          cterm=BOLD
+hi TabLineSel       ctermfg=white       ctermbg=88          cterm=BOLD
+hi TabLine          ctermfg=240         ctermbg=232         cterm=NONE
+hi TabLineFill      ctermfg=240         ctermbg=232         cterm=NONE
 
 hi link Character       Constant
 hi link Boolean         Constant
