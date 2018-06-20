@@ -12,7 +12,7 @@ fi
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
-\u\[\e[0m\] \w\[\e[30;1m\] \$(git_current_branch) \[\e[0m\]
+\u\[\e[0m\] \$(repo_or_path)\[\e[30;1m\] \$(git_current_branch) \[\e[0m\]
 "
 
 # Vi keybindings
@@ -23,9 +23,17 @@ set -o vi
 # To show the current branch
 # Used in PS1
 git_current_branch() {
-  if [ -d .git ]; then
+  hasBranch=`git branch 2>/dev/null`
+  if [ $? -eq 0 ]; then
     git branch | grep '*' | cut -d' ' -f 2
   fi
+}
+
+# An alternative to repo_or_path is to use \w (in PS1),
+# but this will only give you the path
+repo_or_path() {
+  repo=`pwd | awk '/(github.com|bitbucket.org)\/.+\/.+/ {split($0, a, /(github.com|bitbucket.org)\//); print a[2]}'`
+  echo -e "${repo:=\e[30m`pwd`\e[0m}"
 }
 
 # To edit all the modified files with vim
