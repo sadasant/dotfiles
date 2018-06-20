@@ -91,10 +91,10 @@ call pathogen#infect()
 "   eslint babel-eslint eslint-plugin-smartprocure eslint-plugin-react
 "   eslint-plugin-lodash eslint-plugin-lodash-fp eslint-plugin-import
 "   eslint-plugin-mocha eslint-plugin-jest
-let b:ale_linters = ['eslint', 'prettier']
-let g:ale_javascript_prettier_eslint_options = {
-\   '-c': '~/.eslintrc',
+let g:ale_linters = {
+\   'javascript': ['eslint'],
 \}
+let g:ale_javascript_eslint_options = '--config ~/.eslintrc'
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_pattern_options = {
 \   '.*\.json$': {'ale_enabled': 0},

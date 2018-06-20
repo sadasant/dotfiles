@@ -11,8 +11,7 @@
   },
   "rules": {
     "no-extra-semi": 0,
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5"
+    "semi": 0,
+    "trailing-comma": "es5"
   }
 }
