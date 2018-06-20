@@ -238,20 +238,6 @@ function goto() {
     cd $(find -L /home/sadasant/code/ -maxdepth 3 -type d | grep ${1})
 }
 
-# Quick vim find. Called "t" because of github
-function t() {
-    files=$(find -iname "*${1}*" -not -path "*/node_modules/*" -not -path "*/.git/*" | head -5)
-    count=0
-    for file in $files; do
-        echo "$count: $file"
-        count=$((${count}+1))
-    done
-    echo -n "? "
-    read choice
-    arrayFiles=($files)
-    vim ${arrayFiles[$choice]}
-}
-
 # System Usage Percentages
 function system_status() {
   free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
@@ -358,3 +344,10 @@ alias babel="./node_modules/.bin/babel-node"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Quick vim find. Called "t" because of github
+function t() {
+  file=`fzf`
+  vim ${file[0]}
+}
