@@ -4,6 +4,7 @@
 
 repos=(
 	"sbdchd/neoformat"
+	"vim-scripts/repmo.vim"
 	"w0rp/ale"
   "Shougo/deoplete.nvim"
   "chrisbra/histwin.vim"
