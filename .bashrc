@@ -291,6 +291,7 @@ HISTSIZE=$HISTFILESIZE
 
 # PATH
 PATH=$PATH:$HOME/bin
+PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$HOME/code/github/sadasant/dotfiles/bin
 
@@ -351,3 +352,10 @@ function t() {
   file=`fzf`
   vim ${file[0]}
 }
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /home/sadasant/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /home/sadasant/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /home/sadasant/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /home/sadasant/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
