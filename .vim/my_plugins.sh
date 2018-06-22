@@ -8,6 +8,7 @@ repos=(
 	"w0rp/ale"
   "Shougo/deoplete.nvim"
   "chrisbra/histwin.vim"
+  "fatih/vim-go"
   "gregsexton/MatchTag"
   "junegunn/vim-easy-align"
   "mattn/emmet-vim"
