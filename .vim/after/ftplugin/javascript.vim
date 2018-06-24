@@ -15,7 +15,9 @@ inoremap <buffer> \sT      setTimeout(, 000)<Esc>5hi
 inoremap <buffer> \sI      setInterval(, 000)<Esc>5hi
 inoremap <buffer> \if      if () {<cr>}<Esc>k3la
 inoremap <buffer> \rq      require()<Left>
-inoremap <buffer> \log     console.log()<Left>
+inoremap <buffer> \cl      console.log()<Left>
+inoremap <buffer> \ci      console.info()<Left>
+inoremap <buffer> \ce      console.error()<Left>
 inoremap <buffer> \for     for (;;) {<cr>}<Esc>k4la
 inoremap <buffer> \fori    for (var i = 0; i < .length; i++) {<cr>}<Esc>k19la
 inoremap <buffer> \sw      switch () {<cr><cr>}<Up>case:<cr>break<Esc>0k<c-v>j<2Yjp3k7la
