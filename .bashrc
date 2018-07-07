@@ -155,7 +155,7 @@ clone() {
   repo=${input[1]}
   hosts=("github.com" "bitbucket.org")
   for host in "${hosts[@]}"; do
-    if [ -d /home/sadasant/code/$host/$user/$repo ]; then
+    if [ -d $HOME/code/$host/$user/$repo ]; then
       echo -e "\e[31mThis repo exists.\e[0m"
       return
     fi
@@ -171,7 +171,7 @@ clone() {
     echo -e "\e[31mRepository not found.\e[0m"
     return
   fi
-  cd /home/sadasant/code/$provider
+  cd $HOME/code/$provider
   if [ ! -d ./"$user" ]; then
     mkdir "$user"
   fi
@@ -235,7 +235,7 @@ function sortmux() {
 
 # Quick CD
 function goto() {
-    cd $(find -L /home/sadasant/code/ -maxdepth 3 -type d | grep ${1})
+    cd $(find -L $HOME/code/ -maxdepth 3 -type d | grep ${1})
 }
 
 # System Usage Percentages
@@ -355,7 +355,7 @@ function t() {
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /home/sadasant/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /home/sadasant/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+[ -f $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /home/sadasant/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /home/sadasant/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+[ -f $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
