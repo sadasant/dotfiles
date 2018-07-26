@@ -347,9 +347,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-# Quick vim find. Called "t" because of github
+# Quick git tree find and edit on vim.
+# Called "t" because of github
 function t() {
-  file=`fzf`
+  file=`(git ls-tree -r --name-only HEAD || find . -path "*/\.*" -prune -o -type f -print -o -type l -print | sed s/^..//) 2> /dev/null | fzf`
   vim ${file[0]}
 }
 
