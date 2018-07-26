@@ -349,8 +349,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # Quick git tree find and edit on vim.
 # Called "t" because of github
+# How to use it:
+#   t [query] # It will start with the query as the input of the search
+#   t         # It will start with a blank search
 function t() {
-  file=`(git ls-tree -r --name-only HEAD || find . -path "*/\.*" -prune -o -type f -print -o -type l -print | sed s/^..//) 2> /dev/null | fzf`
+  file=`(git ls-tree -r --name-only HEAD || find . -path "*/\.*" -prune -o -type f -print -o -type l -print | sed s/^..//) 2> /dev/null | fzf --query="$1"`
   vim ${file[0]}
 }
 
