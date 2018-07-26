@@ -316,7 +316,7 @@ alias tick="$HOME/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
 alias tmux='tmux -2'
 
 if [ -f /.dockerenv ]; then
-    export TERM='xterm-256color'
+  export TERM='xterm-256color'
 fi
 
 # Neovim if available
@@ -347,14 +347,48 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# fzf, but limited to git ls-files
+function gitfzf() {
+  echo `(git ls-files || find . -path "*/\.*" -prune -o -type f -print -o -type l -print | sed s/^..//) 2> /dev/null | fzf --query="$1"`
+}
+
 # Quick git tree find and edit on vim.
-# Called "t" because of github
+# Called "t" because of github.
+# How it works:
+# - If vim is a stopped process,
+#   - Run gitfzf with the given input parameter
+#   - If gitfzf returned nothing, stop
+#   - If it returned a valid file,
+#     - Save the full path on ~/.for-vim, this is important because sometimes $:p:h is not the current directory
+#     - Then, set to load it on vim using a perl ioctl hack
+#     - Wake up vim (actually just the last stopped job, but that's fine for me)
+#   - Else, show a message saying that the file doesn't exist
+# - If vim is not a stopped process, just open the output on vim.
 # How to use it:
 #   t [query] # It will start with the query as the input of the search
 #   t         # It will start with a blank search
 function t() {
-  file=`(git ls-tree -r --name-only HEAD || find . -path "*/\.*" -prune -o -type f -print -o -type l -print | sed s/^..//) 2> /dev/null | fzf --query="$1"`
-  vim ${file[0]}
+  hasStoppedVim=`jobs | grep vim`
+  if [ $? -eq 0 ]; then
+    # Inspired by https://unix.stackexchange.com/questions/246419/open-file-with-started-vim-from-outside-in-terminal
+    file=`gitfzf $1`
+    if [[ -z $file ]]; then
+      return
+    fi
+    if [ -f $file ]; then
+      full=`readlink -f $file`
+      echo $full > ~/.for-vim
+      perl -le 'require "sys/ioctl.ph"; ioctl(STDIN, &TIOCSTI, $_)
+        for split "", "\e:tabf `cat ~/.for-vim`\r"'
+      fg
+    else
+      echo "Can't open file $file"
+      echo "It is probably deleted."
+    fi
+  else
+    vim `gitfzf $1`
+  fi
 }
 
 # tabtab source for serverless package
