@@ -350,7 +350,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # fzf, but limited to git ls-files
 function gitfzf() {
-  echo `(git ls-files || find . -path "*/\.*" -prune -o -type f -print -o -type l -print | sed s/^..//) 2> /dev/null | fzf --query="$1"`
+  echo `(git ls-files --cached --others --exclude-standard || find . -path "*/\.*" -prune -o -type f -print -o -type l -print | sed s/^..//) 2> /dev/null | fzf --query="$1"`
 }
 
 # Quick git tree find and edit on vim.
