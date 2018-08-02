@@ -25,9 +25,9 @@
 [alias]
     a   = add
     b   = branch
-    c   = commit -am
-    cm  = commit -m
-    cam = commit --amend
+    c   = commit --no-verify -am
+    cm  = commit --no-verify -m
+    cam = commit --no-verify --amend
     co  = checkout
     cob = checkout -b
     d   = diff
