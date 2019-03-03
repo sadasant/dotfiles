@@ -90,7 +90,8 @@ call pathogen#infect()
 " Global modules you'll need:
 "   eslint babel-eslint eslint-plugin-smartprocure eslint-plugin-react
 "   eslint-plugin-lodash eslint-plugin-lodash-fp eslint-plugin-import
-"   eslint-plugin-mocha eslint-plugin-jest
+"   eslint-plugin-mocha eslint-plugin-jest eslint-config-standard
+"   eslint-plugin-node eslint-plugin-promise eslint-plugin-standard
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}

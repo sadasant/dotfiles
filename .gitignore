@@ -2,3 +2,5 @@ code/*
 .vim/bundle/*
 .vim/view
 .vim/.netrwhist
+node_modules
+package-lock.json
