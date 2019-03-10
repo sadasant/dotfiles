@@ -3,6 +3,7 @@
 # inside the bundle directory
 
 repos=(
+	"leafgarland/typescript-vim"
 	"sbdchd/neoformat"
 	"vim-scripts/repmo.vim"
 	"w0rp/ale"
