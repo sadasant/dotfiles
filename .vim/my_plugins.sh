@@ -7,7 +7,6 @@ repos=(
 	"sbdchd/neoformat"
 	"vim-scripts/repmo.vim"
 	"w0rp/ale"
-  "Shougo/deoplete.nvim"
   "chrisbra/histwin.vim"
   "fatih/vim-go"
   "gregsexton/MatchTag"
