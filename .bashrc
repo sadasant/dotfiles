@@ -12,7 +12,7 @@ fi
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
-\u\[\e[0m\] \$(repo_or_path)\[\e[30;1m\] \$(git_current_branch) \[\e[0m\]
+\u\[\e[0m\]\[\e[30;1m\] \$(repo_or_path)\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
 "
 
 # Vi keybindings
