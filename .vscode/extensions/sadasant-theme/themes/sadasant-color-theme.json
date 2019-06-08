@@ -17,7 +17,7 @@
 		"editor.findRangeHighlightBackground": "#ff000055",
 		"editor.foreground": "#fff",
 		"editor.inactiveSelectionBackground": "#ff000033",
-		"editor.lineHighlightBackground": "#ffffff22",
+		"editor.lineHighlightBackground": "#ffffff19",
 		"editor.lineHighlightBorder": "#ffffff00",
 		"editor.selectionBackground": "#ff000055",
 		"editor.selectionHighlightBackground": "#ff000066",
@@ -51,7 +51,7 @@
 		"statusBar.background": "#000000",
 		"statusBar.foreground": "#666",
 		"statusBar.noFolderBackground": "#666",
-		"tab.activeBackground": "#000000",
+		"tab.activeBackground": "#111",
 		"tab.activeForeground": "#fff",
 		"tab.inactiveBackground": "#000000",
 		//"terminal.ansiBlack": "#1d2021",
@@ -78,9 +78,9 @@
 		//"activityBar.inactiveForeground": "#f2e5bc99",
 		//"badge.foreground": "#ffffff",
 		//"breadcrumb.activeSelectionForeground": "#f9f3e0",
-		//"breadcrumb.background": "#000000",
-		//"breadcrumb.focusForeground": "#f9f3e0",
-		//"breadcrumb.foreground": "#f2e5bccc",
+		"breadcrumb.background": "#111",
+		"breadcrumb.focusForeground": "#fff",
+		"breadcrumb.foreground": "#666",
 		//"breadcrumbPicker.background": "#272836",
 		//"button.hoverBackground": "#e3af47",
 		//"debugExceptionWidget.background": "#420b0d",
@@ -299,8 +299,7 @@
 				"punctuation.definition.comment"
 			],
 			"settings": {
-				"foreground": "#900",
-				"fontStyle": "italic"
+				"foreground": "#ff000077"
 			}
 		},
 		{
