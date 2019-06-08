@@ -271,7 +271,7 @@
 		//"textSeparator.foreground": "#ffffff2e",
 		//"titleBar.inactiveBackground": "#00000099",
 		//"titleBar.inactiveForeground": "#f2e5bc99",
-		//"widget.shadow": "#000000"
+		"widget.shadow": "#000000DD"
 	},
 	"tokenColors": [
 		{
@@ -299,7 +299,7 @@
 				"punctuation.definition.comment"
 			],
 			"settings": {
-				"foreground": "#ff000077"
+				"foreground": "#ff0000aa"
 			}
 		},
 		{
