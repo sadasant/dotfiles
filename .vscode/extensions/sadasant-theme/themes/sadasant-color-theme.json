@@ -98,10 +98,10 @@
 		//"editor.snippetTabstopHighlightBackground": "#7c7c7c4d",
 		//"editor.stackFrameHighlightBackground": "#ffff0033",
 		//"editorActiveLineNumber.foreground": "#c6c6c6",
-		"editorBracketMatch.background": "#ff000055",
-		"editorBracketMatch.border": "#ff000055",
+		"editorBracketMatch.background": "#ff000077",
+		"editorBracketMatch.border": "#ff000077",
 		//"editorCodeLens.foreground": "#999999",
-		//"editorError.foreground": "#f48771",
+		"editorError.foreground": "#f00",
 		//"editorGroup.border": "#444444",
 		//"editorGroup.dropBackground": "#53595d80",
 		//"editorGroupHeader.noTabsBackground": "#000000",
@@ -121,7 +121,7 @@
 		"editorLineNumber.foreground": "#555",
 		//"editorLink.activeForeground": "#4e94ce",
 		//"editorMarkerNavigation.background": "#2d2d30",
-		//"editorMarkerNavigationError.background": "#f48771",
+		//"editorMarkerNavigationError.background": "#f0f",
 		//"editorMarkerNavigationInfo.background": "#008000",
 		//"editorMarkerNavigationWarning.background": "#ffcc00",
 		//"editorOverviewRuler.addedForeground": "#007acc99",
@@ -148,10 +148,10 @@
 		//"editorSuggestWidget.highlightForeground": "#0097fb",
 		//"editorSuggestWidget.selectedBackground": "#1c1d26",
 		//"editorUnnecessaryCode.opacity": "#000000aa",
-		//"editorWarning.foreground": "#ffcc00",
+		"editorWarning.foreground": "#f00",
 		//"editorWhitespace.foreground": "#e3e4e229",
 		//"editorWidget.border": "#454545",
-		//"errorForeground": "#f48771",
+		"errorForeground": "#f00",
 		//"extensionBadge.remoteBackground": "#d79921",
 		//"extensionBadge.remoteForeground": "#f9f5d7",
 		//"extensionButton.prominentForeground": "#ffffff",
@@ -467,6 +467,12 @@
 			}
 		},
 		{
+			"scope":"constant.numeric",
+			"settings": {
+				"foreground": "#f99"
+			}
+		},
+		{
 			"scope": "string.tag",
 			"settings": {
 				"foreground": "#ffffff55"
@@ -523,7 +529,7 @@
 		{
 			"scope": "keyword",
 			"settings": {
-				"foreground": "#f0f"
+				"foreground": "#fff"
 			}
 		},
 		{
@@ -739,7 +745,7 @@
 				"punctuation"
 			],
 			"settings": {
-				"foreground": "#fffffff88"
+				"foreground": "#ffffff88"
 			}
 		},
 		{
