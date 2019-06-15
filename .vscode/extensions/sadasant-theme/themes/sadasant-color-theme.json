@@ -105,11 +105,11 @@
 		//"editorGroup.border": "#444444",
 		//"editorGroup.dropBackground": "#53595d80",
 		//"editorGroupHeader.noTabsBackground": "#000000",
-		"editorGutter.addedBackground": "#fff",
+		"editorGutter.addedBackground": "#666",
 		"editorGutter.background": "#111",
 		//"editorGutter.commentRangeForeground": "#c5c5c5",
 		//"editorGutter.deletedBackground": "#94151b",
-		"editorGutter.modifiedBackground": "#fff",
+		"editorGutter.modifiedBackground": "#333",
 		//"editorHint.foreground": "#eeeeeeb3",
 		//"editorHoverWidget.background": "#272836",
 		//"editorHoverWidget.border": "#454545",
@@ -218,7 +218,7 @@
 		//"peekViewTitleLabel.foreground": "#ffffff",
 		//"pickerGroup.border": "#3f3f46",
 		//"pickerGroup.foreground": "#3794ff",
-		//"progressBar.background": "#0e70c0",
+		"progressBar.background": "#fff",
 		//"scrollbar.shadow": "#000000",
 		//"scrollbarSlider.activeBackground": "#bfbfbf66",
 		//"scrollbarSlider.background": "#79797966",
@@ -271,7 +271,7 @@
 		//"textSeparator.foreground": "#ffffff2e",
 		//"titleBar.inactiveBackground": "#00000099",
 		//"titleBar.inactiveForeground": "#f2e5bc99",
-		"widget.shadow": "#000000DD"
+		"widget.shadow": "#000000DD",
 	},
 	"tokenColors": [
 		{
