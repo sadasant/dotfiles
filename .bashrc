@@ -402,7 +402,6 @@ function t() {
 function csd() {
   common_prefix=$(git diff master --name-only | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D') 
   common_parent=${common_prefix%/*}
-  echo $common_parent
   cd $common_parent
 }
 
