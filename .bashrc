@@ -396,13 +396,15 @@ function t() {
 }
 
 # csd: "changes' dierctory", as in the directory of the changes.
-# Changes the directory to the common parent to all the changes in current branch, relative to the master branch.
+# Changes the directory to the common parent to all the changes in current branch.
 # Specially useful to switch to the folder relevant to the changes that a specific branch or Pull Request makes in a large project.
+# By default acts based on the current changes to the current branch, but another targe can be spcifid by passing a single argument.
+# Example: csd master # changes to the common parent relative to the master branch.
 # Source of the regexp: https://stackoverflow.com/a/17475354
 function csd() {
-  common_prefix=$(git diff master --name-only | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D') 
+  common_prefix=$(git diff $1 --name-only | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D') 
   common_parent=${common_prefix%/*}
-  cd $common_parent
+  cd $(git rev-parse --show-toplevel)/$common_parent
 }
 
 # tabtab source for serverless package
