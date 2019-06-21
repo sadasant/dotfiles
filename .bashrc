@@ -395,6 +395,17 @@ function t() {
   fi
 }
 
+# csd: "changes' dierctory", as in the directory of the changes.
+# Changes the directory to the common parent to all the changes in current branch, relative to the master branch.
+# Specially useful to switch to the folder relevant to the changes that a specific branch or Pull Request makes in a large project.
+# Source of the regexp: https://stackoverflow.com/a/17475354
+function csd() {
+  common_prefix=$(git diff master --name-only | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D') 
+  common_parent=${common_prefix%/*}
+  echo $common_parent
+  cd $common_parent
+}
+
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [ -f $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
