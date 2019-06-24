@@ -23,6 +23,7 @@ inoremap <buffer> \fori    for (var i = 0; i < .length; i++) {<cr>}<Esc>k19la
 inoremap <buffer> \sw      switch () {<cr><cr>}<Up>case:<cr>break<Esc>0k<c-v>j<2Yjp3k7la
 inoremap <buffer> \wh      while () {<cr>}<Esc>k6la
 inoremap <buffer> \ex      expect().toEqual()<Esc>10hi
+inoremap <buffer> \try     try{<cr>} catch(e) {<cr>}<Esc>kk$o
 
 " HTML specific
 inoremap <buffer> \<d      <div></div><Esc>?><cr>:let @/ = ""<cr>a
