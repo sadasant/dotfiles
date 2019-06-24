@@ -319,10 +319,8 @@ if [ -f /.dockerenv ]; then
   export TERM='xterm-256color'
 fi
 
-# Neovim if available
-if [ -x "$(command -v nvim)" ]; then
-  alias vim="nvim"
-fi
+alias nvim="$HOME/Downloads/nvim.appimage"
+alias vim="nvim"
 
 # No more vi
 alias vi="vim"

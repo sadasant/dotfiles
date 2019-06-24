@@ -113,7 +113,14 @@ hi SignColumn ctermbg=52
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+let g:python_host_prog = '/home/sadasant/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/home/sadasant/.pyenv/versions/neovim3/bin/python'
 
 " Start interactive EasyAlign in visual mode
 vmap <Enter> <Plug>(EasyAlign)
+
+"neoformat on save
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
