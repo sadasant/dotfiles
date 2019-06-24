@@ -120,7 +120,7 @@ let g:python3_host_prog = '/home/sadasant/.pyenv/versions/neovim3/bin/python'
 vmap <Enter> <Plug>(EasyAlign)
 
 "neoformat on save
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+"augroup fmt
+"  autocmd!
+"  autocmd BufWritePre * undojoin | Neoformat
+"augroup END
