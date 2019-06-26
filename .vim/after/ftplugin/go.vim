@@ -1,5 +1,3 @@
-" Go
-
 setlocal noexpandtab
 setlocal shiftwidth=4
 

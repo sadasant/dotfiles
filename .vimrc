@@ -1,12 +1,8 @@
-" .vimrc
-" By Daniel R. (sadasant.com)
-
-" Settings
+set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%y%t%=%c,%l/%L\ %P
 set showmatch                   " Show brace match
 set nocompatible                " Ignore the old vi
 set virtualedit=all             " Move beyond limits
 set backspace=eol,start,indent  " Backspace everything on insert mode
-" set whichwrap=[,],h,l         " Wrap when moving towards the limit of the line
 set nowrap                      " Too long? no wrap
 set scrolloff=2                 " lines around when scrolling
 set number                      " Line numbers, babe
@@ -15,12 +11,9 @@ set list                        " Show hidden characters, but only tabs for me, 
 set listchars=tab:\ \ ,trail:\  " Show different characters
 set wildmenu                    " Help with the command line
 set laststatus=2                " show the status line always
-set statusline=%{fugitive#statusline()}%h%r%m[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%y%t%=%c,%l/%L\ %P
+set nobomb                      " UTF8's <U+FEFF>
 set cursorline
 set modeline
-
-" If you keep seeing <U+FEFF> at the begging of a file, remove them with setlocal nobomb
-" set nobomb
 
 " Folds
 function! MyFoldText()
@@ -39,15 +32,15 @@ set fillchars=fold:\
 let g:vimsyn_folding='af' " Folding vim scripts
 
 " Sessions
-set ssop-=options  " do not store global and local values in a session
-" set ssop-=folds    " do not store folds
+set ssop-=options " do not store global and local values in a session
+" set ssop-=folds " do not store folds
 
 " Search
 set ignorecase
-set smartcase  " ignore case only when all is lowercase
-set incsearch  " window to the current match
-set magic      " search with \n like characters
-set hlsearch   " highlight search
+set smartcase " ignore case only when all is lowercase
+set incsearch " window to the current match
+set magic     " search with \n like characters
+set hlsearch  " highlight search
 
 " No Backups
 set noswapfile
@@ -86,22 +79,7 @@ au BufWinEnter ?* silent loadview
 " Pathogen
 call pathogen#infect()
 
-" ale
-" Global modules you'll need:
-"   eslint babel-eslint eslint-plugin-smartprocure eslint-plugin-react
-"   eslint-plugin-lodash eslint-plugin-lodash-fp eslint-plugin-import
-"   eslint-plugin-mocha eslint-plugin-jest eslint-config-standard
-"   eslint-plugin-node eslint-plugin-promise eslint-plugin-standard
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
-let g:ale_javascript_eslint_options = '--config ~/.eslintrc'
-let g:ale_javascript_eslint_use_global = 1
-let g:ale_pattern_options = {
-\   '.*\.json$': {'ale_enabled': 0},
-\   '.*\.min.js$': {'ale_enabled': 0},
-\   'node_modules': {'ale_enabled': 0},
-\}
+let g:ale_linters = { 'javascript': ['eslint'], 'typescript': ['eslint'] }
 let g:ale_sign_error = '!!'
 let g:ale_sign_info = '??'
 let g:ale_sign_style_error = '!!'

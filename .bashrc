@@ -71,9 +71,6 @@ gitReport() {
   done
 }
 
-# Screenshot
-screenshot() { scrot '%Y-%m-%d_%H-%M-%S.png'  -e 'mv $f ~/img/screen' -d "${1}"; }
-
 # Password Generator
 pwgen() { < /dev/urandom tr -dc A-Za-z0-9_+-?\?! | head -c$1; }
 
@@ -95,47 +92,8 @@ NetCheck() {
 }
 
 # Quick search terms recursivelly
-search() {
+f() {
     grep -rinI $1 . ${*:2}
-}
-
-# From where am I connected?
-whereami() { echo `whois $(curl -s ifconfig.me/ip) | grep -iE ^country: | awk '{print $2}' | uniq`; }
-
-# Benchmark
-benchmark() {
-  TIMEFORMAT="%R"
-  count=$1
-  shift
-  i=1
-  time=$({ time while [[ $i -le $count ]]; do "$@" > /dev/null; ((i = i + 1)); done } 2>&1)
-  total=$(awk -v time=$time -v count=$count 'BEGIN { print time/count }')
-  echo $time/$count = $total
-}
-
-# Easy git update
-# Usage:
-#
-#     GUPDATE
-#     GUPDATE origin
-#     GUPDATE origin my-branch
-#
-GUPDATE() {
-  remote="origin"
-  branch=$(git_current_branch)
-  if [ ! -z $1 ]; then
-    remote=$1
-  fi
-  if [ ! -z $2 ]; then
-    branch=$2
-  fi
-  c1="git fetch $remote"
-  c2="git rebase -p $remote/$branch"
-  printf "\e[32m%s\n%s\n\e[0m" "$c1" "$c2"
-  history -s $c1
-  history -s $c2
-  eval $c1
-  eval $c2
 }
 
 # Easy git clone
@@ -184,32 +142,6 @@ clone() {
   fi
 }
 
-# pushd quickly
-# http://unix.stackexchange.com/questions/31161/quick-directory-navigation-in-the-terminal
-function pd() {
-  if [[ $# -ge 1 ]]; then
-    choice="$1"
-  else
-    dirs -v
-    echo -n "? "
-    read choice
-  fi
-  if [[ -n $choice ]]; then
-    declare -i cnum="$choice"
-    if [[ $cnum != $choice ]]; then #choice is not numeric
-      choice=$(dirs -v | grep $choice | tail -1 | awk '{print $1}')
-      cnum="$choice"
-      if [[ -z $choice || $cnum != $choice ]];
-      then
-        echo "$choice not found"
-        return
-      fi
-    fi
-    choice="+$choice"
-  fi
-  pushd $choice
-}
-
 # Reorder tmux windows
 # http://stackoverflow.com/a/8835493
 function sortmux() {
@@ -245,41 +177,6 @@ function system_status() {
   top -bn1 | grep load | awk '{printf "CPU Load: %.2f\n", $(NF-2)}' 
 }
 
-# Cleaning NPM
-function npmclean() {
-  rm package-lock.json
-  rm -fr node_modules
-  npm prune && npm i
-}
-
-# Files with the most common lines in current directory
-function mostCommon() {
-  files=$(ls -p | grep -v /) # ls for files only
-  file1r=""
-  file2r=""
-  result=""
-  longest=0
-  for file1 in $files; do
-    for file2 in $files; do
-      if [ "$file1" == "$file2" ];
-      then
-        continue
-      fi
-      comms=$(grep -F -x -f $file1 $file2)
-      len=${#comms}
-      if (( len > longest ))
-      then
-        file1r=$file1
-        file2r=$file2
-        longest=$len
-        result=$comms
-      fi
-    done
-  done
-  echo $file1r $file2r $longest
-  echo -e "\n$result"
-}
-
 # HISTORY
 
 # Suppresses duplicate commands, the simple invocation of 'ls' without any
@@ -292,53 +189,18 @@ HISTSIZE=$HISTFILESIZE
 # PATH
 PATH=$PATH:$HOME/bin
 PATH=$PATH:$HOME/.local/bin
-PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$HOME/code/github/sadasant/dotfiles/bin
 
-# GOPATH
-# export GOROOT="/usr/lib/go"
-# GOROOT="$GOROOT:/usr/share/go"
-export GOPATH="$HOME/code/go"
-PATH="$PATH:$HOME/code/code.google.com/go/bin"
-PATH="$PATH:$GOPATH/bin"
-
-# Android Path
-PATH="$PATH:$HOME/soft/dev/android-sdk-linux/tools"
-PATH="$PATH:$HOME/soft/dev/android-sdk-linux/platform-tools"
-
-# Heroku bind
-PATH="/usr/local/heroku/bin:$PATH"
-PATH="$PATH:$HOME/.gem/ruby/2.1.0/bin"
-
-# linux-tick-processor
-alias tick="$HOME/code/github/joyent/node/deps/v8/tools/linux-tick-processor"
-
 alias tmux='tmux -2'
-
-if [ -f /.dockerenv ]; then
-  export TERM='xterm-256color'
-fi
 
 alias nvim="$HOME/Downloads/nvim.appimage"
 alias vim="nvim"
 
 # No more vi
 alias vi="vim"
-# I viw too much
-alias v="vim"
 
 # I git too much
 alias g="git"
-
-# If fbterm, use it
-if [ -n "$FBTERM" ]; then
-  export TERM=fbterm
-fi
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-alias babel="./node_modules/.bin/babel-node"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -404,10 +266,3 @@ function csd() {
   common_parent=${common_prefix%/*}
   cd $(git rev-parse --show-toplevel)/$common_parent
 }
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . $HOME/.nvm/versions/node/v9.5.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash

@@ -1,5 +1,3 @@
-" JavaScript
-
 inoremap <buffer> \fn      function() {<cr>}<Esc>k$hhi
 inoremap <buffer> \fa      () => {<cr>}<Esc>k$5hi
 inoremap <buffer> \af      async () => {<cr>}<Esc>k$5hi
@@ -35,10 +33,3 @@ inoremap <buffer> \<tr     <tr></tr><Esc>?><cr>:let @/ = ""<cr>a
 inoremap <buffer> \<th     <th></th><Esc>?><cr>:let @/ = ""<cr>a
 inoremap <buffer> \<td     <td></td><Esc>?><cr>:let @/ = ""<cr>a
 inoremap <buffer> \>       <Esc>v?<<cr>yea><Esc>p?<<cr>a/<Esc>ea><Esc>?><cr>:let @/ = ""<cr>a
-
-" lodash specific
-inoremap <buffer> \_f      _.flow(<cr>)<Esc>?_.flo<cr>:let @/ = ""<cr>jhdwi <Esc>O
-inoremap <buffer> \_m      _.map( => )<Esc>%a
-inoremap <buffer> \_e      _.each( => )<Esc>%a
-inoremap <buffer> \_g      _.get('')<Esc>%la
-inoremap <buffer> \_s      _.sortBy('')<Esc>%la

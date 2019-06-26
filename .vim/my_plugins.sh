@@ -3,21 +3,24 @@
 # inside the bundle directory
 
 repos=(
-	"leafgarland/typescript-vim"
-	"sbdchd/neoformat"
-	"vim-scripts/repmo.vim"
-	"w0rp/ale"
-  "Shougo/deoplete.nvim"
   "chrisbra/histwin.vim"
+  "elzr/vim-json"
   "fatih/vim-go"
   "gregsexton/MatchTag"
   "junegunn/vim-easy-align"
+	"leafgarland/typescript-vim"
   "mattn/emmet-vim"
+  "pangloss/vim-javascript"
+  "plasticboy/vim-markdown"
   "roxma/vim-tmux-clipboard"
   "sandeepcr529/Buffet.vim"
+	"sbdchd/neoformat"
+  "Shougo/deoplete.nvim"
   "tmux-plugins/vim-tmux-focus-events"
   "tpope/vim-fugitive"
   "tpope/vim-surround"
+	"vim-scripts/repmo.vim"
+	"w0rp/ale"
   )
 
 cd ~/code/github/sadasant/dotfiles/.vim

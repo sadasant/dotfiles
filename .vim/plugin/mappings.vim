@@ -153,20 +153,5 @@ endfunction
 " NB: this supports "rp that replaces the selection by the contents of @r
 vnoremap <silent> <expr> p <sid>Repl()
 
-" Custom functions
-" =================
-
-nmap <Tab>S  :Sadasant 
-nmap <Tab>f  :Sadasant find 
-nmap <Tab>fv :Sadasant find v<cr>
-nmap <Tab>fh :Sadasant find h<cr>
-" Aligns the current character with one similar in the next or previous line
-" (a for next, A for previous line), press a number and then these commands to
-" do it multiple times.
-nmap <Tab>aw :<c-u>exe "Sadasant align ".v:count1." 0 ''"<cr>
-nmap <Tab>Aw :<c-u>exe "Sadasant align ".v:count1." 1 ''"<cr>
-nmap <Tab>af :<c-u>exe "Sadasant align ".v:count1." 0 ask"<cr>
-nmap <Tab>Af :<c-u>exe "Sadasant align ".v:count1." 1 ask"<cr>
-
 " <Tab>qi  Remove inactive buffers
 nmap <Tab>qi :call DeleteInactiveBufs()<cr>
