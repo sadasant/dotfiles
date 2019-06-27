@@ -31,8 +31,10 @@ eval "$(pyenv virtualenv-init -)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # ALIASES
+if ! [ -x "$(command -v nvim)" ]; then
+  alias nvim="$HOME/Downloads/nvim.appimage"
+fi
 alias tmux='tmux -2'
-alias nvim="$HOME/Downloads/nvim.appimage"
 alias vim="nvim"
 alias g="git" # I git too much
 
