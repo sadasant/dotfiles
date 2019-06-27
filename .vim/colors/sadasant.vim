@@ -35,8 +35,8 @@ hi Title            ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi VertSplit        ctermfg=233         ctermbg=233         cterm=NONE
 hi WildMenu         ctermfg=white       ctermbg=237         cterm=NONE
 
-hi Folded           ctermfg=9           ctermbg=52          cterm=NONE
-hi Visual           ctermfg=NONE        ctermbg=124         cterm=NONE
+hi Folded           ctermfg=9           ctermbg=234         cterm=NONE
+hi Visual           ctermfg=NONE        ctermbg=52          cterm=NONE
 hi SpecialKey       ctermfg=235         ctermbg=NONE        cterm=UNDERLINE
 
 hi Error            ctermfg=red         ctermbg=NONE        cterm=NONE
