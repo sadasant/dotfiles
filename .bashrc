@@ -1,24 +1,43 @@
-# .bashrc
-
 # Source global
-if [ -f /etc/bashrc ]; then
-  . /etc/bashrc
-fi
+if [ -f /etc/bashrc ]; then . /etc/bashrc; fi
 
 # Source local
-if [ -f ~/.bashrc_local ]; then
-  . ~/.bashrc_local
-fi
+if [ -f ~/.bashrc_local ]; then . ~/.bashrc_local; fi
 
-# User Prompt
-PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
-\u\[\e[0m\]\[\e[30;1m\] \$(repo_or_path)\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
-"
+set -o vi # Vi keybindings
 
-# Vi keybindings
-set -o vi
+# Suppresses duplicate commands, the simple invocation of 'ls' without any
+# arguments, and the shell built-ins bg, fg, and exit.
+HISTIGNORE="&:ls:[bf]g:exit"
+HISTFILESIZE=1000
+HISTSIZE=$HISTFILESIZE
 
-# FUNCTIONS
+# PATH
+PATH=$PATH:$HOME/bin
+PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:$HOME/code/github/sadasant/dotfiles/bin
+
+# NVM PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# PYENV PATH
+export PATH="/home/sadasant/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# FZF PATH
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# ALIASES
+alias tmux='tmux -2'
+alias nvim="$HOME/Downloads/nvim.appimage"
+alias vim="nvim"
+alias vi="vim" # No more vi
+alias g="git" # I git too much
+
+# NOW, FUNCTIONS
 
 # To show the current branch
 # Used in PS1
@@ -91,11 +110,6 @@ NetCheck() {
   done
 }
 
-# Quick search terms recursivelly
-f() {
-    grep -rinI $1 . ${*:2}
-}
-
 # Easy git clone
 # Usage:
 #
@@ -145,29 +159,39 @@ clone() {
 # Reorder tmux windows
 # http://stackoverflow.com/a/8835493
 function sortmux() {
-    # re-number tmux sessions
-    for session in $(tmux ls | awk -F: '{print $1}') ;do
-        inum=0
-        active_index=$(tmux lsw -t ${session} | grep -n "active" | head -c 1)
-        old_active=$(tmux lsw -t ${session} | awk "NR==${active_index}" | head -c 1)
-        for window in $(tmux lsw -t ${session} | awk -F: '/^[0-9*]/ {print $1}') ;do
-            if [ ${window} -gt ${inum} ] ;then
-                echo "${session}:${window} -> ${session}:${inum}"
-                tmux movew -d -s ${session}:${window} -t ${session}:${inum}
-            fi
-            inum=$((${inum}+1))
-        done
-        active=$(tmux lsw -t ${session} | awk "NR==${active_index}" | head -c 1)
-        if [ $old_active -ne $active ]; then
-            tmux select-window -t ${session}:${active}
-            echo "Active ${old_active} is now ${active}"
-        fi
+  # re-number tmux sessions
+  for session in $(tmux ls | awk -F: '{print $1}') ;do
+    inum=0
+    active_index=$(tmux lsw -t ${session} | grep -n "active" | head -c 1)
+    old_active=$(tmux lsw -t ${session} | awk "NR==${active_index}" | head -c 1)
+    for window in $(tmux lsw -t ${session} | awk -F: '/^[0-9*]/ {print $1}') ;do
+      if [ ${window} -gt ${inum} ] ;then
+        echo "${session}:${window} -> ${session}:${inum}"
+        tmux movew -d -s ${session}:${window} -t ${session}:${inum}
+      fi
+      inum=$((${inum}+1))
     done
+    active=$(tmux lsw -t ${session} | awk "NR==${active_index}" | head -c 1)
+    if [ $old_active -ne $active ]; then
+      tmux select-window -t ${session}:${active}
+      echo "Active ${old_active} is now ${active}"
+    fi
+  done
 }
 
 # Quick CD
+# goto changes directory to the first matching a given string.
+# It goes only three levels deep. It also ignores files within node_modules and .git
 function goto() {
-    cd $(find -L $HOME/code/ -maxdepth 3 -type d | grep ${1})
+    result=$(find -L . -maxdepth 3 -type d -not -path './node_modules*' -a -not -path '*.git*' | grep ${1})
+    if [[ -z $result ]]; then return; fi
+    cd $result
+}
+# code does cd into $HOME/code and then does goto with the arguments passed
+function code() {
+    cd $HOME/code
+    if [[ -z $1 ]]; then return; fi
+    goto $1
 }
 
 # System Usage Percentages
@@ -177,40 +201,12 @@ function system_status() {
   top -bn1 | grep load | awk '{printf "CPU Load: %.2f\n", $(NF-2)}' 
 }
 
-# HISTORY
-
-# Suppresses duplicate commands, the simple invocation of 'ls' without any
-# arguments, and the shell built-ins bg, fg, and exit.
-HISTIGNORE="&:ls:[bf]g:exit"
-
-HISTFILESIZE=1000
-HISTSIZE=$HISTFILESIZE
-
-# PATH
-PATH=$PATH:$HOME/bin
-PATH=$PATH:$HOME/.local/bin
-PATH=$PATH:$HOME/code/github/sadasant/dotfiles/bin
-
-alias tmux='tmux -2'
-
-alias nvim="$HOME/Downloads/nvim.appimage"
-alias vim="nvim"
-
-# No more vi
-alias vi="vim"
-
-# I git too much
-alias g="git"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH="/home/sadasant/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Quick search terms recursivelly
+# Ignores files in node_modules and .git
+# Removes duplicated results
+match() {
+  grep -rinI -m1 $1 . ${*:2} --exclude-dir=node_modules --exclude-dir=.git | sort -u
+}
 
 # fzf, but limited to git ls-files
 function gitfzf() {
@@ -266,3 +262,8 @@ function csd() {
   common_parent=${common_prefix%/*}
   cd $(git rev-parse --show-toplevel)/$common_parent
 }
+
+# User Prompt
+PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
+\u\[\e[0m\]\[\e[30;1m\] \$(repo_or_path)\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
+"
