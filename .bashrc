@@ -263,6 +263,18 @@ function csd() {
   cd $(git rev-parse --show-toplevel)/$common_parent
 }
 
+# Tmux tab name
+case "$TERM" in
+linux|xterm*|rxvt*)
+  export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+  ;;
+screen*)
+  export PROMPT_COMMAND='echo -ne "\033k${PWD##*/}\033\\"'
+  ;;
+*)
+  ;;
+esac
+
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
 \u\[\e[0m\]\[\e[30;1m\] \$(repo_or_path)\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
