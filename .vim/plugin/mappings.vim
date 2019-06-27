@@ -41,6 +41,7 @@
 " <Tab>b"  Splits vertically tmux's current window in the current session, with the directory of the current file.
 " <Tab>b%  Splits horizontally tmux's current window in the current session, with the directory of the current file.
 " <Tab>r   Ask for which word to replace the current word matched everywhere in the doc
+" V        Visual select parent fold
 nmap <Tab>vr  :source ~/.vimrc<cr>
 nmap <Tab>vc  :source %
 nmap <Tab>w   :w<cr><Tab>qi
@@ -80,6 +81,7 @@ nmap <Tab>bc  :call system('tmux new-window -F "#S" -c "'.expand('%:p:h').'"')<c
 nmap <Tab>b"  :call system('tmux split-window -F "#S" -c "'.expand('%:p:h').'"')<cr>
 nmap <Tab>b%  :call system('tmux split-window -h -F "#S" -c "'.expand('%:p:h').'"')<cr>
 nmap <Tab>r   yw<cr>:%s/<C-r>"//g<left><left>
+map  V        <esc>[zzcvoza
 
 " Mapping tab move 0..8
 nmap <Tab>tm1  :tabm 0<cr>
