@@ -5,9 +5,9 @@ set virtualedit=all             " Move beyond limits
 set backspace=eol,start,indent  " Backspace everything on insert mode
 set nowrap                      " Too long? no wrap
 set scrolloff=2                 " lines around when scrolling
-set number                      " Line numbers, babe
+set number                      " Line numbers
 set ruler                       " Show the position of the cursor
-set list                        " Show hidden characters, but only tabs for me, sir
+set list                        " Show hidden characters, but only tabs for me
 set listchars=tab:\ \ ,trail:\  " Show different characters
 set wildmenu                    " Help with the command line
 set laststatus=2                " show the status line always
@@ -17,13 +17,12 @@ set modeline
 
 " Folds
 function! MyFoldText()
-  let nucolwidth = &fdc + &number*&numberwidth
-  let winwd = winwidth(0) - nucolwidth - 1
+  let columnwidth = &fdc + &number*&numberwidth
+  let windowwidth = winwidth(0) - columnwidth - 1
   let foldlinecount = foldclosedend(v:foldstart) - foldclosed(v:foldstart) + 1
-  let prefix = " ["
-  let fdnfo = prefix . string(v:foldlevel) . "," . string(foldlinecount) . "]"
-  let line =  strpart(getline(v:foldstart), 0 , winwd - len(fdnfo))
-  let fillcharcount = winwd - len(line) - len(fdnfo)
+  let fdnfo = " ["  . string(v:foldlevel) . "," . string(foldlinecount) . "]"
+  let line =  strpart(getline(v:foldstart), 0 , windowwidth - len(fdnfo))
+  let fillcharcount = windowwidth - len(line) - len(fdnfo)
   return line . repeat(" ",fillcharcount) . fdnfo
 endfunction
 set foldtext=MyFoldText()
@@ -33,7 +32,6 @@ let g:vimsyn_folding='af' " Folding vim scripts
 
 " Sessions
 set ssop-=options " do not store global and local values in a session
-" set ssop-=folds " do not store folds
 
 " Search
 set ignorecase

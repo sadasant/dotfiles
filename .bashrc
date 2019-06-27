@@ -34,7 +34,6 @@ eval "$(pyenv virtualenv-init -)"
 alias tmux='tmux -2'
 alias nvim="$HOME/Downloads/nvim.appimage"
 alias vim="nvim"
-alias vi="vim" # No more vi
 alias g="git" # I git too much
 
 # NOW, FUNCTIONS
