@@ -23,7 +23,7 @@ repos=(
 	"w0rp/ale"
   )
 
-cd ~/code/github/sadasant/dotfiles/.vim
+cd ~/.vim
 
 if [ ! -d ./bundle ]
 then
