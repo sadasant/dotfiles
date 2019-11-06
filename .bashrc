@@ -37,6 +37,7 @@ fi
 alias tmux='tmux -2'
 alias vim="nvim"
 alias g="git" # I git too much
+alias monitor="watch tail -n 15"
 
 # NOW, FUNCTIONS
 
