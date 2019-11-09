@@ -87,6 +87,8 @@
     ],
     "vim.leader": "<tab>",
     "vim.handleKeys": {
-      "<C-o>": false
+      "<C-o>": false,
+      "<C-f>": false
     }
 }
+
