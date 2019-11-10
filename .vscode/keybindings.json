@@ -1,0 +1,85 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "tab v",
+        "command": "workbench.action.splitEditor"
+    },
+    {
+        "key": "ctrl+oem_5",
+        "command": "-workbench.action.splitEditor"
+    },
+    {
+        "key": "tab h",
+        "command": "workbench.action.splitEditorOrthogonal"
+    },
+    {
+        "key": "ctrl+k ctrl+oem_5",
+        "command": "-workbench.action.splitEditorOrthogonal"
+    },
+    {
+        "key": "tab n",
+        "command": "editor.action.nextMatchFindAction",
+        "when": "editorFocus"
+    },
+    {
+        "key": "f3",
+        "command": "-editor.action.nextMatchFindAction",
+        "when": "editorFocus"
+    },
+    {
+        "key": "tab p",
+        "command": "editor.action.previousMatchFindAction",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+f3",
+        "command": "-editor.action.previousMatchFindAction",
+        "when": "editorFocus"
+    },
+    {
+        "key": "tab up",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "tab down",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "tab left",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "tab right",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "tab 1",
+        "command": "cursorHome",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "home",
+        "command": "-cursorHome",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "tab 0",
+        "command": "cursorEnd",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "end",
+        "command": "-cursorEnd",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "tab tab",
+        "command": "tab",
+        "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus"
+    },
+    {
+        "key": "tab",
+        "command": "-tab",
+        "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus"
+    }
+]
