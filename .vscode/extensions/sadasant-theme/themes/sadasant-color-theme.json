@@ -180,14 +180,14 @@
 		"problemsWarningIcon.foreground": "#d68100",
 		"editorUnnecessaryCode.opacity": "#222",
 		"editorGutter.background": "#111",
-		"editorGutter.addedBackground": "#161",
-		"editorGutter.deletedBackground": "#600",
-		"editorGutter.modifiedBackground": "#661",
+		"editorGutter.addedBackground": "#ddd",
+		"editorGutter.deletedBackground": "#700",
+		"editorGutter.modifiedBackground": "#444",
 		"editorGutter.commentRangeForeground": "#111",
 
 		// Diff editor colors
-		"diffEditor.insertedTextBackground": "#161",
-		"diffEditor.removedTextBackground": "#611",
+		"diffEditor.insertedTextBackground": "#600",
+		"diffEditor.removedTextBackground": "#200",
 
 		// Editor widget colors
 		"editorWidget.foreground": "#fff",
@@ -226,12 +226,12 @@
 		// Merge conflicts
 		// "merge.commonContentBackground": "#60606029",
 		// "merge.commonHeaderBackground": "#60606066",
-		"merge.currentContentBackground": "#666",
-		//"merge.currentHeaderBackground": "#40c8ae80",
-		"merge.incomingContentBackground": "#999",
-		//"merge.incomingHeaderBackground": "#40a6ff80",
-		"editorOverviewRuler.currentContentForeground": "#666",
-		"editorOverviewRuler.incomingContentForeground": "#999",
+		"merge.currentContentBackground": "#333",
+		"merge.currentHeaderBackground": "#333",
+		"merge.incomingContentBackground": "#422",
+		"merge.incomingHeaderBackground": "#422",
+		"editorOverviewRuler.currentContentForeground": "#333",
+		"editorOverviewRuler.incomingContentForeground": "#422",
 		"editorOverviewRuler.deletedForeground": "#222",
 		// "editorOverviewRuler.border": "#fff", // No border, intentionally
 		"editorOverviewRuler.addedForeground": "#fff",
