@@ -2,7 +2,8 @@
 [
     {
         "key": "tab v",
-        "command": "workbench.action.splitEditor"
+        "command": "workbench.action.splitEditor",
+        "when": "editorFocus"
     },
     {
         "key": "ctrl+oem_5",
@@ -10,7 +11,8 @@
     },
     {
         "key": "tab h",
-        "command": "workbench.action.splitEditorOrthogonal"
+        "command": "workbench.action.splitEditorOrthogonal",
+        "when": "editorFocus"
     },
     {
         "key": "ctrl+k ctrl+oem_5",
@@ -38,19 +40,23 @@
     },
     {
         "key": "tab up",
-        "command": "workbench.action.navigateUp"
+        "command": "workbench.action.navigateUp",
+        "when": "editorFocus"
     },
     {
         "key": "tab down",
-        "command": "workbench.action.navigateDown"
+        "command": "workbench.action.navigateDown",
+        "when": "editorFocus"
     },
     {
         "key": "tab left",
-        "command": "workbench.action.navigateLeft"
+        "command": "workbench.action.navigateLeft",
+        "when": "editorFocus"
     },
     {
         "key": "tab right",
-        "command": "workbench.action.navigateRight"
+        "command": "workbench.action.navigateRight",
+        "when": "editorFocus"
     },
     {
         "key": "tab 1",
@@ -114,15 +120,18 @@
     },
     {
         "key": "tab oem_4",
-        "command": "editor.emmet.action.prevEditPoint"
+        "command": "editor.emmet.action.prevEditPoint",
+        "when": "editorFocus"
     },
     {
         "key": "tab oem_6",
-        "command": "editor.emmet.action.nextEditPoint"
+        "command": "editor.emmet.action.nextEditPoint",
+        "when": "editorFocus"
     },
     {
         "key": "tab q",
-        "command": "workbench.action.closeAllEditors"
+        "command": "workbench.action.closeAllEditors",
+        "when": "editorFocus"
     },
     {
         "key": "ctrl+k ctrl+w",
