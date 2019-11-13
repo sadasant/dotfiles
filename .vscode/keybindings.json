@@ -136,5 +136,14 @@
     {
         "key": "ctrl+k ctrl+w",
         "command": "-workbench.action.closeAllEditors"
+    },
+    {
+        "key": "tab o",
+        "command": "workbench.action.files.openFolder",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+o",
+        "command": "-workbench.action.files.openFolder"
     }
 ]
