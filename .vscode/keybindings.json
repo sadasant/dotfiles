@@ -119,5 +119,13 @@
     {
         "key": "tab oem_6",
         "command": "editor.emmet.action.nextEditPoint"
+    },
+    {
+        "key": "tab q",
+        "command": "workbench.action.closeAllEditors"
+    },
+    {
+        "key": "ctrl+k ctrl+w",
+        "command": "-workbench.action.closeAllEditors"
     }
 ]
