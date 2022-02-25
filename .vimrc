@@ -100,3 +100,6 @@ vmap <Enter> <Plug>(EasyAlign)
 "  autocmd!
 "  autocmd BufWritePre * undojoin | Neoformat
 "augroup END
+
+"tmux window title based on file name
+autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window '" . expand("%:t") . "'")
