@@ -42,6 +42,8 @@ fi
 alias tmux='tmux -2'
 alias vim="nvim"
 alias g="git" # I git too much
+alias r="rush" # I rush too much
+alias rx="rushx" # I rushx too much
 alias monitor="watch tail -n 15"
 
 # NOW, FUNCTIONS
@@ -156,7 +158,7 @@ clone() {
   fi
   cd "$user"
   # comm="git clone https://$myuser@$provider/$user/$repo.git"
-  comm="git clone git@$provider/$user/$repo.git"
+  comm="git clone git@$provider:$user/$repo.git"
   history -s $comm
   eval $comm
   if [ $? -eq 0 ]; then
