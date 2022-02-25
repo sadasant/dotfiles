@@ -7,6 +7,7 @@ repos=(
   "elzr/vim-json"
   "fatih/vim-go"
   "gregsexton/MatchTag"
+  "junegunn/fzf"
   "junegunn/vim-easy-align"
 	"leafgarland/typescript-vim"
   "mattn/emmet-vim"

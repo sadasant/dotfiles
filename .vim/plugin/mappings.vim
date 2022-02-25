@@ -10,6 +10,7 @@
 " <Tab>o   Load user's session
 " <Tab>q   Ask to quit
 " <Tab>qd  Remove the current buffer
+" <Tab>f   Trigger the FZF plugin
 " <Tab>t   New tab on the current folder
 " <Tab>tf  Wildcard search, open in a new tab
 " <Tab>tt  New tab at git toplevel
@@ -50,6 +51,7 @@ nmap <Tab>o   :source ~/.vim_session/
 nmap <Tab>q   :q<cr><Tab>qi
 nmap <Tab>qa  :qa<cr>
 nmap <Tab>qd  :bd<cr>
+nmap <Tab>f   :FZF<cr>
 nmap <Tab>t   :tabf %:p:h<cr>
 nmap <Tab>tf  :tabf ./**/*
 nmap <Tab>tt  :exec 'tabf '.system('git rev-parse --show-toplevel')<cr>
