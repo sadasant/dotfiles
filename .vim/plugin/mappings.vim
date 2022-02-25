@@ -120,6 +120,7 @@ inoremap <<Tab> <><Left>
 " Special characters mappings
 imap \? ¿
 imap \! ¡
+imap <Tab>q <esc>
 
 " Changing the dictionary language
 nmap <Tab>ds :set dictionary=/usr/share/dict/spanish<cr>
