@@ -283,6 +283,10 @@ screen*)
   ;;
 esac
 
+# Github ssh key
+ssh-agent /bin/bash &
+ssh-add /home/sadasant/.ssh/github
+
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
 \u\[\e[0m\]\[\e[31;0m\] \$(repo_or_path)\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
