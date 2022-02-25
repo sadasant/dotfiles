@@ -23,17 +23,22 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # PYENV PATH
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # FZF PATH
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # ALIASES
-if ! [ -x "$(command -v nvim)" ]; then
-  alias nvim="$HOME/Downloads/nvim.appimage"
-fi
+# if ! [ -x "$(command -v nvim)" ]; then
+#   alias nvim="$HOME/Downloads/nvim.appimage"
+# fi
 alias tmux='tmux -2'
 alias vim="nvim"
 alias g="git" # I git too much
@@ -54,7 +59,7 @@ git_current_branch() {
 # but this will only give you the path
 repo_or_path() {
   repo=`pwd | awk '/(github.com|bitbucket.org)\/.+\/.+/ {split($0, a, /(github.com|bitbucket.org)\//); print a[2]}'`
-  echo -e "${repo:=\e[30m`pwd`\e[0m}"
+  echo -e "${repo:=\e[31m`pwd`\e[0m}"
 }
 
 # To edit all the modified files with vim
@@ -150,7 +155,8 @@ clone() {
     mkdir "$user"
   fi
   cd "$user"
-  comm="git clone https://$myuser@$provider/$user/$repo.git"
+  # comm="git clone https://$myuser@$provider/$user/$repo.git"
+  comm="git clone git@$provider/$user/$repo.git"
   history -s $comm
   eval $comm
   if [ $? -eq 0 ]; then
@@ -279,5 +285,5 @@ esac
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
-\u\[\e[0m\]\[\e[30;1m\] \$(repo_or_path)\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
+\u\[\e[0m\]\[\e[31;0m\] \$(repo_or_path)\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
 "
