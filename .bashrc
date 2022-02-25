@@ -284,8 +284,10 @@ screen*)
 esac
 
 # Github ssh key
-ssh-agent /bin/bash &
-ssh-add /home/sadasant/.ssh/github
+function github_auth() {
+ ssh-agent /bin/bash
+ ssh-add /home/sadasant/.ssh/github
+}
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
