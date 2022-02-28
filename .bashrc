@@ -61,7 +61,10 @@ git_current_branch() {
 # but this will only give you the path
 repo_or_path() {
   repo=`pwd | awk '/(github.com|bitbucket.org)\/.+\/.+/ {split($0, a, /(github.com|bitbucket.org)\//); print a[2]}'`
-  echo -e "${repo:=\e[31m`pwd`\e[0m}"
+  repo="${repo:=`pwd`}"
+  # TMUX rename window
+  tmux rename-window $repo
+  echo $repo
 }
 
 # To edit all the modified files with vim
@@ -291,5 +294,5 @@ ssh-add ~/.ssh/github
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
-\u\[\e[0m\]\[\e[31;0m\] \$(repo_or_path)\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
+\u\[\e[0m\]\[\e[31;0m\] \e[31m\$(repo_or_path)\e[0m\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
 "
