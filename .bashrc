@@ -198,7 +198,8 @@ function sortmux() {
 # goto changes directory to the first matching a given string.
 # It goes only three levels deep. It also ignores files within node_modules and .git
 function goto() {
-    result=$(find -L . -maxdepth 3 -type d -not -path './node_modules*' -a -not -path '*.git*' | grep ${1})
+    result=$(find -L . -maxdepth 3 -type d -not -path './node_modules*' -not -path '*/node_modules*' -a -not -path '*.git*' | grep ${1})
+    echo "Found: $result"
     if [[ -z $result ]]; then return; fi
     cd $result
 }
