@@ -34,6 +34,8 @@ fi
 
 # FZF PATH
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# FZF Theme
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#6b6b6b,bg:#121212,hl:#9c4141 --color=fg+:#ffffff,bg+:#262626,hl+:#ff0000 --color=info:#d17575,prompt:#d7005f,pointer:#ffffff --color=marker:#ff0000,spinner:#ffffff,header:#d17575'
 
 # ALIASES
 # if ! [ -x "$(command -v nvim)" ]; then
