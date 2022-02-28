@@ -16,7 +16,6 @@ repos=(
   "roxma/vim-tmux-clipboard"
   "sandeepcr529/Buffet.vim"
 	"sbdchd/neoformat"
-  "Shougo/deoplete.nvim"
   "tmux-plugins/vim-tmux-focus-events"
   "tpope/vim-fugitive"
   "tpope/vim-surround"
