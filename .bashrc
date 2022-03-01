@@ -71,7 +71,11 @@ repo_or_path() {
 
 # To edit all the modified files with vim
 vimodified() {
-  vim $(git status --porcelain | awk '{print $2}')
+  toplevel=`git rev-parse --show-toplevel`
+  paths=$(git status --porcelain | awk -v toplevel=$toplevel '{print toplevel"/"$2}')
+  echo -e "Opening:\n$paths"
+  # Open in tabs
+  vim -p $paths
 }
 
 # gitReport week for one week ago
