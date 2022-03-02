@@ -12,7 +12,7 @@
 " <Tab>qd  Remove the current buffer
 " <Tab>f   Trigger the FZF plugin
 " <Tab>t   New tab on the current folder
-" <Tab>tf  Wildcard search, open in a new tab
+" <Tab>tf  Open a new tab in the directory of the current folder and then trigger the FZF plugin.
 " <Tab>tt  New tab at git toplevel
 " <Tab>tr  Read command in new tab
 " <Tab>tp  Get someting from vpaste.net with curl, results in new tab
@@ -53,7 +53,7 @@ nmap <Tab>qa  :qa<cr>
 nmap <Tab>qd  :bd<cr>
 nmap <Tab>f   :FZF<cr>
 nmap <Tab>t   :tabf %:p:h<cr>
-nmap <Tab>tf  :tabf ./**/*
+nmap <Tab>tf  :tabf %:p:h<cr>:FZF<cr>
 nmap <Tab>tt  :exec 'tabf '.system('git rev-parse --show-toplevel')<cr>
 nmap <Tab>tr  :tabnew <bar> r!
 nmap <Tab>tp  :tabnew <bar> r!curl -\# vpaste.net/?raw<left><left><left><left>
