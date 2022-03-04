@@ -22,7 +22,6 @@ inoremap <buffer> \sw      switch () {<cr><cr>}<Up>case:<cr>break<Esc>0k<c-v>j<2
 inoremap <buffer> \wh      while () {<cr>}<Esc>k6la
 inoremap <buffer> \ex      expect().toEqual()<Esc>10hi
 inoremap <buffer> \try     try{<cr>} catch(e) {<cr>}<Esc>kk$o
-inoremap /*<Tab>           /**<cr>/<Esc>O
 
 " HTML specific
 inoremap <buffer> \<d      <div></div><Esc>?><cr>:let @/ = ""<cr>a

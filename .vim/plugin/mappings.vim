@@ -110,16 +110,17 @@ nmap <Tab>h :wincmd h<cr>
 nmap <Tab>l :wincmd l<cr>
 
 " Closing Characters
-inoremap (<Tab> ()<Left>
-inoremap {<Tab> {}<Left>
-inoremap [<Tab> []<Left>
-inoremap [<Tab> []<Left>
-inoremap "<Tab> ""<Left>
-inoremap '<Tab> ''<Left>
-inoremap **<Tab> ****<Left><Left>
-inoremap /*<Tab> /*  */<Left><Left><Left>
-inoremap `<Tab> ``<Left>
-inoremap <<Tab> <><Left>
+inoremap (<Tab>    ()<Left>
+inoremap {<Tab>    {}<Left>
+inoremap [<Tab>    []<Left>
+inoremap [<Tab>    []<Left>
+inoremap "<Tab>    ""<Left>
+inoremap '<Tab>    ''<Left>
+inoremap **<Tab>   ****<Left><Left>
+inoremap /*<Tab>   /*  */<Left><Left><Left>
+inoremap /**<Tab>  /**<cr>/<Esc>O
+inoremap `<Tab>    ``<Left>
+inoremap <<Tab>    <><Left>
 
 " Special characters mappings
 imap \? ¿
