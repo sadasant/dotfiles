@@ -33,3 +33,7 @@ inoremap <buffer> \<tr     <tr></tr><Esc>?><cr>:let @/ = ""<cr>a
 inoremap <buffer> \<th     <th></th><Esc>?><cr>:let @/ = ""<cr>a
 inoremap <buffer> \<td     <td></td><Esc>?><cr>:let @/ = ""<cr>a
 inoremap <buffer> \>       <Esc>v?<<cr>yea><Esc>p?<<cr>a/<Esc>ea><Esc>?><cr>:let @/ = ""<cr>a
+
+" TypeScript specific
+inoremap <buffer> \in     interface  {<cr>}<Esc>kelli
+inoremap <buffer> \ein    export interface  {<cr>}<Esc>keelli

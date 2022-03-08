@@ -136,14 +136,15 @@ nmap <Tab>de :set dictionary=/usr/share/dict/american-english<cr>
 nmap <Tab>b :Bufferlist<cr>
 
 " Work with fugitive faster
-nmap <Tab>gc :Gcommit<cr>
-nmap <Tab>gs :Gstatus<cr>
+nmap <Tab>gc :Git commit<cr>
+nmap <Tab>gs :Git<cr>
 nmap <Tab>gw :Gwrite<cr>
 nmap <Tab>gp :Git push 
 nmap <Tab>ge :Gedit 
 nmap <Tab>gh :Gsplit 
 nmap <Tab>gv :Gvsplit 
 nmap <Tab>gt :Gtabedit 
+nmap <Tab>gg :!git add . && git commit -m "wip" && git push<cr>
 
 " Replace vim's default p behavior
 function! RestoreRegister()
