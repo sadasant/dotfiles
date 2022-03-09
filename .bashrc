@@ -78,6 +78,14 @@ vimodified() {
   vim -p $paths
 }
 
+# To edit all the modified files since a commit
+vimdiff() {
+  paths=$(git diff $1 --name-only)
+  echo -e "Opening:\n$paths"
+  # Open in tabs
+  vim -p $paths
+}
+
 # gitReport week for one week ago
 # gitReport month for one month ago
 # gitReport for one day ago
