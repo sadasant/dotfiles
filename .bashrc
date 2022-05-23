@@ -315,6 +315,15 @@ function runJupyter() {
 function tsCompile() {
   tsc -p ./
 }
+function vscodeTsUpdate() {
+  read -p "Do you want to update the VSCode typescript files? [y/N] " -n 1 -r
+  echo    # (optional) move to a new line
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    git clean -fxd
+    npm ci
+  fi
+}
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
