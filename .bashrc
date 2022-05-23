@@ -312,7 +312,7 @@ ssh-add ~/.ssh/github
 function runJupyter() {
   jupyter notebook --no-browser --NotebookApp.allow_origin=*
 }
-function tsBuild() {
+function tsCompile() {
   tsc -p ./
 }
 
