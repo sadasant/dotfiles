@@ -16,6 +16,7 @@ HISTSIZE=$HISTFILESIZE
 PATH=$PATH:$HOME/bin
 PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/code/github/sadasant/dotfiles/bin
+PATH=$PATH:$HOME/code/github.com/sadasant/dotfiles/bin
 
 # NVM PATH
 export NVM_DIR="$HOME/.nvm"
@@ -65,7 +66,7 @@ repo_or_path() {
   repo=`pwd | awk '/(github.com|bitbucket.org)\/.+\/.+/ {split($0, a, /(github.com|bitbucket.org)\//); print a[2]}'`
   repo="${repo:=`pwd`}"
   # TMUX rename window
-  tmux rename-window $repo
+  # tmux rename-window $repo
   echo $repo
 }
 
@@ -306,6 +307,14 @@ esac
 # Github ssh key
 eval `ssh-agent -s`
 ssh-add ~/.ssh/github
+
+# Lessons from the VSCode team
+function runJupyter() {
+  jupyter notebook --no-browser --NotebookApp.allow_origin=*
+}
+function tsBuild() {
+  tsc -p ./
+}
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
