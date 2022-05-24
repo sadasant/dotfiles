@@ -315,7 +315,7 @@ function runJupyter() {
 function tsCompile() {
   tsc -p ./
 }
-function vscodeTsUpdate() {
+function vsCodeTsUpdate() {
   read -p "Do you want to update the VSCode typescript files? [y/N] " -n 1 -r
   echo    # (optional) move to a new line
   if [[ $REPLY =~ ^[Yy]$ ]]
