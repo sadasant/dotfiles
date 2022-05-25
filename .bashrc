@@ -316,7 +316,7 @@ function vs-compile() {
   npm run clean
   tsc -p ./
   npm run compile-webviews-watch &
-  npm run compile-web-watch
+  npm run compile-web-watch && fg
 }
 function vs-update() {
   read -p "Do you want to update the VSCode typescript files? [y/N] " -n 1 -r
