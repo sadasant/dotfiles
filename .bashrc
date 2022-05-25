@@ -315,7 +315,8 @@ function vs-jupyterStart() {
 function vs-compile() {
   npm run clean
   tsc -p ./
-  npm run compile-webviews-watch
+  npm run compile-webviews-watch &
+  npm run compile-web-watch
 }
 function vs-update() {
   read -p "Do you want to update the VSCode typescript files? [y/N] " -n 1 -r
