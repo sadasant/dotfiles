@@ -317,7 +317,7 @@ function vs-compile() {
   tsc -p ./
   npm run compile-webviews-watch
 }
-function vs-tsUpdate() {
+function vs-update() {
   read -p "Do you want to update the VSCode typescript files? [y/N] " -n 1 -r
   echo    # (optional) move to a new line
   if [[ $REPLY =~ ^[Yy]$ ]]
