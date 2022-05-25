@@ -309,13 +309,13 @@ eval `ssh-agent -s`
 ssh-add ~/.ssh/github
 
 # Lessons from the VSCode team
-function runJupyter() {
+function vs-jupyterStart() {
   jupyter notebook --no-browser --NotebookApp.allow_origin=*
 }
-function tsCompile() {
+function vs-tsCompile() {
   tsc -p ./
 }
-function vsCodeTsUpdate() {
+function vs-tsUpdate() {
   read -p "Do you want to update the VSCode typescript files? [y/N] " -n 1 -r
   echo    # (optional) move to a new line
   if [[ $REPLY =~ ^[Yy]$ ]]
