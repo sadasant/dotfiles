@@ -315,8 +315,9 @@ function vs-jupyterStart() {
 function vs-compile() {
   npm run clean
   tsc -p ./
-  npm run compile-webviews-watch &
-  npm run compile-web-watch && fg
+  npm run compile-web
+  ## npm run compile-webviews-watch
+  webpack --config ./build/webpack/webpack.datascience-ui.config.js
 }
 function vs-update() {
   read -p "Do you want to update the VSCode typescript files? [y/N] " -n 1 -r
