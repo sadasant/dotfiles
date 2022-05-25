@@ -312,8 +312,9 @@ ssh-add ~/.ssh/github
 function vs-jupyterStart() {
   jupyter notebook --no-browser --NotebookApp.allow_origin=*
 }
-function vs-tsCompile() {
+function vs-compile() {
   tsc -p ./
+  webpack --config ./build/webpack/webpack.datascience-ui.config.js
 }
 function vs-tsUpdate() {
   read -p "Do you want to update the VSCode typescript files? [y/N] " -n 1 -r
