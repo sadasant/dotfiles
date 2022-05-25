@@ -313,6 +313,7 @@ function vs-jupyterStart() {
   jupyter notebook --no-browser --NotebookApp.allow_origin=*
 }
 function vs-compile() {
+  npm run clean
   tsc -p ./
   webpack --config ./build/webpack/webpack.datascience-ui.config.js
 }
