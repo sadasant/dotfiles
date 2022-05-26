@@ -317,7 +317,7 @@ function vs-compile() {
   tsc -p ./
   npm run compile-web
   ## npm run compile-webviews-watch
-  webpack --config ./build/webpack/webpack.datascience-ui.config.js
+  ./node_modules/.bin/webpack --config ./build/webpack/webpack.datascience-ui.config.js
 }
 function vs-update() {
   read -p "Do you want to update the VSCode typescript files? [y/N] " -n 1 -r
