@@ -330,11 +330,11 @@ function vs-update() {
 }
 # From: https://code.visualstudio.com/api/extension-guides/web-extensions#test-your-web-extension-in-on-vscode.dev
 function vs-web-serve() {
-  npx serve --cors -l 5000
+  npx serve --cors -l 5555 # Port 5000 is busy on my Mac
 }
 # From: https://code.visualstudio.com/api/extension-guides/web-extensions#test-your-web-extension-in-on-vscode.dev
 function vs-web-tunnel() {
-  npx localtunnel -p 5000
+  npx localtunnel -p 5555 # Port 5000 is busy on my Mac
 }
 
 # User Prompt
