@@ -328,6 +328,14 @@ function vs-update() {
     npm ci
   fi
 }
+# From: https://code.visualstudio.com/api/extension-guides/web-extensions#test-your-web-extension-in-on-vscode.dev
+function vs-web-serve() {
+  npx serve --cors -l 5000
+}
+# From: https://code.visualstudio.com/api/extension-guides/web-extensions#test-your-web-extension-in-on-vscode.dev
+function vs-web-tunnel() {
+  npx localtunnel -p 5000
+}
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
