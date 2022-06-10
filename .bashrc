@@ -336,6 +336,12 @@ function vs-web-serve() {
 function vs-web-tunnel() {
   npx localtunnel -p 5555 # Port 5000 is busy on my Mac
 }
+function vs-create-daily-note() {
+  name=`date +%Y-%m-%d-%a`
+  rm -f $name.md
+  TODOS=`grep -rin TODO .`
+  printf "## Plan\n\n- \n\n## Notes\n\n## TODOs\n\n$TODOS" > $name.md
+}
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`

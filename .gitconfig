@@ -48,3 +48,33 @@
     unignore = update-index --no-assume-unchanged
     vv = status -v -v
     yolo = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git push --set-upstream origin $branch --no-verify --force; };f"
+	# commit-status: generate a commit with message from git-status (staged changes).
+	# Source: https://gist.github.com/erikw/654386d35ecfdb0354cd2b71763f19ae
+	commit-status = !" \
+	        TMPFILE=$(mktemp /tmp/git-commit-status-message.XXX); \
+		git status --porcelain \
+		  | grep '^[MARCDT]' \
+		  | sort \
+		  | sed -re 's/^([[:upper:]])[[:upper:]]?[[:space:]]+/\\1:\\n/' \
+		  | awk '!x[$0]++' \
+		  | sed -re 's/^([[:upper:]]:)$/\\n\\1/' \
+		  | sed -re 's/^M:$/Modified: /' \
+		  | sed -re 's/^A:$/Added: /' \
+		  | sed -re 's/^R:$/Renamed: /' \
+		  | sed -re 's/^C:$/Copied: /' \
+		  | sed -re 's/^D:$/Deleted: /' \
+		  | sed -re 's/^T:$/File Type Changed: /' \
+		  | tr '\n' ' ' | xargs \
+		  > $TMPFILE; \
+		cat $TMPFILE; \
+	        commit=''; \
+	        while :; do \
+			echo '> Commit with this message? [Yn]: '; \
+			read commit; \
+			([ -z \"$commit\" ] || [ \"$commit\" = y ] || [ \"$commit\" = Y ] || [ \"$commit\" = n ]) && break; \
+	        done; \
+		test \"$commit\" != n || exit; \
+		git commit -F $TMPFILE; \
+		rm -f $TMPFILE \
+		"
+    cs = commit-status
