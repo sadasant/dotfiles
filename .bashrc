@@ -342,6 +342,28 @@ function vs-create-daily-note() {
   TODOS=`grep -rin TODO .`
   printf "## Plan\n\n- \n\n## Notes\n\n## TODOs\n\n$TODOS" > $name.md
 }
+function vs-integration-test() {
+  read -p "Did you run vs-compile? [y/N] " -n 1 -r
+  echo    # (optional) move to a new line
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    command="
+    npm run pretestNativeNotebooksInVSCode && 
+    CI_PYTHON_PATH=/opt/anaconda3/bin/python \
+    VSC_FORCE_REAL_JUPYTER=1 \
+    VSC_JUPYTER_FORCE_LOGGING=1 \
+    VSC_PYTHON_FORCE_LOGGING=1 \
+    VSC_JUPYTER_REMOTE_NATIVE_TEST=false \
+    VSC_JUPYTER_NON_RAW_NATIVE_TEST=true \
+    VSC_JUPYTER_CI_RUN_JAVA_NB_TEST=false \
+    VSC_JUPYTER_CI_IS_CONDA=true \
+    VSC_JUPYTER_CI_TEST_VSC_CHANNEL='insiders' \
+    VSC_JUPYTER_CI_TEST_GREP=\"$1\" \
+    npm run testNativeNotebooksInVSCode > output 2>&1"
+    echo $command
+    eval $command
+  fi
+}
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
