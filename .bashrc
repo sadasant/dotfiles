@@ -313,6 +313,7 @@ function vs-jupyterStart() {
   jupyter notebook --no-browser --NotebookApp.allow_origin=*
 }
 function vs-compile() {
+  echo "Important: use 'npm run compiled' instead"
   npm run clean
   tsc -p ./
   npm run compile-web
