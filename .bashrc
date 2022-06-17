@@ -310,7 +310,7 @@ ssh-add ~/.ssh/github
 
 # Lessons from the VSCode team
 function vs-jupyterStart() {
-  python3 -m jupyter notebook --no-browser --NotebookApp.allow_origin=*
+  jupyter notebook --no-browser --NotebookApp.allow_origin=* --NotebookApp.disable_check_xsrf=true
 }
 function vs-compile() {
   echo "Important: use 'npm run compiled' instead"
