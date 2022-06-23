@@ -320,6 +320,11 @@ function vs-compile() {
   ## npm run compile-webviews-watch
   ./node_modules/.bin/webpack --config ./build/webpack/webpack.datascience-ui.config.js
 }
+function vs-unit-test() {
+  npm run clean
+  tsc -p ./
+  npm run test:unittests "$@"
+}
 function vs-update() {
   read -p "Do you want to update the VSCode typescript files? [y/N] " -n 1 -r
   echo    # (optional) move to a new line
