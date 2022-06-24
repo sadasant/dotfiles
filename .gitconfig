@@ -12,8 +12,8 @@
     default = simple
 [core]
     editor = vim
-    eol = lf
-    autocrlf = false
+    # eol = lf
+    # autocrlf = false
 [merge]
     tool = vimdiff
 [color]
