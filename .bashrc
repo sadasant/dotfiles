@@ -338,7 +338,7 @@ function vs-web-tunnel() {
   npx localtunnel -p 5555 # Port 5000 is busy on my Mac
 }
 function vs-create-daily-note() {
-  name=`date +%Y-%m-%d-%a`
+  name=`LC_ALL=en_US.utf8 date +%Y-%m-%d-%a`
   rm -f $name.md
   # No TODO[sS], no matches for this same regexp, no lines that start with a dot
   TODOS=`grep -rin "^[^.]*TODO[^s[]" ..`
