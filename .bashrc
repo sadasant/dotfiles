@@ -347,7 +347,10 @@ function vs-create-daily-note() {
 function vs-unit-test() {
   npm run clean
   tsc -p ./
-  npm run test:unittests "$@"
+  if [ $# -eq 0 ]
+  then npm run test:unittests
+  else npm run test:unittests -- --grep="$@"
+  fi
 }
 function vs-integration-test() {
   read -p "Did you run vs-compile? [y/N] " -n 1 -r
