@@ -337,13 +337,6 @@ function vs-web-serve() {
 function vs-web-tunnel() {
   npx localtunnel -p 5555 # Port 5000 is busy on my Mac
 }
-function vs-create-daily-note() {
-  name=`LC_ALL=en_US.utf8 date +%Y-%m-%d-%a`
-  rm -f $name.md
-  # No TODO[sS], no matches for this same regexp, no lines that start with a dot
-  TODOS=`grep -rin "^[^.]*TODO[^s[]" ..`
-  printf "## Plan\n\n- \n\n## Notes\n\n---\n\n## TODOs\n\n$TODOS" > $name.md
-}
 function vs-unit-test() {
   npm run clean
   tsc -p ./
@@ -373,6 +366,13 @@ function vs-integration-test() {
     echo $command
     eval $command
   fi
+}
+function az-create-daily-note() {
+  name=`LC_ALL=en_US.utf8 date +%Y-%m-%d-%a`
+  rm -f $name.md
+  # No TODO[sS], no matches for this same regexp, no lines that start with a dot
+  TODOS=`grep -rin "^[^.]*TODO[^s[]" ..`
+  printf "## Plan\n\n- \n\n## Notes\n\n---\n\n## TODOs\n\n$TODOS" > $name.md
 }
 
 # User Prompt
