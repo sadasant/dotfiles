@@ -367,7 +367,7 @@ function vs-integration-test() {
     eval $command
   fi
 }
-function az-create-daily-note() {
+function create-daily-note() {
   name=`LC_ALL=en_US.utf8 date +%Y-%m-%d-%a`
   rm -f $name.md
   # No TODO[sS], no matches for this same regexp, no lines that start with a dot
