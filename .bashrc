@@ -367,6 +367,12 @@ function vs-integration-test() {
     eval $command
   fi
 }
+function dw-activate-env {
+  # Create a Python virtual environment in the root repo folder:
+  python3 -m venv .venv
+  # Activate the virtual environment as appropriate for your shell, For example, on bash it's...
+  source .venv/bin/activate
+}
 function create-daily-note() {
   name=`LC_ALL=en_US.utf8 date +%Y-%m-%d-%a`
   rm -f $name.md
