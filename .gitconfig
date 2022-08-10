@@ -78,3 +78,4 @@
 		rm -f $TMPFILE \
 		"
     cs = commit-status
+    wip = "!f(){ git commit --no-verify -am wip && git push; };f"
