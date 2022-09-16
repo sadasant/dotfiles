@@ -68,7 +68,7 @@ set complete-=k complete+=k
 " Syntax Color
 syntax on
 set background=dark
-colorscheme sadasant
+" colorscheme sadasant
 
 " Save and Restore Folds
 au BufWinLeave ?* mkview

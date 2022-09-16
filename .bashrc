@@ -383,6 +383,6 @@ function create-daily-note() {
 }
 
 # User Prompt
-PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
-\u\[\e[0m\]\[\e[31;0m\] \e[31m\$(repo_or_path)\e[0m\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
+PS1="\`if [ \$? != 0 ]; then echo '\[\e[30;103m\]'; else echo '\[\e[m\]'; fi\`
+\u\[\e[0m\]\[\e[0m\] \e[93m\$(repo_or_path)\e[0m\[\e[m\] \$(git_current_branch) \[\e[0;0m\]
 "
