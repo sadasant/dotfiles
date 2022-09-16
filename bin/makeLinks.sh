@@ -12,6 +12,12 @@ if [ ! -d $HOME/.vim ]; then
   ln -sf $HOME/code/github.com/sadasant/dotfiles/.vim $HOME/.vim
 fi
 if [ ! -d $HOME/.config ]; then
+ mkdir ~/.config
+fi
+if [ ! -d $HOME/.config/nvim ]; then
+  ln -sf $HOME/code/github.com/sadasant/dotfiles/.config/nvim $HOME/.config/nvim
+fi
+if [ ! -d $HOME/.config ]; then
   mkdir $HOME/.config
   ln -s $HOME/.vim $HOME/.config/nvim
   # ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
