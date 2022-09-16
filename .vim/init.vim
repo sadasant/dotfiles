@@ -1,1 +1,1 @@
-/home/sadasant/.vimrc
+/Users/danielrodriguez/code/github.com/sadasant/dotfiles/.vimrc
