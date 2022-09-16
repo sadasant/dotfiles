@@ -9,18 +9,18 @@ repos=(
   "gregsexton/MatchTag"
   "junegunn/fzf"
   "junegunn/vim-easy-align"
-	"leafgarland/typescript-vim"
+  "leafgarland/typescript-vim"
   "mattn/emmet-vim"
   "pangloss/vim-javascript"
   "plasticboy/vim-markdown"
   "roxma/vim-tmux-clipboard"
   "sandeepcr529/Buffet.vim"
-	"sbdchd/neoformat"
+  "sbdchd/neoformat"
   "tmux-plugins/vim-tmux-focus-events"
   "tpope/vim-fugitive"
   "tpope/vim-surround"
-	"vim-scripts/repmo.vim"
-	"w0rp/ale"
+  "vim-scripts/repmo.vim"
+  "w0rp/ale"
   )
 
 cd ~/.vim
@@ -58,7 +58,7 @@ do
       git rebase -p origin/master;
       cd ..
   else
-    git clone git://github.com/"${repo}".git
+    git clone https://github.com/"${repo}".git
   fi
 done
 
