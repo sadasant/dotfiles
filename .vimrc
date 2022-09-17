@@ -77,6 +77,7 @@ au BufWinEnter ?* silent loadview
 " Pathogen
 call pathogen#infect()
 
+let g:vim_markdown_new_list_item_indent = 2
 let g:ale_linters = { 'javascript': ['eslint'], 'typescript': ['eslint'] }
 let g:ale_sign_error = '!!'
 let g:ale_sign_info = '??'
