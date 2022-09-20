@@ -47,6 +47,7 @@
 nmap <Tab>vr  :source ~/.vimrc<cr>
 nmap <Tab>vc  :source %
 nmap <Tab>w   :w<cr><Tab>qi
+nmap <Tab>wip :!git wip<cr>
 nmap <Tab>s   :mksession! ~/.vim_session/
 nmap <Tab>o   :source ~/.vim_session/
 nmap <Tab>q   :q<cr><Tab>qi
