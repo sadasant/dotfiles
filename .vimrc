@@ -104,3 +104,6 @@ vmap <Enter> <Plug>(EasyAlign)
 
 "tmux window title based on file name
 autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window '" . expand("%:t") . "'")
+
+"Lenghty syntax highlighting
+syntax sync minlines=2000
