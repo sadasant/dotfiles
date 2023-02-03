@@ -48,6 +48,7 @@
     unignore = update-index --no-assume-unchanged
     vv = status -v -v
     yolo = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git push --set-upstream origin $branch --no-verify --force; };f"
+    yolo-joaquin = "git push --set-upstream origin HEAD --no-verify --force"
 	# commit-status: generate a commit with message from git-status (staged changes).
 	# Source: https://gist.github.com/erikw/654386d35ecfdb0354cd2b71763f19ae
 	commit-status = !" \
