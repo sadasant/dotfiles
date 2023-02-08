@@ -377,6 +377,10 @@ function dw-activate-env {
 function dw-base64 {
   node -e "require('readline').createInterface({input:process.stdin,output:process.stdout,historySize:0}).question('PAT> ',p => { b64=Buffer.from(p.trim()).toString('base64');console.log(b64);process.exit(); })"
 }
+function dw-jupyterStart() {
+  echo "jupyter notebook --no-browser --NotebookApp.allow_origin=* --NotebookApp.disable_check_xsrf=true --NotebookApp.token=$1"
+  jupyter notebook --no-browser --NotebookApp.allow_origin=* --NotebookApp.disable_check_xsrf=true --NotebookApp.token=$1
+}
 function create-daily-note() {
   name=`LC_ALL=en_US.utf8 date +%Y-%m-%d-%a`
   rm -f $name.md
