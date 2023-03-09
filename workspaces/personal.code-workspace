@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../grimoire"
+		},
+		{
+			"path": "../../Microsoft"
+		},
+		{
+			"path": "../../chatgpt-magics"
+		}
+	],
+	"settings": {
+		"workbench.colorTheme": "paddy-black"
+	}
+}
