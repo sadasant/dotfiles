@@ -386,7 +386,7 @@ function create-daily-note() {
   rm -f $name.md
   # No TODO[sS], no matches for this same regexp, no lines that start with a dot
   TODOS=`grep -rin "^[^.]*TODO[^s[]" ..`
-  printf "## Plan\n\n- \n\n## Notes\n\n---\n\n## TODOs\n\n$TODOS" > $name.md
+  printf "## Plan\n\n- \n\n## Notes\n\n## ---\n\n## TODOs\n\n$TODOS" > $name.md
 }
 
 # User Prompt
