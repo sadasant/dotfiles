@@ -1,149 +1,92 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-    {
-        "key": "tab v",
-        "command": "workbench.action.splitEditor",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+oem_5",
-        "command": "-workbench.action.splitEditor"
-    },
-    {
-        "key": "tab h",
-        "command": "workbench.action.splitEditorOrthogonal",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k ctrl+oem_5",
-        "command": "-workbench.action.splitEditorOrthogonal"
-    },
-    {
-        "key": "tab n",
-        "command": "editor.action.nextMatchFindAction",
-        "when": "editorFocus"
-    },
-    {
-        "key": "f3",
-        "command": "-editor.action.nextMatchFindAction",
-        "when": "editorFocus"
-    },
-    {
-        "key": "tab p",
-        "command": "editor.action.previousMatchFindAction",
-        "when": "editorFocus"
-    },
-    {
-        "key": "shift+f3",
-        "command": "-editor.action.previousMatchFindAction",
-        "when": "editorFocus"
-    },
-    {
-        "key": "tab up",
-        "command": "workbench.action.navigateUp",
-        "when": "editorFocus"
-    },
-    {
-        "key": "tab down",
-        "command": "workbench.action.navigateDown",
-        "when": "editorFocus"
-    },
-    {
-        "key": "tab left",
-        "command": "workbench.action.navigateLeft",
-        "when": "editorFocus"
-    },
-    {
-        "key": "tab right",
-        "command": "workbench.action.navigateRight",
-        "when": "editorFocus"
-    },
-    {
-        "key": "tab 1",
-        "command": "cursorHome",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "home",
-        "command": "-cursorHome",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "tab 0",
-        "command": "cursorEnd",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "end",
-        "command": "-cursorEnd",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "tab tab",
-        "command": "tab",
-        "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus"
-    },
-    {
-        "key": "tab",
-        "command": "-tab",
-        "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus"
-    },
-    {
-        "key": "tab d",
-        "command": "editor.action.peekDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-    },
-    {
-        "key": "alt+f12",
-        "command": "-editor.action.peekDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-    },
-    {
-        "key": "tab f",
-        "command": "editor.toggleFold",
-        "when": "editorTextFocus && foldingEnabled"
-    },
-    {
-        "key": "ctrl+k ctrl+l",
-        "command": "-editor.toggleFold",
-        "when": "editorTextFocus && foldingEnabled"
-    },
-    {
-        "key": "tab e",
-        "command": "editor.action.marker.next",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+f8",
-        "command": "-editor.action.marker.next",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "tab oem_4",
-        "command": "editor.emmet.action.prevEditPoint",
-        "when": "editorFocus"
-    },
-    {
-        "key": "tab oem_6",
-        "command": "editor.emmet.action.nextEditPoint",
-        "when": "editorFocus"
-    },
-    {
-        "key": "tab q",
-        "command": "workbench.action.closeAllEditors",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k ctrl+w",
-        "command": "-workbench.action.closeAllEditors"
-    },
-    {
-        "key": "tab o",
-        "command": "workbench.action.files.openFolder",
-        "when": "!terminalFocus"
-    },
-    {
-        "key": "ctrl+k ctrl+o",
-        "command": "-workbench.action.files.openFolder"
+  {
+    "key": "alt+tab",
+    "command": "editor.toggleFold",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "key": "alt+l",
+    "command": "dakara-foldplus.cursor.exclude"
+  },
+  {
+    "key": "alt+m",
+    "command": "editor.action.goToImplementation",
+    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "alt+d",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "cmd+s",
+    "command": "workbench.action.files.saveFiles"
+  },
+  {
+    "key": "alt+/",
+    "command": "workbench.files.action.focusFilesExplorer"
+  },
+  {
+    "key": "alt+c",
+    "command": "-gitlens.showQuickCommitFileDetails",
+    "when": "editorTextFocus && !gitlens:disabled && config.gitlens.keymap == 'alternate'"
+  },
+  {
+    "key": "alt+t",
+    "command": "terminal.focus"
+  },
+  {
+    "key": "alt+g",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "alt+/",
+    "command": "-gitlens.gitCommands",
+    "when": "!gitlens:disabled && config.gitlens.keymap == 'alternate'"
+  },
+  {
+    "key": "cmd+k cmd+n",
+    "command": "-git.unstageSelectedRanges",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "-workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  {
+    "key": "ctrl+shift+-",
+    "command": "-workbench.action.navigateForward",
+    "when": "canNavigateForward"
+  },
+  {
+    "key": "alt+-",
+    "command": "workbench.action.navigatePreviousInEditLocations"
+  },
+  {
+    "key": "alt+=",
+    "command": "workbench.action.navigateForwardInEditLocations"
+  },
+  {
+    "key": "alt+p",
+    "command": "editor.action.marker.next",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+f",
+    "command": "editor.foldAll",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "key": "alt+s",
+    "command": "extension.multiCommand.execute",
+    "args": {
+      "sequence": [
+        "workbench.action.files.saveAll",
+        "editor.action.formatDocument",
+        "dakara-foldplus.cursor.exclude"
+      ]
     }
+  }
 ]
