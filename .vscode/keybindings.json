@@ -78,16 +78,41 @@
       "command": "editor.unfoldAll",
       "when": "editorTextFocus && foldingEnabled"
     },
-    {
-      "key": "alt+s",
-      "command": "extension.multiCommand.execute",
-      "args": {
-        "sequence": [
-          "workbench.action.files.saveAll",
-          "editor.action.formatDocument",
-          "dakara-foldplus.cursor.exclude"
-        ]
-      }
+  // Save all files, format the document and close all folds except the one where the cursor is
+  {
+    "key": "alt+s",
+    "command": "extension.multiCommand.execute",
+    "args": {
+      "sequence": [
+        "workbench.action.files.saveAll",
+        "editor.action.formatDocument",
+        "dakara-foldplus.cursor.exclude"
+      ]
     }
-  ]
-  
+  },
+  // Focus on the Explorer on the activity bar
+  {
+    "key": "cmd+1",
+    "command": "workbench.view.explorer"
+  },
+  // Focus on the search on the activity bar
+  {
+    "key": "cmd+2",
+    "command": "workbench.view.search"
+  },
+  // Focus on the debug on the activity bar
+  {
+    "key": "cmd+3",
+    "command": "workbench.view.debug"
+  },
+  // Focus on the extensions on the activity bar
+  {
+    "key": "cmd+4",
+    "command": "workbench.view.extensions"
+  },
+  // Focus on the source control on the activity bar
+  {
+    "key": "cmd+5",
+    "command": "workbench.view.scm"
+  },
+]
