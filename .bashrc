@@ -17,6 +17,7 @@ PATH=$PATH:$HOME/bin
 PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/code/github/sadasant/dotfiles/bin
 PATH=$PATH:$HOME/code/github.com/sadasant/dotfiles/bin
+PATH=$PATH:/Users/$USER/anaconda3/bin
 
 # NVM PATH
 export NVM_DIR="$HOME/.nvm"
