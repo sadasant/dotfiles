@@ -46,8 +46,6 @@ alias tmux='tmux -2'
 alias vim="nvim"
 alias g="git" # I git too much
 alias wip="git wip" # I git too much
-alias r="rush" # I rush too much
-alias rx="rushx" # I rushx too much
 alias monitor="watch tail -n 15"
 
 # NOW, FUNCTIONS
