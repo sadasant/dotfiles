@@ -63,5 +63,5 @@
     "repos"
   ],
   "workbench.iconTheme": "vs-minimal",
-  "gitlens.experimental.OpenAIModel": "gpt-4"
+  "gitlens.experimental.openAIModel": "gpt-4"
 }
