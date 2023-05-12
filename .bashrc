@@ -34,6 +34,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # NVM PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
