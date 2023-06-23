@@ -406,12 +406,42 @@ function create-daily-note() {
 printf "## Index\n\n- [Index](#index)\n- [Notes](#notes)\n- [---](#---)\n- [TODOs](#todos)\n\n## Notes\n\n## ---\n\n## TODOs\n\n$TODOS" > $name.md
 }
 function gpt() {
-  # Check that argument is provided
-  if [ -z "$1" ]; then
+  local model="gpt-4"
+  local prompt
+
+  # Check for -m and -p flags
+  while getopts "m:p:" opt; do
+    case ${opt} in
+      m)
+        model="${OPTARG}"
+        ;;
+      p)
+        prompt="${OPTARG}"
+        ;;
+      \?)
+        echo "Invalid option: -$OPTARG" >&2
+        return 1
+        ;;
+      :)
+        echo "Option -$OPTARG requires an argument." >&2
+        return 1
+        ;;
+    esac
+  done
+  shift $((OPTIND -1))
+
+  # If no prompt is provided through -p, use the first positional argument
+  if [ -z "$prompt" ]; then
+    prompt="$1"
+  fi
+
+  # Check that prompt is provided
+  if [ -z "$prompt" ]; then
     echo "ERROR: No prompt provided"
     return 1
   fi
-  echo "Prompt: $1"
+  echo "Model: $model"
+  echo "Prompt: $prompt"
 
   # Read piped input into a variable
   local pipe_input=""
@@ -423,7 +453,7 @@ function gpt() {
 
   # Properly escape JSON values using jq
   local json_prompt
-  json_prompt=$(printf '%s' "$1" | jq --raw-input --slurp .)
+  json_prompt=$(printf '%s' "$prompt" | jq --raw-input --slurp .)
   local json_pipe_input
   json_pipe_input=$(printf '%s' "$pipe_input" | jq --raw-input --slurp .)
 
@@ -449,7 +479,7 @@ function gpt() {
   --header "Authorization: Bearer $OPENAI_API_KEY" \
   --header 'Content-Type: application/json' \
   --data-raw "{
-   \"model\": \"gpt-4\",
+   \"model\": \"$model\",
    \"messages\": [{\"role\": \"system\", \"content\": $json_prompt},{\"role\": \"user\", \"content\": $json_pipe_input}]
   }" | jq --raw-output '.choices[].message.content'
 }
