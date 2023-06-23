@@ -442,7 +442,7 @@ function gpt() {
     return 1
   fi
 
-  echo -e "\nResponse:\n"
+  echo -e "Response:\n"
 
   # Call OpenAI API
   curl --location --insecure --request POST 'https://api.openai.com/v1/chat/completions' \
