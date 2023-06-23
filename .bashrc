@@ -405,6 +405,54 @@ function create-daily-note() {
   TODOS=`grep -rin "^[^.]*TODO[^s[]" ..`
 printf "## Index\n\n- [Index](#index)\n- [Notes](#notes)\n- [---](#---)\n- [TODOs](#todos)\n\n## Notes\n\n## ---\n\n## TODOs\n\n$TODOS" > $name.md
 }
+function gpt() {
+  # Check that argument is provided
+  if [ -z "$1" ]; then
+    echo "ERROR: No prompt provided"
+    return 1
+  fi
+  echo "Prompt: $1"
+
+  # Read piped input into a variable
+  local pipe_input=""
+  while IFS= read -r line
+  do
+      pipe_input+="$line"$'\n'
+  done
+  echo "Context length: ${#pipe_input}"
+
+  # Properly escape JSON values using jq
+  local json_prompt
+  json_prompt=$(printf '%s' "$1" | jq --raw-input --slurp .)
+  local json_pipe_input
+  json_pipe_input=$(printf '%s' "$pipe_input" | jq --raw-input --slurp .)
+
+  # Check that .env file exists and is readable
+  if [ ! -r ".env" ]; then
+    echo "ERROR: .env file not found or not readable"
+    return 1
+  fi
+
+  # Read .env file
+  set -o allexport; source .env; set +o allexport
+
+  # Check that OPENAI_API_KEY is set
+  if [ -z "$OPENAI_API_KEY" ]; then
+    echo "ERROR: OPENAI_API_KEY is not set"
+    return 1
+  fi
+
+  echo -e "\nResponse:\n"
+
+  # Call OpenAI API
+  curl --location --insecure --request POST 'https://api.openai.com/v1/chat/completions' \
+  --header "Authorization: Bearer $OPENAI_API_KEY" \
+  --header 'Content-Type: application/json' \
+  --data-raw "{
+   \"model\": \"gpt-4\",
+   \"messages\": [{\"role\": \"system\", \"content\": $json_prompt},{\"role\": \"user\", \"content\": $json_pipe_input}]
+  }" | jq --raw-output '.choices[].message.content'
+}
 
 # User Prompt
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[30;103m\]'; else echo '\[\e[m\]'; fi\`
