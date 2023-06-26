@@ -406,19 +406,16 @@ function create-daily-note() {
 printf "## Index\n\n- [Index](#index)\n- [Notes](#notes)\n- [---](#---)\n- [TODOs](#todos)\n\n## Notes\n\n## ---\n\n## TODOs\n\n$TODOS" > $name.md
 }
 function gpt() {
-  # Check that OPENAI_API_KEY is set
-  # If not, check for .env file
-  if [ -z "$OPENAI_API_KEY" ]; then
-    # Check that .env file exists and is readable
-    if [ ! -r ".env" ]; then
-      echo "ERROR: .env file not found or not readable"
-      return 1
-    fi
-    # Read .env file
-    set -o allexport; source .env; set +o allexport
+  # If neither .env exists, nor the $OPENAI_API_KEY is set, return error
+  if [ ! -r ".env" ] && [ -z "$OPENAI_API_KEY" ]; then
+    echo "ERROR: .env file not found, or OPENAI_API_KEY is not set"
+    return 1
   fi
-  # If still not set, return error
-  if [ -z "$OPENAI_API_KEY" ]; then
+  # Read .env file if exists and is readable
+  if [ -r ".env" ]; then
+    set -o allexport; source .env; set +o allexport
+  elif [ -z "$OPENAI_API_KEY" ]; then
+    # If .env file does not exist, and OPENAI_API_KEY is not set, return error
     echo "ERROR: OPENAI_API_KEY is not set"
     return 1
   fi
@@ -488,6 +485,9 @@ function gpt() {
 }
 function gpt-diff-review() {
   developer_kind=$1
+  if [ -z "$developer_kind" ]; then
+    developer_kind="senior"
+  fi
   gpt "As $developer_kind software enigneer, review this diff. Provide feedback only if necessary. Be brief"
 }
 function gpt-commit-message() {
