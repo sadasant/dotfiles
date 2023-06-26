@@ -490,6 +490,13 @@ function gpt-diff-review() {
   fi
   gpt "As $developer_kind software enigneer, review this diff. Provide feedback only if necessary. Be brief"
 }
+function gpt-diff-feedback() {
+  developer_kind=$1
+  if [ -z "$developer_kind" ]; then
+    developer_kind="senior"
+  fi
+  gpt "As $developer_kind software enigneer, provide thorough critical feedback to this diff only if useful, otherwise say CHECKS OUT."
+}
 function gpt-commit-message() {
   developer_kind=$1
   if [ -z "$developer_kind" ]; then
