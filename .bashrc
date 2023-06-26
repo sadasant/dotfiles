@@ -406,6 +406,23 @@ function create-daily-note() {
 printf "## Index\n\n- [Index](#index)\n- [Notes](#notes)\n- [---](#---)\n- [TODOs](#todos)\n\n## Notes\n\n## ---\n\n## TODOs\n\n$TODOS" > $name.md
 }
 function gpt() {
+  # Check that OPENAI_API_KEY is set
+  # If not, check for .env file
+  if [ -z "$OPENAI_API_KEY" ]; then
+    # Check that .env file exists and is readable
+    if [ ! -r ".env" ]; then
+      echo "ERROR: .env file not found or not readable"
+      return 1
+    fi
+    # Read .env file
+    set -o allexport; source .env; set +o allexport
+  fi
+  # If still not set, return error
+  if [ -z "$OPENAI_API_KEY" ]; then
+    echo "ERROR: OPENAI_API_KEY is not set"
+    return 1
+  fi
+
   local model="gpt-4"
   local prompt
 
@@ -457,31 +474,29 @@ function gpt() {
   local json_pipe_input
   json_pipe_input=$(printf '%s' "$pipe_input" | jq --raw-input --slurp .)
 
-  # Check that .env file exists and is readable
-  if [ ! -r ".env" ]; then
-    echo "ERROR: .env file not found or not readable"
-    return 1
-  fi
-
-  # Read .env file
-  set -o allexport; source .env; set +o allexport
-
-  # Check that OPENAI_API_KEY is set
-  if [ -z "$OPENAI_API_KEY" ]; then
-    echo "ERROR: OPENAI_API_KEY is not set"
-    return 1
-  fi
-
   echo -e "Response:\n"
 
   # Call OpenAI API
-  curl --location --insecure --request POST 'https://api.openai.com/v1/chat/completions' \
+  curl --progress-bar --location --insecure \
+  --request POST 'https://api.openai.com/v1/chat/completions' \
   --header "Authorization: Bearer $OPENAI_API_KEY" \
   --header 'Content-Type: application/json' \
   --data-raw "{
    \"model\": \"$model\",
    \"messages\": [{\"role\": \"system\", \"content\": $json_prompt},{\"role\": \"user\", \"content\": $json_pipe_input}]
   }" | jq --raw-output '.choices[].message.content'
+}
+function gpt-diff-review() {
+  developer_kind=$1
+  gpt "As $developer_kind software enigneer, review this diff. Provide feedback only if necessary. Be brief"
+}
+function gpt-commit-message() {
+  developer_kind=$1
+  if [ -z "$developer_kind" ]; then
+    developer_kind="senior"
+  fi
+  prompt="As $developer_kind software enigneer, generate a commit message for this diff. Include subject and body. Be brief"
+  gpt "$prompt"
 }
 
 # User Prompt
