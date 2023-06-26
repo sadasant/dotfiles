@@ -495,7 +495,7 @@ function gpt-commit-message() {
   if [ -z "$developer_kind" ]; then
     developer_kind="senior"
   fi
-  prompt="As $developer_kind software enigneer, generate a commit message for this diff. Include subject and body. Be brief"
+  prompt="As $developer_kind software enigneer, generate a commit message for this diff. The summary (first line) must be 50 characters at most. Leave one line empty after summary. The body must contain lines of up to 72 characeters length. Be brief"
   gpt "$prompt"
 }
 
