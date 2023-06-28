@@ -497,6 +497,16 @@ function gpt-diff-feedback() {
   fi
   gpt "As $developer_kind software enigneer, provide thorough critical feedback to this diff only if useful, otherwise say CHECKS OUT."
 }
+function gpt-diff-prints() {
+  developer_kind=$1
+  if [ -z "$developer_kind" ]; then
+    developer_kind="senior"
+  fi
+  gpt "As $developer_kind software enigneer, find print statements and answer with their location, otherwise say CHECKS OUT."
+}
+function gpt-diff-front-end() {
+  gpt-diff-review "senior front-end"
+}
 function gpt-commit-message() {
   developer_kind=$1
   if [ -z "$developer_kind" ]; then
