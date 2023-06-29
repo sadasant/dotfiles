@@ -405,6 +405,30 @@ function create-daily-note() {
   TODOS=`grep -rin "^[^.]*TODO[^s[]" ..`
 printf "## Index\n\n- [Index](#index)\n- [Notes](#notes)\n- [---](#---)\n- [TODOs](#todos)\n\n## Notes\n\n## ---\n\n## TODOs\n\n$TODOS" > $name.md
 }
+
+# This `gpt()` function reads input from the command line and then sends a formatted JSON object to the OpenAI API for the GPT-4 model. It properly escapes special characters and checks for the `.env` file containing the OpenAI API key.
+#
+# Usage:
+#
+# - Load the function into your environment: `source gpt.sh`.
+# - Make sure to have an `.env` file in the current directory with the `OPENAI_API_KEY`.
+# - Pipe anything itno it, and also add a prompt, example:
+#
+# ```bash
+# git diff main | gpt "As a programmer, review this diff. Provide feedback only if necessary. Be brief"
+# ```
+#
+# Or, to specify the model:
+#
+# ```bash
+# git diff main | gpt -m gpt-4-32k -p "As a programmer, review this diff. Provide feedback only if necessary. Be brief"
+# ```
+#
+# Or you can use `<<<` to make it easier to switch what you want to pipe into the gpt command:
+#
+# ```bash
+# gpt -m gpt-4-32k -p "As a programmer, review this diff. Provide feedback only if necessary. Be brief" <<< $(git diff main ./)
+# ```
 function gpt() {
   # If neither .env exists, nor the $OPENAI_API_KEY is set, return error
   if [ ! -r ".env" ] && [ -z "$OPENAI_API_KEY" ]; then
@@ -514,6 +538,9 @@ function gpt-commit-message() {
   fi
   prompt="As $developer_kind software enigneer, generate a commit message for this diff. The summary (first line) must be 50 characters at most. Leave one line empty after summary. The body must contain lines of up to 72 characeters length. Be brief"
   gpt "$prompt"
+}
+function gpt-changelog() {
+  gpt "Write CHANGELOG.md entries based on git history. Only include high level changes to the experience. Reference pull requests by their number, like \`PR #123\`. Focus on readability"
 }
 
 # User Prompt
