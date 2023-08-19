@@ -2,3 +2,5 @@
 .vim/view
 .vim/.netrwhist
 .env
+
+.chat-history.json
