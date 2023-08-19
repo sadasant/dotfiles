@@ -512,8 +512,11 @@ function gpt() {
   if [ ! -f .chat-history.json ] || [ ! -s .chat-history.json ]; then
     printf '%s' "{\"model\": \"$model\",\"messages\": [{\"role\": \"system\", \"content\": $json_prompt}" >> .chat-history.json
   else
-    # Remove the last two characters from the .chat-history.json file
-    truncate -s-2 .chat-history.json
+    # Remove all characters from the end of the .chat-history.json file until the last `]` character
+    last_index=$(grep -aob ']' .chat-history.json | tail -1 | awk '{print $1}')
+    # remove `:]` from last_index, which is a string
+    last_index=${last_index%:*}
+    truncate -s $last_index .chat-history.json
   fi
   printf '%s' ",{\"role\": \"user\", \"content\": $json_pipe_input}]}" >> .chat-history.json
 
@@ -524,8 +527,11 @@ function gpt() {
   --header 'Content-Type: application/json' \
   --data @".chat-history.json")
 
-  # Remove the last two characters from the .chat-history.json file
-  truncate -s-2 .chat-history.json
+  # Remove all characters from the end of the .chat-history.json file until the last `]` character
+  last_index=$(grep -aob ']' .chat-history.json | tail -1 | awk '{print $1}')
+  # remove `:]` from last_index, which is a string
+  last_index=${last_index%:*}
+  truncate -s $last_index .chat-history.json
 
   assistant_response=$(jq --raw-output '.choices[].message.content' <<< "$output")
   # Echo the assistant response, but render new lines properly
@@ -648,7 +654,8 @@ function gpt-history() {
 function gpt-drop-last() {
   # Drop last $1 (number) messages.
   # If $1 is not provided, drop the last message.
-  jq --slurpfile drop <(jq '.messages | .[:-'"${1:-1}"']' .chat-history.json) '.messages = $drop[0]' .chat-history.json > .chat-history.json.tmp && mv .chat-history.json.tmp .chat-history.json
+  # Write the result compressed.
+  jq --slurpfile drop <(jq --slurpfile messages <(jq '.messages' .chat-history.json) 'del(.messages[-$messages[0][]:])' .chat-history.json) '.messages = $drop[0]' .chat-history.json | gzip > .chat-history.json.gz
 }
 
 # User Prompt
