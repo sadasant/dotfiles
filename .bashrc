@@ -589,7 +589,53 @@ function gpt-continue() {
   echo "${input}" | gpt
 }
 function gpt-clear() {
-  > .chat-history.json
+  true > .chat-history.json
+}
+function gpt-model() {
+  if [ -z "$1" ]; then
+    echo "ERROR: No model selected" >&2
+    return 1
+  fi
+
+  # If .env file does not exist, create it
+  if [ ! -f .env ]; then
+    touch .env
+  fi
+
+  # Establish which sed inline to use for compatibility
+  SED_INLINE=(sed -i)
+  if [ "$(uname)" == "Darwin" ]; then
+    SED_INLINE=(sed -i "")
+  fi
+
+  # Remove the OPENAI_API_MODEL line from .env
+  "${SED_INLINE[@]}" '/OPENAI_API_MODEL/d' .env
+
+  case $1 in
+    3)
+      model="gpt-3.5-turbo"
+      ;;
+    316)
+      model="gpt-3.5-turbo-16k"
+      ;;
+    4)
+      model="gpt-4"
+      ;;
+    432)
+      model="gpt-4-32k"
+      ;;
+    *)
+      echo "ERROR: Invalid model" >&2
+      return 1
+      ;;
+  esac
+
+  # Inform the user and update the .env file
+  echo "Setting model to $model"
+  echo "OPENAI_API_MODEL=$model" >> .env
+
+  # Inform the user about the update of .env file
+  echo "The .env file has been updated with the new model."
 }
 
 # User Prompt
