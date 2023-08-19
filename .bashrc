@@ -430,6 +430,10 @@ printf "## Index\n\n- [Index](#index)\n- [Notes](#notes)\n- [---](#---)\n- [TODO
 # gpt -m gpt-4-32k -p "As a programmer, review this diff. Provide feedback only if necessary. Be brief" <<< $(git diff main ./)
 # ```
 function gpt() {
+  # A variable representing whether .chat-history.json doesn't exist, or if it's empty, add prompt
+  local chat_history_empty
+  chat_history_empty=$( [ ! -f .chat-history.json ] || [ ! -s .chat-history.json ] && echo "true" || echo "false" )
+
   # If neither .env exists, nor the $OPENAI_API_KEY is set, return error
   if [ ! -r ".env" ] && [ -z "$OPENAI_API_KEY" ]; then
     echo "ERROR: .env file not found, or OPENAI_API_KEY is not set"
@@ -444,7 +448,8 @@ function gpt() {
     return 1
   fi
 
-  local model="gpt-4"
+  # Read from $OPENAI_API_MODEL, or default to gpt-4
+  local model="${OPENAI_API_MODEL:-gpt-4}"
   local prompt
 
   # Check for -m and -p flags
@@ -473,13 +478,17 @@ function gpt() {
     prompt="$1"
   fi
 
-  # Check that prompt is provided
-  if [ -z "$prompt" ]; then
+  # If chat_history_empty, a prompt must have been provided
+  if [ "$chat_history_empty" = "true" ] && [ -z "$prompt" ]; then
     echo "ERROR: No prompt provided"
     return 1
   fi
   echo "Model: $model"
-  echo "Prompt: $prompt"
+
+  # If the prompt exists, print it
+  if [ ! -z "$prompt" ]; then
+    echo "Prompt: $prompt"
+  fi
 
   # Read piped input into a variable
   local pipe_input=""
@@ -497,15 +506,31 @@ function gpt() {
 
   echo -e "Response:\n"
 
+  # If .chat-history.json doesn't exist, or if it's empty, add prompt
+  if [ ! -f .chat-history.json ] || [ ! -s .chat-history.json ]; then
+    printf '%s' "{\"model\": \"$model\",\"messages\": [{\"role\": \"system\", \"content\": $json_prompt}" >> .chat-history.json
+  else
+    # Remove the last two characters from the .chat-history.json file
+    truncate -s-2 .chat-history.json
+  fi
+  printf '%s' ",{\"role\": \"user\", \"content\": $json_pipe_input}]}" >> .chat-history.json
+
   # Call OpenAI API
-  curl --progress-bar --location --insecure \
+  output=$(curl -s --location --insecure \
   --request POST 'https://api.openai.com/v1/chat/completions' \
   --header "Authorization: Bearer $OPENAI_API_KEY" \
   --header 'Content-Type: application/json' \
-  --data-raw "{
-   \"model\": \"$model\",
-   \"messages\": [{\"role\": \"system\", \"content\": $json_prompt},{\"role\": \"user\", \"content\": $json_pipe_input}]
-  }" | jq --raw-output '.choices[].message.content'
+  --data @".chat-history.json")
+
+  # Remove the last two characters from the .chat-history.json file
+  truncate -s-2 .chat-history.json
+
+  assistant_response=$(jq --raw-output '.choices[].message.content' <<< "$output")
+  # Echo the assistant response, but render new lines properly
+  echo "$assistant_response" | sed 's/\\n/\n/g'
+  assistant_response_json=$(printf '%s' "$assistant_response" | jq --raw-input --slurp .)
+
+  printf '%s' ",{\"role\": \"assistant\", \"content\": $assistant_response_json}]}" >> .chat-history.json
 }
 function gpt-diff-review() {
   developer_kind=$1
@@ -541,6 +566,30 @@ function gpt-commit-message() {
 }
 function gpt-changelog() {
   gpt "Write CHANGELOG.md entries based on git history. Only include high level changes to the experience. Reference pull requests by their number, like \`PR #123\`. Focus on readability"
+}
+function gpt-chat() {
+  local input="$@"
+  if [[ -z "${input}" ]]; then
+    echo "ERROR: No input provided to gpt-continue"
+    return 1
+  fi
+  echo "${input}" | gpt "Just chat"
+}
+function gpt-continue() {
+  # File .chat-history.json must exist and be non-empty
+  if [ ! -f .chat-history.json ] || [ ! -s .chat-history.json ]; then
+    echo "ERROR: .chat-history.json file not found, or is empty"
+    return 1
+  fi
+  local input="$@"
+  if [[ -z "${input}" ]]; then
+    echo "ERROR: No input provided to gpt-continue"
+    return 1
+  fi
+  echo "${input}" | gpt
+}
+function gpt-clear() {
+  > .chat-history.json
 }
 
 # User Prompt
