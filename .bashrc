@@ -483,6 +483,8 @@ function gpt() {
     echo "ERROR: No prompt provided"
     return 1
   fi
+
+  echo "Message number: $(jq '.messages | length' .chat-history.json)"
   echo "Model: $model"
 
   # If the prompt exists, print it
@@ -496,7 +498,7 @@ function gpt() {
   do
       pipe_input+="$line"$'\n'
   done
-  echo "Context length: ${#pipe_input}"
+  echo "Content length: ${#pipe_input}"
 
   # Properly escape JSON values using jq
   local json_prompt
@@ -573,7 +575,7 @@ function gpt-chat() {
     echo "ERROR: No input provided to gpt-continue"
     return 1
   fi
-  echo "${input}" | gpt "Just chat"
+  echo -e "${input}" | gpt "Just chat"
 }
 function gpt-continue() {
   # File .chat-history.json must exist and be non-empty
@@ -636,6 +638,17 @@ function gpt-model() {
 
   # Inform the user about the update of .env file
   echo "The .env file has been updated with the new model."
+}
+function gpt-history() {
+  # Read the JSON history in .chat-history.json.
+  # For each message, print the role and the first 100 characters of the content.
+  # Use Nodejs
+  node -e "require('./.chat-history.json').messages.forEach((m, i) => console.log(i, m.role + ': ' + m.content.slice(0, 100).replace(/\n/g, '\\\\n')))"
+}
+function gpt-drop-last() {
+  # Drop last $1 (number) messages.
+  # If $1 is not provided, drop the last message.
+  jq --slurpfile drop <(jq '.messages | .[:-'"${1:-1}"']' .chat-history.json) '.messages = $drop[0]' .chat-history.json > .chat-history.json.tmp && mv .chat-history.json.tmp .chat-history.json
 }
 
 # User Prompt
