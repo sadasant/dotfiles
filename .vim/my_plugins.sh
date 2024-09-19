@@ -21,6 +21,11 @@ repos=(
   "tpope/vim-surround"
   "vim-scripts/repmo.vim"
   "w0rp/ale"
+  "nvim-tree/nvim-web-devicons"
+  "stevearc/dressing.nvim"
+  "nvim-lua/plenary.nvim"
+  "MunifTanjim/nui.nvim"
+  "MeanderingProgrammer/render-markdown.nvim"
   )
 
 cd ~/.vim

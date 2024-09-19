@@ -663,3 +663,4 @@ function gpt-drop-last() {
 PS1="\`if [ \$? != 0 ]; then echo '\[\e[30;103m\]'; else echo '\[\e[m\]'; fi\`
 \u\[\e[0m\]\[\e[0m\] \e[93m\$(repo_or_path)\e[0m\[\e[m\] \$(git_current_branch) \[\e[0;0m\]
 "
+export PATH="/Users/drodriguez/.synchronicity/bin:$PATH"
