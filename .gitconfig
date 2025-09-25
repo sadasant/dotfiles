@@ -1,50 +1,14 @@
 [user]
 	name = Daniel Rodriguez
-	email = Daniel.Rodriguez@microsoft.com
+	email = sadasant@gmail.com
 	signingkey = BB6AC2042A76335D
-[github]
-    user = sadasant
-[bitbucket]
-    user = sadasant
-[credential]
-    helper = cache --timeout=3600
-[push]
-    default = simple
 [core]
-    editor = vim
-    eol = lf
-    autocrlf = false
-[merge]
-    tool = vimdiff
-[color]
-    status = auto
-    branch = auto
-    diff = auto
-    interactive = auto
+	editor = vim
+	eol = lf
+	autocrlf = false
+[credential "https://github.com"]
+	helper = !/home/sadasant_gmail_com/gh-cli/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/home/sadasant_gmail_com/gh-cli/bin/gh auth git-credential
 [pull]
-    rebase = true
-[alias]
-    a = add
-    b = branch
-    cam = commit --no-verify --amend
-    c = commit --no-verify -am
-    clear = stash save --keep-index --include-untracked
-    cm = commit --no-verify -m
-    cob = checkout -b
-    co = checkout
-    d = diff
-    graph = log --graph --color --all --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
-    ignored = !git ls-files -v | grep "^[[:lower:]]"
-    ignore = update-index --assume-unchanged
-    l = log
-    ls = log --stat
-    merge-to = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git checkout $1 -q && git merge $branch && git checkout $branch -q; };f"
-    p = push
-    r = reset
-    rsh = reset --soft HEAD^
-    shrug = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git branch | grep -v $branch | xargs git branch -D; }; f"
-    s = status
-    sup = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git push --set-upstream origin $branch; };f"
-    unignore = update-index --no-assume-unchanged
-    vv = status -v -v
-    yolo = "!f(){ branch=`git branch | grep '* ' | tr -d '* '`; git push --set-upstream origin $branch --no-verify --force; };f"
+	rebase = true

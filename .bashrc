@@ -1,283 +1,146 @@
-# Source global
-if [ -f /etc/bashrc ]; then . /etc/bashrc; fi
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
 
-# Source local
-if [ -f ~/.bashrc_local ]; then . ~/.bashrc_local; fi
-
-set -o vi # Vi keybindings
-
-# Suppresses duplicate commands, the simple invocation of 'ls' without any
-# arguments, and the shell built-ins bg, fg, and exit.
-HISTIGNORE="&:ls:[bf]g:exit"
-HISTFILESIZE=1000
-HISTSIZE=$HISTFILESIZE
-
-# PATH
-PATH=$PATH:$HOME/bin
-PATH=$PATH:$HOME/.local/bin
-PATH=$PATH:$HOME/code/github/sadasant/dotfiles/bin
-
-# NVM PATH
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# PYENV PATH
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# FZF PATH
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# ALIASES
-if ! [ -x "$(command -v nvim)" ]; then
-  alias nvim="$HOME/Downloads/nvim.appimage"
-fi
-alias tmux='tmux -2'
-alias vim="nvim"
-alias g="git" # I git too much
-alias monitor="watch tail -n 15"
-
-# NOW, FUNCTIONS
-
-# To show the current branch
-# Used in PS1
-git_current_branch() {
-  hasBranch=`git branch 2>/dev/null`
-  if [ $? -eq 0 ]; then
-    git branch | grep '*' | cut -d' ' -f 2
-  fi
-}
-
-# An alternative to repo_or_path is to use \w (in PS1),
-# but this will only give you the path
-repo_or_path() {
-  repo=`pwd | awk '/(github.com|bitbucket.org)\/.+\/.+/ {split($0, a, /(github.com|bitbucket.org)\//); print a[2]}'`
-  echo -e "${repo:=\e[30m`pwd`\e[0m}"
-}
-
-# To edit all the modified files with vim
-vimodified() {
-  vim $(git status --porcelain | awk '{print $2}')
-}
-
-# gitReport week for one week ago
-# gitReport month for one month ago
-# gitReport for one day ago
-# or like gitReport three months ago
-gitReport() {
-  if [ "$1" = "week" ]; then
-    since="one week ago"
-  elif [ "$1" = "month" ]; then
-    since="one month ago"
-  elif [ "$1" = "" ]; then
-    since="one day ago"
-  else
-    since=$@
-  fi
-  pad=$(printf '%0.1s' " "{1..60})
-  padlength=20
-  IFS='
-'
-  echo -e "\n\e[37;1mChanges from $since:\e[0m"
-  for author in `git log --format='%aN' | sort -u`; do
-    commits=`git shortlog -s -n --since="$since" --author="$author" | awk '{print $1;}'`
-    if [ "$commits" != '' ]; then
-      printf '%s' "$author"
-      printf '%*.*s' 0 $((padlength - ${#author})) "$pad"
-      output=`git whatchanged --since="$since" --author="$author" --oneline --shortstat | grep -E "fil(e|es) changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print "files changed:", files, "\tlines inserted:", inserted, "\tlines deleted:", deleted }'`
-      echo -e "\tcommits: $commits\t$output"
-    fi
-  done
-}
-
-# Password Generator
-pwgen() { < /dev/urandom tr -dc A-Za-z0-9_+-?\?! | head -c$1; }
-
-# Passphrase Generator
-phrase() { shuf -n$1 /usr/share/dict/words | tr '\n' ' '; }
-
-# Ping until host is reachable
-NetCheck() {
-  host=www.google.com
-  waittime=3
-  while [ true ]
-  do
-    ping ${host}
-    if [ $? -ne 0 ]; then
-      echo "Link is down"
-    fi
-    sleep $waittime
-  done
-}
-
-# Easy git clone
-# Usage:
-#
-#     clone user/repo
-#
-clone() {
-  provider=""
-  myuser="sadasant"
-  input=(${1//\// })
-  if [ ${#input[@]} -lt 2 ]; then
-    echo -e "\e[31mclone user/repo\e[0m"
-    return
-  fi
-  user=${input[0]}
-  repo=${input[1]}
-  hosts=("github.com" "bitbucket.org")
-  for host in "${hosts[@]}"; do
-    if [ -d $HOME/code/$host/$user/$repo ]; then
-      echo -e "\e[31mThis repo exists.\e[0m"
-      return
-    fi
-    fullPath="$host/$user/$repo"
-    repoExists=`git ls-remote https://"$fullPath" 2>/dev/null`
-    if [ $? -eq 0 ]; then
-      echo -e "\e[32;1mFound:\e[0m \e[32m$fullPath\e[0m"
-      provider=$host
-      break
-    fi
-  done
-  if [[ -z $provider ]]; then
-    echo -e "\e[31mRepository not found.\e[0m"
-    return
-  fi
-  cd $HOME/code/$provider
-  if [ ! -d ./"$user" ]; then
-    mkdir "$user"
-  fi
-  cd "$user"
-  comm="git clone https://$myuser@$provider/$user/$repo.git"
-  history -s $comm
-  eval $comm
-  if [ $? -eq 0 ]; then
-    cd $repo
-  fi
-}
-
-# Reorder tmux windows
-# http://stackoverflow.com/a/8835493
-function sortmux() {
-  # re-number tmux sessions
-  for session in $(tmux ls | awk -F: '{print $1}') ;do
-    inum=0
-    active_index=$(tmux lsw -t ${session} | grep -n "active" | head -c 1)
-    old_active=$(tmux lsw -t ${session} | awk "NR==${active_index}" | head -c 1)
-    for window in $(tmux lsw -t ${session} | awk -F: '/^[0-9*]/ {print $1}') ;do
-      if [ ${window} -gt ${inum} ] ;then
-        echo "${session}:${window} -> ${session}:${inum}"
-        tmux movew -d -s ${session}:${window} -t ${session}:${inum}
-      fi
-      inum=$((${inum}+1))
-    done
-    active=$(tmux lsw -t ${session} | awk "NR==${active_index}" | head -c 1)
-    if [ $old_active -ne $active ]; then
-      tmux select-window -t ${session}:${active}
-      echo "Active ${old_active} is now ${active}"
-    fi
-  done
-}
-
-# Quick CD
-# goto changes directory to the first matching a given string.
-# It goes only three levels deep. It also ignores files within node_modules and .git
-function goto() {
-    result=$(find -L . -maxdepth 3 -type d -not -path './node_modules*' -a -not -path '*.git*' | grep ${1})
-    if [[ -z $result ]]; then return; fi
-    cd $result
-}
-# code does cd into $HOME/code and then does goto with the arguments passed
-function code() {
-    cd $HOME/code
-    if [[ -z $1 ]]; then return; fi
-    goto $1
-}
-
-# System Usage Percentages
-function system_status() {
-  free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
-  df -h | awk '$NF=="/"{printf "Disk Usage: %d/%dGB (%s)\n", $3,$2,$5}'
-  top -bn1 | grep load | awk '{printf "CPU Load: %.2f\n", $(NF-2)}' 
-}
-
-# Quick search terms recursivelly
-# Ignores files in node_modules and .git
-# Removes duplicated results
-match() {
-  grep -rinI -m1 $1 . ${*:2} --exclude-dir=node_modules --exclude-dir=.git | sort -u
-}
-
-# fzf, but limited to git ls-files
-function gitfzf() {
-  echo `(git ls-files --cached --others --exclude-standard || find . -path "*/\.*" -prune -o -type f -print -o -type l -print | sed s/^..//) 2> /dev/null | fzf --query="$1"`
-}
-
-# Quick git tree find and edit on vim.
-# Called "t" because of github.
-# How it works:
-# - If vim is a stopped process,
-#   - Run gitfzf with the given input parameter
-#   - If gitfzf returned nothing, stop
-#   - If it returned a valid file,
-#     - Save the full path on ~/.for-vim, this is important because sometimes $:p:h is not the current directory
-#     - Then, set to load it on vim using a perl ioctl hack
-#     - Wake up vim (actually just the last stopped job, but that's fine for me)
-#   - Else, show a message saying that the file doesn't exist
-# - If vim is not a stopped process, just open the output on vim.
-# How to use it:
-#   t [query] # It will start with the query as the input of the search
-#   t         # It will start with a blank search
-function t() {
-  hasStoppedVim=`jobs | grep vim`
-  if [ $? -eq 0 ]; then
-    # Inspired by https://unix.stackexchange.com/questions/246419/open-file-with-started-vim-from-outside-in-terminal
-    file=`gitfzf $1`
-    if [[ -z $file ]]; then
-      return
-    fi
-    if [ -f $file ]; then
-      full=`readlink -f $file`
-      echo $full > ~/.for-vim
-      perl -le 'require "sys/ioctl.ph"; ioctl(STDIN, &TIOCSTI, $_)
-        for split "", "\e:tabf `cat ~/.for-vim`\r"'
-      fg
-    else
-      echo "Can't open file $file"
-      echo "It is probably deleted."
-    fi
-  else
-    vim `gitfzf $1`
-  fi
-}
-
-# csd: "changes' dierctory", as in the directory of the changes.
-# Changes the directory to the common parent to all the changes in current branch.
-# Specially useful to switch to the folder relevant to the changes that a specific branch or Pull Request makes in a large project.
-# By default acts based on the current changes to the current branch, but another target can be spcified by passing a single argument.
-# Example: csd master # changes to the common parent relative to the master branch.
-# Source of the regexp: https://stackoverflow.com/a/17475354
-function csd() {
-  common_prefix=$(git diff $1 --name-only | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D') 
-  common_parent=${common_prefix%/*}
-  cd $(git rev-parse --show-toplevel)/$common_parent
-}
-
-# Tmux tab name
-case "$TERM" in
-linux|xterm*|rxvt*)
-  export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
-  ;;
-screen*)
-  export PROMPT_COMMAND='echo -ne "\033k${PWD##*/}\033\\"'
-  ;;
-*)
-  ;;
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
 esac
 
-# User Prompt
-PS1="\`if [ \$? != 0 ]; then echo '\[\e[31;1m\]'; else echo '\[\e[37;1m\]'; fi\`
-\u\[\e[0m\]\[\e[30;1m\] \$(repo_or_path)\[\e[37;1m\] \$(git_current_branch) \[\e[0m\]
-"
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+export PATH="/home/sadasant_gmail_com/.synchronicity/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/sadasant_gmail_com/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/sadasant_gmail_com/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sadasant_gmail_com/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/sadasant_gmail_com/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+source /etc/bash_completion.d/git-prompt
+PS1='\W$(__git_ps1 " (%s)") $ '
+export PATH="/home/sadasant_gmail_com/.ask/bin:$PATH"
+export PATH="/home/sadasant_gmail_com/.ask/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/gh-cli/bin:$PATH"
+
+alias codex='codex --search --model=gpt-5-codex -c model_reasoning_effort="high" --sandbox workspace-write -c sandbox_workspace_write.network_access=true'
