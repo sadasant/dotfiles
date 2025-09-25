@@ -1,1 +1,0 @@
-/home/sadasant/code/github.com/sadasant/dotfiles/.vim/after/ftplugin/javascript.vim
